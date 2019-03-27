@@ -39,9 +39,9 @@ Installation de l'IDE :
 
 https://www.jetbrains.com/idea/download/#section=windows
 
-Vous devez installer le plugin SonarLint sur Intelij (Configure -> Settings -> plugins -> "sonarLint" dans la barre de recherche -> install)
+Vous devez installer le plugin **SonarLint** sur Intelij (Configure -> Settings -> plugins -> "sonarLint" dans la barre de recherche -> install)
 
-Vous pouvez installer aussi le plugin vue.js sur Intelij (Configure -> Settings -> plugins -> "vue" dans la barre de recherche -> install)
+Vous pouvez installer aussi le plugin **Vue.js** sur Intelij (Configure -> Settings -> plugins -> "vue" dans la barre de recherche -> install)
 
 ### Optionnel : Installation de SourceTree
 Pour tous ceux qui ne sont pas à l'aise sur le terminal de commande et avec Git
@@ -49,6 +49,17 @@ Pour tous ceux qui ne sont pas à l'aise sur le terminal de commande et avec Git
 https://www.sourcetreeapp.com/
 
 Il vaut mieux utiliser un compte bitbucket (on peut s'inscrire avec compte google) et n'installer que Git (pas Mercurial)
+
+### Récupérer le projet avc Git
+Pour cloner le projet il faut utiliser sourceTree que vous venez d'installer. Lancer le logiciel et faite "Cloner"
+
+Copier le lien https://gitlab.com/scan-and-save/scan-and-save.git dans le champ Source Url
+
+Dans le champ Destination vous définissez l'endroit où sera enregistré le projet. Il faut préciser le dossier dans le chemin (ex : C:\Users\Matthieu\Desktop\scan-and-save)
+
+Puis vous clonez, git va vous demander votre mail et votre mot de passe gitlab
+
+**/!\ Si vous vous êtes inscrit sur Gitlab avec votre compte Google, demandez à Matthieu**
 
 ## Commandes
 ```
