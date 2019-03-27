@@ -39,6 +39,8 @@ Installation de l'IDE :
 
 https://www.jetbrains.com/idea/download/#section=windows
 
+Vous devez installer le plugin SonarLint sur Intelij (Configure -> Settings -> plugins -> "sonarLint" dans la barre de recherche -> install)
+
 Vous pouvez installer aussi le plugin vue.js sur Intelij (Configure -> Settings -> plugins -> "vue" dans la barre de recherche -> install)
 
 ### Optionnel : Installation de SourceTree
