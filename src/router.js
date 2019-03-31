@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
-import Inscription from './views/Inscription'
+import Login from './views/Login.vue';
+import Registration from './views/Registration.vue';
 
 Vue.use(Router);
 
@@ -11,18 +12,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: Home,
     },
     {
-      path: '/template',
-      name: 'template',
-      component: () => import('./views/template.vue'),
+      path: '/login',
+      name: 'Login',
+      component: Login,
     },
     {
-      path: '/inscription',
-      name: 'inscription',
-      component: Inscription,
+      path: '/registration',
+      name: 'Registration',
+      component: Registration,
     },
   ],
 });
