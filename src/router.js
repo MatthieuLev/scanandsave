@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
 import Medical_File from './views/Medical_File.vue';
+import Stickers from './views/create_stickers.vue';
 import Menu from './components/Menu.vue';
 
 Vue.use(Router);
@@ -37,5 +38,10 @@ export default new Router({
       name: 'Menu',
       component: Menu,
     },
+    {
+      path: '/create_stickers',
+      name: 'create_stickers',
+      component: Stickers,
+    }
   ],
 });
