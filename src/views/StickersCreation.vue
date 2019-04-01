@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu></Menu>
+    <Navbar></Navbar>
     <b-container>
       <b-form class="create_stickers">
         <h1>Créer son autocollant</h1>
@@ -59,19 +59,19 @@
 </template>
 
 <script>
-  import Menu from '../components/Menu.vue';
+import Navbar from '../components/Navbar.vue';
 
-  export default {
-    name: "create_stickers",
-    components: {
-      Menu,
-    },
-    data() {
-      return {
-        selected: ''
-      }
-    }
-  }
+export default {
+  name: 'create_stickers',
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      selected: '',
+    };
+  },
+};
 
 </script>
 
