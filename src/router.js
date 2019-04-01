@@ -4,6 +4,7 @@ import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
 import Medical_File from './views/Medical_File.vue';
+import Menu from './components/Menu.vue';
 
 Vue.use(Router);
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/medical_file',
       name: 'Medical File',
       component: Medical_File,
+    },
+    {
+      path: '/menu',
+      name: 'Menu',
+      component: Menu,
     },
   ],
 });
