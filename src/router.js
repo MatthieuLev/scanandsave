@@ -31,5 +31,10 @@ export default new Router({
       name: 'Menu',
       component: Menu,
     },
+    {
+      path: '/create_stickers',
+      name: 'create_stickers',
+      component: Stickers,
+    }
   ],
 });
