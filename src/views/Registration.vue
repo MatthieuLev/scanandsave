@@ -10,8 +10,11 @@
                   type="password" required placeholder="Confirmer le mot de passe"></b-form-input>
     <p class="error" v-if="errorConfirmPassword">{{errorConfirmPassword}}</p>
 
-    <button @click="performRegistration">S'enregistrer</button>
+    <button @click="signUp">S'enregistrer</button>
     <p class="error" v-if="errorMessage">{{errorMessage}}</p>
+    <p class="success" v-if="successMessage">{{successMessage}}
+      <a class="redirection" v-on:click="$emit('hide')">en cliquant ici</a>
+    </p>
 
     <p class="message">Déjà enregistré ? <a v-on:click="$emit('hide')">Se connecter</a></p>
 
@@ -30,40 +33,65 @@ export default {
         password: '',
         confirmPassword: '',
       },
-      errorEmail : '',
-      errorPassword : '',
-      errorMessage : '',
+      errorEmail: '',
+      errorPassword: '',
+      errorConfirmPassword: '',
+      errorMessage: '',
+      successMessage: '',
     };
   },
-  methods : {
-    performRegistration: function() {
+  methods: {
+    signUp(e) {
+      // Error messages are reset at each attempt
       this.errorEmail = '';
       this.errorPassword = '';
+      this.errorConfirmPassword = '';
       this.errorMessage = '';
-      firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password).then(
-        (user) => {
-          console.log(`Vous êtes enregistré${user}`)
-        },
-        (error) => {
-          switch (error.code) {
-            case 'auth/weak-password':
-              this.errorPassword = 'Le mot de passe doit être composé d\'au moins six symboles.';
-              break;
-            case 'auth/email-already-in-use':
-              this.errorEmail = 'Il existe déjà un compte avec l\'adresse e-mail indiquée.';
-              break;
-            case 'auth/invalid-email':
-              this.errorEmail = 'L\'adresse e-mail n\'est pas valide.';
-              break;
-            default:
-              this.errorMessage = error.code;
-          }
-        }
-      );
+      if (this.form.password === this.form.confirmPassword) {
+        firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password).then(
+          () => {
+            this.successMessage = 'Votre compte est créé, vous pouvez vous connecter';
+          },
+          (error) => {
+            switch (error.code) {
+              case 'auth/weak-password':
+                this.errorPassword = 'Le mot de passe doit être composé d\'au moins six symboles.';
+                break;
+              case 'auth/email-already-in-use':
+                this.errorEmail = 'Il existe déjà un compte avec l\'adresse e-mail indiquée.';
+                break;
+              case 'auth/invalid-email':
+                this.errorEmail = 'L\'adresse e-mail n\'est pas valide.';
+                break;
+              default:
+                this.errorMessage = error.code;
+            }
+          },
+        );
+      } else {
+        this.errorConfirmPassword = 'Les deux mots de passe ne sont pas les mêmes';
+      }
+      e.preventDefault();
     },
   },
 };
 </script>
 
 <style scoped>
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+
+  .success {
+    color: limegreen;
+    font-size: 12px;
+  }
+  .redirection {
+    color: #7c9ad2 !important;
+    cursor: pointer;
+  }
+  .redirection:hover {
+    color: #7c9ad2 !important;
+  }
 </style>

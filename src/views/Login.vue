@@ -7,7 +7,7 @@
                   type="password" required placeholder="Mot de passe"></b-form-input>
     <p class="error" v-if="errorPassword">{{errorPassword}}</p>
 
-    <button @click="performLogin">Se connecter</button>
+    <button @click="signIn">Se connecter</button>
 
     <p class="error" v-if="errorMessage">{{errorMessage}}</p>
 
@@ -27,19 +27,19 @@ export default {
         email: '',
         password: '',
       },
-      errorEmail : '',
-      errorPassword : '',
-      errorMessage : '',
+      errorEmail: '',
+      errorPassword: '',
+      errorMessage: '',
     };
   },
   methods: {
-    performLogin() {
+    signIn(e) {
       this.errorEmail = '';
       this.errorPassword = '';
       this.errorMessage = '';
       firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.password).then(
-        (user) => {
-          console.log(`Vous êtes connecté${user}`)
+        () => {
+          this.$router.push('Medical_File');
         },
         (error) => {
           switch (error.code) {
@@ -52,16 +52,17 @@ export default {
             default:
               this.errorMessage = error.code;
           }
-        }
+        },
       );
-    }
-  }
+      e.preventDefault();
+    },
+  },
 };
 </script>
 
 <style scoped>
-  .error{
+  .error {
     color: red;
-    font-size: 10px;
+    font-size: 12px;
   }
 </style>

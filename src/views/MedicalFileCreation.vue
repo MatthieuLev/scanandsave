@@ -1,8 +1,8 @@
 <template>
   <div>
-  <Menu></Menu>
+  <Navbar></Navbar>
   <b-container>
-    <b-form class="registration-form">
+    <b-form class="medicalFileCreation-form">
       <h1>Mon dossier médical</h1>
         <h2>Informations générales</h2>
           <b-row>
@@ -277,13 +277,14 @@
 </template>
 
 <script>
-  import Menu from '../components/Menu';
-  export default {
-    name: "Medical File",
-    components:{
-      Menu
-    },
-  }
+import Navbar from '../components/Navbar.vue';
+
+export default {
+  name: 'MedicalFileCreation',
+  components: {
+    Navbar,
+  },
+};
 </script>
 
 <style scoped>
