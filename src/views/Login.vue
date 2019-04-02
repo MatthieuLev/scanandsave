@@ -63,6 +63,6 @@ export default {
 <style scoped>
   .error {
     color: red;
-    font-size: 10px;
+    font-size: 12px;
   }
 </style>
