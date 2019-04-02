@@ -7,9 +7,9 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="#">Mon formulaire médical</b-nav-item>
-          <b-nav-item href="#">Mes autocollants</b-nav-item>
-          <b-nav-item href="#">Mon panier</b-nav-item>
+          <b-nav-item><router-link to= "MedicalFileCreation">Mon formulaire médical</router-link></b-nav-item>
+          <b-nav-item><router-link to= "ViewMyStickers">Mes autocollants</router-link></b-nav-item>
+          <b-nav-item><router-link to= "Mon_Panier">Mon panier</router-link></b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -22,8 +22,8 @@
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template slot="button-content"><em>User</em></template>
-            <b-dropdown-item href="#">Mon Compte</b-dropdown-item>
-            <b-dropdown-item href="#">Déconnexion</b-dropdown-item>
+            <b-dropdown-item><router-link to= "ViewMyAccount">Mon Compte</router-link></b-dropdown-item>
+            <b-dropdown-item><router-link to= "Login">Déconnexion</router-link></b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>

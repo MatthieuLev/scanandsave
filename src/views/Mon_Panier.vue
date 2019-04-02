@@ -1,4 +1,4 @@
-<template>
+N<template>
   <b-form class="registration-form">
     <Menu ></Menu>
     <h1>Mon Panier</h1>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import Menu from '../components/Menu.vue';
+  import Menu from '../components/Navbar';
     export default {
       name: 'Mon_Panier',
       components: {
