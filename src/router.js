@@ -6,6 +6,7 @@ import Registration from './views/Registration.vue';
 import Medical_File from './views/Medical_File.vue';
 import Stickers from './views/create_stickers.vue';
 import Menu from './components/Menu.vue';
+import MesAutocollants from './views/MesAutocollants.vue';
 
 Vue.use(Router);
 
@@ -42,6 +43,11 @@ export default new Router({
       path: '/create_stickers',
       name: 'create_stickers',
       component: Stickers,
+    },
+    {
+      path: '/MesAutocollants',
+      name: 'MesAutocollants.vue',
+      component: MesAutocollants,
     }
   ],
 });
