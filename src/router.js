@@ -8,6 +8,7 @@ import StickersCreation from './views/StickersCreation.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
 import ViewMyAccount from './views/ViewMyAccount.vue';
 import Navbar from './components/Navbar.vue';
+import Mon_Panier from "./views/Mon_Panier";
 
 Vue.use(Router);
 
@@ -51,9 +52,15 @@ export default new Router({
       component: ViewMyStickers,
     },
     {
+      path: '/Mon_Panier',
+      name: 'Mon_Panier',
+      component: Mon_Panier,
+    },
+    {
       path: '/ViewMyAccount',
       name: 'ViewMyAccount',
       component: ViewMyAccount,
     }
+
   ],
 });
