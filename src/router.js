@@ -3,10 +3,9 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
-import Medical_File from './views/Medical_File.vue';
-import Stickers from './views/create_stickers.vue';
-import Menu from './components/Menu.vue';
-import MesAutocollants from './views/MesAutocollants.vue';
+import MedicalFileCreation from './views/MedicalFileCreation.vue';
+import StickersCreation from './views/StickersCreation.vue';
+import Navbar from './components/Navbar.vue';
 
 Vue.use(Router);
 
@@ -20,34 +19,29 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/login',
+      path: '/Login',
       name: 'Login',
       component: Login,
     },
     {
-      path: '/registration',
+      path: '/Registration',
       name: 'Registration',
       component: Registration,
     },
     {
-      path: '/medical_file',
-      name: 'Medical File',
-      component: Medical_File,
+      path: '/MedicalFileCreation',
+      name: 'MedicalFileCreation',
+      component: MedicalFileCreation,
     },
     {
-      path: '/menu',
-      name: 'Menu',
-      component: Menu,
+      path: '/Navbar',
+      name: 'Navbar',
+      component: Navbar,
     },
     {
-      path: '/create_stickers',
-      name: 'create_stickers',
-      component: Stickers,
+      path: '/StickersCreation',
+      name: 'StickersCreation',
+      component: StickersCreation,
     },
-    {
-      path: '/MesAutocollants',
-      name: 'MesAutocollants.vue',
-      component: MesAutocollants,
-    }
   ],
 });
