@@ -2,7 +2,7 @@
   <div>
   <Navbar></Navbar>
   <b-container>
-    <b-form class="medicalFileCreation-form">
+    <b-form @submit.prevent ="saveMedicalFile" class="medicalFileCreation-form">
       <h1>Mon dossier médical</h1>
         <h2>Informations générales</h2>
           <b-row>
@@ -106,7 +106,7 @@
             <p>Choisir un mot clé.</p>
           </b-col>
           <b-col class="col-lg-4">
-            <b-form-input v-model="form.diseases.key_word" required ></b-form-input>
+            <b-form-input v-model="form.diseases.keyword" required ></b-form-input>
           </b-col>
         </b-row>
         <b-row>
@@ -126,7 +126,7 @@
             <p>Choisir un mot clé.</p>
           </b-col>
           <b-col class="col-lg-4">
-            <b-form-input v-model="form.hospitalization.key_word" required ></b-form-input>
+            <b-form-input v-model="form.hospitalization.keyword" required ></b-form-input>
           </b-col>
         </b-row>
         <b-row>
@@ -147,7 +147,7 @@
             <p>Choisir un mot clé.</p>
           </b-col>
           <b-col class="col-lg-4">
-            <b-form-input v-model="form.treatment.key_word" required ></b-form-input>
+            <b-form-input v-model="form.treatment.keyword" required ></b-form-input>
           </b-col>
         </b-row>
         <b-row>
@@ -167,7 +167,7 @@
             <p>Choisir un mot clé.</p>
           </b-col>
           <b-col class="col-lg-4">
-            <b-form-input v-model="form.allergy.key_word" required ></b-form-input>
+            <b-form-input v-model="form.allergy.keyword" required ></b-form-input>
           </b-col>
         </b-row>
         <b-row>
@@ -269,7 +269,7 @@
         </b-col>
       </b-row>
       <div>
-        <b-button variant="outline-primary">Valider</b-button>
+        <b-button type = "submit" variant="outline-primary">Valider</b-button>
       </div>
     </b-form>
   </b-container>
@@ -308,19 +308,19 @@ export default {
           country
         },
         diseases: {
-          key_word,
+          keyword,
           explanation
         },
         hospitalization: {
-          key_word,
+          keyword,
           explanation
         },
         allergy: {
-          key_word,
+          keyword,
           explanation
         },
         treatment: {
-          key_word,
+          keyword,
           explanation
         },
         contact:{
@@ -335,6 +335,33 @@ export default {
           city
         }
       },
+      methods:{
+        saveMedicalFile(){
+          firebase.database().ref('users/' + form.user_id ).set({
+            civility:civility,
+            first_name : first_name,
+            last_name : last_name,
+            birthday : birthday,
+            phone_number : phone_number,
+            blood_type : blood_type,
+            social_security_number : social_security_number,
+            license_number : license_number,
+            adress :{ number: number, street: street, complement : complement, postal_code : postal_code, city : city, state : state, country : country},
+            diseases : {keyword : keyword, explanation : explanation},
+            hospitalization : {keyword : keyword, explanation : explanation },
+            allergy : {keyword : keyword, explanation : explanation},
+            treatment : {keyword : keyword, explanation : explanation},
+            contact : {last_name : last_name, first_name : first_name, phone_number : phone_number },
+            doctor : {last_name : last_name, first_name : first_name, phone_number : phone_number, city : city}
+          })
+            .then(docRef => {
+              alert("TOTO")
+            })
+            .catch(error =>{
+              alert("ERROR")
+            })
+        }
+      }
     };
   }
 }
