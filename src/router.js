@@ -5,6 +5,8 @@ import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
+import ViewMyStickers from './views/ViewMyStickers.vue';
+import ViewMyAccount from './views/ViewMyAccount.vue';
 import Navbar from './components/Navbar.vue';
 
 Vue.use(Router);
@@ -43,5 +45,15 @@ export default new Router({
       name: 'StickersCreation',
       component: StickersCreation,
     },
+    {
+      path: '/ViewMyStickers',
+      name: 'ViewMyStickers',
+      component: ViewMyStickers,
+    },
+    {
+      path: '/ViewMyAccount',
+      name: 'ViewMyAccount',
+      component: ViewMyAccount,
+    }
   ],
 });
