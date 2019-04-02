@@ -13,7 +13,7 @@
     <button @click="signUp">S'enregistrer</button>
     <p class="error" v-if="errorMessage">{{errorMessage}}</p>
     <p class="success" v-if="successMessage">{{successMessage}}
-      <a v-on:click="$emit('hide')">en cliquant ici</a>
+      <a class="redirection" v-on:click="$emit('hide')">en cliquant ici</a>
     </p>
 
     <p class="message">Déjà enregistré ? <a v-on:click="$emit('hide')">Se connecter</a></p>
@@ -80,11 +80,18 @@ export default {
 <style scoped>
   .error {
     color: red;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .success {
-    color: lawngreen;
-    font-size: 10px;
+    color: limegreen;
+    font-size: 12px;
+  }
+  .redirection {
+    color: #7c9ad2 !important;
+    cursor: pointer;
+  }
+  .redirection:hover {
+    color: #7c9ad2 !important;
   }
 </style>
