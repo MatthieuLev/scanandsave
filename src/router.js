@@ -5,6 +5,7 @@ import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
+import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
 
 Vue.use(Router);
@@ -43,5 +44,10 @@ export default new Router({
       name: 'StickersCreation',
       component: StickersCreation,
     },
+    {
+      path: '/MedicalFileResume',
+      name: 'MedicalFileResume',
+      component: MedicalFileResume,
+    }
   ],
 });
