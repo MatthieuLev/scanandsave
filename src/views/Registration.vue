@@ -22,38 +22,39 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+  import database from '../database.js'
 
-export default {
-  name: 'Registration',
-  data() {
-    return {
-      form: {
-        email: '',
-        password: '',
-        confirmPassword: '',
-      },
-      errorEmail: '',
-      errorPassword: '',
-      errorConfirmPassword: '',
-      errorMessage: '',
-      successMessage: '',
-    };
-  },
-  methods: {
-    signUp(e) {
-      // Error messages are reset at each attempt
-      this.errorEmail = '';
-      this.errorPassword = '';
-      this.errorConfirmPassword = '';
-      this.errorMessage = '';
-      if (this.form.password === this.form.confirmPassword) {
-        firebase.auth().createUserWithEmailAndPassword(this.form.email, this.form.password).then(
-          () => {
+  export default {
+    name: 'Registration',
+    data() {
+      return {
+        form: {
+          email: '',
+          password: '',
+          confirmPassword: '',
+        },
+        errorEmail: '',
+        errorPassword: '',
+        errorConfirmPassword: '',
+        errorMessage: '',
+        successMessage: '',
+      };
+    },
+    methods: {
+      async signUp(e) {
+        e.preventDefault();
+        // Error messages are reset at each attempt
+        this.errorEmail = '';
+        this.errorPassword = '';
+        this.errorConfirmPassword = '';
+        this.errorMessage = '';
+        if (this.form.password === this.form.confirmPassword) {
+          let result = await database.signUp(this.form.email, this.form.password);
+
+          if (!result.message) {
             this.successMessage = 'Votre compte est créé, vous pouvez vous connecter';
-          },
-          (error) => {
-            switch (error.code) {
+          } else {
+            switch (result.code) {
               case 'auth/weak-password':
                 this.errorPassword = 'Le mot de passe doit être composé d\'au moins six symboles.';
                 break;
@@ -64,17 +65,15 @@ export default {
                 this.errorEmail = 'L\'adresse e-mail n\'est pas valide.';
                 break;
               default:
-                this.errorMessage = error.code;
+                this.errorMessage = result.code;
             }
-          },
-        );
-      } else {
-        this.errorConfirmPassword = 'Les deux mots de passe ne sont pas les mêmes';
-      }
-      e.preventDefault();
+          }
+        } else {
+          this.errorConfirmPassword = 'Les deux mots de passe ne sont pas les mêmes';
+        }
+      },
     },
-  },
-};
+  };
 </script>
 
 <style scoped>

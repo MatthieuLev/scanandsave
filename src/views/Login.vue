@@ -17,47 +17,48 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+  import database from '../database.js'
 
-export default {
-  name: 'Login',
-  data() {
-    return {
-      form: {
-        email: '',
-        password: '',
-      },
-      errorEmail: '',
-      errorPassword: '',
-      errorMessage: '',
-    };
-  },
-  methods: {
-    signIn(e) {
-      this.errorEmail = '';
-      this.errorPassword = '';
-      this.errorMessage = '';
-      firebase.auth().signInWithEmailAndPassword(this.form.email, this.form.password).then(
-        () => {
-          this.$router.push('Medical_File');
+  export default {
+    name: 'Login',
+    data() {
+      return {
+        form: {
+          email: '',
+          password: '',
         },
-        (error) => {
-          switch (error.code) {
+        errorEmail: '',
+        errorPassword: '',
+        errorMessage: '',
+      };
+    },
+    methods: {
+      async signIn(e) {
+        e.preventDefault();
+        this.errorEmail = '';
+        this.errorPassword = '';
+        this.errorMessage = '';
+        let result = await database.signIn(this.form.email, this.form.password);
+        if (!result.message) {
+          this.$router.push('MedicalFileCreation');
+        } else {
+          switch (result.code) {
             case 'auth/wrong-password':
-              this.errorPassword = 'Le mot de passe n\'est pas valide pour l\'email donné';
+              this.errorPassword = 'Le mot de passe n\'est pas valide pour l\'email donné.';
               break;
             case 'auth/invalid-email':
               this.errorEmail = 'L\'adresse e-mail n\'est pas valide.';
               break;
+            case 'auth/user-not-found':
+              this.errorMessage = 'L\'utilisateur n\'existe pas.';
+              break;
             default:
-              this.errorMessage = error.code;
+              this.errorMessage = result.code;
           }
-        },
-      );
-      e.preventDefault();
+        }
+      },
     },
-  },
-};
+  };
 </script>
 
 <style scoped>
