@@ -19,7 +19,7 @@
           <h5>Nom: </h5>">
         </b-col>
         <b-col class="col-lg-4">
-            <h5>Sarah</h5>
+            <h5>Lemarquand</h5>
         </b-col>
       </b-row>
 
@@ -38,10 +38,22 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
+  import {DocumentReference as db} from "firebase";
     export default {
         name: "MedicalFileResume",
       components: {
         Navbar,
+      },
+      methods: {
+        readMedicalFile() {
+          db.collection('users').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              console.log(doc.id, ' => ', doc.data())
+              this.first_name = doc.data().first_name
+              this.last_name = doc.data().last_name
+              })
+          })
+        }
       }
     }
 </script>
