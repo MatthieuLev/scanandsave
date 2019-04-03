@@ -36,17 +36,6 @@ export default {
   $color-secondary: #c2e9fb;
   $color-tertiary: #7c9ad2;
 
-  body {
-    background: #a1c4fd; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, $color-primary, $color-secondary);
-    background: -moz-linear-gradient(right, $color-primary, $color-secondary);
-    background: -o-linear-gradient(right, $color-primary, $color-secondary);
-    background: linear-gradient(to left, $color-primary, $color-secondary);
-    font-family: "Roboto", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
   .home-page {
     padding: 8% 0 0;
     margin: auto;

@@ -1,14 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
+import Navbar from './components/Navbar.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
 import ViewMyAccount from './views/ViewMyAccount.vue';
-import Navbar from './components/Navbar.vue';
-import Mon_Panier from "./views/Mon_Panier";
+import ViewMyCart from './views/ViewMyCart.vue';
 
 Vue.use(Router);
 
@@ -52,15 +53,14 @@ export default new Router({
       component: ViewMyStickers,
     },
     {
-      path: '/Mon_Panier',
-      name: 'Mon_Panier',
-      component: Mon_Panier,
+      path: '/ViewMyCart',
+      name: 'ViewMyCart',
+      component: ViewMyCart,
     },
     {
       path: '/ViewMyAccount',
       name: 'ViewMyAccount',
       component: ViewMyAccount,
-    }
-
+    },
   ],
 });
