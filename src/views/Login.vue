@@ -17,7 +17,7 @@
 </template>
 
 <script>
-  import database from '../database.js'
+  import database from '../database';
 
   export default {
     name: 'Login',

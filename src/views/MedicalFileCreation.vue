@@ -282,8 +282,8 @@
 </template>
 
 <script>
-  import Navbar from '../components/Navbar.vue';
   import firebase from 'firebase';
+  import Navbar from '../components/Navbar.vue';
 
   export default {
     name: 'MedicalFileCreation',
@@ -291,9 +291,9 @@
       Navbar,
     },
     computed: {
-      currentUer(){
-        return this.$store.state.currentUser
-      }
+      currentUer() {
+        return this.$store.state.currentUser;
+      },
     },
     data() {
       return {
@@ -315,43 +315,43 @@
             postal_code: null,
             city: null,
             state: null,
-            country: null
+            country: null,
           },
           diseases: {
             keyword: null,
-            explanation: null
+            explanation: null,
           },
           hospitalization: {
             keyword: null,
-            explanation: null
+            explanation: null,
           },
           allergy: {
             keyword: null,
-            explanation: null
+            explanation: null,
           },
           treatment: {
             keyword: null,
-            explanation: null
+            explanation: null,
           },
           contact: {
             last_name: null,
             first_name: null,
-            phone_number: null
+            phone_number: null,
           },
           doctor: {
             last_name: null,
             first_name: null,
             phone_number: null,
-            city: null
-          }
+            city: null,
+          },
         },
       };
     },
     methods: {
-      saveMedicalFile() {
+      saveMedicalFile: function () {
         const db = firebase.firestore();
-        db.collection("users").add({
-          user_id: "toto",
+        db.collection('users').add({
+          user_id: 'toto',
           civility: this.form.civility,
           first_name: this.form.first_name,
           last_name: this.form.last_name,
@@ -367,45 +367,45 @@
             postal_code: this.form.adress.postal_code,
             city: this.form.adress.city,
             state: this.form.adress.state,
-            country: this.form.adress.country
+            country: this.form.adress.country,
           },
           diseases: {
             keyword: this.form.diseases.keyword,
-            explanation: this.form.diseases.explanation
+            explanation: this.form.diseases.explanation,
           },
           hospitalization:
             {
               keyword: this.form.hospitalization.keyword,
-              explanation: this.form.hospitalization.explanation
+              explanation: this.form.hospitalization.explanation,
             },
           allergy: {
             keyword: this.form.allergy.keyword,
-            explanation: this.form.allergy.explanation
+            explanation: this.form.allergy.explanation,
           },
           treatment: {
             keyword: this.form.treatment.keyword,
-            explanation: this.form.treatment.explanation
+            explanation: this.form.treatment.explanation,
           },
           contact: {
             last_name: this.form.contact.last_name,
             first_name: this.form.contact.first_name,
-            phone_number: this.form.contact.phone_number
+            phone_number: this.form.contact.phone_number,
           },
           doctor: {
             last_name: this.form.doctor.last_name,
             first_name: this.form.doctor.first_name,
             phone_number: this.form.doctor.phone_number,
-            city: this.form.doctor.city
-          }
+            city: this.form.doctor.city,
+          },
         })
           .then(docRef => {
-            alert("TOTO")
+            alert('TOTOO');
           })
           .catch(error => {
-            alert(error)
-          })
-      }
-    }
+            alert(error);
+          });
+      },
+    },
   };
 </script>
 

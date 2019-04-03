@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu></Menu>
+    <Navbar></Navbar>
     <b-container>
       <h1>Mes autocollants</h1>
       <b-table striped hover :items="items"></b-table>
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-  import Menu from '../components/Navbar.vue';
+  import Navbar from '../components/Navbar.vue';
 
   export default {
-    name: 'panier',
+    name: 'ViewMyStickers',
     components: {
-      Menu,
+      Navbar,
     },
     data() {
       return {

@@ -61,7 +61,7 @@
 <script>
   import Navbar from '../components/Navbar.vue';
   export default {
-    name: 'ModedePaiement',
+    name: 'ViewMyPaymentMethod',
     components: {
       Navbar,
     },

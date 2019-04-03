@@ -10,10 +10,11 @@ import StickersCreation from './views/StickersCreation.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
 import ViewMyAccount from './views/ViewMyAccount.vue';
 import ViewMyCart from './views/ViewMyCart.vue';
+import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 
 Vue.use(Router);
 
-let router = new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -22,7 +23,7 @@ let router = new Router({
       name: 'Home',
       component: Home,
       meta: {
-        redirectAuth: true
+        redirectAuth: true,
       },
     },
     {
@@ -30,7 +31,7 @@ let router = new Router({
       name: 'Login',
       component: Login,
       meta: {
-        redirectAuth: true
+        redirectAuth: true,
       },
     },
     {
@@ -38,7 +39,7 @@ let router = new Router({
       name: 'Registration',
       component: Registration,
       meta: {
-        redirectAuth: true
+        redirectAuth: true,
       },
     },
     {
@@ -46,7 +47,7 @@ let router = new Router({
       name: 'MedicalFileCreation',
       component: MedicalFileCreation,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       },
     },
     {
@@ -54,7 +55,7 @@ let router = new Router({
       name: 'Navbar',
       component: Navbar,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       },
     },
     {
@@ -62,42 +63,55 @@ let router = new Router({
       name: 'StickersCreation',
       component: StickersCreation,
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       },
     },
     {
       path: '/ViewMyStickers',
       name: 'ViewMyStickers',
       component: ViewMyStickers,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/ViewMyCart',
       name: 'ViewMyCart',
       component: ViewMyCart,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/ViewMyAccount',
       name: 'ViewMyAccount',
       component: ViewMyAccount,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/ViewMyPaymentMethod',
+      name: 'ViewMyPaymentMethod',
+      component: ViewMyPaymentMethod,
+      meta: {
+        requiresAuth: true,
+      },
     },
   ],
 });
 
 router.beforeEach((to, from, next) => {
-  let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  let redirectAuth = to.matched.some(record => record.meta.redirectAuth);
-  let currentUser = store.state.currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  const redirectAuth = to.matched.some(record => record.meta.redirectAuth);
+  const currentUser = store.state.currentUser;
   if (requiresAuth && !currentUser) {
-    next({
-      path: '/'
-    })
+    next('/');
   } else if (redirectAuth && currentUser) {
-    next({
-      path: '/MedicalFileCreation'
-    })
+    next('/ViewMyAccount');
   } else {
-    next()
+    next();
   }
 });
 
-export default router
+export default router;
