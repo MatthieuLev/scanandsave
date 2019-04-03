@@ -28,7 +28,7 @@
           </b-nav-item-dropdown>
 
           <b-nav-item>
-            <router-link to="/">Déconnexion</router-link>
+            <a class="signOutButton"@click="signOut">Déconnexion</a>
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -37,8 +37,22 @@
 </template>
 
 <script>
+  import database from '../database'
+  import router from '../router'
+
   export default {
-    name: 'Menu',
+    name: 'Navbar',
+    computed: {
+      currentUser (){
+        return this.$store.state.currentUser
+      },
+    },
+    methods: {
+      async signOut() {
+        await database.signOut();
+        router.push('/');
+      }
+    }
   };
 </script>
 
@@ -57,7 +71,7 @@
   .router-link-exact-active {
     color: rgba(255, 255, 255, 0.8);
    }
-  .nav-link{
+  .nav-link .signOutButton{
     cursor: inherit;
   }
 </style>
