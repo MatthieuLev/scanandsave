@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
-import firebase from 'firebase';
+import firebase from 'firebase'
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -10,21 +10,28 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.config.productionTip = false;
 
-// Initialize Firebase
-const config = {
-  apiKey: 'AIzaSyCTP1DP6D7o8aNFT3x3xjeFpDlY8fcj-aw',
-  authDomain: 'scanandsave-admin.firebaseapp.com',
-  databaseURL: 'https://scanandsave-admin.firebaseio.com',
-  projectId: 'scanandsave-admin',
-  storageBucket: 'scanandsave-admin.appspot.com',
-  messagingSenderId: '106066164855',
-};
-firebase.initializeApp(config);
-
 Vue.use(BootstrapVue);
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app');
+// create a variable for holding our app
+let app;
+// wrap the app creation in a function. This will be called after we receive information from Firebase.
+const initialize = () => {
+  if (!app){
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+};
+
+//  when we launch the app in our browser, we'll get a callback from Firebase. We receive a user object, which either can be an actual user or just null.
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.commit('setCurrentUser', user)
+  } else {
+    store.commit('setCurrentUser', null)
+  }
+  //  call the initialize function we created above
+  initialize()
+});

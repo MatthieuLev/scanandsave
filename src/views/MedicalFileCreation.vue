@@ -290,6 +290,11 @@
     components: {
       Navbar,
     },
+    computed: {
+      currentUer(){
+        return this.$store.state.currentUser
+      }
+    },
     data() {
       return {
         form: {
@@ -405,5 +410,4 @@
 </script>
 
 <style scoped>
-
 </style>
