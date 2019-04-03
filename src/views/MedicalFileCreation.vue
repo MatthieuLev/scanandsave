@@ -229,7 +229,7 @@
         <h3>Personne à contacter en cas d'urgence</h3>
         <b-row>
           <b-col>
-            <b-form-group label="Prenom : ">
+            <b-form-group label="Prénom : ">
               <b-form-input v-model="form.contact.first_name" required placeholder="Prenom"></b-form-input>
             </b-form-group>
           </b-col>
@@ -241,7 +241,7 @@
         </b-row>
         <b-row>
           <b-col class="col-lg-6">
-            <b-form-group label="Telephone : ">
+            <b-form-group label="Téléphone : ">
               <b-form-input v-model="form.contact.phone_number" type="tel" required
                             placeholder="Téléphone"></b-form-input>
             </b-form-group>
