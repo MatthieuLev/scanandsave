@@ -4,81 +4,120 @@
       <h1>Mon dossier médical</h1>
       <h2>Informations générales</h2>
       <b-container>
-        <b-row>
-            <p class="label">Civilité : </p> <p>{{this.civility}}</p>
-        </b-row>
-        <b-row>
-            <p class="label">Nom : </p> <p>{{this.last_name}}</p>
-        </b-row>
-        <b-row>
-            <p class="label">Prenom : </p> <p>{{this.first_name}} </p>
-        </b-row>
-        <b-row>
-            <p class="label">Date de naissance : </p> <p>{{this.birthday}}</p>
-        </b-row>
-        <b-row>
-            <p class="label">Téléphone : </p> <p>{{this.phone_number}} </p>
-        </b-row>
-        <b-row>
-            <p class="label">Photo d'identité : </p>
-        </b-row>
+        <b-col>
+          <b-row>
+            <b-col class="col-lg-2">
+              <p class="label">Civilité : </p>
+            </b-col>
+            <b-col>
+              <p>{{this.civility}}</p>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-lg-2">
+              <p class="label">Nom : </p>
+            </b-col>
+            <b-col>
+              <p>{{this.last_name}}</p>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-lg-2">
+              <p class="label">Prenom : </p>
+            </b-col>
+            <b-col>
+              <p>{{this.first_name}} </p>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-lg-2">
+              <p class="label">Date de naissance : </p>
+            </b-col>
+            <b-col>
+              <p>{{this.birthday}}</p>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-lg-2">
+              <p class="label">Téléphone : </p>
+            </b-col>
+            <b-col>
+              <p>{{this.phone_number}} </p>
+            </b-col>
+          </b-row>
+          <b-row>
+              <p class="label">Photo d'identité : </p>
+          </b-row>
+        </b-col>
       </b-container>
 
 
       <h2>Adresse</h2>
       <b-container>
         <b-row>
-            <p class="label">Numéro : </p>
-            <p>{{this.adress_number}}</p>
-        </b-row>
-
-        <b-row>
-          <p class="label">Nom de voie : </p>
-          <p>{{this.adress_street}}</p>
-        </b-row>
-
-        <b-row>
-          <b-col class="col-lg-4">
-            <p class="label">Complément d'adresse </p>
+          <b-col class="col-lg-6">
+            <b-row>
+              <b-col class="col-lg-4">
+                <p class="label">Numéro : </p>
+              </b-col>
+              <b-col>
+                <p>{{this.adress_number}}</p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p class="label">Nom de voie : </p>
+              </b-col>
+              <b-col>
+                <p>{{this.adress_street}}</p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p class="label">Complément d'adresse : </p>
+              </b-col>
+              <b-col>
+                <p>{{this.adress_complement}}</p>
+              </b-col>
+            </b-row>
           </b-col>
-          <b-col class="col-lg-1">
-            <p>{{this.adress_complement}}</p>
-          </b-col>
-        </b-row>
-
-        <b-row>
-        <b-col class="col-lg-4">
-          <p class="label">Ville : </p>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.adress_city}}</p>
-        </b-col>
-      </b-row>
-
-        <b-row>
-          <b-col class="col-lg-4">
-            <p>Etat/Province : </p>
-          </b-col>
-          <b-col class="col-lg-1">
-            <p>{{this.adress_state}}</p>
-          </b-col>
-        </b-row>
-
-
-        <b-row>
-          <b-col>
-            <p>Code Postal :</p>
-            <p>{{this.adress_postal_code}}</p>
-          </b-col>
-
-          <b-col class="col-lg-4">
-            <p>Pays : </p>
-          </b-col>
-          <b-col class="col-lg-1">
-            <p>{{this.adress_country}}</p>
+          <b-col class="col-lg-6">
+            <b-row>
+              <b-col class="col-lg-4">
+                <p class="label">Ville : </p>
+              </b-col>
+              <b-col>
+                <p>{{this.adress_city}}</p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p class="label">Etat : </p>
+              </b-col>
+              <b-col>
+                <p>{{this.adress_state}}</p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p class="label">Code Postal :</p>
+              </b-col>
+              <b-col>
+                <p>{{this.adress_postal_code}}</p>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p class="label">Pays : </p>
+              </b-col>
+              <b-col>
+                <p>{{this.adress_country}}</p>
+              </b-col>
+            </b-row>
           </b-col>
         </b-row>
       </b-container>
+
       <h2>Informations vitales : MHTA</h2>
 
       <b-row>
@@ -185,79 +224,82 @@
 
 
       <h2>Autres informations</h2>
-
-      <b-row>
-        <b-col class="col-lg-4">
-          <h5>Numéro de sécurité sociale</h5>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.social_security_number}}</p>
-        </b-col>
-      </b-row>
-
-      <b-row>
-        <b-col class="col-lg-4">
-          <h5>Permis de conduire</h5>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.license_number}}</p>
-        </b-col>
-      </b-row>
-
+      <b-container>
+        <b-row>
+          <b-col class="col-lg-3">
+            <p class="label">Numéro de sécurité sociale :</p>
+          </b-col>
+          <b-col>
+            <p>{{this.social_security_number}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="col-lg-3">
+            <p class="label">Permis de conduire :</p>
+          </b-col>
+          <b-col>
+            <p>{{this.license_number}}</p>
+          </b-col>
+        </b-row>
+      </b-container>
       <h2>Contacts</h2>
       <h3>Personne à contacter en cas d'urgence</h3>
-
-      <b-row>
-        <b-col class="col-lg-2">
-          <h5>Prénom : </h5>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.contact_first_name}}</p>
-        </b-col>
-        <b-col class="col-lg-2">
-          <h5>Nom : </h5>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.contact_last_name}}</p>
-        </b-col>
-        <b-col class="col-lg-2">
-          <h5>Téléphone : </h5>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.contact_phone_number}}</p>
-        </b-col>
-      </b-row>
+      <b-container>
+        <b-row>
+          <b-col>
+            <p class="label">Prénom : </p>
+          </b-col>
+          <b-col>
+            <p>{{this.contact_first_name}}</p>
+          </b-col>
+          <b-col>
+            <p class="label">Nom : </p>
+          </b-col>
+          <b-col>
+            <p>{{this.contact_last_name}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <p class="label">Téléphone : </p>
+          </b-col>
+          <b-col>
+            <p>{{this.contact_phone_number}}</p>
+          </b-col>
+        </b-row>
+      </b-container>
 
       <h3>Coordonnées de votre médecin traitant</h3>
-      <b-row>
-        <b-col>
-          <h5>Prenom : </h5>
-        </b-col>
-        <b-col>
-          <h5>{{this.doctor_first_name}}</h5>
-        </b-col>
-        <b-col>
-          <h5>Nom : </h5>
-        </b-col>
-        <b-col>
-          <h5>{{this.doctor_last_name}}</h5>
-        </b-col>
-      </b-row>
-
-      <b-row>
-        <b-col>
-          <h5>Telephone : </h5>
-        </b-col>
-        <b-col>
-          <h5>{{this.doctor_phone_number}}</h5>
-        </b-col>
-        <b-col>
-          <h5>Ville : </h5>
-        </b-col>
-        <b-col>
-          <h5>{{this.doctor_city}}</h5>
-        </b-col>
-      </b-row>
+      <b-container>
+        <b-row>
+          <b-col>
+            <p class="label">Prenom : </p>
+          </b-col>
+          <b-col>
+            <p>{{this.doctor_first_name}}</p>
+          </b-col>
+          <b-col>
+            <p class="label">Nom : </p>
+          </b-col>
+          <b-col>
+            <p>{{this.doctor_last_name}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <p class="label">Telephone : </p>
+          </b-col>
+          <b-col>
+            <p>{{this.doctor_phone_number}}</p>
+          </b-col>
+          <b-col>
+            <p class="label">Ville : </p>
+          </b-col>
+          <b-col>
+            <p>{{this.doctor_city}}</p>
+          </b-col>
+        </b-row>
+      </b-container>
   </div>
 </template>
 
@@ -311,6 +353,7 @@
       methods: {},
       created() {
         const db = firebase.firestore();
+        const userId="cRZV9g91mEUjvbC35Qn2";
         db.collection('users').get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             console.log(doc.id, ' => ', doc.data())
