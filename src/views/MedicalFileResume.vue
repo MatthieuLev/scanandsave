@@ -120,109 +120,111 @@
       </b-container>
 
       <h2>Informations vitales : MHTA</h2>
-
-      <b-row>
-        <b-col class="col-lg-2">
-          <h5>M : Maladie(s)</h5>
-        </b-col>
-        <b-col class="col-lg-4">
-          <p>Mot clé :</p>
-        </b-col>
-        <b-col>
-          <p>{{this.diseases_keyword}}</p>
-        </b-col>
-      </b-row>
-
+      <b-container>
         <b-row>
-          <b-col class="col-lg-12">
-            <p>Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) </p>
+          <b-col class="col-lg-4">
+            <h5>M : Maladie(s)</h5>
           </b-col>
         </b-row>
-       <b-row>
+        <b-row>
+          <b-col class="col-lg-2">
+            <p class="label">Mot clé :</p>
+          </b-col>
           <b-col>
-          <p>{{this.diseases_explanation}}</p>
-        </b-col>
+            <p>{{this.diseases_keyword}}</p>
+          </b-col>
         </b-row>
-
+        <b-row>
+          <b-col>
+            <p class="label">Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) </p>
+          </b-col>
+          <b-col>
+            <p>{{this.diseases_explanation}}</p>
+          </b-col>
+        </b-row>
         <b-row>
           <b-col class="col-lg-4">
             <h5>H : Hospitalisation(s)</h5>
           </b-col>
-          <b-col class="col-lg-4">
-            <p>Mot clé: </p>
+        </b-row>
+        <b-row>
+          <b-col class="col-lg-2">
+            <p class="label">Mot clé: </p>
           </b-col>
           <b-col>
             <p>{{this.hospitalization_keyword}}</p>
           </b-col>
         </b-row>
-
         <b-row>
-          <b-col class="col-lg-12">
-            <p>Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi? </p>
+          <b-col>
+            <p class="label">Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi? </p>
           </b-col>
           <b-col>
             <p>{{this.hospitalization_explanation}}</p>
           </b-col>
         </b-row>
 
-      <b-row>
-        <b-col class="col-lg-4">
-          <h5>T : Traitement(s)</h5>
+        <b-row>
+          <b-col class="col-lg-4">
+            <h5>T : Traitement(s)</h5>
+          </b-col>
+        </b-row>
+        <b-row>
+        <b-col class="col-lg-2">
+          <p class="label">Mot clé: </p>
         </b-col>
-        <b-col class="col-lg-4">
-          <p>Mot clé: </p>
-        </b-col>
-        <b-col class="col-lg-4">
-          <p>{{this.treatment_keyword}}</p>
+        <b-col>
+          <p class="label">{{this.treatment_keyword}}</p>
         </b-col>
       </b-row>
       <b-row>
-        <b-col class="col-lg-12">
-          <p>Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
+        <b-col>
+          <p class="label">Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
         </b-col>
-        <b-col class="col-lg-12">
+        <b-col>
           <p>{{this.treatment_explanation}}</p>
         </b-col>
       </b-row>
-
         <b-row>
           <b-col class="col-lg-4">
             <h5>A : Allergie(s)</h5>
           </b-col>
-          <b-col class="col-lg-4">
-            <p>Mot clé:</p>
+        </b-row>
+        <b-row>
+          <b-col class="col-lg-2">
+            <p class="label">Mot clé:</p>
           </b-col>
-          <b-col class="col-lg-4">
+          <b-col>
             <p>{{this.allergy_keyword}}</p>
           </b-col>
         </b-row>
-
         <b-row>
-          <b-col class="col-lg-12">
-            <p>Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité</p>
+          <b-col>
+            <p class="label">Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité</p>
           </b-col>
-          <b-col class="col-lg-12">
+          <b-col>
             <p>{{this.allergy_explanation}}</p>
           </b-col>
         </b-row>
-
-      <b-row>
-        <b-col class="col-lg-4">
-          <h5>Donneur d'organes ? : </h5>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.organ_donor}}</p>
-        </b-col>
-      </b-row>
-    <b-row>
-        <b-col class="col-lg-4">
-          <h5>Groupe sanguin: </h5>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.blood_type}}</p>
-        </b-col>
-      </b-row>
-
+      </b-container>
+      <b-container>
+        <b-row>
+          <b-col class="col-lg-4">
+            <p class="label">Donneur d'organes : </p>
+          </b-col>
+          <b-col class="col-lg-1">
+            <p>{{this.organ_donor}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="col-lg-4">
+            <p class="label">Groupe sanguin: </p>
+          </b-col>
+          <b-col class="col-lg-1">
+            <p>{{this.blood_type}}</p>
+          </b-col>
+        </b-row>
+      </b-container>
 
       <h2>Autres informations</h2>
       <b-container>
@@ -243,6 +245,7 @@
           </b-col>
         </b-row>
       </b-container>
+
       <h2>Contacts</h2>
       <h3>Personne à contacter en cas d'urgence</h3>
       <b-container>
@@ -363,7 +366,7 @@
       created() {
         const db = firebase.firestore();
         const userId = 'cRZV9g91mEUjvbC35Qn2'; // Remplacer par l'id de l'utilisateur actuellement connecté
-        
+
         db.collection('users').get().then((querySnapshot) => {
           querySnapshot.forEach((doc)=>{
             //console.log(doc.data())
