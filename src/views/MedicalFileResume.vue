@@ -2,14 +2,12 @@
   <div>
     <Navbar></Navbar>
       <h1>Mon dossier médical</h1>
-
       <h2>Informations générales</h2>
-
 
       <b-row>
         <b-col>
           <p>Civilité: </p>
-          <p>Mademoiselle</p>
+          <p></p>
         </b-col>
       </b-row>
 
@@ -18,7 +16,7 @@
           <p>Nom: </p>
         </b-col>
         <b-col class="col-lg-1">
-          <p>Le Marquand</p>
+          <p></p>
         </b-col>
       </b-row>
 
@@ -27,17 +25,16 @@
           <p>Prenom: </p>
         </b-col>
         <b-col class="col-lg-1">
-          <p>Sarah</p>
+          <p></p>
         </b-col>
       </b-row>
-
 
     <b-row>
       <b-col class="col-lg-4">
         <p>Date de naissance : </p>
       </b-col>
       <b-col class="col-lg-1">
-        <p>21/12/1994</p>
+        <p></p>
       </b-col>
       </b-row>
 
@@ -304,10 +301,10 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
-  import {DocumentReference as db} from "firebase";
+  import firebase from 'firebase';
 
     export default {
-        name: "MedicalFileResume",
+      name: "MedicalFileResume",
       components: {
         Navbar,
       },
@@ -316,18 +313,20 @@
           image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
         }
       },
-          methods: {
-        readMedicalFile() {
-          db.collection('users').get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              console.log(doc.id, ' => ', doc.data())
-              this.first_name = doc.data().first_name
-              this.last_name = doc.data().last_name
-              })
+      methods: {},
+      created() {
+        const db = firebase.firestore();
+        db.collection('users').get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            console.log(doc.id, ' => ', doc.data())
+            this.first_name = doc.data().first_name
+            this.last_name = doc.data().last_name
+            this.last_name = doc.data().last_name
           })
-        }
+        })
       }
-  }
+    }
+          //})
 </script>
 
 <style scoped>
