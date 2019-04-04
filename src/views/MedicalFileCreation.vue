@@ -141,22 +141,22 @@
 
         <b-form-group>
           <b-row>
-            <b-col class="col-lg-4">
-              <p>T : Traitement(s)</p>
-            </b-col>
-            <b-col class="col-lg-4">
-              <p>Choisir un mot clé.</p>
-            </b-col>
-            <b-col class="col-lg-4">
-              <b-form-input v-model="form.treatment.keyword" required></b-form-input>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col class="col-lg-12">
-              <p>Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
-              <b-form-input v-model="form.treatment.explanation" required></b-form-input>
-            </b-col>
-          </b-row>
+        <b-col class="col-lg-4">
+          <p>T : Traitement(s)</p>
+        </b-col>
+        <b-col class="col-lg-4">
+          <p>Choisir un mot clé.</p>
+        </b-col>
+        <b-col class="col-lg-4">
+          <b-form-input v-model="form.treatment.keyword" required></b-form-input>
+        </b-col>
+      </b-row>
+        <b-row>
+          <b-col class="col-lg-12">
+            <p>Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
+            <b-form-input v-model="form.treatment.explanation" required></b-form-input>
+          </b-col>
+        </b-row>
         </b-form-group>
 
         <b-form-group>
