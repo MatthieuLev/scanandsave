@@ -77,6 +77,7 @@
           </b-col>
         <b-col class="col-lg-1">
           <p>Rue du Hâ</p>
+            <h5>Lemarquand</h5>
         </b-col>
       </b-row>
 
@@ -303,6 +304,7 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
+<<<<<<< HEAD
 
   export default {
     name: "MedicalFileResume",
@@ -312,6 +314,24 @@
     data(){
       return {
         image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
+=======
+  import {DocumentReference as db} from "firebase";
+    export default {
+        name: "MedicalFileResume",
+      components: {
+        Navbar,
+      },
+      methods: {
+        readMedicalFile() {
+          db.collection('users').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              console.log(doc.id, ' => ', doc.data())
+              this.first_name = doc.data().first_name
+              this.last_name = doc.data().last_name
+              })
+          })
+        }
+>>>>>>> 24d251a726c538e8015b33d526f79b50c65a3e64
       }
     }
 
