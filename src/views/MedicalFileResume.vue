@@ -304,24 +304,19 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
-<<<<<<< HEAD
-
-  export default {
-    name: "MedicalFileResume",
-    components: {
-      Navbar,
-    },
-    data(){
-      return {
-        image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
-=======
   import {DocumentReference as db} from "firebase";
+
     export default {
         name: "MedicalFileResume",
       components: {
         Navbar,
       },
-      methods: {
+      data() {
+        return {
+          image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
+        }
+      },
+          methods: {
         readMedicalFile() {
           db.collection('users').get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
@@ -331,10 +326,7 @@
               })
           })
         }
->>>>>>> 24d251a726c538e8015b33d526f79b50c65a3e64
       }
-    }
-
   }
 </script>
 
