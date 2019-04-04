@@ -48,3 +48,23 @@ database.signOut = async (email, password) => {
     return error
   }
 };
+
+database.forgotPassword = async (email) => {
+  try {
+    await firebase.auth().sendPasswordResetEmail(email);
+    return true
+  } catch (error) {
+    return error
+  }
+};
+
+database.sendEmailVerification = async () => {
+  try {
+    const user = firebase.auth().currentUser;
+    user.sendEmailVerification();
+    return true
+  } catch (error) {
+    return error
+  }
+
+};

@@ -16,7 +16,7 @@
       <a class="redirection" v-on:click="$emit('hide')">en cliquant ici</a>
     </p>
 
-    <p class="message">Déjà enregistré ? <a v-on:click="$emit('hide')">Se connecter</a></p>
+    <p class="message">Déjà enregistré ? <a v-on:click="$emit('changeCurrentPage','login')">Se connecter</a></p>
 
   </b-form>
 </template>

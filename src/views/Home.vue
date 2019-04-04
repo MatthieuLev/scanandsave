@@ -2,11 +2,14 @@
   <b-container>
     <div class="home-page">
       <div class="form">
-        <div v-if="isLoginDisplay">
-          <Login @hide="isLoginDisplay = !isLoginDisplay"></Login>
+        <div v-if="currentPage === 'login'">
+          <Login @changeCurrentPage="currentPage=$event"></Login>
         </div>
+        <div v-else-if="currentPage === 'registration'">
+          <Registration @changeCurrentPage="currentPage=$event"></Registration>
+          </div>
         <div v-else>
-          <Registration @hide="isLoginDisplay = !isLoginDisplay"></Registration>
+          <ForgotPassword @changeCurrentPage="currentPage=$event"></ForgotPassword>
         </div>
       </div>
     </div>
@@ -16,17 +19,25 @@
 <script>
 import Registration from './Registration.vue';
 import Login from './Login.vue';
+import ForgotPassword from "./ForgotPassword";
 
 export default {
   name: 'Home',
   data() {
     return {
-      isLoginDisplay: true,
+      currentPage: 'login',
     };
   },
   components: {
+    ForgotPassword,
     Registration,
     Login,
+  },
+  methods: {
+    changeCurrentPage: function(currentPage){
+      alert(currentPage)
+      this.currentPage = currentPage;
+    },
   },
 };
 </script>
