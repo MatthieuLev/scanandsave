@@ -3,123 +3,82 @@
     <Navbar></Navbar>
       <h1>Mon dossier médical</h1>
       <h2>Informations générales</h2>
-
-      <b-row>
-        <b-col>
-          <p>Civilité: </p>
-          <p></p>
-        </b-col>
-      </b-row>
-
-      <b-row>
-        <b-col class="col-lg-4">
-          <p>Nom: </p>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.last_name}}</p>
-        </b-col>
-      </b-row>
-
-      <b-row>
-        <b-col class="col-lg-4">
-          <p>Prenom: </p>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>{{this.first_name}}</p>
-        </b-col>
-      </b-row>
-
-    <b-row>
-      <b-col class="col-lg-4">
-        <p>Date de naissance : </p>
-      </b-col>
-      <b-col class="col-lg-1">
-        <p>{{this.birthday}}</p>
-      </b-col>
-      </b-row>
-
-    <b-row>
-      <b-col class="col-lg-4">
-        <p>Téléphone : </p>
-      </b-col>
-      <b-col class="col-lg-1">
-        <p>{{this.phone_number}} </p>
-      </b-col>
-    </b-row>
-
-    <b-row>
-      <b-col class="col-lg-4">
-        <p>Photo d'identité : </p>
-      </b-col>
-      <b-col class="col-lg-1">
-        <div class = "text-center">
-          <b-img v-for = "img in image" v-bind:src="img" fluid alt="Right-rounded image"/>
-        </div>
-      </b-col>
-    </b-row>
+      <b-container>
+        <b-row>
+            <p class="label">Civilité : </p> <p>{{this.civility}}</p>
+        </b-row>
+        <b-row>
+            <p class="label">Nom : </p> <p>{{this.last_name}}</p>
+        </b-row>
+        <b-row>
+            <p class="label">Prenom : </p> <p>{{this.first_name}} </p>
+        </b-row>
+        <b-row>
+            <p class="label">Date de naissance : </p> <p>{{this.birthday}}</p>
+        </b-row>
+        <b-row>
+            <p class="label">Téléphone : </p> <p>{{this.phone_number}} </p>
+        </b-row>
+        <b-row>
+            <p class="label">Photo d'identité : </p>
+        </b-row>
+      </b-container>
 
 
       <h2>Adresse</h2>
+      <b-container>
+        <b-row>
+            <p class="label">Numéro : </p>
+            <p>{{this.adress_number}}</p>
+        </b-row>
 
-      <b-row>
-        <b-col class="col-lg-4">
-          <p>Numéro : </p>
+        <b-row>
+          <p class="label">Nom de voie : </p>
+          <p>{{this.adress_street}}</p>
+        </b-row>
+
+        <b-row>
+          <b-col class="col-lg-4">
+            <p class="label">Complément d'adresse </p>
           </b-col>
-        <b-col class="col-lg-1">
-          <p>48</p>
-        </b-col>
-
-        <b-col class="col-lg-4">
-          <p>Nom de voie : </p>
+          <b-col class="col-lg-1">
+            <p>{{this.adress_complement}}</p>
           </b-col>
-        <b-col class="col-lg-1">
-          <p>Rue du Hâ</p>
-            <h5>Lemarquand</h5>
-        </b-col>
-      </b-row>
+        </b-row>
 
-      <b-row>
+        <b-row>
         <b-col class="col-lg-4">
-          <p>Complément d'adresse </p>
+          <p class="label">Ville : </p>
         </b-col>
         <b-col class="col-lg-1">
-          <p>App. 2ème étage</p>
+          <p>{{this.adress_city}}</p>
         </b-col>
       </b-row>
 
-      <b-row>
-      <b-col class="col-lg-4">
-        <p>Ville : </p>
-      </b-col>
-      <b-col class="col-lg-1">
-        <p>Bordeaux </p>
-      </b-col>
-    </b-row>
-
-      <b-row>
-        <b-col class="col-lg-4">
-          <p>Etat/Province : </p>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>GIRONDE</p>
-        </b-col>
-      </b-row>
+        <b-row>
+          <b-col class="col-lg-4">
+            <p>Etat/Province : </p>
+          </b-col>
+          <b-col class="col-lg-1">
+            <p>{{this.adress_state}}</p>
+          </b-col>
+        </b-row>
 
 
-      <b-row>
-        <b-col>
-          <p>Code Postal :</p>
-          <p>33000</p>
-        </b-col>
+        <b-row>
+          <b-col>
+            <p>Code Postal :</p>
+            <p>{{this.adress_postal_code}}</p>
+          </b-col>
 
-        <b-col class="col-lg-4">
-          <p>Pays : </p>
-        </b-col>
-        <b-col class="col-lg-1">
-          <p>FRANCE</p>
-        </b-col>
-      </b-row>
-
+          <b-col class="col-lg-4">
+            <p>Pays : </p>
+          </b-col>
+          <b-col class="col-lg-1">
+            <p>{{this.adress_country}}</p>
+          </b-col>
+        </b-row>
+      </b-container>
       <h2>Informations vitales : MHTA</h2>
 
       <b-row>
@@ -130,7 +89,7 @@
           <p>Mot clé :</p>
         </b-col>
         <b-col>
-          <p>Asthmatique</p>
+          <p>{{this.diseases_keyword}}</p>
         </b-col>
       </b-row>
 
@@ -141,7 +100,7 @@
         </b-row>
        <b-row>
           <b-col>
-          <p>Détail de ma maladie</p>
+          <p>{{this.diseases_explanation}}</p>
         </b-col>
         </b-row>
 
@@ -152,11 +111,17 @@
           <b-col class="col-lg-4">
             <p>Mot clé: </p>
           </b-col>
+          <b-col>
+            <p>{{this.hospitalization_keyword}}</p>
+          </b-col>
         </b-row>
 
         <b-row>
           <b-col class="col-lg-12">
             <p>Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi? </p>
+          </b-col>
+          <b-col>
+            <p>{{this.hospitalization_explanation}}</p>
           </b-col>
         </b-row>
 
@@ -168,7 +133,7 @@
           <p>Mot clé: </p>
         </b-col>
         <b-col class="col-lg-4">
-          <p>Ventoline</p>
+          <p>{{this.treatment_keyword}}</p>
         </b-col>
       </b-row>
       <b-row>
@@ -176,7 +141,7 @@
           <p>Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
         </b-col>
         <b-col class="col-lg-12">
-          <p>Deux pulvérisations en cas de crise </p>
+          <p>{{this.treatment_explanation}}</p>
         </b-col>
       </b-row>
 
@@ -188,7 +153,7 @@
             <p>Mot clé:</p>
           </b-col>
           <b-col class="col-lg-4">
-          <p>Oeuf</p>
+            <p>{{this.allergy_keyword}}</p>
           </b-col>
         </b-row>
 
@@ -197,7 +162,7 @@
             <p>Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité</p>
           </b-col>
           <b-col class="col-lg-12">
-            <p>Si je mange des oeufs, je meurs</p>
+            <p>{{this.allergy_explanation}}</p>
           </b-col>
         </b-row>
 
@@ -240,7 +205,6 @@
       </b-row>
 
       <h2>Contacts</h2>
-    <b-container>
       <h3>Personne à contacter en cas d'urgence</h3>
 
       <b-row>
@@ -248,19 +212,19 @@
           <h5>Prénom : </h5>
         </b-col>
         <b-col class="col-lg-1">
-          <p>Valérie </p>
+          <p>{{this.contact_first_name}}</p>
         </b-col>
         <b-col class="col-lg-2">
           <h5>Nom : </h5>
         </b-col>
         <b-col class="col-lg-1">
-          <p>Le Marquand</p>
+          <p>{{this.contact_last_name}}</p>
         </b-col>
         <b-col class="col-lg-2">
           <h5>Téléphone : </h5>
         </b-col>
         <b-col class="col-lg-1">
-          <p>06 12 18 09 00</p>
+          <p>{{this.contact_phone_number}}</p>
         </b-col>
       </b-row>
 
@@ -270,13 +234,13 @@
           <h5>Prenom : </h5>
         </b-col>
         <b-col>
-          <h5>Gilles</h5>
+          <h5>{{this.doctor_first_name}}</h5>
         </b-col>
         <b-col>
           <h5>Nom : </h5>
         </b-col>
         <b-col>
-          <h5>Barrère</h5>
+          <h5>{{this.doctor_last_name}}</h5>
         </b-col>
       </b-row>
 
@@ -285,17 +249,15 @@
           <h5>Telephone : </h5>
         </b-col>
         <b-col>
-          <h5>05 57 12 01 31</h5>
+          <h5>{{this.doctor_phone_number}}</h5>
         </b-col>
         <b-col>
           <h5>Ville : </h5>
         </b-col>
         <b-col>
-          <h5>Gradignan</h5>
+          <h5>{{this.doctor_city}}</h5>
         </b-col>
       </b-row>
-
-    </b-container>
   </div>
 </template>
 
@@ -319,6 +281,30 @@
           blood_type: "Inconnu",
           social_security_number: null,
           license_number: null,
+          adress_number : null,
+          adress_street : null,
+          adress_complement : null,
+          adress_city : null,
+          adress_postal_code : null,
+          adress_state : null,
+          adress_country : null,
+          diseases_keyword : null,
+          diseases_explanation : null,
+          hospitalization_keyword : null,
+          hospitalization_explanation : null,
+          allergy_keyword : null,
+          allergy_explanation : null,
+          treatment_keyword : null,
+          treatment_explanation : null,
+
+          contact_first_name : null,
+          contact_last_name : null,
+          contact_phone_number : null,
+
+          doctor_first_name : null,
+          doctor_last_name : null,
+          doctor_phone_number : null,
+          doctor_city : null,
           image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
         }
       },
@@ -337,6 +323,32 @@
             this.blood_type = doc.data().blood_type
             this.social_security_number = doc.data().social_security_number
             this.license_number = doc.data().license_number
+
+            this.adress_number = doc.data().adress.number
+            this.adress_street = doc.data().adress.street
+            this.adress_complement = doc.data().adress.complement
+            this.adress_city = doc.data().adress.city
+            this.adress_postal_code = doc.data().adress.postal_code
+            this.adress_state = doc.data().adress.state
+            this.adress_country = doc.data().adress.country
+
+            this.diseases_keyword = doc.data().diseases.keyword
+            this.diseases_explanation = doc.data().diseases.explanation
+            this.hospitalization_keyword = doc.data().hospitalization.keyword
+            this.hospitalization_explanation = doc.data().hospitalization.explanation
+            this.allergy_keyword = doc.data().allergy.keyword
+            this.allergy_explanation = doc.data().allergy.explanation
+            this.treatment_keyword = doc.data().treatment.keyword
+            this.treatment_explanation = doc.data().treatment.explanation
+
+            this.contact_first_name = doc.data().contact.first_name
+            this.contact_last_name = doc.data().contact.last_name
+            this.contact_phone_number = doc.data().contact.phone_number
+
+            this.doctor_first_name = doc.data().doctor.first_name
+            this.doctor_last_name = doc.data().doctor.last_name
+            this.doctor_phone_number = doc.data().doctor.phone_number
+            this.doctor_city = doc.data().doctor.city
           })
         })
       }
@@ -345,5 +357,11 @@
 </script>
 
 <style scoped>
-
+  p{
+    text-align: left;
+    margin-left : 50px;
+  }
+  .label{
+    font-weight: bold;
+  }
 </style>
