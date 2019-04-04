@@ -4,6 +4,7 @@
     <b-container>
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
         <h1>Mon dossier médical</h1>
+        <hr>
         <h2>Informations générales</h2>
         <b-row>
           <b-col>
@@ -14,22 +15,44 @@
             </select>
           </b-col>
           <b-col>
-            <b-form-input v-model="form.last_name" required placeholder="Nom"></b-form-input>
+            <b-form-input
+              v-model.trim="$v.form.last_name.$model"
+              :state="!$v.form.last_name.$invalid"
+              required
+              name="last_name"
+              placeholder="Nom"></b-form-input>
           </b-col>
           <b-col>
-            <b-form-input v-model="form.first_name" required placeholder="Prenom"></b-form-input>
+            <b-form-input
+              v-model.trim="$v.form.first_name.$model"
+              :state="!$v.form.first_name.$invalid"
+              required
+              name="first_name"
+              placeholder="Prenom"></b-form-input>
           </b-col>
         </b-row>
 
         <b-row>
           <b-col class="col-lg-4">
             <b-form-group label="Date de naissance : ">
-              <b-form-input v-model="form.birthday" type="date" required placeholder="Date de naissance"></b-form-input>
+              <b-form-input
+                type="date"
+                v-model.trim="$v.form.birthday.$model"
+                :state="!$v.form.birthday.$invalid"
+                required
+                name="birthday"
+                placeholder="Date de naissance"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col class="col-lg-4">
-            <b-form-group label="Photo d'identité : ">
-              <b-form-file>
+            <b-form-group
+              label="Photo d'identité : ">
+              <b-form-file
+                v-model.trim="$v.form.photo.$model"
+                :state="!$v.form.photo.$invalid"
+                required
+                name="photo"
+                placeholder="Photo d'identité">
               </b-form-file>
             </b-form-group>
           </b-col>
@@ -38,24 +61,38 @@
         <b-row>
           <b-col class="col-lg-4">
             <b-form-group label="Téléphone : ">
-              <b-form-input v-model="form.phone_number" type="tel" label="Téléphone" required
-                            placeholder="Téléphone"></b-form-input>
+              <b-form-input
+                type="number"
+                v-model.trim="$v.form.phone_number.$model"
+                :state="!$v.form.phone_number.$invalid"
+                required
+                name="phone_number"
+                placeholder="Téléphone"></b-form-input>
             </b-form-group>
           </b-col>
         </b-row>
-
-
+        <hr>
         <h2>Adresse</h2>
-
         <b-row>
           <b-col>
-            <b-form-group label="Numéro : ">
-              <b-form-input v-model="form.adress.number" type="number" required placeholder="Numéro"></b-form-input>
+            <b-form-group label="Nom de voie : ">
+              <b-form-input
+                v-model.trim="$v.form.adress.street.$model"
+                :state="!$v.form.adress.street.$invalid"
+                required
+                name="adress.street"
+                placeholder="Nom de voie"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col>
-            <b-form-group label="Nom de voie : ">
-              <b-form-input v-model="form.adress.street" required placeholder="Nom de voie"></b-form-input>
+            <b-form-group label="Numéro : ">
+              <b-form-input
+                type="number"
+                v-model.trim="$v.form.adress.number.$model"
+                :state="!$v.form.adress.number.$invalid"
+                required
+                name="adress.number"
+                placeholder="Numéro"></b-form-input>
             </b-form-group>
           </b-col>
         </b-row>
@@ -63,7 +100,12 @@
         <b-row>
           <b-col>
             <b-form-group label="Complément d'adresse : ">
-              <b-form-input v-model="form.adress.complement" required placeholder="Complément d'adresse"></b-form-input>
+              <b-form-input
+                v-model.trim="$v.form.adress.complement.$model"
+                :state="!$v.form.adress.complement.$invalid"
+                required
+                name="adress.complement"
+                placeholder="Complément d'adresse"></b-form-input>
             </b-form-group>
           </b-col>
         </b-row>
@@ -71,12 +113,22 @@
         <b-row>
           <b-col>
             <b-form-group label="Ville : ">
-              <b-form-input v-model="form.adress.city" required placeholder="Ville"></b-form-input>
+              <b-form-input
+                v-model.trim="$v.form.adress.city.$model"
+                :state="!$v.form.adress.city.$invalid"
+                required
+                name="adress.city"
+                placeholder="Ville"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col>
             <b-form-group label="Etat/Province : ">
-              <b-form-input v-model="form.adress.state" required placeholder="Etat/Province"></b-form-input>
+              <b-form-input
+                v-model.trim="$v.form.adress.state.$model"
+                :state="!$v.form.adress.state.$invalid"
+                required
+                name="adress.state"
+                placeholder="Etat/Province"></b-form-input>
             </b-form-group>
           </b-col>
         </b-row>
@@ -84,18 +136,27 @@
         <b-row>
           <b-col>
             <b-form-group label="Code Postal : ">
-              <b-form-input v-model="form.adress.postal_code" type="number" required
-                            placeholder="Code Postal"></b-form-input>
+              <b-form-input
+                type="number"
+                v-model.trim="$v.form.adress.postal_code.$model"
+                :state="!$v.form.adress.postal_code.$invalid"
+                required
+                name="adress.postal_code"
+                placeholder="Code Postal"></b-form-input>
             </b-form-group>
           </b-col>
           <b-col>
             <b-form-group label="Pays : ">
-              <b-form-input v-model="form.adress.country" required placeholder="Pays"></b-form-input>
+              <b-form-input
+                v-model.trim="$v.form.adress.country.$model"
+                :state="!$v.form.adress.country.$invalid"
+                required
+                name="adress.country"
+                placeholder="Pays"></b-form-input>
             </b-form-group>
           </b-col>
         </b-row>
-
-
+        <hr>
         <h2>Informations vitales : MHTA</h2>
 
         <b-form-group>
@@ -202,7 +263,7 @@
             </select>
           </b-col>
         </b-row>
-
+        <hr>
         <h2>Autres informations</h2>
         <b-row>
           <b-col class="col-lg-4">
@@ -224,7 +285,7 @@
             </b-form-file>
           </b-col>
         </b-row>
-
+        <hr><hr>
         <h2>Contacts</h2>
         <h3>Personne à contacter en cas d'urgence</h3>
         <b-row>
@@ -247,6 +308,7 @@
             </b-form-group>
           </b-col>
         </b-row>
+        <hr>
         <h3>Coordonnées de votre médecin traitant</h3>
         <b-row>
           <b-col>
@@ -283,6 +345,7 @@
 
 <script>
   import firebase from 'firebase';
+  import { required, email, numeric, maxlenght } from "vuelidate/lib/validators";
   import Navbar from '../components/Navbar.vue';
 
   export default {
@@ -298,14 +361,15 @@
     data() {
       return {
         form: {
-          user_id: "0202",
-          civility: "Madame",
+          user_id: '0202',
+          civility: 'Madame',
           first_name: null,
           last_name: null,
+          photo: null,
           birthday: null,
           phone_number: null,
           organ_donor: null,
-          blood_type: "Inconnu",
+          blood_type: 'Inconnu',
           social_security_number: null,
           license_number: null,
           adress: {
@@ -347,57 +411,77 @@
         },
       };
     },
+    validations: {
+      form: {
+        civility: { required },
+        first_name: { required },
+        last_name: { required },
+        birthday: { required },
+        phone_number: { required, numeric },
+        photo: { required },
+        adress: {
+          number: {required, numeric},
+          street: {required},
+          complement: {required},
+          postal_code: {required},
+          city: {required},
+          state: {required},
+          country: {required},
+  },
+      }
+    },
     methods: {
       saveMedicalFile: function () {
         const db = firebase.firestore();
-        db.collection('users').add({
-          user_id: 'toto',
-          civility: this.form.civility,
-          first_name: this.form.first_name,
-          last_name: this.form.last_name,
-          birthday: this.form.birthday,
-          phone_number: this.form.phone_number,
-          blood_type: this.form.blood_type,
-          social_security_number: this.form.social_security_number,
-          license_number: this.form.license_number,
-          adress: {
-            number: this.form.adress.number,
-            street: this.form.adress.street,
-            complement: this.form.adress.complement,
-            postal_code: this.form.adress.postal_code,
-            city: this.form.adress.city,
-            state: this.form.adress.state,
-            country: this.form.adress.country,
-          },
-          diseases: {
-            keyword: this.form.diseases.keyword,
-            explanation: this.form.diseases.explanation,
-          },
-          hospitalization:
-            {
-              keyword: this.form.hospitalization.keyword,
-              explanation: this.form.hospitalization.explanation,
+        db.collection('users')
+          .add({
+            user_id: 'toto',
+            civility: this.form.civility,
+            first_name: this.form.first_name,
+            last_name: this.form.last_name,
+            birthday: this.form.birthday,
+            phone_number: this.form.phone_number,
+            blood_type: this.form.blood_type,
+            social_security_number: this.form.social_security_number,
+            license_number: this.form.license_number,
+            adress: {
+              number: this.form.adress.number,
+              street: this.form.adress.street,
+              complement: this.form.adress.complement,
+              postal_code: this.form.adress.postal_code,
+              city: this.form.adress.city,
+              state: this.form.adress.state,
+              country: this.form.adress.country,
             },
-          allergy: {
-            keyword: this.form.allergy.keyword,
-            explanation: this.form.allergy.explanation,
-          },
-          treatment: {
-            keyword: this.form.treatment.keyword,
-            explanation: this.form.treatment.explanation,
-          },
-          contact: {
-            last_name: this.form.contact.last_name,
-            first_name: this.form.contact.first_name,
-            phone_number: this.form.contact.phone_number,
-          },
-          doctor: {
-            last_name: this.form.doctor.last_name,
-            first_name: this.form.doctor.first_name,
-            phone_number: this.form.doctor.phone_number,
-            city: this.form.doctor.city,
-          },
-        })
+            diseases: {
+              keyword: this.form.diseases.keyword,
+              explanation: this.form.diseases.explanation,
+            },
+            hospitalization:
+              {
+                keyword: this.form.hospitalization.keyword,
+                explanation: this.form.hospitalization.explanation,
+              },
+            allergy: {
+              keyword: this.form.allergy.keyword,
+              explanation: this.form.allergy.explanation,
+            },
+            treatment: {
+              keyword: this.form.treatment.keyword,
+              explanation: this.form.treatment.explanation,
+            },
+            contact: {
+              last_name: this.form.contact.last_name,
+              first_name: this.form.contact.first_name,
+              phone_number: this.form.contact.phone_number,
+            },
+            doctor: {
+              last_name: this.form.doctor.last_name,
+              first_name: this.form.doctor.first_name,
+              phone_number: this.form.doctor.phone_number,
+              city: this.form.doctor.city,
+            },
+          })
           .then(docRef => {
             alert('TOTOO');
           })

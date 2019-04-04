@@ -1,16 +1,22 @@
 import Vue from 'vue';
 import BootstrapVue from 'bootstrap-vue';
-import firebase from 'firebase'
+import firebase from 'firebase';
+import Vuelidate from 'vuelidate';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 
+
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+Vue.use(Vuelidate);
 
 Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
+
+
 
 // create a variable for holding our app
 let app;
