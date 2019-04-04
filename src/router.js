@@ -4,13 +4,14 @@ import store from './store';
 import Home from './views/Home.vue';
 import Login from './views/Login.vue';
 import Registration from './views/Registration.vue';
-import Navbar from './components/Navbar.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
 import ViewMyAccount from './views/ViewMyAccount.vue';
 import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
+import MedicalFileResume from './views/MedicalFileResume.vue';
+import Navbar from './components/Navbar.vue';
 
 Vue.use(Router);
 
@@ -98,6 +99,11 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+    {
+      path: '/MedicalFileResume',
+      name: 'MedicalFileResume',
+      component: MedicalFileResume,
+    }
   ],
 });
 
