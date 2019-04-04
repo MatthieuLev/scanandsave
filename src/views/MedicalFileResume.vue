@@ -16,7 +16,7 @@
           <p>Nom: </p>
         </b-col>
         <b-col class="col-lg-1">
-          <p></p>
+          <p>{{this.last_name}}</p>
         </b-col>
       </b-row>
 
@@ -25,7 +25,7 @@
           <p>Prenom: </p>
         </b-col>
         <b-col class="col-lg-1">
-          <p></p>
+          <p>{{this.first_name}}</p>
         </b-col>
       </b-row>
 
@@ -34,7 +34,7 @@
         <p>Date de naissance : </p>
       </b-col>
       <b-col class="col-lg-1">
-        <p></p>
+        <p>{{this.birthday}}</p>
       </b-col>
       </b-row>
 
@@ -43,7 +43,7 @@
         <p>Téléphone : </p>
       </b-col>
       <b-col class="col-lg-1">
-        <p>06 27 19 06 66 </p>
+        <p>{{this.phone_number}} </p>
       </b-col>
     </b-row>
 
@@ -206,7 +206,7 @@
           <h5>Donneur d'organes ? : </h5>
         </b-col>
         <b-col class="col-lg-1">
-          <p>oui</p>
+          <p>{{this.organ_donor}}</p>
         </b-col>
       </b-row>
     <b-row>
@@ -214,7 +214,7 @@
           <h5>Groupe sanguin: </h5>
         </b-col>
         <b-col class="col-lg-1">
-          <p>A+</p>
+          <p>{{this.blood_type}}</p>
         </b-col>
       </b-row>
 
@@ -226,7 +226,7 @@
           <h5>Numéro de sécurité sociale</h5>
         </b-col>
         <b-col class="col-lg-1">
-          <p>000001883531OO1</p>
+          <p>{{this.social_security_number}}</p>
         </b-col>
       </b-row>
 
@@ -235,7 +235,7 @@
           <h5>Permis de conduire</h5>
         </b-col>
         <b-col class="col-lg-1">
-          <p>Mon numéro de permis</p>
+          <p>{{this.license_number}}</p>
         </b-col>
       </b-row>
 
@@ -310,6 +310,15 @@
       },
       data() {
         return {
+          civility: "Madame",
+          first_name: null,
+          last_name: null,
+          birthday: null,
+          phone_number: null,
+          organ_donor: null,
+          blood_type: "Inconnu",
+          social_security_number: null,
+          license_number: null,
           image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
         }
       },
@@ -319,9 +328,15 @@
         db.collection('users').get().then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
             console.log(doc.id, ' => ', doc.data())
+            this.civility  = doc.data().civility
             this.first_name = doc.data().first_name
             this.last_name = doc.data().last_name
-            this.last_name = doc.data().last_name
+            this.birthday = doc.data().birthday
+            this.phone_number =  doc.data().phone_number
+            this.organ_donor =  doc.data().organ_donor
+            this.blood_type = doc.data().blood_type
+            this.social_security_number = doc.data().social_security_number
+            this.license_number = doc.data().license_number
           })
         })
       }
