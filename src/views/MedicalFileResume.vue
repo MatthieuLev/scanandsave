@@ -1,6 +1,7 @@
 <template>
   <div>
     <Navbar></Navbar>
+    <!-- <button @click="test()">Salut</button> -->
       <h1>Mon dossier médical</h1>
       <h2>Informations générales</h2>
       <b-container>
@@ -308,11 +309,22 @@
           image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
         }
       },
-      methods: {},
+      /*methods: {
+        test() {
+         const userId = 'cRZV9g91mEUjvbC35Qn2';
+          const db = firebase.firestore();
+          db.collection('users').doc(userId).get().then((snapshot) => {
+            console.log(snapshot.data())
+          });
+        }
+      },*/
       created() {
         const db = firebase.firestore();
+        const userId = 'cRZV9g91mEUjvbC35Qn2'; // Remplacer par l'id de l'utilisateur actuellement connecté
+
         db.collection('users').get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
+          querySnapshot.forEach((doc)=>{
+            //console.log(doc.data())
             console.log(doc.id, ' => ', doc.data())
             this.civility  = doc.data().civility
             this.first_name = doc.data().first_name
