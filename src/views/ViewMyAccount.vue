@@ -5,10 +5,7 @@
       <h1>Mon compte</h1>
       <b-button-group vertical size="lg">
         <b-button variant="outline-primary">
-          <router-link to="MedicalFileCreation">Voir mes informations</router-link>
-        </b-button>
-        <b-button variant="outline-primary">
-          <router-link to="MedicalFileCreation">Modifier mes informations</router-link>
+          <router-link to="MedicalFileResume">Voir mes informations</router-link>
         </b-button>
         <b-button variant="outline-primary">
           <router-link to="ViewMyStickers">Commander un autocollant</router-link>
