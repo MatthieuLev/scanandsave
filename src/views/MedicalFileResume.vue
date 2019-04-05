@@ -308,51 +308,51 @@
 </template>
 
 <script>
-  import Navbar from '../components/Navbar.vue';
   import firebase from 'firebase';
+  import Navbar from '../components/Navbar.vue';
 
     export default {
-      name: "MedicalFileResume",
+      name: 'MedicalFileResume',
       components: {
         Navbar,
       },
       data() {
         return {
-          civility: "Madame",
+          civility: 'Madame',
           first_name: null,
           last_name: null,
           birthday: null,
           phone_number: null,
           organ_donor: null,
-          blood_type: "Inconnu",
+          blood_type: 'Inconnu',
           social_security_number: null,
           license_number: null,
-          adress_number : null,
-          adress_street : null,
-          adress_complement : null,
-          adress_city : null,
-          adress_postal_code : null,
-          adress_state : null,
-          adress_country : null,
-          diseases_keyword : null,
-          diseases_explanation : null,
-          hospitalization_keyword : null,
-          hospitalization_explanation : null,
-          allergy_keyword : null,
-          allergy_explanation : null,
-          treatment_keyword : null,
-          treatment_explanation : null,
+          adress_number: null,
+          adress_street: null,
+          adress_complement: null,
+          adress_city: null,
+          adress_postal_code: null,
+          adress_state: null,
+          adress_country: null,
+          diseases_keyword: null,
+          diseases_explanation: null,
+          hospitalization_keyword: null,
+          hospitalization_explanation: null,
+          allergy_keyword: null,
+          allergy_explanation: null,
+          treatment_keyword: null,
+          treatment_explanation: null,
 
-          contact_first_name : null,
-          contact_last_name : null,
-          contact_phone_number : null,
+          contact_first_name: null,
+          contact_last_name: null,
+          contact_phone_number: null,
 
-          doctor_first_name : null,
-          doctor_last_name : null,
-          doctor_phone_number : null,
-          doctor_city : null,
-          image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg']
-        }
+          doctor_first_name: null,
+          doctor_last_name: null,
+          doctor_phone_number: null,
+          doctor_city: null,
+          image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg'],
+        };
       },
       /*methods: {
         test() {
@@ -368,49 +368,48 @@
         const userId = 'cRZV9g91mEUjvbC35Qn2'; // Remplacer par l'id de l'utilisateur actuellement connecté
 
         db.collection('users').get().then((querySnapshot) => {
-          querySnapshot.forEach((doc)=>{
+          querySnapshot.forEach((doc) => {
             //console.log(doc.data())
-            console.log(doc.id, ' => ', doc.data())
-            this.civility  = doc.data().civility
-            this.first_name = doc.data().first_name
-            this.last_name = doc.data().last_name
-            this.birthday = doc.data().birthday
-            this.phone_number =  doc.data().phone_number
-            this.organ_donor =  doc.data().organ_donor
-            this.blood_type = doc.data().blood_type
-            this.social_security_number = doc.data().social_security_number
-            this.license_number = doc.data().license_number
+            console.log(doc.id, ' => ', doc.data());
+            this.civility = doc.data().civility;
+            this.first_name = doc.data().first_name;
+            this.last_name = doc.data().last_name;
+            this.birthday = doc.data().birthday;
+            this.phone_number = doc.data().phone_number;
+            this.organ_donor = doc.data().organ_donor;
+            this.blood_type = doc.data().blood_type;
+            this.social_security_number = doc.data().social_security_number;
+            this.license_number = doc.data().license_number;
 
-            this.adress_number = doc.data().adress.number
-            this.adress_street = doc.data().adress.street
-            this.adress_complement = doc.data().adress.complement
-            this.adress_city = doc.data().adress.city
-            this.adress_postal_code = doc.data().adress.postal_code
-            this.adress_state = doc.data().adress.state
-            this.adress_country = doc.data().adress.country
+            this.adress_number = doc.data().adress.number;
+            this.adress_street = doc.data().adress.street;
+            this.adress_complement = doc.data().adress.complement;
+            this.adress_city = doc.data().adress.city;
+            this.adress_postal_code = doc.data().adress.postal_code;
+            this.adress_state = doc.data().adress.state;
+            this.adress_country = doc.data().adress.country;
 
-            this.diseases_keyword = doc.data().diseases.keyword
-            this.diseases_explanation = doc.data().diseases.explanation
-            this.hospitalization_keyword = doc.data().hospitalization.keyword
-            this.hospitalization_explanation = doc.data().hospitalization.explanation
-            this.allergy_keyword = doc.data().allergy.keyword
-            this.allergy_explanation = doc.data().allergy.explanation
-            this.treatment_keyword = doc.data().treatment.keyword
-            this.treatment_explanation = doc.data().treatment.explanation
+            this.diseases_keyword = doc.data().diseases.keyword;
+            this.diseases_explanation = doc.data().diseases.explanation;
+            this.hospitalization_keyword = doc.data().hospitalization.keyword;
+            this.hospitalization_explanation = doc.data().hospitalization.explanation;
+            this.allergy_keyword = doc.data().allergy.keyword;
+            this.allergy_explanation = doc.data().allergy.explanation;
+            this.treatment_keyword = doc.data().treatment.keyword;
+            this.treatment_explanation = doc.data().treatment.explanation;
 
-            this.contact_first_name = doc.data().contact.first_name
-            this.contact_last_name = doc.data().contact.last_name
-            this.contact_phone_number = doc.data().contact.phone_number
+            this.contact_first_name = doc.data().contact.first_name;
+            this.contact_last_name = doc.data().contact.last_name;
+            this.contact_phone_number = doc.data().contact.phone_number;
 
-            this.doctor_first_name = doc.data().doctor.first_name
-            this.doctor_last_name = doc.data().doctor.last_name
-            this.doctor_phone_number = doc.data().doctor.phone_number
-            this.doctor_city = doc.data().doctor.city
-          })
-        })
-      }
-    }
-          //})
+            this.doctor_first_name = doc.data().doctor.first_name;
+            this.doctor_last_name = doc.data().doctor.last_name;
+            this.doctor_phone_number = doc.data().doctor.phone_number;
+            this.doctor_city = doc.data().doctor.city;
+          });
+        });
+      },
+    };
 </script>
 
 <style scoped>
