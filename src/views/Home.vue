@@ -88,7 +88,9 @@ export default {
   }
 
   .form button:hover, .form button:active, .form button:focus {
-    background: $color-light;
+    color: #fff;
+    background-color: #545b62;
+    border-color: #4e555b;
   }
 
   .form .message {

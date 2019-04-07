@@ -78,12 +78,12 @@
 
 <style scoped>
   .error {
-    color: red;
+    color: #5e0000;
     font-size: 12px;
   }
 
   .success {
-    color: limegreen;
+    color: #32e15a;
     font-size: 12px;
   }
   .redirection {

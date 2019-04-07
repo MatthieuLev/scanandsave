@@ -65,7 +65,7 @@
 
 <style scoped>
   .error {
-    color: red;
+    color: #5e0000;
     font-size: 12px;
   }
   .forgotPassword {

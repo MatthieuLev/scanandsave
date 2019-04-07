@@ -22,11 +22,6 @@
             <router-link to="ViewMyAccount">Mon Compte</router-link>
           </b-nav-item>
 
-          <b-nav-item-dropdown class="lang" text="Langue" right>
-            <b-dropdown-item href="#">FR</b-dropdown-item>
-            <b-dropdown-item href="#">EN</b-dropdown-item>
-          </b-nav-item-dropdown>
-
           <b-nav-item class="signOutButtonContainer">
             <a class="signOutButton"@click="signOut">Déconnexion</a>
           </b-nav-item>
@@ -63,7 +58,7 @@
     font-weight: bold;
   }
 
-  a{
+  a {
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -79,7 +74,7 @@
     color: #dadada;
    }
   .nav-link .signOutButton{
-    cursor: inherit;
+    cursor: pointer;
   }
   .navbar {
     background-color: #dc3545;
@@ -87,10 +82,16 @@
 
   .navbar-light .navbar-nav .nav-link {
     color: white;
+    cursor: initial;
   }
 
-  .signOutButtonContainer>a:hover{
+  .signOutButtonContainer>a>a:hover{
     color: #dadada !important;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .signOutButtonContainer>a:hover{
+    color: white !important;
     text-decoration: none;
     font-weight: bold;
   }

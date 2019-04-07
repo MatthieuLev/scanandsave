@@ -43,7 +43,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .buttonPosition {
     margin-bottom: 8PX;
   }
