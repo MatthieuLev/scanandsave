@@ -3,349 +3,296 @@
     <Navbar></Navbar>
     <b-container>
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
+
         <h1>Mon dossier médical</h1>
-        <hr>
-        <h2>Informations générales</h2>
-        <b-row>
-          <b-col>
-            <select v-model="form.civility" title="Civilité" class="form-control">
-              <option>Madame</option>
-              <option>Monsieur</option>
-              <option>Mademoiselle</option>
-            </select>
-          </b-col>
-          <b-col>
-            <b-form-input
-              v-model.trim="$v.form.last_name.$model"
-              :state="!$v.form.last_name.$invalid"
-              required
-              name="last_name"
-              placeholder="Nom"></b-form-input>
-          </b-col>
-          <b-col>
-            <b-form-input
-              v-model.trim="$v.form.first_name.$model"
-              :state="!$v.form.first_name.$invalid"
-              required
-              name="first_name"
-              placeholder="Prenom"></b-form-input>
-          </b-col>
-        </b-row>
 
-        <b-row>
-          <b-col class="col-lg-4">
-            <b-form-group label="Date de naissance : ">
-              <b-form-input
-                type="date"
-                v-model.trim="$v.form.birthday.$model"
-                :state="!$v.form.birthday.$invalid"
-                required
-                name="birthday"
-                placeholder="Date de naissance"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col class="col-lg-4">
-            <b-form-group
-              label="Photo d'identité : ">
-              <b-form-file
-                v-model.trim="$v.form.photo.$model"
-                :state="!$v.form.photo.$invalid"
-                required
-                name="photo"
-                placeholder="Photo d'identité">
-              </b-form-file>
-            </b-form-group>
-          </b-col>
-        </b-row>
-
-        <b-row>
-          <b-col class="col-lg-4">
-            <b-form-group label="Téléphone : ">
-              <b-form-input
-                type="number"
-                v-model.trim="$v.form.phone_number.$model"
-                :state="!$v.form.phone_number.$invalid"
-                required
-                name="phone_number"
-                placeholder="Téléphone"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-        <hr>
-        <h2>Adresse</h2>
-        <b-row>
-          <b-col>
-            <b-form-group label="Nom de voie : ">
-              <b-form-input
-                v-model.trim="$v.form.adress.street.$model"
-                :state="!$v.form.adress.street.$invalid"
-                required
-                name="adress.street"
-                placeholder="Nom de voie"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Numéro : ">
-              <b-form-input
-                type="number"
-                v-model.trim="$v.form.adress.number.$model"
-                :state="!$v.form.adress.number.$invalid"
-                required
-                name="adress.number"
-                placeholder="Numéro"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-
-        <b-row>
-          <b-col>
-            <b-form-group label="Complément d'adresse : ">
-              <b-form-input
-                v-model.trim="$v.form.adress.complement.$model"
-                :state="!$v.form.adress.complement.$invalid"
-                required
-                name="adress.complement"
-                placeholder="Complément d'adresse"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-
-        <b-row>
-          <b-col>
-            <b-form-group label="Ville : ">
-              <b-form-input
-                v-model.trim="$v.form.adress.city.$model"
-                :state="!$v.form.adress.city.$invalid"
-                required
-                name="adress.city"
-                placeholder="Ville"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Etat/Province : ">
-              <b-form-input
-                v-model.trim="$v.form.adress.state.$model"
-                :state="!$v.form.adress.state.$invalid"
-                required
-                name="adress.state"
-                placeholder="Etat/Province"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-
-        <b-row>
-          <b-col>
-            <b-form-group label="Code Postal : ">
-              <b-form-input
-                type="number"
-                v-model.trim="$v.form.adress.postal_code.$model"
-                :state="!$v.form.adress.postal_code.$invalid"
-                required
-                name="adress.postal_code"
-                placeholder="Code Postal"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Pays : ">
-              <b-form-input
-                v-model.trim="$v.form.adress.country.$model"
-                :state="!$v.form.adress.country.$invalid"
-                required
-                name="adress.country"
-                placeholder="Pays"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-        <hr>
-        <h2>Informations vitales : MHTA</h2>
-
-        <b-form-group>
+        <div class="custom-card">
+          <h2>Informations générales</h2>
           <b-row>
-            <b-col class="col-lg-4">
-              <p>M : Maladie(s)</p>
+            <b-col>
+              <select v-model="form.civility" title="Civilité" class="form-control">
+                <option>Madame</option>
+                <option>Monsieur</option>
+                <option>Mademoiselle</option>
+              </select>
             </b-col>
-            <b-col class="col-lg-4">
-              <p>Choisir un mot clé.</p>
+            <b-col>
+              <b-form-input name="last_name" placeholder="Nom"></b-form-input>
             </b-col>
-            <b-col class="col-lg-4">
-              <b-form-input v-model="form.diseases.keyword" required></b-form-input>
+            <b-col>
+              <b-form-input name="first_name" placeholder="Prenom"></b-form-input>
             </b-col>
           </b-row>
+
           <b-row>
-            <b-col class="col-lg-12">
-              <p>Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) </p>
-              <b-form-input v-model="form.diseases.explanation" required></b-form-input>
+            <b-col>
+              <b-form-group label="Date de naissance : ">
+                <b-form-input type="date" name="birthday" placeholder="Date de naissance"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group
+                label="Photo d'identité : ">
+                <b-form-file name="photo" placeholder="Photo d'identité"></b-form-file>
+              </b-form-group>
             </b-col>
           </b-row>
-        </b-form-group>
 
-        <b-form-group>
           <b-row>
-            <b-col class="col-lg-4">
-              <p>H : Hospitalisation(s)</p>
-            </b-col>
-            <b-col class="col-lg-4">
-              <p>Choisir un mot clé.</p>
-            </b-col>
-            <b-col class="col-lg-4">
-              <b-form-input v-model="form.hospitalization.keyword" required></b-form-input>
+            <b-col class="col col-lg-4">
+              <b-form-group label="Téléphone : ">
+                <b-form-input type="number" name="phone_number" placeholder="Téléphone"></b-form-input>
+              </b-form-group>
             </b-col>
           </b-row>
-          <b-row>
-            <b-col class="col-lg-12">
-              <p>Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi? </p>
-              <b-form-input v-model="form.hospitalization.explanation" required></b-form-input>
-            </b-col>
-          </b-row>
-        </b-form-group>
-
-
-        <b-form-group>
-          <b-row>
-        <b-col class="col-lg-4">
-          <p>T : Traitement(s)</p>
-        </b-col>
-        <b-col class="col-lg-4">
-          <p>Choisir un mot clé.</p>
-        </b-col>
-        <b-col class="col-lg-4">
-          <b-form-input v-model="form.treatment.keyword" required></b-form-input>
-        </b-col>
-      </b-row>
-        <b-row>
-          <b-col class="col-lg-12">
-            <p>Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
-            <b-form-input v-model="form.treatment.explanation" required></b-form-input>
-          </b-col>
-        </b-row>
-        </b-form-group>
-
-        <b-form-group>
-          <b-row>
-            <b-col class="col-lg-4">
-              <p>A : Allergie(s)</p>
-            </b-col>
-            <b-col class="col-lg-4">
-              <p>Choisir un mot clé.</p>
-            </b-col>
-            <b-col class="col-lg-4">
-              <b-form-input v-model="form.allergy.keyword" required></b-form-input>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col class="col-lg-12">
-              <p>Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité</p>
-              <b-form-input v-model="form.allergy.explanation" required></b-form-input>
-            </b-col>
-          </b-row>
-        </b-form-group>
-
-        <b-row>
-          <b-col class="col-lg-4">
-            <p>Donneur d'organes ? : </p>
-          </b-col>
-          <b-col class="col-lg-1">
-            <b-form-radio v-model="form.organ_donor" name="some_radios" value="oui">Oui</b-form-radio>
-          </b-col>
-          <b-col class="col-lg-1">
-            <b-form-radio v-model="form.organ_donor" name="some_radios" value="non">Non</b-form-radio>
-          </b-col>
-          <b-col class="col-lg-4">
-            <select v-model="form.blood_type" class="form-control">
-              <option selected>Inconnu</option>
-              <option>A+</option>
-              <option>A-</option>
-              <option>B+</option>
-              <option>B-</option>
-              <option>AB</option>
-              <option>O+</option>
-              <option>O-</option>
-            </select>
-          </b-col>
-        </b-row>
-        <hr>
-        <h2>Autres informations</h2>
-        <b-row>
-          <b-col class="col-lg-4">
-            <b-form-group label="Numéro de sécurité sociale">
-              <b-form-input v-model="form.social_security_number" type="number" required
-                            placeholder="Numéro de sécurité sociale"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col class="col-lg-4">
-            <b-form-group label="Permis de conduire">
-              <b-form-input v-model="form.license_number" type="number" required
-                            placeholder="Numéro de permis"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col class="col-lg-4">
-            <b-form-file>
-            </b-form-file>
-          </b-col>
-        </b-row>
-        <hr><hr>
-        <h2>Contacts</h2>
-        <h3>Personne à contacter en cas d'urgence</h3>
-        <b-row>
-          <b-col>
-            <b-form-group label="Prénom : ">
-              <b-form-input v-model="form.contact.first_name" required placeholder="Prenom"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Nom : ">
-              <b-form-input v-model="form.contact.last_name" required placeholder="Numéro"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col class="col-lg-6">
-            <b-form-group label="Téléphone : ">
-              <b-form-input v-model="form.contact.phone_number" type="tel" required
-                            placeholder="Téléphone"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-        <hr>
-        <h3>Coordonnées de votre médecin traitant</h3>
-        <b-row>
-          <b-col>
-            <b-form-group label="Prenom : ">
-              <b-form-input v-model="form.doctor.first_name" required placeholder="Prenom"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Nom : ">
-              <b-form-input v-model="form.doctor.last_name" required placeholder="Numéro"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <b-form-group label="Telephone : ">
-              <b-form-input v-model="form.doctor.phone_number" type="tel" required
-                            placeholder="Téléphone"></b-form-input>
-            </b-form-group>
-          </b-col>
-          <b-col>
-            <b-form-group label="Ville : ">
-              <b-form-input v-model="form.doctor.city" required placeholder="Ville"></b-form-input>
-            </b-form-group>
-          </b-col>
-        </b-row>
-        <div>
-          <b-button type="submit" variant="outline-primary">Valider</b-button>
         </div>
+
+        <div class="custom-card">
+          <h2>Adresse</h2>
+          <b-row>
+            <b-col>
+              <b-form-group label="Nom de voie : ">
+                <b-form-input name="adress.street" placeholder="Nom de voie"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Numéro : ">
+                <b-form-input type="number" name="adress.number" placeholder="Numéro"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+
+          <b-row>
+            <b-col>
+              <b-form-group label="Complément d'adresse : ">
+                <b-form-input name="adress.complement" placeholder="Complément d'adresse"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+
+          <b-row>
+            <b-col>
+              <b-form-group label="Ville : ">
+                <b-form-input name="adress.city" placeholder="Ville"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Etat/Province : ">
+                <b-form-input name="adress.state" placeholder="Etat/Province"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+
+          <b-row>
+            <b-col>
+              <b-form-group label="Code Postal : ">
+                <b-form-input type="number" name="adress.postal_code" placeholder="Code Postal"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Pays : ">
+                <b-form-input name="adress.country" placeholder="Pays"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </div>
+
+        <div class="custom-card">
+          <h2>Informations vitales : MHTA</h2>
+
+          <b-form-group>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p>M : Maladie(s)</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <p>Choisir un mot clé.</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <b-form-input v-model="form.diseases.keyword" required></b-form-input>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-12">
+                <p>Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) </p>
+                <b-form-input v-model="form.diseases.explanation" required></b-form-input>
+              </b-col>
+            </b-row>
+          </b-form-group>
+
+          <b-form-group>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p>H : Hospitalisation(s)</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <p>Choisir un mot clé.</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <b-form-input v-model="form.hospitalization.keyword" required></b-form-input>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-12">
+                <p>Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi? </p>
+                <b-form-input v-model="form.hospitalization.explanation" required></b-form-input>
+              </b-col>
+            </b-row>
+          </b-form-group>
+
+          <b-form-group>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p>T : Traitement(s)</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <p>Choisir un mot clé.</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <b-form-input v-model="form.treatment.keyword" required></b-form-input>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-12">
+                <p>Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
+                <b-form-input v-model="form.treatment.explanation" required></b-form-input>
+              </b-col>
+            </b-row>
+          </b-form-group>
+
+          <b-form-group>
+            <b-row>
+              <b-col class="col-lg-4">
+                <p>A : Allergie(s)</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <p>Choisir un mot clé.</p>
+              </b-col>
+              <b-col class="col-lg-4">
+                <b-form-input v-model="form.allergy.keyword" required></b-form-input>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col class="col-lg-12">
+                <p>Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité</p>
+                <b-form-input v-model="form.allergy.explanation" required></b-form-input>
+              </b-col>
+            </b-row>
+          </b-form-group>
+
+          <b-row>
+            <b-col class="col-lg-4">
+              <p>Donneur d'organes ? : </p>
+            </b-col>
+            <b-col class="col-lg-1">
+              <b-form-radio v-model="form.organ_donor" name="some_radios" value="oui">Oui</b-form-radio>
+            </b-col>
+            <b-col class="col-lg-1">
+              <b-form-radio v-model="form.organ_donor" name="some_radios" value="non">Non</b-form-radio>
+            </b-col>
+            <b-col class="col-lg-4">
+              <select v-model="form.blood_type" class="form-control">
+                <option selected>Inconnu</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB</option>
+                <option>O+</option>
+                <option>O-</option>
+              </select>
+            </b-col>
+          </b-row>
+        </div>
+
+        <div class="custom-card">
+          <h2>Autres informations</h2>
+          <b-row>
+            <b-col class="col-lg-4">
+              <b-form-group label="Numéro de sécurité sociale">
+                <b-form-input v-model="form.social_security_number" type="number" required
+                              placeholder="Numéro de sécurité sociale"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-lg-4">
+              <b-form-group label="Permis de conduire">
+                <b-form-input v-model="form.license_number" type="number" required
+                              placeholder="Numéro de permis"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col class="col-lg-4">
+              <b-form-file>
+              </b-form-file>
+            </b-col>
+          </b-row>
+        </div>
+
+        <div class="custom-card">
+          <h2>Contacts</h2>
+          <h3>Personne à contacter en cas d'urgence</h3>
+          <b-row>
+            <b-col>
+              <b-form-group label="Prénom : ">
+                <b-form-input v-model="form.contact.first_name" required placeholder="Prenom"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Nom : ">
+                <b-form-input v-model="form.contact.last_name" required placeholder="Numéro"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-lg-6">
+              <b-form-group label="Téléphone : ">
+                <b-form-input v-model="form.contact.phone_number" type="tel" required
+                              placeholder="Téléphone"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </div>
+
+        <div class="custom-card">
+          <h3>Coordonnées de votre médecin traitant</h3>
+          <b-row>
+            <b-col>
+              <b-form-group label="Prenom : ">
+                <b-form-input v-model="form.doctor.first_name" required placeholder="Prenom"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Nom : ">
+                <b-form-input v-model="form.doctor.last_name" required placeholder="Numéro"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <b-form-group label="Telephone : ">
+                <b-form-input v-model="form.doctor.phone_number" type="tel" required
+                              placeholder="Téléphone"></b-form-input>
+              </b-form-group>
+            </b-col>
+            <b-col>
+              <b-form-group label="Ville : ">
+                <b-form-input v-model="form.doctor.city" required placeholder="Ville"></b-form-input>
+              </b-form-group>
+            </b-col>
+          </b-row>
+        </div>
+          <div>
+            <b-button class="button-validate" type="submit">Valider</b-button>
+          </div>
       </b-form>
     </b-container>
   </div>
 </template>
 
 <script>
-  import firebase from 'firebase';
-  import { required, email, numeric, maxlenght } from "vuelidate/lib/validators";
+  import db from '@/firebase'
+  import {required, numeric} from "vuelidate/lib/validators";
   import Navbar from '../components/Navbar.vue';
 
   export default {
@@ -413,12 +360,12 @@
     },
     validations: {
       form: {
-        civility: { required },
-        first_name: { required },
-        last_name: { required },
-        birthday: { required },
-        phone_number: { required, numeric },
-        photo: { required },
+        civility: {required},
+        first_name: {required},
+        last_name: {required},
+        birthday: {required},
+        phone_number: {required, numeric},
+        photo: {required},
         adress: {
           number: {required, numeric},
           street: {required},
@@ -427,12 +374,11 @@
           city: {required},
           state: {required},
           country: {required},
-  },
+        },
       }
     },
     methods: {
       saveMedicalFile: function () {
-        const db = firebase.firestore();
         db.collection('users')
           .add({
             user_id: 'toto',
@@ -494,4 +440,36 @@
 </script>
 
 <style scoped>
+  h1 {
+    margin: 1em 0;
+    color: grey;
+  }
+
+  h2 {
+    margin-bottom: 1em;
+  }
+
+  .custom-card {
+    color: white;
+    background-color: #dc3545;
+    border-radius: 4px;
+    padding: 2em;
+    margin: 1em 0;
+  }
+
+  .button-validate{
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: white;
+    width: 50%;
+    background-color: #dc3545;
+    border: 0;
+    padding: 15px;
+    color: white;
+    margin-top: 1em;
+    margin-bottom: 4em;
+    font-size: 14px;
+    cursor: pointer;
+  }
 </style>

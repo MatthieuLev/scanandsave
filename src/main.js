@@ -11,12 +11,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.use(Vuelidate);
-
-Vue.config.productionTip = false;
-
 Vue.use(BootstrapVue);
 
-
+Vue.config.productionTip = false;
 
 // create a variable for holding our app
 let app;

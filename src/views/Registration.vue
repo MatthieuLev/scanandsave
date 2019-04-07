@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import database from '../database.js'
+  import database from '../firebase.js'
 
   export default {
     name: 'Registration',

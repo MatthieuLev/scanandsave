@@ -11,21 +11,23 @@ const config = {
   messagingSenderId: '106066164855',
 };
 
-const database = firebase.initializeApp(config);
+const firebaseApp = firebase.initializeApp(config);
+const auth = firebaseApp.auth();
+const db = firebaseApp.firestore();
 
-export default database;
+export default db;
 
 // create a function called "signUp" and attach it to the "database" object.
 // This will be an async function, meaning that it will not return anything
 // before we have received an answer from Firebase.
 // We'll pass in two parameters: email and password
-database.signUp = async (email, password) => {
+db.signUp = async (email, password) => {
   // the reason we use a try/catch method here is that if the sign up fails in a way,
   // we'll get an error from Firebase we can show the user.
   try {
     // we put "await" at the beginning, because we don't want to continue this function
     // before we get an answer from firebase.
-    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    await auth.createUserWithEmailAndPassword(email, password);
     store.commit('setCurrentUser', firebase.auth().currentUser);
     return true;
   } catch (error) {
@@ -33,9 +35,9 @@ database.signUp = async (email, password) => {
   }
 };
 
-database.signIn = async (email, password) => {
+db.signIn = async (email, password) => {
   try {
-    await firebase.auth().signInWithEmailAndPassword(email, password);
+    await auth.signInWithEmailAndPassword(email, password);
     store.commit('setCurrentUser', firebase.auth().currentUser);
     return true;
   } catch (error) {
@@ -43,9 +45,9 @@ database.signIn = async (email, password) => {
   }
 };
 
-database.signOut = async () => {
+db.signOut = async () => {
   try {
-    await firebase.auth().signOut();
+    await auth.signOut();
     store.commit('setCurrentUser', null);
     return true;
   } catch (error) {
@@ -53,18 +55,18 @@ database.signOut = async () => {
   }
 };
 
-database.forgotPassword = async (email) => {
+db.forgotPassword = async (email) => {
   try {
-    await firebase.auth().sendPasswordResetEmail(email);
+    await auth.sendPasswordResetEmail(email);
     return true;
   } catch (error) {
     return error;
   }
 };
 
-database.sendEmailVerification = async () => {
+db.sendEmailVerification = async () => {
   try {
-    const user = firebase.auth().currentUser;
+    const user = auth.currentUser;
     user.sendEmailVerification();
     return true;
   } catch (error) {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="danger">
+    <b-navbar toggleable="lg">
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -22,12 +22,12 @@
             <router-link to="ViewMyAccount">Mon Compte</router-link>
           </b-nav-item>
 
-          <b-nav-item-dropdown text="Langue" right>
+          <b-nav-item-dropdown class="lang" text="Langue" right>
             <b-dropdown-item href="#">FR</b-dropdown-item>
             <b-dropdown-item href="#">EN</b-dropdown-item>
           </b-nav-item-dropdown>
 
-          <b-nav-item>
+          <b-nav-item class="signOutButtonContainer">
             <a class="signOutButton"@click="signOut">Déconnexion</a>
           </b-nav-item>
         </b-navbar-nav>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-  import database from '../database'
+  import database from '../firebase'
   import router from '../router'
 
   export default {
@@ -58,20 +58,40 @@
 
 <style scoped>
   a:hover {
-    color: inherit;
+    color: #dadada;
     text-decoration: none;
     font-weight: bold;
   }
 
-  a {
-    color: inherit;
+  a{
+    color: white;
     text-decoration: none;
     font-weight: bold;
   }
+
+  .lang>a{
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
   .router-link-exact-active {
-    color: rgba(255, 255, 255, 0.8);
+    color: #dadada;
    }
   .nav-link .signOutButton{
     cursor: inherit;
+  }
+  .navbar {
+    background-color: #dc3545;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    color: white;
+  }
+
+  .signOutButtonContainer>a:hover{
+    color: #dadada !important;
+    text-decoration: none;
+    font-weight: bold;
   }
 </style>

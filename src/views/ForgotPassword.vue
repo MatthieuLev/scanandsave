@@ -13,7 +13,7 @@
 </template>
 
 <script>
-  import database from '../database';
+  import database from '../firebase';
 
   export default {
     name: "ForgotPassword",

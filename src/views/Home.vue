@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     changeCurrentPage: function(currentPage){
-      alert(currentPage)
       this.currentPage = currentPage;
     },
   },
@@ -43,9 +42,9 @@ export default {
 </script>
 
 <style lang="scss">
-  $color-primary: #a1c4fd;
-  $color-secondary: #c2e9fb;
-  $color-tertiary: #7c9ad2;
+  $color-primary: #dc3545;
+  $color-dark: #a3001e;
+  $color-light: #ff6b70;
 
   .home-page {
     padding: 8% 0 0;
@@ -55,7 +54,7 @@ export default {
   .form {
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
+    background: $color-primary;
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
@@ -79,27 +78,27 @@ export default {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: $color-primary;
+    background: white;
     width: 100%;
     border: 0;
     padding: 15px;
-    color: #FFFFFF;
+    color: $color-dark;
     font-size: 14px;
     cursor: pointer;
   }
 
   .form button:hover, .form button:active, .form button:focus {
-    background: $color-tertiary;
+    background: $color-light;
   }
 
   .form .message {
     margin: 15px 0 0;
-    color: #b3b3b3;
+    color: #ffffffb3;
     font-size: 12px;
   }
 
   .form .message a:not([href]):not([tabindex]) {
-    color: $color-tertiary;
+    color: white;
     text-decoration: none;
     cursor: pointer;
   }
