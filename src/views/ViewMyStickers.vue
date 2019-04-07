@@ -68,4 +68,11 @@
   .table{
     color:white;
   }
+  @media (max-width: 991px) {
+    .table {
+      display: block;
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
+  }
 </style>
