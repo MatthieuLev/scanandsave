@@ -106,7 +106,7 @@
             <b-row>
               <div class="col-md-12 col-xs-12">
                 <b-form-group label="Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) ">
-                  <b-form-input v-model="form.diseases.explanation"></b-form-input>
+                  <b-form-input v-model="form.diseases"></b-form-input>
                 </b-form-group>
               </div>
             </b-row>
@@ -116,7 +116,7 @@
               <b-row>
                 <div class="col-md-12 col-xs-12">
                   <b-form-group label="Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi ?">
-                    <b-form-input v-model="form.hospitalization.explanation"></b-form-input>
+                    <b-form-input v-model="form.hospitalization"></b-form-input>
                   </b-form-group>
                 </div>
               </b-row>
@@ -126,7 +126,7 @@
             <b-row>
               <div class="col-md-12 col-xs-12">
                 <b-form-group label="Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?">
-                  <b-form-input v-model="form.treatment.explanation"></b-form-input>
+                  <b-form-input v-model="form.treatment"></b-form-input>
                 </b-form-group>
               </div>
             </b-row>
@@ -136,7 +136,7 @@
             <b-row>
               <div class="col-md-12 col-xs-12">
                 <b-form-group label="Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité">
-                  <b-form-input v-model="form.allergy.explanation"></b-form-input>
+                  <b-form-input v-model="form.allergy"></b-form-input>
                 </b-form-group>
               </div>
             </b-row>
@@ -290,22 +290,10 @@
             state: null,
             country: null,
           },
-          diseases: {
-            keyword: null,
-            explanation: null,
-          },
-          hospitalization: {
-            keyword: null,
-            explanation: null,
-          },
-          allergy: {
-            keyword: null,
-            explanation: null,
-          },
-          treatment: {
-            keyword: null,
-            explanation: null,
-          },
+          diseases: null ,
+          hospitalization: null,
+          allergy: null,
+          treatment: null,
           contact: {
             last_name: null,
             first_name: null,
@@ -349,6 +337,7 @@
             last_name: this.form.last_name,
             birthday: this.form.birthday,
             phone_number: this.form.phone_number,
+            organ_donor : this.form.organ_donor,
             blood_type: this.form.blood_type,
             social_security_number: this.form.social_security_number,
             license_number: this.form.license_number,
@@ -361,23 +350,10 @@
               state: this.form.adress.state,
               country: this.form.adress.country,
             },
-            diseases: {
-              keyword: this.form.diseases.keyword,
-              explanation: this.form.diseases.explanation,
-            },
-            hospitalization:
-              {
-                keyword: this.form.hospitalization.keyword,
-                explanation: this.form.hospitalization.explanation,
-              },
-            allergy: {
-              keyword: this.form.allergy.keyword,
-              explanation: this.form.allergy.explanation,
-            },
-            treatment: {
-              keyword: this.form.treatment.keyword,
-              explanation: this.form.treatment.explanation,
-            },
+            diseases:this.form.diseases,
+            hospitalization:this.form.hospitalization,
+            allergy:this.form.allergy,
+            treatment: this.form.treatment,
             contact: {
               last_name: this.form.contact.last_name,
               first_name: this.form.contact.first_name,

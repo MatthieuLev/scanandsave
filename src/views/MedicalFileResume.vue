@@ -134,7 +134,7 @@
             <p class="label">Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) </p>
           </b-col>
           <b-col>
-            <b-form-input :disabled="disabled" :value=this.diseases_explanation></b-form-input>
+            <b-form-input :disabled="disabled" :value=this.diseases></b-form-input>
           </b-col>
         </b-row>
         <b-row>
@@ -147,7 +147,7 @@
             <p class="label">Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi? </p>
           </b-col>
           <b-col>
-            <b-form-input :disabled="disabled" :value=this.hospitalization_explanation></b-form-input>
+            <b-form-input :disabled="disabled" :value=this.hospitalization></b-form-input>
           </b-col>
         </b-row>
         <b-row>
@@ -160,7 +160,7 @@
           <p class="label">Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?</p>
         </b-col>
         <b-col>
-          <b-form-input :disabled="disabled" :value=this.treatment_explanation></b-form-input>
+          <b-form-input :disabled="disabled" :value=this.treatment></b-form-input>
         </b-col>
       </b-row>
         <b-row>
@@ -173,7 +173,7 @@
             <p class="label">Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité</p>
           </b-col>
           <b-col>
-            <b-form-input :disabled="disabled" :value=this.allergy_explanation></b-form-input>
+            <b-form-input :disabled="disabled" :value=this.allergy></b-form-input>
           </b-col>
         </b-row>
       </b-container>
@@ -316,14 +316,10 @@
           adress_postal_code: null,
           adress_state: null,
           adress_country: null,
-          diseases_keyword: null,
-          diseases_explanation: null,
-          hospitalization_keyword: null,
-          hospitalization_explanation: null,
-          allergy_keyword: null,
-          allergy_explanation: null,
-          treatment_keyword: null,
-          treatment_explanation: null,
+          diseases: null,
+          hospitalization: null,
+          allergy: null,
+          treatment: null,
 
           contact_first_name: null,
           contact_last_name: null,
@@ -376,14 +372,10 @@
               this.adress_state = doc.data().adress.state;
               this.adress_country = doc.data().adress.country;
 
-              this.diseases_keyword = doc.data().diseases.keyword;
-              this.diseases_explanation = doc.data().diseases.explanation;
-              this.hospitalization_keyword = doc.data().hospitalization.keyword;
-              this.hospitalization_explanation = doc.data().hospitalization.explanation;
-              this.allergy_keyword = doc.data().allergy.keyword;
-              this.allergy_explanation = doc.data().allergy.explanation;
-              this.treatment_keyword = doc.data().treatment.keyword;
-              this.treatment_explanation = doc.data().treatment.explanation;
+              this.diseases = doc.data().diseases;
+              this.hospitalization = doc.data().hospitalization;
+              this.allergy= doc.data().allergy;
+              this.treatment = doc.data().treatment;
 
               this.contact_first_name = doc.data().contact.first_name;
               this.contact_last_name = doc.data().contact.last_name;
