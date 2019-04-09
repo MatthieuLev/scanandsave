@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import database from '../firebase.js'
+  import firebase from '../firebase'
 
   export default {
     name: 'Registration',
@@ -49,7 +49,7 @@
         this.errorConfirmPassword = '';
         this.errorMessage = '';
         if (this.form.password === this.form.confirmPassword) {
-          let result = await database.signUp(this.form.email, this.form.password);
+          let result = await firebase.db.signUp(this.form.email, this.form.password);
 
           if (!result.message) {
             this.successMessage = 'Votre compte est créé, vous pouvez vous connecter';

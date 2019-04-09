@@ -12,21 +12,21 @@
           <b-row>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Civilité :">
-              <select v-model="form.civility" class="form-control">
-                <option>Madame</option>
-                <option>Monsieur</option>
-                <option>Mademoiselle</option>
-              </select>
+                <select v-model="form.civility" class="form-control">
+                  <option>Madame</option>
+                  <option>Monsieur</option>
+                  <option>Mademoiselle</option>
+                </select>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Nom : ">
-                <b-form-input name="last_name" placeholder="Nom"></b-form-input>
+                <b-form-input v-model="form.last_name" name="last_name" placeholder="Nom"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Prénom : ">
-              <b-form-input name="first_name" placeholder="Prenom"></b-form-input>
+                <b-form-input v-model="form.first_name" name="first_name" placeholder="Prenom"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -34,18 +34,18 @@
           <b-row>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Date de naissance : ">
-                <b-form-input type="date" name="birthday" placeholder="Date de naissance"></b-form-input>
+                <b-form-input v-model="form.birthday" type="date" name="birthday" placeholder="Date de naissance"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group
                 label="Photo d'identité : ">
-                <b-form-file name="photo" placeholder="Photo d'identité"></b-form-file>
+                <b-form-file v-model="form.photo" name="photo" placeholder="Photo d'identité"></b-form-file>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Téléphone : ">
-                <b-form-input type="number" name="phone_number" placeholder="Téléphone"></b-form-input>
+                <b-form-input v-model="form.phone_number" type="number" name="phone_number" placeholder="Téléphone"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -57,17 +57,17 @@
           <b-row>
             <div class="col-md-2 col-xs-12">
               <b-form-group label="Numéro : ">
-                <b-form-input type="number" name="adress.number" placeholder="Numéro"></b-form-input>
+                <b-form-input v-model="form.adress.number" type="number" name="adress.number" placeholder="Numéro"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-7 col-xs-12">
               <b-form-group label="Nom de voie : ">
-                <b-form-input name="adress.street" placeholder="Nom de voie"></b-form-input>
+                <b-form-input v-model="form.adress.street" name="adress.street" placeholder="Nom de voie"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-3 col-xs-12">
               <b-form-group label="Complément d'adresse : ">
-                <b-form-input name="adress.complement" placeholder="Complément d'adresse"></b-form-input>
+                <b-form-input v-model="form.adress.complement" name="adress.complement" placeholder="Complément d'adresse"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -75,12 +75,12 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Ville : ">
-                <b-form-input name="adress.city" placeholder="Ville"></b-form-input>
+                <b-form-input v-model="form.adress.city" name="adress.city" placeholder="Ville"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Etat/Province : ">
-                <b-form-input name="adress.state" placeholder="Etat/Province"></b-form-input>
+                <b-form-input v-model="form.adress.state" name="adress.state" placeholder="Etat/Province"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -88,12 +88,12 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Code Postal : ">
-                <b-form-input type="number" name="adress.postal_code" placeholder="Code Postal"></b-form-input>
+                <b-form-input v-model="form.adress.postal_code" type="number" name="adress.postal_code" placeholder="Code Postal"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Pays : ">
-                <b-form-input name="adress.country" placeholder="Pays"></b-form-input>
+                <b-form-input v-model="form.adress.country" name="adress.country" placeholder="Pays"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -105,7 +105,8 @@
           <b-form-group>
             <b-row>
               <div class="col-md-12 col-xs-12">
-                <b-form-group label="Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) ">
+                <b-form-group
+                  label="Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) ">
                   <b-form-input v-model="form.diseases"></b-form-input>
                 </b-form-group>
               </div>
@@ -113,13 +114,13 @@
           </b-form-group>
 
           <b-form-group>
-              <b-row>
-                <div class="col-md-12 col-xs-12">
-                  <b-form-group label="Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi ?">
-                    <b-form-input v-model="form.hospitalization"></b-form-input>
-                  </b-form-group>
-                </div>
-              </b-row>
+            <b-row>
+              <div class="col-md-12 col-xs-12">
+                <b-form-group label="Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi ?">
+                  <b-form-input v-model="form.hospitalization"></b-form-input>
+                </b-form-group>
+              </div>
+            </b-row>
           </b-form-group>
 
           <b-form-group>
@@ -152,16 +153,16 @@
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Groupe sanguin :">
-              <select v-model="form.blood_type" class="form-control">
-                <option selected>Inconnu</option>
-                <option>A+</option>
-                <option>A-</option>
-                <option>B+</option>
-                <option>B-</option>
-                <option>AB</option>
-                <option>O+</option>
-                <option>O-</option>
-              </select>
+                <select v-model="form.blood_type" class="form-control">
+                  <option selected>Inconnu</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>AB</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                </select>
               </b-form-group>
             </div>
           </b-row>
@@ -174,7 +175,8 @@
           <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Numéro de sécurité sociale">
-                <b-form-input v-model="form.social_security_number" type="number" placeholder="Numéro de sécurité sociale"></b-form-input>
+                <b-form-input v-model="form.social_security_number" type="number"
+                              placeholder="Numéro de sécurité sociale"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-lg-4 col-xs-12">
@@ -197,12 +199,12 @@
           <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Nom : ">
-                <b-form-input v-model="form.contact.last_name" required placeholder="Nom du contact"></b-form-input>
+                <b-form-input v-model="form.contact.last_name" placeholder="Nom du contact"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Prénom : ">
-                <b-form-input v-model="form.contact.first_name" required placeholder="Prénom du contact"></b-form-input>
+                <b-form-input v-model="form.contact.first_name" placeholder="Prénom du contact"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -210,7 +212,7 @@
           <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Téléphone : ">
-                <b-form-input v-model="form.contact.phone_number" type="tel" required placeholder="Téléphone du contact"></b-form-input>
+                <b-form-input v-model="form.contact.phone_number" type="tel" placeholder="Téléphone du contact"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -233,7 +235,8 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Telephone : ">
-                <b-form-input v-model="form.doctor.phone_number" type="tel" placeholder="Téléphone du médecin"></b-form-input>
+                <b-form-input v-model="form.doctor.phone_number" type="tel"
+                              placeholder="Téléphone du médecin"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
@@ -244,33 +247,33 @@
           </b-row>
 
         </div>
-          <div>
-            <b-button class="button-validate" type="submit">Valider</b-button>
-          </div>
+        <div>
+          <b-button class="button-validate" type="submit">Valider</b-button>
+          <b-modal id="modal-validation">
+            <p class="my-4">{{validationMessage}}</p>
+            <b-button class="mt-3" variant="outline-info" block @click="goToMFResume">Fermer</b-button>
+          </b-modal>
+        </div>
       </b-form>
     </b-container>
   </div>
 </template>
 
 <script>
-  import db from '@/firebase'
+  import db from '../firebase.js';
+  import firebase from 'firebase';
   import {required, numeric} from "vuelidate/lib/validators";
   import Navbar from '../components/Navbar.vue';
+  import MedicalFileResume from "./MedicalFileResume";
 
   export default {
     name: 'MedicalFileCreation',
     components: {
       Navbar,
     },
-    computed: {
-      currentUer() {
-        return this.$store.state.currentUser;
-      },
-    },
     data() {
       return {
         form: {
-          user_id: '0202',
           civility: 'Madame',
           first_name: null,
           last_name: null,
@@ -290,7 +293,7 @@
             state: null,
             country: null,
           },
-          diseases: null ,
+          diseases: null,
           hospitalization: null,
           allergy: null,
           treatment: null,
@@ -306,6 +309,7 @@
             city: null,
           },
         },
+        validationMessage: '',
       };
     },
     validations: {
@@ -330,14 +334,14 @@
     methods: {
       saveMedicalFile: function () {
         db.collection('medicalFiles')
-          .add({
-            user_id: 'toto',
+          .doc(firebase.auth().currentUser.uid)
+          .set({
             civility: this.form.civility,
             first_name: this.form.first_name,
             last_name: this.form.last_name,
             birthday: this.form.birthday,
             phone_number: this.form.phone_number,
-            organ_donor : this.form.organ_donor,
+            organ_donor: this.form.organ_donor,
             blood_type: this.form.blood_type,
             social_security_number: this.form.social_security_number,
             license_number: this.form.license_number,
@@ -350,9 +354,9 @@
               state: this.form.adress.state,
               country: this.form.adress.country,
             },
-            diseases:this.form.diseases,
-            hospitalization:this.form.hospitalization,
-            allergy:this.form.allergy,
+            diseases: this.form.diseases,
+            hospitalization: this.form.hospitalization,
+            allergy: this.form.allergy,
             treatment: this.form.treatment,
             contact: {
               last_name: this.form.contact.last_name,
@@ -367,21 +371,28 @@
             },
           })
           .then(docRef => {
-            alert('TOTOO');
+            this.validationMessage = "Votre dossier médical été enregistré !";
           })
           .catch(error => {
-            alert(error);
+            this.validationMessage = "Une erreur s'est produite durant la création de votre dossier médical";
           });
       },
+      showModal() {
+        this.$refs['modal-validation'].show();
+      },
+      goToMFResume() {
+        router.push(MedicalFileResume);
+      }
     },
   };
 </script>
 
 <style scoped>
-  .custom-radio{
+  .custom-radio {
     display: inline;
     margin: 0 5px;
   }
+
   h1 {
     margin: 1em 0;
     color: grey;
@@ -391,7 +402,7 @@
     margin-bottom: 1em;
   }
 
-  h3{
+  h3 {
     color: #ffa7a7;
     margin: 1em 0;
   }
@@ -404,7 +415,7 @@
     margin: 1em 0;
   }
 
-  .button-validate{
+  .button-validate {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -418,7 +429,8 @@
     font-size: 14px;
     cursor: pointer;
   }
-  .button-validate:hover{
+
+  .button-validate:hover {
     color: #fff;
     background-color: #545b62;
     border-color: #4e555b;

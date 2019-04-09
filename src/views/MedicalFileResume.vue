@@ -288,6 +288,7 @@
 </template>
 
 <script>
+  import db from '../firebase.js';
   import firebase from 'firebase';
   import Navbar from '../components/Navbar.vue';
 
@@ -333,7 +334,7 @@
         };
       },
       methods: {
-        saveModificationMedicalFile: function () {
+        saveModificationMedicalFile: () => {
           db.collection('medicalFiles')
             .update({})
         },
@@ -347,12 +348,11 @@
           }
         }},
         created() {
-          const db = firebase.firestore();
-          const userId = 'cRZV9g91mEUjvbC35Qn2'; // Remplacer par l'id de l'utilisateur actuellement connecté
-
-          db.collection('medicalFiles').get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              console.log(doc.data())
+          db.collection('medicalFiles')
+            .doc(firebase.auth().currentUser.uid)
+            .get()
+            .then((doc) => {
+              console.log(doc.data());
               console.log(doc.id, ' => ', doc.data());
               this.civility = doc.data().civility;
               this.first_name = doc.data().first_name;
@@ -391,8 +391,9 @@
               this.doctor_last_name = doc.data().doctor.last_name;
               this.doctor_phone_number = doc.data().doctor.phone_number;
               this.doctor_city = doc.data().doctor.city;
+            }).catch(function(error) {
+              alert("Error getting document:", error);
             });
-          });
         },
     };
 </script>
