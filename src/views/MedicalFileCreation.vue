@@ -24,13 +24,15 @@
                 <b-form-input
                   v-model="form.last_name" name="last_name" placeholder="Nom" class="form-control"
                   :class="{ 'is-invalid': submitted && $v.form.last_name.$error }"/>
-                <div v-if="submitted && !$v.form.last_name.required" class="invalid-feedback">Last Name is required</div>
+                <div v-if="submitted && !$v.form.last_name.required" class="invalid-feedback">Nom obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Prénom : ">
-                <b-form-input name="first_name" placeholder="Prenom" :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
-                <div v-if="submitted && !$v.form.first_name.required" class="invalid-feedback">First Name is required</div>
+                <b-form-input
+                  v-model="form.first_name" name="first_name" placeholder="Prenom" class="form-control"
+                  :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
+                <div v-if="submitted && !$v.form.first_name.required" class="invalid-feedback">Prénom obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
@@ -38,19 +40,25 @@
           <b-row>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Date de naissance : ">
-                <b-form-input type="date" name="birthday" placeholder="Date de naissance" :class="{ 'is-invalid': submitted && $v.form.birthday.$error }"/>
-                <div v-if="submitted && !$v.form.birthday.required" class="invalid-feedback">Birthday is required</div>
+                <b-form-input
+                  v-model="form.birthday" type="date" name="birthday" placeholder="Date de naissance" class="form-control"
+                  :class="{ 'is-invalid': submitted && $v.form.birthday.$error }"/>
+                <div v-if="submitted && !$v.form.birthday.required" class="invalid-feedback">Date de naissance obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group
                 label="Photo d'identité : ">
-                <b-form-file name="photo" placeholder="Photo d'identité"></b-form-file>
+                <b-form-file v-model="form.photo" name="photo" placeholder="Photo d'identité" class="form-control"
+                  :class="{ 'is-invalid': submitted && $v.form.photo.$error }"/>
+                <div v-if="submitted && !$v.form.photo.required" class="invalid-feedback">Photo obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Téléphone : ">
-                <b-form-input type="number" name="phone_number" placeholder="Téléphone"></b-form-input>
+                <b-form-input v-model="form.phone_number" type="number" name="phone_number" placeholder="Numéro de téléphone" class="form-control"
+                  :class="{ 'is-invalid': submitted && $v.form.phone_number.$error }"/>
+                  <div v-if="submitted && !$v.form.phone_number.required" class="invalid-feedback">Numéro de téléphone obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
@@ -62,12 +70,16 @@
           <b-row>
             <div class="col-md-2 col-xs-12">
               <b-form-group label="Numéro : ">
-                <b-form-input type="number" name="adress.number" placeholder="Numéro"></b-form-input>
+                <b-form-input v-model="form.adress.number" type="number" name="adress.number" placeholder="Numéro de voie" class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.number.$error }"/>
+                <div v-if="submitted && !$v.form.adress.number.required" class="invalid-feedback">Numéro de voie obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-7 col-xs-12">
               <b-form-group label="Nom de voie : ">
-                <b-form-input name="adress.street" placeholder="Nom de voie"></b-form-input>
+                <b-form-input v-model="form.adress.street" name="adress.street" placeholder="Nom de voie" class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.street.$error }"/>
+                <div v-if="submitted && !$v.form.adress.street.required" class="invalid-feedback">Nom de voie obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-3 col-xs-12">
@@ -80,12 +92,16 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Ville : ">
-                <b-form-input name="adress.city" placeholder="Ville"></b-form-input>
+                <b-form-input v-model="form.adress.city" name="adress.city" placeholder="Ville" class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.city.$error }"/>
+                <div v-if="submitted && !$v.form.adress.city.required" class="invalid-feedback">Ville obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Etat/Province : ">
-                <b-form-input name="adress.state" placeholder="Etat/Province"></b-form-input>
+                <b-form-input v-model="form.adress.state" name="adress.state" placeholder="Etat/Province" class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.state.$error }"/>
+                <div v-if="submitted && !$v.form.adress.state.required" class="invalid-feedback">Etat/Province obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
@@ -93,12 +109,16 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Code Postal : ">
-                <b-form-input type="number" name="adress.postal_code" placeholder="Code Postal"></b-form-input>
+                <b-form-input v-model="form.adress.postal_code" type="number" name="adress.postal_code" placeholder="Code Postal" class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.postal_code.$error }"/>
+                <div v-if="submitted && !$v.form.adress.postal_code.required" class="invalid-feedback">Code Postal obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Pays : ">
-                <b-form-input name="adress.country" placeholder="Pays"></b-form-input>
+                <b-form-input v-model="form.adress.country" name="adress.country" placeholder="Pays" class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.country.$error }"/>
+                <div v-if="submitted && !$v.form.adress.country.required" class="invalid-feedback">Pays obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
@@ -344,7 +364,6 @@
     },
     methods: {
       saveMedicalFile: function () {
-      <<<<<<< HEAD
         this.submitted = true;
         // stop here if form is invalid
         this.$v.$touch();
@@ -352,9 +371,7 @@
           return;
         }
         db.collection('users')
-        =======
           db.collection('medicalFiles')
-          >>>>>>> efcfb83a5b97e5892bee115aa985b5aa77101336
             .add({
               user_id: 'toto',
               civility: this.form.civility,
