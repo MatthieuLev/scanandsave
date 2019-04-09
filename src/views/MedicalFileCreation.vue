@@ -305,9 +305,9 @@
 <script>
   import db from '../firebase.js';
   import firebase from 'firebase';
-  import {required, numeric} from "vuelidate/lib/validators";
+  import { required, numeric } from 'vuelidate/lib/validators';
   import Navbar from '../components/Navbar.vue';
-  import MedicalFileResume from "./MedicalFileResume";
+  import MedicalFileResume from "./MedicalFileResume.vue";
 
   export default {
     name: 'MedicalFileCreation',
@@ -384,7 +384,13 @@
       },
     },
     methods: {
-      saveMedicalFile: function () {
+      saveMedicalFile() {
+        this.submitted = true;
+        // stop here if form is invalid
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
         db.collection('medicalFiles')
           .doc(firebase.auth().currentUser.uid)
           .set({
@@ -423,56 +429,7 @@
             },
           })
           .then(docRef => {
-            this.validationMessage = "Votre dossier médical été enregistré !";
-          })
-          .catch(error => {
-            this.validationMessage = "Une erreur s'est produite durant la création de votre dossier médical";
-          });
-        this.submitted = true;
-        // stop here if form is invalid
-        this.$v.$touch();
-        if (this.$v.$invalid) {
-          return;
-        }
-        db.collection('medicalFiles')
-          .add({
-            user_id: 'toto',
-            civility: this.form.civility,
-            first_name: this.form.first_name,
-            last_name: this.form.last_name,
-            birthday: this.form.birthday,
-            phone_number: this.form.phone_number,
-            organ_donor: this.form.organ_donor,
-            blood_type: this.form.blood_type,
-            social_security_number: this.form.social_security_number,
-            license_number: this.form.license_number,
-            adress: {
-              number: this.form.adress.number,
-              street: this.form.adress.street,
-              complement: this.form.adress.complement,
-              postal_code: this.form.adress.postal_code,
-              city: this.form.adress.city,
-              state: this.form.adress.state,
-              country: this.form.adress.country,
-            },
-            diseases: this.form.diseases,
-            hospitalization: this.form.hospitalization,
-            allergy: this.form.allergy,
-            treatment: this.form.treatment,
-            contact: {
-              last_name: this.form.contact.last_name,
-              first_name: this.form.contact.first_name,
-              phone_number: this.form.contact.phone_number,
-            },
-            doctor: {
-              last_name: this.form.doctor.last_name,
-              first_name: this.form.doctor.first_name,
-              phone_number: this.form.doctor.phone_number,
-              city: this.form.doctor.city,
-            },
-          })
-          .then(docRef => {
-            router.push(MedicalFileResume);
+            this.router.push(MedicalFileResume);
           })
           .catch(error => {
             alert(error);

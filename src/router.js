@@ -94,7 +94,7 @@ const router = new Router({
       path: '/MedicalFileResume',
       name: 'MedicalFileResume',
       component: MedicalFileResume,
-    }
+    },
   ],
 });
 

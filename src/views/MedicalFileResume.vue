@@ -300,7 +300,7 @@
       data() {
         return {
           disabled: true,
-          buttonName: "Modifier les informations",
+          buttonName: 'Modifier les informations',
           form: {
             civility: 'Madame',
             first_name: null,
@@ -341,9 +341,8 @@
         };
       },
         methods: {
-          saveModificationMedicalFile: function () {
-            const db = firebase.firestore();
-            alert("UPDATE");
+          saveModificationMedicalFile() {
+            alert('UPDATE');
             db.collection('medicalFiles')
               .doc(firebase.auth().currentUser.uid)
               .update({
@@ -379,17 +378,17 @@
                   first_name: this.form.doctor.first_name,
                   phone_number: this.form.doctor.phone_number,
                   city: this.form.doctor.city,
-                }
+                },
               });
           },
-          modify: function () {
+          modify() {
             if (!this.disabled) {
               this.saveModificationMedicalFile();
-              alert("Modification enregistrées");
-              this.buttonName = "Modifier les informations";
+              alert('Modification enregistrées');
+              this.buttonName = 'Modifier les informations';
               this.disabled = !this.disabled;
             } else {
-              this.buttonName = "Valider les changements";
+              this.buttonName = 'Valider les changements';
               this.disabled = !this.disabled;
             }
           },
@@ -407,11 +406,11 @@
               this.form.birthday = doc.data().birthday;
               this.form.phone_number = doc.data().phone_number;
               this.form.organ_donor = doc.data().organ_donor;
-              if (doc.data().organ_donor){
-                this.form.organ_donor="Oui";
+              if (doc.data().organ_donor) {
+                this.form.organ_donor = 'Oui';
               }
               else{
-                this.form.organ_donor="Non";
+                this.form.organ_donor = 'Non';
               }
               this.form.blood_type = doc.data().blood_type;
               this.form.social_security_number = doc.data().social_security_number;
@@ -427,7 +426,7 @@
 
               this.form.diseases = doc.data().diseases;
               this.form.hospitalization = doc.data().hospitalization;
-              this.form.allergy= doc.data().allergy;
+              this.form.allergy = doc.data().allergy;
               this.form.treatment = doc.data().treatment;
 
               this.form.contact.first_name = doc.data().contact.first_name;
@@ -438,8 +437,8 @@
               this.form.doctor.last_name = doc.data().doctor.last_name;
               this.form.doctor.phone_number = doc.data().doctor.phone_number;
               this.form.doctor.city = doc.data().doctor.city;
-            }).catch(function(error) {
-              alert("Error getting document:", error);
+            }).catch(error => {
+              alert('Error getting document:', error);
             });
         },
     };

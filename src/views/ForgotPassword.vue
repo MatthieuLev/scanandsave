@@ -16,7 +16,7 @@
   import database from '../firebase';
 
   export default {
-    name: "ForgotPassword",
+    name: 'ForgotPassword',
     data() {
       return {
         form: {
@@ -34,7 +34,7 @@
         this.errorMessage = '';
         this.successMessage = '';
 
-        let result = await database.forgotPassword(this.form.email);
+        const result = await database.forgotPassword(this.form.email);
         if (!result.message) {
           this.successMessage = 'Vous avez reçu un e-mail pour réinitialiser votre mot de passe';
         } else {
@@ -49,8 +49,8 @@
               this.errorMessage = result.code;
           }
         }
-      }
-    }
+      },
+    },
   };
 </script>
 

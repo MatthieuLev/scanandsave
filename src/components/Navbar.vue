@@ -19,7 +19,7 @@
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item class="signOutButtonContainer">
-            <a class="signOutButton"@click="signOut">Déconnexion</a>
+            <a class="signOutButton" @click="signOut">Déconnexion</a>
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -28,22 +28,23 @@
 </template>
 
 <script>
-  import database from '../firebase'
-  import router from '../router'
-
+  //
+  import database from '../firebase';
+  import router from '../router';
+//
   export default {
     name: 'Navbar',
     computed: {
-      currentUser (){
-        return this.$store.state.currentUser
+      currentUser() {
+        return this.$store.state.currentUser;
       },
     },
     methods: {
       async signOut() {
         await database.signOut();
         router.push('/');
-      }
-    }
+      },
+    },
   };
 </script>
 
