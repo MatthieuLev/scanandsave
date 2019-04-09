@@ -7,7 +7,6 @@ import Registration from './views/Registration.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
-import ViewMyAccount from './views/ViewMyAccount.vue';
 import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
@@ -84,14 +83,6 @@ const router = new Router({
       },
     },
     {
-      path: '/ViewMyAccount',
-      name: 'ViewMyAccount',
-      component: ViewMyAccount,
-      meta: {
-        requiresAuth: true,
-      },
-    },
-    {
       path: '/ViewMyPaymentMethod',
       name: 'ViewMyPaymentMethod',
       component: ViewMyPaymentMethod,
@@ -114,7 +105,7 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth && !currentUser) {
     next('/');
   } else if (redirectAuth && currentUser) {
-    next('/ViewMyAccount');
+    next('/MedicalFileResume');
   } else {
     next();
   }

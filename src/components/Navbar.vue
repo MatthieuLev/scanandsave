@@ -6,7 +6,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="MedicalFileCreation">Mon formulaire médical</router-link>
+            <router-link to="MedicalFileResume">Mon formulaire médical</router-link>
           </b-nav-item>
           <b-nav-item>
             <router-link to="ViewMyStickers">Mes autocollants</router-link>
@@ -18,10 +18,6 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item>
-            <router-link to="ViewMyAccount">Mon Compte</router-link>
-          </b-nav-item>
-
           <b-nav-item class="signOutButtonContainer">
             <a class="signOutButton"@click="signOut">Déconnexion</a>
           </b-nav-item>
