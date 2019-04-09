@@ -329,7 +329,7 @@
     },
     methods: {
       saveMedicalFile: function () {
-        db.collection('users')
+        db.collection('medicalFiles')
           .add({
             user_id: 'toto',
             civility: this.form.civility,

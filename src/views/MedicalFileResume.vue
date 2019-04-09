@@ -38,7 +38,7 @@
               <p class="label">Date de naissance : </p>
             </b-col>
             <b-col>
-              <b-form-input type="date" :disabled="disabled" :value=this.birthday></b-form-input>
+              <b-form-input type="date" :disabled="disabled" :value=this.birthday :place_holder="this.birthday"></b-form-input>
             </b-col>
           </b-row>
           <b-row>
@@ -334,8 +334,8 @@
       },
       methods: {
         saveModificationMedicalFile: function () {
-          db.collection('users')
-            .add({})
+          db.collection('medicalFiles')
+            .update({})
         },
         modify: function () {
           this.disabled=!this.disabled;
@@ -345,14 +345,14 @@
           else{
             this.buttonName = "Valider les changements";
           }
-        },
+        }},
         created() {
           const db = firebase.firestore();
           const userId = 'cRZV9g91mEUjvbC35Qn2'; // Remplacer par l'id de l'utilisateur actuellement connecté
 
-          db.collection('users').get().then((querySnapshot) => {
+          db.collection('medicalFiles').get().then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-              //console.log(doc.data())
+              console.log(doc.data())
               console.log(doc.id, ' => ', doc.data());
               this.civility = doc.data().civility;
               this.first_name = doc.data().first_name;
@@ -360,6 +360,12 @@
               this.birthday = doc.data().birthday;
               this.phone_number = doc.data().phone_number;
               this.organ_donor = doc.data().organ_donor;
+              if (doc.data().organ_donor){
+                this.organ_donor="Oui";
+              }
+              else{
+                this.organ_donor="Non";
+              }
               this.blood_type = doc.data().blood_type;
               this.social_security_number = doc.data().social_security_number;
               this.license_number = doc.data().license_number;
@@ -388,7 +394,6 @@
             });
           });
         },
-      },
     };
 </script>
 
