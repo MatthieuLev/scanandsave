@@ -12,9 +12,7 @@
 
     <button @click="signUp">S'enregistrer</button>
     <p class="error" v-if="errorMessage">{{errorMessage}}</p>
-    <p class="success" v-if="successMessage">{{successMessage}}
-      <a class="redirection" v-on:click="$emit('hide')">en cliquant ici</a>
-    </p>
+    <p class="success" v-if="successMessage">{{successMessage}}</p>
 
     <p class="message">Déjà enregistré ? <a v-on:click="$emit('changeCurrentPage','login')">Se connecter</a></p>
 
@@ -22,7 +20,7 @@
 </template>
 
 <script>
-  import firebase from '../firebase'
+  import database from '../firebase'
 
   export default {
     name: 'Registration',
@@ -49,7 +47,7 @@
         this.errorConfirmPassword = '';
         this.errorMessage = '';
         if (this.form.password === this.form.confirmPassword) {
-          let result = await firebase.db.signUp(this.form.email, this.form.password);
+          let result = await database.signUp(this.form.email, this.form.password);
 
           if (!result.message) {
             this.successMessage = 'Votre compte est créé, vous pouvez vous connecter';
