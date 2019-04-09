@@ -12,11 +12,11 @@
           <b-row>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Civilité :">
-              <select v-model="form.civility" class="form-control">
-                <option>Madame</option>
-                <option>Monsieur</option>
-                <option>Mademoiselle</option>
-              </select>
+                <select v-model="form.civility" class="form-control">
+                  <option>Madame</option>
+                  <option>Monsieur</option>
+                  <option>Mademoiselle</option>
+                </select>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -29,7 +29,7 @@
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Prénom : ">
-              <b-form-input name="first_name" placeholder="Prenom" :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
+                <b-form-input name="first_name" placeholder="Prenom" :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
                 <div v-if="submitted && !$v.form.first_name.required" class="invalid-feedback">First Name is required</div>
               </b-form-group>
             </div>
@@ -118,13 +118,13 @@
           </b-form-group>
 
           <b-form-group>
-              <b-row>
-                <div class="col-md-12 col-xs-12">
-                  <b-form-group label="Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi ?">
-                    <b-form-input v-model="form.hospitalization"></b-form-input>
-                  </b-form-group>
-                </div>
-              </b-row>
+            <b-row>
+              <div class="col-md-12 col-xs-12">
+                <b-form-group label="Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi ?">
+                  <b-form-input v-model="form.hospitalization"></b-form-input>
+                </b-form-group>
+              </div>
+            </b-row>
           </b-form-group>
 
           <b-form-group>
@@ -157,16 +157,16 @@
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Groupe sanguin :">
-              <select v-model="form.blood_type" class="form-control">
-                <option selected>Inconnu</option>
-                <option>A+</option>
-                <option>A-</option>
-                <option>B+</option>
-                <option>B-</option>
-                <option>AB</option>
-                <option>O+</option>
-                <option>O-</option>
-              </select>
+                <select v-model="form.blood_type" class="form-control">
+                  <option selected>Inconnu</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>AB</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                </select>
               </b-form-group>
             </div>
           </b-row>
@@ -249,9 +249,9 @@
           </b-row>
 
         </div>
-          <div>
-            <b-button class="button-validate" type="submit">Valider</b-button>
-          </div>
+        <div>
+          <b-button class="button-validate" type="submit">Valider</b-button>
+        </div>
       </b-form>
     </b-container>
   </div>
@@ -344,59 +344,59 @@
     },
     methods: {
       saveMedicalFile: function () {
-<<<<<<< HEAD
-          this.submitted = true;
-          // stop here if form is invalid
-          this.$v.$touch();
-          if (this.$v.$invalid) {
-            return;
-          }
+      <<<<<<< HEAD
+        this.submitted = true;
+        // stop here if form is invalid
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+          return;
+        }
         db.collection('users')
-=======
-        db.collection('medicalFiles')
->>>>>>> efcfb83a5b97e5892bee115aa985b5aa77101336
-          .add({
-            user_id: 'toto',
-            civility: this.form.civility,
-            first_name: this.form.first_name,
-            last_name: this.form.last_name,
-            birthday: this.form.birthday,
-            phone_number: this.form.phone_number,
-            organ_donor : this.form.organ_donor,
-            blood_type: this.form.blood_type,
-            social_security_number: this.form.social_security_number,
-            license_number: this.form.license_number,
-            adress: {
-              number: this.form.adress.number,
-              street: this.form.adress.street,
-              complement: this.form.adress.complement,
-              postal_code: this.form.adress.postal_code,
-              city: this.form.adress.city,
-              state: this.form.adress.state,
-              country: this.form.adress.country,
-            },
-            diseases:this.form.diseases,
-            hospitalization:this.form.hospitalization,
-            allergy:this.form.allergy,
-            treatment: this.form.treatment,
-            contact: {
-              last_name: this.form.contact.last_name,
-              first_name: this.form.contact.first_name,
-              phone_number: this.form.contact.phone_number,
-            },
-            doctor: {
-              last_name: this.form.doctor.last_name,
-              first_name: this.form.doctor.first_name,
-              phone_number: this.form.doctor.phone_number,
-              city: this.form.doctor.city,
-            },
-          })
-          .then(docRef => {
-            alert('TOTOO');
-          })
-          .catch(error => {
-            alert(error);
-          });
+        =======
+          db.collection('medicalFiles')
+          >>>>>>> efcfb83a5b97e5892bee115aa985b5aa77101336
+            .add({
+              user_id: 'toto',
+              civility: this.form.civility,
+              first_name: this.form.first_name,
+              last_name: this.form.last_name,
+              birthday: this.form.birthday,
+              phone_number: this.form.phone_number,
+              organ_donor : this.form.organ_donor,
+              blood_type: this.form.blood_type,
+              social_security_number: this.form.social_security_number,
+              license_number: this.form.license_number,
+              adress: {
+                number: this.form.adress.number,
+                street: this.form.adress.street,
+                complement: this.form.adress.complement,
+                postal_code: this.form.adress.postal_code,
+                city: this.form.adress.city,
+                state: this.form.adress.state,
+                country: this.form.adress.country,
+              },
+              diseases:this.form.diseases,
+              hospitalization:this.form.hospitalization,
+              allergy:this.form.allergy,
+              treatment: this.form.treatment,
+              contact: {
+                last_name: this.form.contact.last_name,
+                first_name: this.form.contact.first_name,
+                phone_number: this.form.contact.phone_number,
+              },
+              doctor: {
+                last_name: this.form.doctor.last_name,
+                first_name: this.form.doctor.first_name,
+                phone_number: this.form.doctor.phone_number,
+                city: this.form.doctor.city,
+              },
+            })
+            .then(docRef => {
+              alert('TOTOO');
+            })
+            .catch(error => {
+              alert(error);
+            });
       },
     },
   };
