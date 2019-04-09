@@ -21,12 +21,16 @@
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Nom : ">
-                <b-form-input name="last_name" placeholder="Nom"></b-form-input>
+                <b-form-input
+                  v-model="form.last_name" name="last_name" placeholder="Nom" class="form-control"
+                  :class="{ 'is-invalid': submitted && $v.form.last_name.$error }"/>
+                <div v-if="submitted && !$v.form.last_name.required" class="invalid-feedback">Last Name is required</div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Prénom : ">
-              <b-form-input name="first_name" placeholder="Prenom"></b-form-input>
+              <b-form-input name="first_name" placeholder="Prenom" :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
+                <div v-if="submitted && !$v.form.first_name.required" class="invalid-feedback">First Name is required</div>
               </b-form-group>
             </div>
           </b-row>
@@ -34,7 +38,8 @@
           <b-row>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Date de naissance : ">
-                <b-form-input type="date" name="birthday" placeholder="Date de naissance"></b-form-input>
+                <b-form-input type="date" name="birthday" placeholder="Date de naissance" :class="{ 'is-invalid': submitted && $v.form.birthday.$error }"/>
+                <div v-if="submitted && !$v.form.birthday.required" class="invalid-feedback">Birthday is required</div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -197,12 +202,12 @@
           <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Nom : ">
-                <b-form-input v-model="form.contact.last_name" required placeholder="Nom du contact"></b-form-input>
+                <b-form-input v-model="form.contact.last_name"  placeholder="Nom du contact"></b-form-input>
               </b-form-group>
             </div>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Prénom : ">
-                <b-form-input v-model="form.contact.first_name" required placeholder="Prénom du contact"></b-form-input>
+                <b-form-input v-model="form.contact.first_name"  placeholder="Prénom du contact"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -210,7 +215,7 @@
           <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Téléphone : ">
-                <b-form-input v-model="form.contact.phone_number" type="tel" required placeholder="Téléphone du contact"></b-form-input>
+                <b-form-input v-model="form.contact.phone_number" type="tel" placeholder="Téléphone du contact"></b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -220,12 +225,12 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Nom : ">
-                <b-form-input v-model="form.doctor.last_name" placeholder="Nom du médecin"></b-form-input>
+                <b-form-input v-model="form.doctor.last_name" placeholder="Nom du médecin"/>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Prenom : ">
-                <b-form-input v-model="form.doctor.first_name" placeholder="Prenom du médecin"></b-form-input>
+                <b-form-input v-model="form.doctor.first_name" placeholder="Prenom du médecin"/>
               </b-form-group>
             </div>
           </b-row>
@@ -253,8 +258,8 @@
 </template>
 
 <script>
-  import db from '@/firebase'
-  import {required, numeric} from "vuelidate/lib/validators";
+  import db from '@/firebase';
+  import { required, numeric } from 'vuelidate/lib/validators';
   import Navbar from '../components/Navbar.vue';
 
   export default {
@@ -318,29 +323,45 @@
             city: null,
           },
         },
+        submitted: false,
       };
     },
     validations: {
       form: {
-        civility: {required},
-        first_name: {required},
-        last_name: {required},
-        birthday: {required},
-        phone_number: {required, numeric},
-        photo: {required},
-        adress: {
-          number: {required, numeric},
-          street: {required},
-          complement: {required},
-          postal_code: {required},
-          city: {required},
-          state: {required},
-          country: {required},
+        civility: { required },
+        first_name: { required },
+        last_name: { required },
+        birthday: { required },
+        phone_number: {
+          required,
+          numeric,
         },
-      }
+        photo: { required },
+        adress: {
+          number: {
+            required,
+            numeric,
+          },
+          street: { required },
+          complement: { required },
+          postal_code: { required },
+          city: { required },
+          state: { required },
+          country: { required },
+        },
+        doctor: {
+          last_name: { required },
+        },
+      },
     },
     methods: {
       saveMedicalFile: function () {
+          this.submitted = true;
+          // stop here if form is invalid
+          this.$v.$touch();
+          if (this.$v.$invalid) {
+            return;
+          }
         db.collection('users')
           .add({
             user_id: 'toto',
@@ -446,5 +467,9 @@
     color: #fff;
     background-color: #545b62;
     border-color: #4e555b;
+  }
+
+  .invalid-feedback {
+    color:#fff
   }
 </style>
