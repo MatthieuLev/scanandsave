@@ -6,7 +6,7 @@
       <div class="custom-card">
         <b-table striped hover :items="items"></b-table>
       </div>
-      <b-button class="button-validate">Voir mon panier</b-button>
+      <b-button class="button-validate">Créer un nouvel autocollant</b-button>
     </b-container>
   </div>
 </template>
