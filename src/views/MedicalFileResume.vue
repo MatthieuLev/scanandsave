@@ -22,15 +22,19 @@
               <p class="label">Nom : </p>
             </b-col>
             <b-col>
-              <b-form-input :disabled="disabled" v-model="form.last_name" :value=this.form.last_name></b-form-input>
+              <b-form-input :disabled="disabled"  v-model="form.last_name" :value=this.form.last_name class="form-control"
+                            :class="{ 'is-invalid': submitted && $v.form.last_name.$error }"/>
+              <div v-if="submitted && !$v.form.last_name.required" class="invalid-feedback">Nom obligatoire</div>
             </b-col>
           </b-row>
           <b-row>
             <b-col class="col-lg-2">
-              <p class="label">Prenom : </p>
+              <p class="label">Prénom : </p>
             </b-col>
             <b-col>
-              <b-form-input :disabled="disabled" v-model="form.first_name" :value=this.form.first_name></b-form-input>
+              <b-form-input :disabled="disabled" v-model="form.first_name" :value=this.form.first_name class="form-control"
+                            :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
+              <div v-if="submitted && !$v.form.first_name.required" class="invalid-feedback">Prénom obligatoire</div>
             </b-col>
           </b-row>
           <b-row>
@@ -38,7 +42,9 @@
               <p class="label">Date de naissance : </p>
             </b-col>
             <b-col>
-              <b-form-input type="date" :disabled="disabled" v-model="form.birthday" :value=this.form.birthday></b-form-input>
+              <b-form-input type="date" :disabled="disabled" v-model="form.birthday" :value=this.form.birthday class="form-control"
+                            :class="{ 'is-invalid': submitted && $v.form.birthday.$error }"/>
+              <div v-if="submitted && !$v.form.birthday.required" class="invalid-feedback">Date de naissance obligatoire</div>
             </b-col>
           </b-row>
           <b-row>
@@ -46,7 +52,9 @@
               <p class="label">Téléphone : </p>
             </b-col>
             <b-col>
-              <b-form-input type="number" :disabled="disabled" v-model="form.phone_number" :value=this.form.phone_number></b-form-input>
+              <b-form-input type="number" :disabled="disabled" v-model="form.phone_number" :value=this.form.phone_number class="form-control"
+                            :class="{ 'is-invalid': submitted && $v.form.phone_number.$error }"/>
+              <div v-if="submitted && !$v.form.phone_number.required" class="invalid-feedback">Numéro de téléphone obligatoire</div>
             </b-col>
           </b-row>
           <b-row>
@@ -65,7 +73,9 @@
                 <p class="label">Numéro : </p>
               </b-col>
               <b-col>
-                <b-form-input type="number" :disabled="disabled" v-model="form.adress.number" :value=this.form.adress.number></b-form-input>
+                <b-form-input type="number" :disabled="disabled" v-model="form.adress.number" :value=this.form.adress.number class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.number.$error }"/>
+                <div v-if="submitted && !$v.form.adress.number.required" class="invalid-feedback">Numéro de rue obligatoire</div>
               </b-col>
             </b-row>
             <b-row>
@@ -73,7 +83,9 @@
                 <p class="label">Nom de voie : </p>
               </b-col>
               <b-col>
-                <b-form-input :disabled="disabled" v-model="form.adress.street" :value=this.form.adress.street></b-form-input>
+                <b-form-input :disabled="disabled" v-model="form.adress.street" :value=this.form.adress.street class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.street.$error }"/>
+                <div v-if="submitted && !$v.form.adress.street.required" class="invalid-feedback">Nom de voie obligatoire</div>
               </b-col>
             </b-row>
             <b-row>
@@ -91,15 +103,19 @@
                 <p class="label">Ville : </p>
               </b-col>
               <b-col>
-                <b-form-input :disabled="disabled" v-model="form.adress.city" :value=this.form.adress.city></b-form-input>
+                <b-form-input :disabled="disabled" v-model="form.adress.city" :value=this.form.adress.city class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.city.$error }"/>
+                <div v-if="submitted && !$v.form.adress.city.required" class="invalid-feedback">Ville obligatoire</div>
               </b-col>
             </b-row>
             <b-row>
               <b-col class="col-lg-4">
-                <p class="label">Etat : </p>
+                <p class="label">Région / Etat : </p>
               </b-col>
               <b-col>
-                <b-form-input :disabled="disabled"  v-model="form.adress.state" :value=this.form.adress.state></b-form-input>
+                <b-form-input :disabled="disabled"  v-model="form.adress.state" :value=this.form.adress.state class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.state.$error }"/>
+                <div v-if="submitted && !$v.form.adress.state.required" class="invalid-feedback">Région / Etat obligatoire</div>
               </b-col>
             </b-row>
             <b-row>
@@ -107,7 +123,9 @@
                 <p class="label">Code Postal :</p>
               </b-col>
               <b-col>
-                <b-form-input type="number" :disabled="disabled"  v-model="form.adress.postal_code" :value=this.form.adress.postal_code></b-form-input>
+                <b-form-input type="number" :disabled="disabled"  v-model="form.adress.postal_code" :value=this.form.adress.postal_code class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.postal_code.$error }"/>
+                <div v-if="submitted && !$v.form.adress.postal_code.required" class="invalid-feedback">Code postal obligatoire</div>
               </b-col>
             </b-row>
             <b-row>
@@ -115,7 +133,9 @@
                 <p class="label">Pays : </p>
               </b-col>
               <b-col>
-                <b-form-input :disabled="disabled" v-model="form.adress.country" :value=this.form.adress.country></b-form-input>
+                <b-form-input :disabled="disabled" v-model="form.adress.country" :value=this.form.adress.country class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.country.$error }"/>
+                <div v-if="submitted && !$v.form.adress.country.required" class="invalid-feedback">Pays obligatoire</div>
               </b-col>
             </b-row>
           </b-col>
@@ -292,6 +312,7 @@
   import router from '../router';
   import firebase from 'firebase';
   import Navbar from '../components/Navbar.vue';
+  import { required, numeric } from 'vuelidate/lib/validators';
 
     export default {
       name: 'MedicalFileResume',
@@ -341,8 +362,43 @@
           image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg'],
         };
       },
+
+      validations: {
+        form: {
+          civility: {required},
+          first_name: {required},
+          last_name: {required},
+          birthday: {required},
+          phone_number: {
+            required,
+            numeric,
+          },
+          photo: {required},
+          adress: {
+            number: {
+              required,
+              numeric,
+            },
+            street: {required},
+            complement: {required},
+            postal_code: {required},
+            city: {required},
+            state: {required},
+            country: {required},
+          },
+          doctor: {
+            last_name: {required},
+          },
+        },
+      },
         methods: {
           saveModificationMedicalFile() {
+            this.submitted = true;
+            // stop here if form is invalid
+            this.$v.$touch();
+            if (this.$v.$invalid) {
+              return;
+            }
             alert('UPDATE');
             db.collection('medicalFiles')
               .doc(firebase.auth().currentUser.uid)
