@@ -4,7 +4,7 @@
     <b-container>
       <h1>Mes autocollants</h1>
       <div class="custom-card">
-        <b-table striped hover :items="items"></b-table>
+        <b-table striped :items="stickers"></b-table>
       </div>
       <router-link class="button-validate" to="StickersCreation" replace>Créer un nouvel autocollant</router-link>
     </b-container>
@@ -23,17 +23,25 @@
     },
     data() {
       return {
-        items: []
+        stickers: [],
       };
     },
     created() {
+      let self = this;
       db.collection('stickers')
         .doc(firebase.auth().currentUser.uid)
+        .collection('userStickers')
         .get()
-        .then((doc) => {
-          for (let item in doc.data()) {
-            console.log(item)
-            this.items.push(item)
+        .then(function(querySnapshot) {
+          if (querySnapshot.empty) {
+            console.log('no stickers documents found from userStickers collection');
+          } else {
+            // go through all the results
+            querySnapshot.forEach(function (documentSnapshot) {
+              let data =documentSnapshot.data();
+              console.log(data);
+              self.stickers.push(data);
+            });
           }
         }).catch(error => {
         alert(error)
