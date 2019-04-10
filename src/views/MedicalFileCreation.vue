@@ -112,10 +112,10 @@
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Etat/Province : ">
-                <b-form-input v-model="form.adress.state" name="adress.state" placeholder="Etat/Province"
+                <b-form-input v-model="form.adress.state" name="adress.state" placeholder="Région / Etat"
                               class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.adress.state.$error }"/>
-                <div v-if="submitted && !$v.form.adress.state.required" class="invalid-feedback">Etat/Province
+                <div v-if="submitted && !$v.form.adress.state.required" class="invalid-feedback">Région / Etat
                   obligatoire
                 </div>
               </b-form-group>
