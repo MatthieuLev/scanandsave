@@ -15,7 +15,7 @@
                 <select v-model="form.civility" class="form-control">
                   <option>Madame</option>
                   <option>Monsieur</option>
-                  <option>Mademoiselle</option>
+                  <option>Autre</option>
                 </select>
               </b-form-group>
             </div>
