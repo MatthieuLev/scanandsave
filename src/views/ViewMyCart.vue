@@ -8,7 +8,8 @@
         <b-table striped hover :items="items"></b-table>
         <div>
           <b-row>
-            <b-col class="buttonPosition">
+
+            <b-col>
               <b-button variant="success">Valider</b-button>
               <b-button variant="danger">Annuler</b-button>
             </b-col>
@@ -44,16 +45,7 @@
 </script>
 
 <style scoped>
-  .buttonPosition {
-    margin-bottom: 8PX;
-  }
-
   .btn {
     margin: 8px;
   }
-
-  .row {
-    flex-direction: row-reverse;
-  }
-
 </style>
