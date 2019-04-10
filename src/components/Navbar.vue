@@ -28,10 +28,9 @@
 </template>
 
 <script>
-  //
   import database from '../firebase';
   import router from '../router';
-//
+
   export default {
     name: 'Navbar',
     computed: {

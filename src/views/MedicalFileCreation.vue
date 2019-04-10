@@ -305,7 +305,7 @@
 <script>
   import db from '../firebase.js';
   import firebase from 'firebase';
-  import { required, numeric } from 'vuelidate/lib/validators';
+  import {required, numeric} from 'vuelidate/lib/validators';
   import Navbar from '../components/Navbar.vue';
   import MedicalFileResume from "./MedicalFileResume.vue";
 
@@ -428,7 +428,7 @@
               city: this.form.doctor.city,
             },
           })
-          .then(docRef => {
+          .then(() => {
             this.router.push(MedicalFileResume);
           })
           .catch(error => {
