@@ -289,6 +289,7 @@
 
 <script>
   import db from '../firebase.js';
+  import router from '../router';
   import firebase from 'firebase';
   import Navbar from '../components/Navbar.vue';
 
@@ -438,7 +439,7 @@
               this.form.doctor.phone_number = doc.data().doctor.phone_number;
               this.form.doctor.city = doc.data().doctor.city;
             }).catch(error => {
-              alert('Error getting document:', error);
+            router.push('MedicalFileCreation');
             });
         },
     };
