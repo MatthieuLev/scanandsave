@@ -5,8 +5,16 @@
       <b-form class="registration-form">
         <Menu></Menu>
         <h1>Mon Panier</h1>
-        <b-table striped hover :items="items"></b-table>
-        <b-table striped hover :items="paiement"></b-table>
+        <b-table striped :fields="fields" :items="items">
+
+        </b-table>
+        <b-table striped hover :fields="paiement">
+
+          <template slot="total_hc" slot-scope="data">
+
+          </template>
+
+        </b-table>
         <div>
           <b-row>
 
@@ -34,13 +42,21 @@
     },
     data() {
       return {
-
-        items: [
+        total:0,
+        items: [],
+        fields: [
+          {key: 'color', label: 'Couleur'},
+          {key: 'quantity', label: 'Quantité'},
+          {key: 'shape', label: 'Forme'},
+          {key: 'size', label: 'Size'},
+          {key: 'theme', label: 'Theme'},
+          {key: 'prix', label: 'Prix'},
+          {key: 'prix_total', label: 'Prix Total'},
         ],
         paiement:[
-          { Total: 'Total HC', Prix: '10.56' },
-          { Total: 'Total TTC', Prix: '11.56' },
-          { Total: 'Total TTC frais de port', Prix: '12.40' }    ]
+          { key:"total_hc", label:"Total HC"}
+          /*,{ Total: 'Total TTC', Prix: this.total*1.2},
+          { Total: 'Total TTC frais de port', Prix: (this.total*1.2)+3 }*/]
       };
     },
     created() {
@@ -58,7 +74,17 @@
             querySnapshot.forEach(function (documentSnapshot) {
               let data =documentSnapshot.data();
               console.log(data);
+              if (data.size ==="small"){
+                data['prix'] = 5;
+              }
+              else if (data.size==="medium"){
+                data['prix'] = 6;
+              }
+              else {data['prix']=7}
+              data['prix_total']=data['prix']*data['quantity'];
+
               self.items.push(data);
+              self.total = self.total + data['prix_total'];
             });
           }
         }).catch(error => {
