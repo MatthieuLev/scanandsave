@@ -31,8 +31,8 @@
 </template>
 
 <script>
-  import Navbar from '../components/Navbar.vue';
   import firebase from 'firebase';
+  import Navbar from '../components/Navbar.vue';
   import db from '../firebase.js';
 
   export default {
@@ -45,52 +45,52 @@
         total:0,
         items: [],
         fields: [
-          {key: 'color', label: 'Couleur'},
-          {key: 'quantity', label: 'Quantité'},
-          {key: 'shape', label: 'Forme'},
-          {key: 'size', label: 'Size'},
-          {key: 'theme', label: 'Theme'},
-          {key: 'prix', label: 'Prix'},
-          {key: 'prix_total', label: 'Prix Total'},
+          { key: 'color', label: 'Couleur' },
+          { key: 'quantity', label: 'Quantité' },
+          { key: 'shape', label: 'Forme' },
+          { key: 'size', label: 'Size' },
+          { key: 'theme', label: 'Theme' },
+          { key: 'prix', label: 'Prix' },
+          { key: 'prix_total', label: 'Prix Total' },
         ],
         paiement:[
-          { key:"total_hc", label:"Total HC"}
+          { key:'total_hc', label:'Total HC' },
           /*,{ Total: 'Total TTC', Prix: this.total*1.2},
-          { Total: 'Total TTC frais de port', Prix: (this.total*1.2)+3 }*/]
+          { Total: 'Total TTC frais de port', Prix: (this.total*1.2)+3 }*/],
       };
     },
     created() {
-      let self = this;
+      const self = this;
       db.collection('stickers')
         .doc(firebase.auth().currentUser.uid)
         .collection('userStickers')
-        .where("in_order", "==", true)
+        .where('in_order', '==', true)
         .get()
-        .then(function(querySnapshot) {
+        .then(querySnapshot => {
           if (querySnapshot.empty) {
             console.log('no stickers documents ordered found from userStickers collection');
           } else {
             // go through all the results
-            querySnapshot.forEach(function (documentSnapshot) {
-              let data =documentSnapshot.data();
+            querySnapshot.forEach(documentSnapshot => {
+              const data = documentSnapshot.data();
               console.log(data);
-              if (data.size ==="small"){
-                data['prix'] = 5;
-              }
-              else if (data.size==="medium"){
-                data['prix'] = 6;
-              }
-              else {data['prix']=7}
-              data['prix_total']=data['prix']*data['quantity'];
+              if (data.size === 'small')
+                data.prix = 5;
+              else if (data.size === 'medium')
+                data.prix = 6;
+              else data.prix = 7;
+
+              data.prix_total = data.prix * data.quantity;
 
               self.items.push(data);
-              self.total = self.total + data['prix_total'];
+              self.total += data.prix_total;
             });
           }
-        }).catch(error => {
-        alert(error)
+        })
+        .catch(error => {
+        alert(error);
       });
-    }
+    },
   };
 </script>
 

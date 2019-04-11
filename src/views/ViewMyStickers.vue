@@ -31,8 +31,8 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
-  import db from '../firebase.js';
   import firebase from 'firebase';
+  import db from '../firebase.js';
 
   export default {
     name: 'ViewMyStickers',
@@ -45,40 +45,41 @@
         errorMessage: '',
         fields: [
           'index',
-          {key: 'theme', label: 'Theme'},
-          {key: 'color', label: 'Couleur'},
-          {key: 'size', label: 'Taille'},
-          {key: 'shape', label: 'Forme'},
-          {key: 'preview', label: 'Aperçu'},
-          {key: 'addtoCart', label: 'Ajouter au panier'},
+          { key: 'theme', label: 'Theme' },
+          { key: 'color', label: 'Couleur' },
+          { key: 'size', label: 'Taille' },
+          { key: 'shape', label: 'Forme' },
+          { key: 'preview', label: 'Aperçu' },
+          { key: 'addtoCart', label: 'Ajouter au panier' },
         ],
       };
     },
     created() {
-      let self = this;
+      const self = this;
       db.collection('stickers')
         .doc(firebase.auth().currentUser.uid)
         .collection('userStickers')
         .get()
-        .then(function (querySnapshot) {
+        .then(querySnapshot => {
           if (querySnapshot.empty) {
             console.log('no stickers documents found from userStickers collection');
           } else {
             // go through all the results
-            querySnapshot.forEach(function (documentSnapshot) {
-              let data = documentSnapshot.data();
+            querySnapshot.forEach(documentSnapshot => {
+              const data = documentSnapshot.data();
               console.log(data);
               data['id'] = documentSnapshot.id;
               self.stickers.push(data);
             });
           }
-        }).catch(error => {
+        })
+        .catch(error => {
         this.errorMessage = error;
       });
     },
 
     methods: {
-      check: (e, item) => {
+      check(e, item) {
         db.collection('stickers')
           .doc(firebase.auth().currentUser.uid)
           .collection('userStickers')
@@ -86,11 +87,12 @@
           .update({
             in_order: !item.in_order,
             quantity: !item.in_order ? 1 : item.quantity,
-          }).catch(error => {
+          })
+          .catch(error => {
           this.errorMessage = error;
         });
-      }
-    }
+      },
+    },
   };
 </script>
 
