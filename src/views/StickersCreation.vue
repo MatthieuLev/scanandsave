@@ -97,6 +97,8 @@
             shape: this.shape,
             color: this.color,
             size: this.size,
+            in_order: false,
+            quantity: 1,
           })
           .then(() => {
             router.push(ViewMyStickers);

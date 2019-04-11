@@ -16,7 +16,7 @@
           </template>
 
           <template slot="addtoCart" slot-scope="data">
-            <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order">
+            <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order" @change="check($event, data.item)">
             </b-form-checkbox>
           </template>
         </b-table>
@@ -65,12 +65,28 @@
             querySnapshot.forEach(function (documentSnapshot) {
               let data = documentSnapshot.data();
               console.log(data);
+              data['id'] = documentSnapshot.id;
               self.stickers.push(data);
             });
           }
         }).catch(error => {
         alert(error)
       });
+    },
+
+    methods: {
+      check: (e, item) => {
+        db.collection('stickers')
+          .doc(firebase.auth().currentUser.uid)
+          .collection('userStickers')
+          .doc(item.id)
+          .update({
+            in_order: !item.in_order,
+            quantity: !item.in_order ? 1 : item.quantity,
+      }).catch(error => {
+          alert(error)
+        });
+      }
     }
   };
 </script>
