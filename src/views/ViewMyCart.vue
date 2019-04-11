@@ -6,6 +6,7 @@
         <Menu></Menu>
         <h1>Mon Panier</h1>
         <b-table striped hover :items="items"></b-table>
+        <b-table striped hover :items="paiement"></b-table>
         <div>
           <b-row>
 
@@ -23,6 +24,8 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
+  import firebase from 'firebase';
+  import db from '../firebase.js';
 
   export default {
     name: 'Mon_Panier',
@@ -33,14 +36,35 @@
       return {
 
         items: [
-          {Numéro_commande: true, Produit: 40, Quantité: 'Dickerson', Etat_de_la_commande: 'Macdonald'},
-          {Numéro_commande: false, Produit: 21, Quantité: 'Larsen', Etat_de_la_commande: 'Shaw'},
-          {Numéro_commande: false, Produit: 89, Quantité: 'Geneva', Etat_de_la_commande: 'Wilson'},
-          {Numéro_commande: true, Produit: 38, Quantité: 'Jami', Etat_de_la_commande: 'Carney'},
         ],
+        paiement:[
+          { Total: 'Total HC', Prix: '10.56' },
+          { Total: 'Total TTC', Prix: '11.56' },
+          { Total: 'Total TTC frais de port', Prix: '12.40' }    ]
       };
     },
-
+    created() {
+      let self = this;
+      db.collection('stickers')
+        .doc(firebase.auth().currentUser.uid)
+        .collection('userStickers')
+        .where("in_order", "==", true)
+        .get()
+        .then(function(querySnapshot) {
+          if (querySnapshot.empty) {
+            console.log('no stickers documents ordered found from userStickers collection');
+          } else {
+            // go through all the results
+            querySnapshot.forEach(function (documentSnapshot) {
+              let data =documentSnapshot.data();
+              console.log(data);
+              self.items.push(data);
+            });
+          }
+        }).catch(error => {
+        alert(error)
+      });
+    }
   };
 </script>
 
