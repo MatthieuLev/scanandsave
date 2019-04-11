@@ -24,6 +24,8 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
+  import firebase from 'firebase';
+  import db from '../firebase.js';
 
   export default {
     name: 'Mon_Panier',
@@ -34,7 +36,6 @@
       return {
 
         items: [
-          { Produit: 40, Quantité: 'Dickerson', Etat_de_la_commande: 'Macdonald',Ref:'1222333',Prix:'10.65€'},
         ],
         paiement:[
           { Total: 'Total HC', Prix: '10.56' },
@@ -42,7 +43,28 @@
           { Total: 'Total TTC frais de port', Prix: '12.40' }    ]
       };
     },
-
+    created() {
+      let self = this;
+      db.collection('stickers')
+        .doc(firebase.auth().currentUser.uid)
+        .collection('userStickers')
+        .where("in_order", "==", true)
+        .get()
+        .then(function(querySnapshot) {
+          if (querySnapshot.empty) {
+            console.log('no stickers documents ordered found from userStickers collection');
+          } else {
+            // go through all the results
+            querySnapshot.forEach(function (documentSnapshot) {
+              let data =documentSnapshot.data();
+              console.log(data);
+              self.items.push(data);
+            });
+          }
+        }).catch(error => {
+        alert(error)
+      });
+    }
   };
 </script>
 
