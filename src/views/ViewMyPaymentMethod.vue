@@ -16,24 +16,31 @@
       ></b-form-checkbox-group>
     </b-form-group>
     <div>
-      <label for="input-formatter">Text input with formatter (on input)</label>
+      <label for="input-formatter"></label>
       <b-form-input
         id="input-formatter"
         v-model="text1"
         :formatter="format"
         placeholder="N° de carte"
-        aria-describedby="input-formatter-help"
+
       ></b-form-input>
       <b-form-input
         id="input-formatter"
         v-model="text1"
         :formatter="format"
         placeholder="Enter your name"
-        aria-describedby="input-formatter-help"
+        aria-describedby="input-formatter-help"></b-form-input>
+      <b-form-input
+      id="input-formatter"
+      v-model="text1"
+      :formatter="format"
+      placeholder="  /  "
+      aria-describedby="input-formatter-help"
       ></b-form-input>
+
       <b-col >
         <b-form-group >
-          <b-form-input type ="date" required placeholder="Date de naissance"></b-form-input>
+
         </b-form-group>
       </b-col>
 
@@ -43,10 +50,14 @@
 
     <b-form-group label="Choisir le mode de paiement:">
       <b-form-checkbox-group id="checkbox-group-2" v-model="selected" name="flavour-2">
-        <b-form-checkbox value="orange">Orange</b-form-checkbox>
-        <b-form-checkbox value="apple">Apple</b-form-checkbox>
-        <b-form-checkbox value="pineapple">Pineapple</b-form-checkbox>
-        <b-form-checkbox value="grape">Grape</b-form-checkbox>
+       <i class="fab fa-cc-visa"></i>
+        <b-form-checkbox value="orange"></b-form-checkbox>
+        <i class="fab fa-cc-paypal"></i>
+        <b-form-checkbox value="apple"></b-form-checkbox>
+        <i class="fab fa-cc-amex"></i>
+        <b-form-checkbox value="pineapple"></b-form-checkbox>
+        <i class="fab fa-cc-mastercard"></i>
+        <b-form-checkbox value="grape"></b-form-checkbox>
       </b-form-checkbox-group>
 
     </b-form-group>
@@ -92,5 +103,10 @@
 </script>
 
 <style>
+.dateview
+{
+  padding: 6px 12px;
+}
+
 
 </style>
