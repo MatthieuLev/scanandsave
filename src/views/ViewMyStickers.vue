@@ -16,10 +16,12 @@
           </template>
 
           <template slot="addtoCart" slot-scope="data">
-            <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order" @change="check($event, data.item)">
+            <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order"
+                             @change="check($event, data.item)">
             </b-form-checkbox>
           </template>
         </b-table>
+        <p class="error" v-if="errorMessage">{{errorMessage}}</p>
 
       </div>
       <router-link class="button-validate" to="StickersCreation" replace>Créer un nouvel autocollant</router-link>
@@ -40,6 +42,7 @@
     data() {
       return {
         stickers: [],
+        errorMessage: '',
         fields: [
           'index',
           {key: 'theme', label: 'Theme'},
@@ -70,7 +73,7 @@
             });
           }
         }).catch(error => {
-        alert(error)
+        this.errorMessage = error;
       });
     },
 
@@ -83,8 +86,8 @@
           .update({
             in_order: !item.in_order,
             quantity: !item.in_order ? 1 : item.quantity,
-      }).catch(error => {
-          alert(error)
+          }).catch(error => {
+          this.errorMessage = error;
         });
       }
     }
@@ -136,5 +139,10 @@
   .stickers {
     width: auto;
     height: 30px;
+  }
+
+  .error {
+    color: #5e0000;
+    font-size: 12px;
   }
 </style>

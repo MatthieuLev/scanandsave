@@ -56,10 +56,10 @@
                    alt="Stickers picture"></b-img>
           </b-col>
         </b-row>
-        <div>../img/stickers/{{this.theme}}/{{this.color}}.png`</div>
         <b-row>
           <b-col>
             <b-button variant="outline-primary" type="submit">Enregistrer</b-button>
+            <p class="error" v-if="errorMessage">{{errorMessage}}</p>
           </b-col>
         </b-row>
       </b-form>
@@ -81,6 +81,7 @@
     },
     data() {
       return {
+        errorMessage: '',
         theme: "motoFemme",
         shape: "square",
         color: "black",
@@ -104,7 +105,7 @@
             router.push(ViewMyStickers);
           })
           .catch(error => {
-            alert(error);
+            this.errorMessage = error;
           });
       },
     },
@@ -115,5 +116,9 @@
 <style scoped>
   .stickers {
     max-width: 500px;
+  }
+  .error {
+    color: #5e0000;
+    font-size: 12px;
   }
 </style>

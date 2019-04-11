@@ -303,7 +303,8 @@
           </b-col>
         </b-row>
       </b-container>
-    <button v-on:click="modify()">{{this.buttonName}}</button>
+    <b-button v-on:click="modify()">{{this.buttonName}}</b-button>
+    <p class="error" v-if="errorMessage">{{errorMessage}}</p>
   </div>
 </template>
 
@@ -323,6 +324,7 @@
         return {
           disabled: true,
           buttonName: 'Modifier les informations',
+          errorMessage: '',
           form: {
             civility: 'Madame',
             first_name: null,
@@ -399,7 +401,6 @@
             if (this.$v.$invalid) {
               return;
             }
-            alert('UPDATE');
             db.collection('medicalFiles')
               .doc(firebase.auth().currentUser.uid)
               .update({
@@ -436,12 +437,13 @@
                   phone_number: this.form.doctor.phone_number,
                   city: this.form.doctor.city,
                 },
-              });
+              }).catch(error => {
+              this.errorMessage = error;
+            });
           },
           modify() {
             if (!this.disabled) {
               this.saveModificationMedicalFile();
-              alert('Modification enregistrées');
               this.buttonName = 'Modifier les informations';
               this.disabled = !this.disabled;
             } else {
@@ -494,7 +496,7 @@
               this.form.doctor.last_name = doc.data().doctor.last_name;
               this.form.doctor.phone_number = doc.data().doctor.phone_number;
               this.form.doctor.city = doc.data().doctor.city;
-            }).catch(error => {
+            }).catch(() => {
             router.push('MedicalFileCreation');
             });
         },
@@ -508,5 +510,9 @@
   }
   .label{
     font-weight: bold;
+  }
+  .error {
+    color: #5e0000;
+    font-size: 12px;
   }
 </style>
