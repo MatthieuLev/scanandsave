@@ -54,8 +54,7 @@
             <div class="col-md-4 col-xs-12">
               <b-form-group
                 label="Photo d'identité : ">
-                <b-form-file v-model="form.photo" name="photo" placeholder="Photo d'identité" class="form-control"
-                             :class="{ 'is-invalid': submitted && $v.form.photo.$error }"/>
+                <b-form-file v-model="form.photo" name="photo" placeholder="Photo d'identité" class="form-control"/>
                 <div v-if="submitted && !$v.form.photo.required" class="invalid-feedback">Photo obligatoire</div>
               </b-form-group>
             </div>
@@ -368,7 +367,6 @@
           required,
           numeric,
         },
-        photo: { required },
         adress: {
           number: {
             required,

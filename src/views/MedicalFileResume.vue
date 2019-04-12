@@ -411,7 +411,6 @@
           required,
           numeric,
         },
-        photo: { required },
         adress: {
           number: {
             required,
@@ -424,9 +423,6 @@
           state: { required },
           country: { required },
         },
-        doctor: {
-          last_name: { required },
-        },
       },
     },
     methods: {
@@ -434,9 +430,12 @@
         this.submitted = true;
         // stop here if form is invalid
         this.$v.$touch();
+        console.log(this.$v);
         if (this.$v.$invalid) {
+          console.log("[LOG] MedicalFileResume : Le formulaire n'est pas valide");
           return;
         }
+        console.log("[LOG] MedicalFileResume : Modifie le dossier médical");
         db.collection('medicalFiles')
           .doc(firebase.auth().currentUser.uid)
           .update({
@@ -489,12 +488,12 @@
       },
     },
     created() {
+      console.log("[LOG] MedicalFileResume : Récupère le dossier médical");
       db.collection('medicalFiles')
         .doc(firebase.auth().currentUser.uid)
         .get()
         .then((doc) => {
-          console.log(doc.data());
-          console.log(doc.id, ' => ', doc.data());
+          console.log("[LOG] MedicalFileResume : Récupération réussie du dossier médical");
           this.form.civility = doc.data().civility;
           this.form.first_name = doc.data().first_name;
           this.form.last_name = doc.data().last_name;
@@ -533,6 +532,7 @@
           this.form.doctor.city = doc.data().doctor.city;
         })
         .catch(() => {
+          console.log("[LOG] MedicalFileResume : La récupération du dossier à échouée, on redirige vers MedicalFileCreation");
           router.push('MedicalFileCreation');
         });
     },
