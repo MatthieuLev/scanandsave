@@ -1,20 +1,27 @@
 <template>
     <b-container>
       <div>
-        <h2>Fiche d'identité</h2>
+        <b-row>
+          <b-col>
+            <h2>Fiche d'identité</h2>
+          </b-col>
+          <b-col class="col-lg-1">
+            <button type="button" class="btn btn-dark">+</button>
+          </b-col>
+        </b-row>
         <b-row>
           <b-col>
             <b-row>
-              <p>Nom : {{this.form.last_name}}</p>
+             <p class="label">Nom : </p><p>{{this.form.last_name}}</p>
             </b-row>
             <b-row>
-              <p>Prenom : {{this.form.first_name}}</p>
+              <p class="label">Prenom : </p><p>{{this.form.first_name}}</p>
             </b-row>
             <b-row>
-              <p>Age : {{this.form.birthday}}</p>
+              <p class="label">Age : </p><p>{{this.form.birthday}}</p>
             </b-row>
             <b-row>
-              <p>Sexe : {{this.sexe}}</p>
+              <p class="label">Sexe : </p><p>{{this.sexe}}</p>
             </b-row>
           </b-col>
           <b-col>
@@ -23,39 +30,53 @@
         </b-row>
       </div>
       <div>
-        <h2>Informations médicales</h2>
         <b-row>
-          <p>Groupe sanguin : {{this.form.blood_type}}</p>
+          <b-col>
+            <h2>Informations médicales</h2>
+          </b-col>
+          <b-col class="col-lg-1">
+            <button type="button" class="btn btn-dark">+</button>
+          </b-col>
         </b-row>
         <b-row>
-          <p>Donneur d'organe : {{this.form.organ_donor}}</p>
+          <p class="label">Groupe sanguin : </p><p> {{this.form.blood_type}}</p>
         </b-row>
         <b-row>
-          <p>Maladie : {{this.form.diseases}}</p>
+          <p class="label">Donneur d'organe : </p><p> {{this.form.organ_donor}}</p>
         </b-row>
         <b-row>
-          <p>Hospitalisation : {{this.form.hospitalization}} </p>
+          <p class="label">Maladie : </p><p> {{this.form.diseases}}</p>
         </b-row>
         <b-row>
-          <p>Traitement : {{this.form.treatment}} </p>
+          <p class="label">Hospitalisation : </p><p> {{this.form.hospitalization}} </p>
         </b-row>
         <b-row>
-          <p>Allergie : {{this.form.allergy}}</p>
+          <p class="label">Traitement : </p><p> {{this.form.treatment}} </p>
+        </b-row>
+        <b-row>
+          <p class="label">Allergie : </p><p> {{this.form.allergy}}</p>
         </b-row>
       </div>
       <div>
-        <h2>Contacts</h2>
         <b-row>
-          <p>Proche : {{this.form.contact.first_name}} {{this.form.contact.last_name}} </p>
+          <b-col>
+            <h2>Contacts</h2>
+          </b-col>
+          <b-col class="col-lg-1">
+            <button type="button" class="btn btn-dark">+</button>
+          </b-col>
         </b-row>
         <b-row>
-          <p>{{this.form.contact.phone_number}}</p>
+          <p class="label">Proche : </p><p> {{this.form.contact.first_name}} {{this.form.contact.last_name}} </p>
         </b-row>
         <b-row>
-          <p>Médecin : {{this.form.doctor.first_name}} {{this.form.doctor.last_name}}</p>
+          <p class="label">Coordonnées : </p><p> {{this.form.contact.phone_number}}</p>
         </b-row>
         <b-row>
-          <p>{{this.form.doctor.phone_number}} - {{this.form.doctor.city}}</p>
+          <p class="label">Medecin : </p><p> {{this.form.doctor.first_name}} {{this.form.doctor.last_name}}</p>
+        </b-row>
+        <b-row>
+          <p class="label">Coordonnées : </p><p> {{this.form.doctor.phone_number}} - {{this.form.doctor.city}}</p>
         </b-row>
       </div>
       <div>
@@ -174,5 +195,10 @@
 </script>
 
 <style scoped>
-
+  h2 {
+    margin-bottom: 1em;
+  }
+  .label {
+    font-weight: bold;
+  }
 </style>
