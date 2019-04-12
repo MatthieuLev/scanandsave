@@ -188,8 +188,6 @@
           <b-row>
             <div class="col-md-8 col-xs-12">
               <b-form-group label="Donneur d'organes ?">
-                <b-form-radio v-model="form.organ_donor" name="some_radios" value="oui">Oui</b-form-radio>
-                <b-form-radio v-model="form.organ_donor" name="some_radios" value="non">Non</b-form-radio>
                 <b-form-radio class="customRadio" v-model="form.organ_donor" name="some_radios" value="oui">Oui
                 </b-form-radio>
                 <b-form-radio class="customRadio" v-model="form.organ_donor" name="some_radios" value="non">Non
@@ -376,19 +374,10 @@
             required,
             numeric,
           },
-<<<<<<< HEAD
           street: {required},
           postal_code: {required},
           city: {required},
           country: {required},
-=======
-          street: { required },
-          complement: { required },
-          postal_code: { required },
-          city: { required },
-          state: { required },
-          country: { required },
->>>>>>> 9b46ac2d080deb24a785a7264ebf7a93794b6e46
         },
       },
     },
