@@ -9,9 +9,10 @@ import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
-import ViewIdentity from './views/ViewIdentity.vue';
 import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
 import ViewMHTA from "./views/ViewMHTA";
+import ViewIdentity from "./views/ViewIdentity";
+import ViewContact from "./views/ViewContact";
 
 Vue.use(Router);
 
@@ -68,11 +69,6 @@ const router = new Router({
       },
     },
     {
-      path: '/ViewIdentity',
-      name: 'VViewIdentity',
-      component: ViewIdentity,
-    },
-    {
       path: '/ViewMyPaymentMethod',
       name: 'ViewMyPaymentMethod',
       component: ViewMyPaymentMethod,
@@ -94,6 +90,16 @@ const router = new Router({
       path: '/ViewMHTA',
       name: 'ViewMHTA',
       component: ViewMHTA,
+    },
+    {
+      path: '/ViewContact',
+      name: 'ViewContact',
+      component: ViewContact,
+    },
+    {
+      path: '/ViewIdentity',
+      name: 'ViewIdentity',
+      component: ViewIdentity,
     },
   ],
 });
