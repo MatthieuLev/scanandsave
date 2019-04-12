@@ -16,13 +16,38 @@
       >
         <b-carousel-slide>
           <img
-            src="../img/carousel-1.png"
+            src="../img/SCANSAVE_1.png"
             slot="img"
             alt="image slot"
             class="d-block img-fluid w-100"
           >
         </b-carousel-slide>
-        
+
+        <b-carousel-slide>
+          <img
+            src="../img/SCANSAVE_2.png"
+            slot="img"
+            alt="image slot"
+            class="d-block img-fluid w-100"
+          >
+        </b-carousel-slide>
+
+        <b-carousel-slide>
+        <img
+          src="../img/SCANSAVE_3.png"
+          slot="img"
+          alt="image slot"
+          class="d-block img-fluid w-100"
+        >
+        </b-carousel-slide>
+        <b-carousel-slide>
+          <img
+            src="../img/SCANSAVE_4.png"
+            slot="img"
+            alt="image slot"
+            class="d-block img-fluid w-100"
+          >
+        </b-carousel-slide>
       </b-carousel>
       <br>
       <br>
@@ -169,6 +194,10 @@
 </script>
 
 <style scoped>
+
+  h3 {
+    color: #90081d;
+  }
   .footer container-fluid text-center {
     background-color: #f2f2f2;
     padding: 25px;
