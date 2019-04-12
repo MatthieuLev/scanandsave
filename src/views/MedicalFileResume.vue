@@ -10,11 +10,13 @@
             <p class="label">Civilité : </p>
           </b-col>
           <b-col>
-            <select :disabled="disabled" v-model="form.civility" :value=this.form.civility>
-              <option>Madame</option>
-              <option>Monsieur</option>
-              <option>Mademoiselle</option>
-            </select>
+            <label>
+              <select :disabled="disabled" v-model="form.civility" :value=this.form.civility>
+                <option>Madame</option>
+                <option>Monsieur</option>
+                <option>Mademoiselle</option>
+              </select>
+            </label>
           </b-col>
         </b-row>
         <b-row>
@@ -234,16 +236,18 @@
           <p class="label">Groupe sanguin: </p>
         </b-col>
         <b-col class="col-lg-1">
-          <select :disabled="disabled" v-model="form.blood_type" :value=this.form.blood_type>
-            <option selected>Inconnu</option>
-            <option>A+</option>
-            <option>A-</option>
-            <option>B+</option>
-            <option>B-</option>
-            <option>AB</option>
-            <option>O+</option>
-            <option>O-</option>
-          </select>
+          <label>
+            <select :disabled="disabled" v-model="form.blood_type" :value=this.form.blood_type>
+              <option selected>Inconnu</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>AB</option>
+              <option>O+</option>
+              <option>O-</option>
+            </select>
+          </label>
         </b-col>
       </b-row>
     </b-container>
