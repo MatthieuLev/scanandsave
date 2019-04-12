@@ -11,6 +11,7 @@ import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
+import ViewGeneralInformation from "./views/ViewGeneralInformation";
 
 Vue.use(Router);
 
@@ -94,6 +95,11 @@ const router = new Router({
       path: '/MedicalFileResume',
       name: 'MedicalFileResume',
       component: MedicalFileResume,
+    },
+    {
+      path: '/ViewGeneralInformation',
+      name: 'ViewGeneralInformation',
+      component: ViewGeneralInformation,
     },
   ],
 });
