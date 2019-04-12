@@ -11,6 +11,7 @@ import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
 import ViewIdentity from './views/ViewIdentity.vue';
 import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
+import ViewMHTA from "./views/ViewMHTA";
 
 Vue.use(Router);
 
@@ -70,9 +71,6 @@ const router = new Router({
       path: '/ViewIdentity',
       name: 'VViewIdentity',
       component: ViewIdentity,
-      meta: {
-        requiresAuth: true,
-      },
     },
     {
       path: '/ViewMyPaymentMethod',
@@ -91,6 +89,11 @@ const router = new Router({
       path: '/ViewGeneralInformation',
       name: 'ViewGeneralInformation',
       component: ViewGeneralInformation,
+    },
+    {
+      path: '/ViewMHTA',
+      name: 'ViewMHTA',
+      component: ViewMHTA,
     },
   ],
 });
