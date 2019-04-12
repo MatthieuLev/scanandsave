@@ -54,8 +54,7 @@
             <div class="col-md-4 col-xs-12">
               <b-form-group
                 label="Photo d'identité : ">
-                <b-form-file v-model="form.photo" name="photo" placeholder="Photo d'identité" class="form-control"
-                             :class="{ 'is-invalid': submitted && $v.form.photo.$error }"/>
+                <b-form-file v-model="form.photo" name="photo" placeholder="Photo d'identité" class="form-control"/>
                 <div v-if="submitted && !$v.form.photo.required" class="invalid-feedback">Photo obligatoire</div>
               </b-form-group>
             </div>
@@ -76,7 +75,7 @@
           <h2>Adresse</h2>
 
           <b-row>
-            <div class="col-md-2 col-xs-12">
+            <div class="col-md-3 col-xs-12">
               <b-form-group label="Numéro : ">
                 <b-form-input v-model="form.adress.number" type="number" name="adress.number"
                               placeholder="Numéro de voie" class="form-control"
@@ -86,7 +85,7 @@
                 </div>
               </b-form-group>
             </div>
-            <div class="col-md-7 col-xs-12">
+            <div class="col-md-6 col-xs-12">
               <b-form-group label="Nom de voie : ">
                 <b-form-input v-model="form.adress.street" name="adress.street" placeholder="Nom de voie"
                               class="form-control"
@@ -103,27 +102,6 @@
               </b-form-group>
             </div>
           </b-row>
-
-          <b-row>
-            <div class="col-md-6 col-xs-12">
-              <b-form-group label="Ville : ">
-                <b-form-input v-model="form.adress.city" name="adress.city" placeholder="Ville" class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.city.$error }"/>
-                <div v-if="submitted && !$v.form.adress.city.required" class="invalid-feedback">Ville obligatoire</div>
-              </b-form-group>
-            </div>
-            <div class="col-md-6 col-xs-12">
-              <b-form-group label="Etat/Province : ">
-                <b-form-input v-model="form.adress.state" name="adress.state" placeholder="Région / Etat"
-                              class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.state.$error }"/>
-                <div v-if="submitted && !$v.form.adress.state.required" class="invalid-feedback">Région / Etat
-                  obligatoire
-                </div>
-              </b-form-group>
-            </div>
-          </b-row>
-
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Code Postal : ">
@@ -133,6 +111,21 @@
                 <div v-if="submitted && !$v.form.adress.postal_code.required" class="invalid-feedback">Code Postal
                   obligatoire
                 </div>
+              </b-form-group>
+            </div>
+            <div class="col-md-6 col-xs-12">
+              <b-form-group label="Ville : ">
+                <b-form-input v-model="form.adress.city" name="adress.city" placeholder="Ville" class="form-control"
+                              :class="{ 'is-invalid': submitted && $v.form.adress.city.$error }"/>
+                <div v-if="submitted && !$v.form.adress.city.required" class="invalid-feedback">Ville obligatoire</div>
+              </b-form-group>
+            </div>
+          </b-row>
+          <b-row>
+            <div class="col-md-6 col-xs-12">
+              <b-form-group label="Région/Etat : ">
+                <b-form-input v-model="form.adress.state" name="adress.state" placeholder="Région / Etat"
+                              class="form-control"/>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
@@ -374,18 +367,15 @@
           required,
           numeric,
         },
-        photo: { required },
         adress: {
           number: {
             required,
             numeric,
           },
-          street: { required },
-          complement: { required },
-          postal_code: { required },
-          city: { required },
-          state: { required },
-          country: { required },
+          street: {required},
+          postal_code: {required},
+          city: {required},
+          country: {required},
         },
       },
     },

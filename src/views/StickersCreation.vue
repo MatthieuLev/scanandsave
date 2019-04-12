@@ -7,8 +7,8 @@
 
         <b-row>
           <b-col>
-            <label>Choisir un autocollant :</label>
-            <select v-model="theme" title="Choix du thème" class="form-control">
+            <label for="theme">Choisir un autocollant :</label>
+            <select id="theme" v-model="theme" title="Choix du thème" class="form-control">
               <option value="motoFemme">Moto femme</option>
               <option value="motoFlamme">Moto flamme</option>
               <option value="kawasaki">Kawasaki</option>
@@ -16,8 +16,8 @@
           </b-col>
 
           <b-col>
-            <label>Choisir la forme :</label>
-            <select v-model="shape" title="Formes" class="form-control">
+            <label for="shape">Choisir la forme :</label>
+            <select id="shape" v-model="shape" title="Formes" class="form-control">
               <option value="square">Carré</option>
               <option value="round">Rond</option>
             </select>
@@ -26,8 +26,8 @@
 
         <b-row>
           <b-col>
-            <label>Choisir la couleur :</label>
-            <select v-model="color" title="Couleurs" class="form-control">
+            <label for="color">Choisir la couleur :</label>
+            <select id="color" v-model="color" title="Couleurs" class="form-control">
               <option value="black">Noir</option>
               <option value="red">Rouge</option>
               <option value="yellow">Jaune</option>
@@ -35,8 +35,8 @@
           </b-col>
 
           <b-col>
-            <label>Choisir la taille :</label>
-            <select v-model="size" title="Taille" class="form-control">
+            <label for="size">Choisir la taille :</label>
+            <select id="size" v-model="size" title="Taille" class="form-control">
               <option value="small">Petit</option>
               <option value="medium">Moyen</option>
               <option value="high">Grand</option>

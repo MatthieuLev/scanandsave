@@ -5,26 +5,19 @@
       <b-form class="registration-form">
         <Menu></Menu>
         <h1>Mon Panier</h1>
-        <b-table striped :fields="fields" :items="items">
+        <b-table striped :fields="fields" :items="items"></b-table>
+        <p class="error" v-if="errorMessage">{{errorMessage}}</p>
 
-        </b-table>
         <b-table striped hover :fields="paiement">
-
-          <template slot="total_hc" slot-scope="data">
-
-          </template>
-
+          <template slot="total_hc" slot-scope="data"></template>
         </b-table>
-        <div>
-          <b-row>
 
+          <b-row>
             <b-col>
               <b-button variant="success">Valider</b-button>
               <b-button variant="danger">Annuler</b-button>
             </b-col>
-
           </b-row>
-        </div>
       </b-form>
     </b-container>
   </div>
@@ -42,6 +35,7 @@
     },
     data() {
       return {
+        errorMessage: '',
         total:0,
         items: [],
         fields: [
@@ -88,14 +82,11 @@
           }
         })
         .catch(error => {
-        alert(error);
+          this.errorMessage = error;
       });
     },
   };
 </script>
 
 <style scoped>
-  .btn {
-    margin: 8px;
-  }
 </style>

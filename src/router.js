@@ -2,8 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
 import Home from './views/Home.vue';
-import Login from './views/Login.vue';
-import Registration from './views/Registration.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
@@ -12,6 +10,7 @@ import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
 import ViewIdentity from './views/ViewIdentity.vue';
+import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
 
 Vue.use(Router);
 
@@ -23,22 +22,6 @@ const router = new Router({
       path: '/',
       name: 'Home',
       component: Home,
-      meta: {
-        redirectAuth: true,
-      },
-    },
-    {
-      path: '/Login',
-      name: 'Login',
-      component: Login,
-      meta: {
-        redirectAuth: true,
-      },
-    },
-    {
-      path: '/Registration',
-      name: 'Registration',
-      component: Registration,
       meta: {
         redirectAuth: true,
       },
@@ -103,6 +86,11 @@ const router = new Router({
       path: '/MedicalFileResume',
       name: 'MedicalFileResume',
       component: MedicalFileResume,
+    },
+    {
+      path: '/ViewGeneralInformation',
+      name: 'ViewGeneralInformation',
+      component: ViewGeneralInformation,
     },
   ],
 });
