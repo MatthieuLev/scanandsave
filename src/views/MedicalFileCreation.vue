@@ -194,8 +194,10 @@
           <b-row>
             <div class="col-md-8 col-xs-12">
               <b-form-group label="Donneur d'organes ?">
-                <b-form-radio v-model="form.organ_donor" name="some_radios" value="oui">Oui</b-form-radio>
-                <b-form-radio v-model="form.organ_donor" name="some_radios" value="non">Non</b-form-radio>
+                <b-form-radio class="customRadio" v-model="form.organ_donor" name="some_radios" value="oui">Oui
+                </b-form-radio>
+                <b-form-radio class="customRadio" v-model="form.organ_donor" name="some_radios" value="non">Non
+                </b-form-radio>
               </b-form-group>
 
             </div>
@@ -300,6 +302,7 @@
         </div>
         <div>
           <b-button class="button-validate" type="submit">Valider</b-button>
+          <p class="error" v-if="errorMessage">{{errorMessage}}</p>
         </div>
       </b-form>
     </b-container>
@@ -307,12 +310,12 @@
 </template>
 
 <script>
+  import { required, numeric } from 'vuelidate/lib/validators';
+  import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
-  import firebase from 'firebase';
-  import {required, numeric} from 'vuelidate/lib/validators';
   import Navbar from '../components/Navbar.vue';
-  import MedicalFileResume from "./MedicalFileResume.vue";
+  import MedicalFileResume from './MedicalFileResume.vue';
 
   export default {
     name: 'MedicalFileCreation',
@@ -321,6 +324,7 @@
     },
     data() {
       return {
+        errorMessage: '',
         form: {
           civility: 'Madame',
           first_name: null,
@@ -362,26 +366,26 @@
     },
     validations: {
       form: {
-        civility: {required},
-        first_name: {required},
-        last_name: {required},
-        birthday: {required},
+        civility: { required },
+        first_name: { required },
+        last_name: { required },
+        birthday: { required },
         phone_number: {
           required,
           numeric,
         },
-        photo: {required},
+        photo: { required },
         adress: {
           number: {
             required,
             numeric,
           },
-          street: {required},
-          complement: {required},
-          postal_code: {required},
-          city: {required},
-          state: {required},
-          country: {required},
+          street: { required },
+          complement: { required },
+          postal_code: { required },
+          city: { required },
+          state: { required },
+          country: { required },
         },
       },
     },
@@ -393,7 +397,6 @@
         if (this.$v.$invalid) {
           return;
         }
-        console.log(this.$v);
         db.collection('medicalFiles')
           .doc(firebase.auth().currentUser.uid)
           .set({
@@ -432,11 +435,10 @@
             },
           })
           .then(() => {
-            console.log('routage');
             router.push(MedicalFileResume);
           })
-          .catch(error => {
-            console.log(error);
+          .catch((error) => {
+            this.errorMessage = error;
           });
       },
     },
@@ -444,7 +446,7 @@
 </script>
 
 <style scoped>
-  .custom-radio {
+  .customRadio {
     display: inline;
     margin: 0 5px;
   }
