@@ -2,9 +2,7 @@
   <b-container>
     <div>
       <b-row>
-        <b-col>
           <h2>Proche à contacter</h2>
-        </b-col>
       </b-row>
     </div>
     <b-row>
