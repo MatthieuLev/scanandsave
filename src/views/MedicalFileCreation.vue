@@ -12,11 +12,13 @@
           <b-row>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Civilité :">
-                <select v-model="form.civility" class="form-control">
-                  <option>Madame</option>
-                  <option>Monsieur</option>
-                  <option>Autre</option>
-                </select>
+                <label>
+                  <select v-model="form.civility" class="form-control">
+                    <option>Madame</option>
+                    <option>Monsieur</option>
+                    <option>Autre</option>
+                  </select>
+                </label>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -199,16 +201,18 @@
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Groupe sanguin :">
-                <select v-model="form.blood_type" class="form-control">
-                  <option selected>Inconnu</option>
-                  <option>A+</option>
-                  <option>A-</option>
-                  <option>B+</option>
-                  <option>B-</option>
-                  <option>AB</option>
-                  <option>O+</option>
-                  <option>O-</option>
-                </select>
+                <label>
+                  <select v-model="form.blood_type" class="form-control">
+                    <option selected>Inconnu</option>
+                    <option>A+</option>
+                    <option>A-</option>
+                    <option>B+</option>
+                    <option>B-</option>
+                    <option>AB</option>
+                    <option>O+</option>
+                    <option>O-</option>
+                  </select>
+                </label>
               </b-form-group>
             </div>
           </b-row>
@@ -304,6 +308,7 @@
 
 <script>
   import db from '../firebase.js';
+  import router from '../router';
   import firebase from 'firebase';
   import {required, numeric} from 'vuelidate/lib/validators';
   import Navbar from '../components/Navbar.vue';
@@ -378,9 +383,6 @@
           state: {required},
           country: {required},
         },
-        doctor: {
-          last_name: {required},
-        },
       },
     },
     methods: {
@@ -391,6 +393,7 @@
         if (this.$v.$invalid) {
           return;
         }
+        console.log(this.$v);
         db.collection('medicalFiles')
           .doc(firebase.auth().currentUser.uid)
           .set({
@@ -429,10 +432,11 @@
             },
           })
           .then(() => {
-            this.router.push(MedicalFileResume);
+            console.log('routage');
+            router.push(MedicalFileResume);
           })
           .catch(error => {
-            alert(error);
+            console.log(error);
           });
       },
     },
