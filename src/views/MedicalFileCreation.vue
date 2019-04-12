@@ -1,6 +1,8 @@
 <template>
   <div>
     <Navbar></Navbar>
+    <div class="wrapper">
+      <div class="inner">
     <b-container>
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
 
@@ -299,6 +301,8 @@
         </div>
       </b-form>
     </b-container>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -436,55 +440,24 @@
 </script>
 
 <style scoped>
-  .customRadio {
-    display: inline;
-    margin: 0 5px;
+  .wrapper {
+    min-height: 500vh;
+    position: relative;
+    background: url("../img/skateboard.jpg");
+    background-size: cover;
   }
-
-  h1 {
-    margin: 1em 0;
-    color: grey;
-  }
-
-  h2 {
-    margin-bottom: 1em;
-  }
-
-  h3 {
-    color: #ffa7a7;
-    margin: 1em 0;
-  }
-
-  .custom-card {
-    color: white;
-    background-color: #dc3545;
-    border-radius: 4px;
-    padding: 2em;
-    margin: 1em 0;
-  }
-
-  .button-validate {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    width: 50%;
-    background-color: #dc3545;
-    border: 0;
-    padding: 15px;
-    color: white;
-    margin-top: 1em;
-    margin-bottom: 4em;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  .button-validate:hover {
-    color: #fff;
-    background-color: #545b62;
-    border-color: #4e555b;
-  }
-
-  .invalid-feedback {
-    color: #fff
+  .inner{
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    transform: translateY(-45%);
+    width: 1000px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    background: url("../img/bg-inner.png") repeat;
+    padding: 7px;
   }
 </style>

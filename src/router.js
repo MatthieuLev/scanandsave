@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
 import Home from './views/Home.vue';
+import Welcome from './views/Welcome.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
@@ -76,6 +77,11 @@ const router = new Router({
       path: '/MedicalFileResume',
       name: 'MedicalFileResume',
       component: MedicalFileResume,
+    },
+    {
+      path: '/Welcome',
+      name: 'Welcome',
+      component: Welcome,
     },
   ],
 });
