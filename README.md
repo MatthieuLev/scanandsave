@@ -5,7 +5,7 @@
 ### 1) Installation de Google Chrome
 https://www.google.com/chrome/
 
-Optionnel : l'extension chrome de vue.js
+Optionnel : l'extension chrome de vue.js.
 
 https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd
 
