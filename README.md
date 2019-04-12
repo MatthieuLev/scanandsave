@@ -92,7 +92,7 @@ Lance les tests de bout en bout de la librairie Nightwatch.js
 npm run test:e2e
 ```
 
-Lance les tests unitaires de la librairie Jest
+Lance les tests unitaires de la librairie Jest.
 ```
 npm run test:unit
 ```
