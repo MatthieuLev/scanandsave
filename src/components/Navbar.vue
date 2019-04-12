@@ -74,7 +74,7 @@
     cursor: pointer;
   }
   .navbar {
-    background-color: #dc3545;
+    background-color: #90081d;
   }
 
   .navbar-light .navbar-nav .nav-link {
