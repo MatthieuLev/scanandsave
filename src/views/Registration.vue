@@ -84,11 +84,4 @@
     color: #32e15a;
     font-size: 12px;
   }
-  .redirection {
-    color: #7c9ad2 !important;
-    cursor: pointer;
-  }
-  .redirection:hover {
-    color: #7c9ad2 !important;
-  }
 </style>

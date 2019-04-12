@@ -3,110 +3,134 @@
     <Navbar></Navbar>
     <b-container>
       <h1>Mon panier</h1>
-      <b-table striped hover :items="items"></b-table>
+      <b-row>
+        <b-col>
+          <b-table striped hover :items="items"></b-table>
+        </b-col>
+      </b-row>
       <h2>Mode de Paiement</h2>
 
+      <b-row>
+        <b-col>
+          <b-form-group>
+            <b-form-checkbox-group
+              id="checkbox-group-1"
+              v-model="selected"
+              :options="options"
+              name="flavour-1">
+            </b-form-checkbox-group>
+          </b-form-group>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col>
+          <label for="cardNumber">Entrez votre numéro de carte</label>
+          <b-form-input
+            id="cardNumber"
+            v-model="cardNumber"
+            :formatter="format"
+            placeholder="N° de carte">
+          </b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col>
+          <label for="cardName">Entrez le nom du propriétaire de la carte</label>
+          <b-form-input
+            id="cardName"
+            v-model="name"
+            :formatter="format"
+            placeholder="Enter your name"
+            aria-describedby="input-formatter-help"></b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col>
+          <label for="cardName">Entrez le nom du propriétaire de la carte</label>
+          <b-form-input
+            id="input-formatter"
+            v-model="cardName"
+            :formatter="format"
+            placeholder="  /  "
+            aria-describedby="input-formatter-help">
+          </b-form-input>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col>
+          <b-form-group label="Choisir le mode de paiement:">
+            <b-form-radio-group id="checkbox-group-2" v-model="selected" name="flavour-2">
+              <i class="fab fa-cc-visa customRadioIcon"></i>
+              <b-form-radio value="orange"></b-form-radio>
+              <i class="fab fa-cc-paypal customRadioIcon"></i>
+              <b-form-radio value="apple"></b-form-radio>
+              <i class="fab fa-cc-amex customRadioIcon"></i>
+              <b-form-radio value="pineapple"></b-form-radio>
+              <i class="fab fa-cc-mastercard customRadioIcon"></i>
+              <b-form-radio value="grape"></b-form-radio>
+            </b-form-radio-group>
+          </b-form-group>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col class="buttonPosition">
+          <b-button variant="success">Valider</b-button>
+          <b-button variant="danger">Annuler</b-button>
+        </b-col>
+      </b-row>
+
     </b-container>
-    <b-form-group>
-      <b-form-checkbox-group
-        id="checkbox-group-1"
-        v-model="selected"
-        :options="options"
-        name="flavour-1"
-      ></b-form-checkbox-group>
-    </b-form-group>
-    <div>
-      <label for="input-formatter"></label>
-      <b-form-input
-        id="input-formatter"
-        v-model="text1"
-        :formatter="format"
-        placeholder="N° de carte"
-
-      ></b-form-input>
-      <b-form-input
-        id="input-formatter"
-        v-model="text1"
-        :formatter="format"
-        placeholder="Enter your name"
-        aria-describedby="input-formatter-help"></b-form-input>
-      <b-form-input
-      id="input-formatter"
-      v-model="text1"
-      :formatter="format"
-      placeholder="  /  "
-      aria-describedby="input-formatter-help"
-      ></b-form-input>
-
-      <b-col >
-        <b-form-group >
-
-        </b-form-group>
-      </b-col>
-
-
-    </div>
-
-
-    <b-form-group label="Choisir le mode de paiement:">
-      <b-form-checkbox-group id="checkbox-group-2" v-model="selected" name="flavour-2">
-       <i class="fab fa-cc-visa"></i>
-        <b-form-checkbox value="orange"></b-form-checkbox>
-        <i class="fab fa-cc-paypal"></i>
-        <b-form-checkbox value="apple"></b-form-checkbox>
-        <i class="fab fa-cc-amex"></i>
-        <b-form-checkbox value="pineapple"></b-form-checkbox>
-        <i class="fab fa-cc-mastercard"></i>
-        <b-form-checkbox value="grape"></b-form-checkbox>
-      </b-form-checkbox-group>
-
-    </b-form-group>
-    <b-col class="buttonPosition">
-    <b-button variant="success">Valider</b-button>
-    <b-button variant="danger">Annuler</b-button>
-  </b-col>
   </div>
 </template>
 
 
 <script>
   import Navbar from '../components/Navbar.vue';
+
   export default {
     name: 'ViewMyPaymentMethod',
     components: {
       Navbar,
     },
 
-  data() {
-    return {
-      types:
-        [
-        'text',
-        'password',
-        'email',
-        'number',
-        'url',
-        'tel',
-        'date',
-        `time`,
-        'range',
-        'color'
-      ],
+    data() {
+      return {
+        types:
+          [
+            'text',
+            'password',
+            'email',
+            'number',
+            'url',
+            'tel',
+            'date',
+            `time`,
+            'range',
+            'color'
+          ],
 
-      items: [
-        {Numéro_commande: true, Produit: 40, Quantité: 'Dickerson', Etat_de_la_commande: 'Macdonald'},
-      ],
-    };
-  },
+        items: [
+          {Numéro_commande: true, Produit: 40, Quantité: 'Dickerson', Etat_de_la_commande: 'Macdonald'},
+        ],
+      };
+    },
 
   };
 </script>
 
 <style>
-.dateview
-{
-  padding: 6px 12px;
-}
+  .dateview {
+    padding: 6px 12px;
+  }
+  .customRadioIcon{
+    font-size: 40px;
+    margin: 5px;
+  }
 
 
 </style>
