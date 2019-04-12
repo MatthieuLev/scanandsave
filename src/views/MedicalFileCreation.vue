@@ -2,10 +2,13 @@
   <div>
     <Navbar></Navbar>
     <div class="wrapper">
-      <div class="inner">
-    <b-container>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <b-container class="container">
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
-
         <h1>Mon dossier médical</h1>
 
         <div class="custom-card">
@@ -302,7 +305,6 @@
       </b-form>
     </b-container>
       </div>
-    </div>
   </div>
 </template>
 
@@ -440,24 +442,29 @@
 </script>
 
 <style scoped>
+
   .wrapper {
     min-height: 500vh;
     position: relative;
     background: url("../img/skateboard.jpg");
     background-size: cover;
   }
-  .inner{
-    position: absolute;
-    top: 40%;
-    left: 15%;
-    transform: translateY(-45%);
-    width: 1000px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    background: url("../img/bg-inner.png") repeat;
-    padding: 7px;
+
+  .container{
+    margin-right : 0 !important;
   }
+
+  .medicalFileCreation-form {
+    height: 1900px;
+    width: 85%;
+    padding: 60px 46px 55px;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    margin-right : 0px !important;
+
+  }
+
+
+
 </style>
