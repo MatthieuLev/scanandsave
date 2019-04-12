@@ -11,6 +11,7 @@ import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
+import ViewIdentity from './views/ViewIdentity.vue';
 
 Vue.use(Router);
 
@@ -78,6 +79,14 @@ const router = new Router({
       path: '/ViewMyCart',
       name: 'ViewMyCart',
       component: ViewMyCart,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/ViewIdentity',
+      name: 'VViewIdentity',
+      component: ViewIdentity,
       meta: {
         requiresAuth: true,
       },
