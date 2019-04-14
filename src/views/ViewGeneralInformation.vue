@@ -142,7 +142,6 @@
         .then((doc) => {
           console.log(doc.data());
           console.log(doc.id, ' => ', doc.data());
-
           this.form.civility = doc.data().civility;
           if (this.form.civility==="Monsieur"){
             this.sexe = "Masculin";
@@ -188,7 +187,7 @@
           this.form.doctor.city = doc.data().doctor.city;
         })
         .catch(() => {
-          router.push('MedicalFileCreation');
+          router.push('ViewGeneralInformation');
         });
     },
   };
