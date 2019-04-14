@@ -1,13 +1,19 @@
 <template>
   <b-form class="login-form">
-    <b-form-input id="input-forgotPassword-email" v-model="form.email"
+    <b-form-input id="input-login-email" v-model="form.email"
                   type="email" required placeholder="Adresse mail"></b-form-input>
     <p class="error" v-if="errorEmail">{{errorEmail}}</p>
+    <b-form-input id="input-login-password" v-model="form.password"
+                  type="password" required placeholder="Mot de passe"></b-form-input>
+    <p class="error" v-if="errorPassword">{{errorPassword}}</p>
 
-    <button @click="forgotPassword">Recevoir un nouveau mot de passe par e-mail</button>
+    <p class="message forgotPassword"><a v-on:click="$emit('changeCurrentPage','forgotPassword')">Mot de passe oublié ?</a></p>
+
+    <button @click="signIn">Se connecter</button>
 
     <p class="error" v-if="errorMessage">{{errorMessage}}</p>
-    <p class="success" v-if="successMessage">{{successMessage}}</p>
+
+    <p class="message">Pas encore enregistré ? <a v-on:click="$emit('changeCurrentPage','registration')">Créer un compte</a></p>
 
   </b-form>
 </template>
@@ -16,29 +22,32 @@
   import database from '../firebase';
 
   export default {
-    name: 'ForgotPassword',
+    name: 'Login',
     data() {
       return {
         form: {
           email: '',
+          password: '',
         },
         errorEmail: '',
+        errorPassword: '',
         errorMessage: '',
-        successMessage: '',
       };
     },
     methods: {
-      async forgotPassword(e) {
+      async signIn(e) {
         e.preventDefault();
         this.errorEmail = '';
+        this.errorPassword = '';
         this.errorMessage = '';
-        this.successMessage = '';
-
-        const result = await database.forgotPassword(this.form.email);
+        let result = await database.signIn(this.form.email, this.form.password);
         if (!result.message) {
-          this.successMessage = 'Vous avez reçu un e-mail pour réinitialiser votre mot de passe';
+          this.$router.push('Home');
         } else {
           switch (result.code) {
+            case 'auth/wrong-password':
+              this.errorPassword = 'Le mot de passe n\'est pas valide pour l\'email donné.';
+              break;
             case 'auth/invalid-email':
               this.errorEmail = 'L\'adresse e-mail n\'est pas valide.';
               break;
@@ -56,12 +65,11 @@
 
 <style scoped>
   .error {
-    color: #5e0000;
+    color: #ff0000;
     font-size: 12px;
   }
-
-  .success {
-    color: #32e15a;
-    font-size: 12px;
+  .forgotPassword {
+    text-align: right;
+    margin: 0;
   }
 </style>

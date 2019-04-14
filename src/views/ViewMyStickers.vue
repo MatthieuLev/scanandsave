@@ -104,7 +104,7 @@
 
   .custom-card {
     color: white;
-    background-color: #dc3545;
+    background-color: #90081d;
     border-radius: 4px;
     margin: 1em 0;
   }
@@ -114,7 +114,7 @@
     text-transform: uppercase;
     outline: 0;
     width: 50%;
-    background-color: #dc3545;
+    background-color: #90081d;
     border: 0;
     padding: 15px;
     color: white;

@@ -442,29 +442,16 @@
 </script>
 
 <style scoped>
-
   .wrapper {
-    min-height: 500vh;
     position: relative;
     background: url("../img/skateboard.jpg");
     background-size: cover;
   }
 
-  .container{
-    margin-right : 0 !important;
-  }
-
   .medicalFileCreation-form {
-    height: 1900px;
-    width: 85%;
     padding: 60px 46px 55px;
     background: white;
     border-radius: 4px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    margin-right : 0px !important;
-
   }
-
-
-
 </style>

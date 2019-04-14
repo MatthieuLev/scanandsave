@@ -76,12 +76,12 @@
 
 <style scoped>
   .error {
-    color: #5e0000;
+    color: #ff0000;
     font-size: 12px;
   }
 
   .success {
-    color: #32e15a;
+    color: #33e100;
     font-size: 12px;
   }
 </style>
