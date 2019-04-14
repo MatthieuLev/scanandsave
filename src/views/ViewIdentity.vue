@@ -81,38 +81,43 @@
       };
     },
     created() {
-      db.collection('medicalFiles')
-        .doc(firebase.auth().currentUser.uid)
-        .get()
-        .then((doc) => {
-          console.log(doc.data());
-          console.log(doc.id, ' => ', doc.data());
-          this.form.civility = doc.data().civility;
-          if (this.form.civility==="Monsieur"){
-            this.sexe = "Masculin";
-          }
-          else if (this.form.civility ==="Madame"){
-            this.sexe = "Féminin";
-          }
-          else {this.sexe = "Autre";}
-          this.form.first_name = doc.data().first_name;
-          this.form.last_name = doc.data().last_name;
-          this.form.birthday = doc.data().birthday;
-          this.form.phone_number = doc.data().phone_number;
-          this.form.social_security_number = doc.data().social_security_number;
-          this.form.license_number = doc.data().license_number;
+      const userId = this.$route.query.userId;
+      if (userId !== undefined) {
+        db.collection('medicalFiles')
+          .doc(userId)
+          .get()
+          .then((doc) => {
+            console.log(doc.data());
+            console.log(doc.id, ' => ', doc.data());
+            this.form.civility = doc.data().civility;
+            if (this.form.civility === "Monsieur") {
+              this.sexe = "Masculin";
+            } else if (this.form.civility === "Madame") {
+              this.sexe = "Féminin";
+            } else {
+              this.sexe = "Autre";
+            }
+            this.form.first_name = doc.data().first_name;
+            this.form.last_name = doc.data().last_name;
+            this.form.birthday = doc.data().birthday;
+            this.form.phone_number = doc.data().phone_number;
+            this.form.social_security_number = doc.data().social_security_number;
+            this.form.license_number = doc.data().license_number;
 
-          this.form.adress.number = doc.data().adress.number;
-          this.form.adress.street = doc.data().adress.street;
-          this.form.adress.complement = doc.data().adress.complement;
-          this.form.adress.city = doc.data().adress.city;
-          this.form.adress.postal_code = doc.data().adress.postal_code;
-          this.form.adress.state = doc.data().adress.state;
-          this.form.adress.country = doc.data().adress.country;
-        })
-        .catch(() => {
-          router.push('ViewIdentity');
-        });
+            this.form.adress.number = doc.data().adress.number;
+            this.form.adress.street = doc.data().adress.street;
+            this.form.adress.complement = doc.data().adress.complement;
+            this.form.adress.city = doc.data().adress.city;
+            this.form.adress.postal_code = doc.data().adress.postal_code;
+            this.form.adress.state = doc.data().adress.state;
+            this.form.adress.country = doc.data().adress.country;
+          })
+          .catch(() => {
+            console.log('firebase error')
+          });
+      } else {
+        console.log('undefined id')
+      }
     },
   };
 </script>

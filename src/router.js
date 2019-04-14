@@ -13,6 +13,7 @@ import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
 import ViewMHTA from "./views/ViewMHTA";
 import ViewIdentity from "./views/ViewIdentity";
 import ViewContact from "./views/ViewContact";
+import Qrcode from './components/Qrcode.vue'
 
 Vue.use(Router);
 
@@ -100,6 +101,11 @@ const router = new Router({
       path: '/ViewIdentity',
       name: 'ViewIdentity',
       component: ViewIdentity,
+    },
+    {
+      path: '/Qrcode',
+      name: 'Qrcode',
+      component: Qrcode,
     },
   ],
 });

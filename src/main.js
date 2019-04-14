@@ -5,13 +5,14 @@ import Vuelidate from 'vuelidate';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-
+import VueQrcode from '@chenfengyuan/vue-qrcode';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.use(Vuelidate);
 Vue.use(BootstrapVue);
+Vue.component(VueQrcode.name, VueQrcode);
 
 Vue.config.productionTip = false;
 
