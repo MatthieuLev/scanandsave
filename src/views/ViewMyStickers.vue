@@ -62,18 +62,19 @@
         .get()
         .then(querySnapshot => {
           if (querySnapshot.empty) {
-            console.log('no stickers documents found from userStickers collection');
+            console.log('[LOG] ViewMyStickers : no stickers documents found from userStickers collection');
           } else {
             // go through all the results
             querySnapshot.forEach(documentSnapshot => {
               const data = documentSnapshot.data();
-              console.log(data);
               data['id'] = documentSnapshot.id;
+              console.log('[LOG] ViewMyStickers : Received the stickers : ' + data['id']);
               self.stickers.push(data);
             });
           }
         })
         .catch(error => {
+          console.log('[LOG] ViewMyStickers : The recovery of the stickers failed');
         this.errorMessage = error;
       });
     },
@@ -88,7 +89,11 @@
             in_order: !item.in_order,
             quantity: !item.in_order ? 1 : item.quantity,
           })
+          .then(()=>{
+            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
+          })
           .catch(error => {
+            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
           this.errorMessage = error;
         });
       },

@@ -381,6 +381,7 @@
     },
     methods: {
       saveMedicalFile() {
+        console.log("[LOG] MedicalFileCreation : Save the medical file");
         this.submitted = true;
         // stop here if form is invalid
         this.$v.$touch();
@@ -425,9 +426,11 @@
             },
           })
           .then(() => {
+            console.log("[LOG] MedicalFileCreation : Save the medical file and redirect to MedicalFileResume");
             router.push(MedicalFileResume);
           })
           .catch((error) => {
+            console.log("[LOG] MedicalFileCreation : The saving of the medical file has failed");
             this.errorMessage = error;
           });
       },

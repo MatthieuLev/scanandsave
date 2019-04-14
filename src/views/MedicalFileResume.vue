@@ -488,12 +488,12 @@
       },
     },
     created() {
-      console.log("[LOG] MedicalFileResume : Récupère le dossier médical");
+      console.log("[LOG] MedicalFileResume : Retrieve the medical file");
       db.collection('medicalFiles')
         .doc(firebase.auth().currentUser.uid)
         .get()
         .then((doc) => {
-          console.log("[LOG] MedicalFileResume : Récupération réussie du dossier médical");
+          console.log("[LOG] MedicalFileResume : Successful recuperation of the medical file");
           this.form.civility = doc.data().civility;
           this.form.first_name = doc.data().first_name;
           this.form.last_name = doc.data().last_name;
@@ -532,7 +532,7 @@
           this.form.doctor.city = doc.data().doctor.city;
         })
         .catch(() => {
-          console.log("[LOG] MedicalFileResume : La récupération du dossier à échouée, on redirige vers MedicalFileCreation");
+          console.log("[LOG] MedicalFileResume : The recovery of the medical file failed, we redirect to MedicalFileCreation");
           router.push('MedicalFileCreation');
         });
     },
