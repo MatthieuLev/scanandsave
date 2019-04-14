@@ -1,8 +1,40 @@
 image: node:latest
 
+stages:
+  - build
+  - test
+  - deploy
+  
+cache:
+    paths:
+        - node_modules/
+
+build:
+  stage: build
+  script:
+    - npm install --progress=false
+    - npm run build
+    
+unit tests:
+  stage: test
+  script:
+    - npm install --progress=false
+    - npm run test:unit
+    
+end to end tests:
+  stage: test
+  script:
+    - npm install --progress=false
+    - npm run test:e2e
+    
+lint:
+stage: test
+script:
+- npm install --progress=false
+- npm run lint
+    
 deploy_production:
   stage: deploy
-  environment: Production
   only:
     - master
   script:
