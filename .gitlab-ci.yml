@@ -32,6 +32,7 @@ lint:
     script:
     - npm install --progress=false
     - npm run lint
+    allow_failure: true
     
 deploy_production:
   stage: deploy
