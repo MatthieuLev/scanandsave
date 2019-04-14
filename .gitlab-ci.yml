@@ -28,10 +28,10 @@ end to end tests:
     - npm run test:e2e
     
 lint:
-stage: test
-script:
-- npm install --progress=false
-- npm run lint
+    stage: test
+    script:
+    - npm install --progress=false
+    - npm run lint
     
 deploy_production:
   stage: deploy
