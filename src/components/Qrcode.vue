@@ -1,6 +1,6 @@
 <template>
   <qrcode
-    value="http://localhost:8080/ViewIdentity?userId=Q8ylODaiweM7eyGpr66gZqO0OgB2"
+    value="https://scanandsave-admin.firebaseapp.com/ViewIdentity?userId=Q8ylODaiweM7eyGpr66gZqO0OgB2"
     :options="{ width: 200 }"></qrcode>
 </template>
 
