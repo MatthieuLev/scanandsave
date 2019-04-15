@@ -139,6 +139,7 @@
     },
     methods: {
       deleteItem: function (item) {
+        this.total = this.total - (item.quantity*item.prix);
         db.collection('stickers')
           .doc(firebase.auth().currentUser.uid)
           .collection('userStickers')
@@ -161,24 +162,28 @@
         }
       },
       addProduct: function (item, i) {
-        db.collection('stickers')
-          .doc(firebase.auth().currentUser.uid)
-          .collection('userStickers')
-          .doc(item.id)
-          .update({
-            quantity: item.quantity + i
-          })
-          .then(() => {
-            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
-          })
-          .catch(error => {
-            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
-            this.errorMessage = error;
-          });
-        for( var j = 0; j < this.items.length; j++){
-          if ( this.items[j] === item) {
-            this.items[j].quantity = this.items[j].quantity + i;
+        if((item.quantity >=1 && i<0) || (item.quantity>=0 && i>0)){
+          db.collection('stickers')
+            .doc(firebase.auth().currentUser.uid)
+            .collection('userStickers')
+            .doc(item.id)
+            .update({
+              quantity: item.quantity + i
+            })
+            .then(() => {
+              console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
+            })
+            .catch(error => {
+              console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
+              this.errorMessage = error;
+            });
+          for( var j = 0; j < this.items.length; j++) {
+            if (this.items[j] === item) {
+              this.items[j].quantity = this.items[j].quantity + i;
+              this.total = this.total + (i * this.items[j].prix);
+            }
           }
+
         }
       }
     },
