@@ -67,6 +67,7 @@
         </b-row>
         <b-row>
           <p class="label">Photo d'identité : </p>
+          <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
         </b-row>
       </b-col>
     </b-container>
@@ -399,10 +400,10 @@
 
     validations: {
       form: {
-        civility: { required },
-        first_name: { required },
-        last_name: { required },
-        birthday: { required },
+        civility: {required},
+        first_name: {required},
+        last_name: {required},
+        birthday: {required},
         phone_number: {
           required,
           numeric,
@@ -412,11 +413,11 @@
             required,
             numeric,
           },
-          street: { required },
-          complement: { required },
-          postal_code: { required },
-          city: { required },
-          country: { required },
+          street: {required},
+          complement: {required},
+          postal_code: {required},
+          city: {required},
+          country: {required},
         },
       },
     },
@@ -427,10 +428,8 @@
         this.$v.$touch();
         console.log(this.$v);
         if (this.$v.$invalid) {
-          console.log("[LOG] MedicalFileResume : Le formulaire n'est pas valide");
           return;
         }
-        console.log("[LOG] MedicalFileResume : Modifie le dossier médical");
         db.collection('medicalFiles')
           .doc(firebase.auth().currentUser.uid)
           .update({
@@ -483,16 +482,15 @@
       },
     },
     created() {
-      console.log("[LOG] MedicalFileResume : Retrieve the medical file");
       db.collection('medicalFiles')
         .doc(firebase.auth().currentUser.uid)
         .get()
         .then((doc) => {
-          console.log("[LOG] MedicalFileResume : Successful recuperation of the medical file");
           this.form.civility = doc.data().civility;
           this.form.first_name = doc.data().first_name;
           this.form.last_name = doc.data().last_name;
           this.form.birthday = doc.data().birthday;
+          this.form.photo = doc.data().photo;
           this.form.phone_number = doc.data().phone_number;
           this.form.organ_donor = doc.data().organ_donor;
           if (doc.data().organ_donor) {
@@ -527,7 +525,6 @@
           this.form.doctor.city = doc.data().doctor.city;
         })
         .catch(() => {
-          console.log("[LOG] MedicalFileResume : The recovery of the medical file failed, we redirect to MedicalFileCreation");
           router.push('MedicalFileCreation');
         });
     },
@@ -547,5 +544,10 @@
   .error {
     color: #5e0000;
     font-size: 12px;
+  }
+
+  .userPhoto {
+    width: auto;
+    height: 50px;
   }
 </style>

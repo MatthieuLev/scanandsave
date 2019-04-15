@@ -54,8 +54,8 @@
             <div class="col-md-4 col-xs-12">
               <b-form-group
                 label="Photo d'identité : ">
-                <b-form-file v-model="form.photo" name="photo" placeholder="Photo d'identité" class="form-control"/>
-                <div v-if="submitted && !$v.form.photo.required" class="invalid-feedback">Photo obligatoire</div>
+                <b-form-file @change="detectFiles($event)" name="photo" placeholder="Photo d'identité"
+                             class="form-control"/>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
@@ -303,7 +303,7 @@
 </template>
 
 <script>
-  import { required, numeric } from 'vuelidate/lib/validators';
+  import {required, numeric} from 'vuelidate/lib/validators';
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
@@ -317,18 +317,17 @@
     },
     data() {
       return {
-        errorMessage: '',
         form: {
           civility: 'Madame',
           first_name: null,
           last_name: null,
-          photo: null,
           birthday: null,
           phone_number: null,
           organ_donor: null,
           blood_type: 'Inconnu',
           social_security_number: null,
           license_number: null,
+          photo: null,
           adress: {
             number: null,
             street: null,
@@ -354,15 +353,16 @@
             city: null,
           },
         },
+        errorMessage: '',
         submitted: false,
       };
     },
     validations: {
       form: {
-        civility: { required },
-        first_name: { required },
-        last_name: { required },
-        birthday: { required },
+        civility: {required},
+        first_name: {required},
+        last_name: {required},
+        birthday: {required},
         phone_number: {
           required,
           numeric,
@@ -381,58 +381,84 @@
     },
     methods: {
       saveMedicalFile() {
-        console.log("[LOG] MedicalFileCreation : Save the medical file");
         this.submitted = true;
         // stop here if form is invalid
         this.$v.$touch();
         if (this.$v.$invalid) {
+          console.log(this.$v);
           return;
         }
-        db.collection('medicalFiles')
-          .doc(firebase.auth().currentUser.uid)
-          .set({
-            civility: this.form.civility,
-            first_name: this.form.first_name,
-            last_name: this.form.last_name,
-            birthday: this.form.birthday,
-            phone_number: this.form.phone_number,
-            organ_donor: this.form.organ_donor,
-            blood_type: this.form.blood_type,
-            social_security_number: this.form.social_security_number,
-            license_number: this.form.license_number,
-            adress: {
-              number: this.form.adress.number,
-              street: this.form.adress.street,
-              complement: this.form.adress.complement,
-              postal_code: this.form.adress.postal_code,
-              city: this.form.adress.city,
-              state: this.form.adress.state,
-              country: this.form.adress.country,
-            },
-            diseases: this.form.diseases,
-            hospitalization: this.form.hospitalization,
-            allergy: this.form.allergy,
-            treatment: this.form.treatment,
-            contact: {
-              last_name: this.form.contact.last_name,
-              first_name: this.form.contact.first_name,
-              phone_number: this.form.contact.phone_number,
-            },
-            doctor: {
-              last_name: this.form.doctor.last_name,
-              first_name: this.form.doctor.first_name,
-              phone_number: this.form.doctor.phone_number,
-              city: this.form.doctor.city,
-            },
-          })
-          .then(() => {
-            console.log("[LOG] MedicalFileCreation : Save the medical file and redirect to MedicalFileResume");
-            router.push(MedicalFileResume);
-          })
-          .catch((error) => {
-            console.log("[LOG] MedicalFileCreation : The saving of the medical file has failed");
-            this.errorMessage = error;
-          });
+        const self = this;
+        this.uploadPhoto().then(() => {
+          db.collection('medicalFiles')
+            .doc(firebase.auth().currentUser.uid)
+            .set({
+              civility: self.form.civility,
+              first_name: self.form.first_name,
+              last_name: self.form.last_name,
+              birthday: self.form.birthday,
+              phone_number: self.form.phone_number,
+              organ_donor: self.form.organ_donor,
+              blood_type: self.form.blood_type,
+              social_security_number: self.form.social_security_number,
+              license_number: self.form.license_number,
+              photo: self.form.photo,
+              adress: {
+                number: self.form.adress.number,
+                street: self.form.adress.street,
+                complement: self.form.adress.complement,
+                postal_code: self.form.adress.postal_code,
+                city: self.form.adress.city,
+                state: self.form.adress.state,
+                country: self.form.adress.country,
+              },
+              diseases: self.form.diseases,
+              hospitalization: self.form.hospitalization,
+              allergy: self.form.allergy,
+              treatment: self.form.treatment,
+              contact: {
+                last_name: self.form.contact.last_name,
+                first_name: self.form.contact.first_name,
+                phone_number: self.form.contact.phone_number,
+              },
+              doctor: {
+                last_name: self.form.doctor.last_name,
+                first_name: self.form.doctor.first_name,
+                phone_number: self.form.doctor.phone_number,
+                city: self.form.doctor.city,
+              },
+            })
+            .then(() => {
+              router.push(MedicalFileResume);
+            })
+            .catch((error) => {
+              console.log(error);
+              self.errorMessage = error;
+            });
+        }).catch((error => {
+          console.log(error);
+          self.errorMessage = error;
+        }))
+      },
+      uploadPhoto() {
+        const self = this;
+        return new Promise((resolve, reject) => {
+          firebase.storage().ref('photos/' + firebase.auth().currentUser.uid).put(self.photoFile)
+            .then(response => {
+              response.ref.getDownloadURL().then((downloadURL) => {
+                self.form.photo = downloadURL;
+                resolve();
+              })
+                .catch(err => {
+                  console.log(err);
+                  reject();
+                })
+            })
+        })
+      },
+      detectFiles(e) {
+        let fileList = e.target.files || e.dataTransfer.files;
+        this.photoFile = fileList[0];
       },
     },
   };
