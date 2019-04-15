@@ -262,7 +262,7 @@
       </b-row>
       <b-row>
         <b-col class="col-lg-3">
-          <p class="label">Permis de conduire :</p>
+          <p class="label">Numéro de permis :</p>
         </b-col>
         <b-col>
           <b-form-input type="number" :disabled="disabled" v-model="form.license_number"
@@ -336,6 +336,7 @@
       </b-row>
     </b-container>
     <b-button v-on:click="modify()">{{this.buttonName}}</b-button>
+    <b-button v-on:click="deleteMF()">Supprimer mon dossier médical</b-button>
     <p class="error" v-if="errorMessage">{{errorMessage}}</p>
   </div>
 </template>
@@ -479,6 +480,21 @@
           this.buttonName = 'Valider les changements';
           this.disabled = !this.disabled;
         }
+      },
+      deleteMF() {
+        firebase.storage().ref('photos/' + firebase.auth().currentUser.uid).delete()
+          .catch(error => {
+            console.log(error);
+          });
+        db.collection('medicalFiles')
+          .doc(firebase.auth().currentUser.uid)
+          .delete()
+          .then(() => {
+            router.push('MedicalFileCreation');
+          })
+          .catch(error => {
+            console.log(error);
+          })
       },
     },
     created() {

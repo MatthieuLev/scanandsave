@@ -229,11 +229,6 @@
                 <b-form-input v-model="form.license_number" type="number" placeholder="Numéro de permis"></b-form-input>
               </b-form-group>
             </div>
-            <div class="col-lg-4 col-xs-12">
-              <b-form-group label="Permis de conduire">
-                <b-form-file></b-form-file>
-              </b-form-group>
-            </div>
           </b-row>
         </div>
 
