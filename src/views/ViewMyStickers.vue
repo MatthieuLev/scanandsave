@@ -3,28 +3,34 @@
     <Navbar></Navbar>
     <b-container>
       <h1>Mes autocollants</h1>
-      <div class="custom-card">
+      <div v-if="userHaveStickers">
+        <div class="custom-card">
 
-        <b-table striped :fields="fields" :items="stickers">
-          <template slot="index" slot-scope="data">
-            {{ data.index + 1 }}
-          </template>
+          <b-table striped :fields="fields" :items="stickers">
+            <template slot="index" slot-scope="data">
+              {{ data.index + 1 }}
+            </template>
 
-          <template slot="preview" slot-scope="data">
-            <b-img class="stickers" :src="require(`../img/stickers/${data.item.theme}/${data.item.color}.png`)" fluid
-                   alt="Stickers picture"></b-img>
-          </template>
+            <template slot="preview" slot-scope="data">
+              <b-img class="stickers" :src="require(`../img/stickers/${data.item.theme}/${data.item.color}.png`)" fluid
+                     alt="Stickers picture"></b-img>
+            </template>
 
-          <template slot="addtoCart" slot-scope="data">
-            <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order"
-                             @change="check($event, data.item)">
-            </b-form-checkbox>
-          </template>
-        </b-table>
-        <p class="error" v-if="errorMessage">{{errorMessage}}</p>
+            <template slot="addtoCart" slot-scope="data">
+              <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order"
+                               @change="check($event, data.item)">
+              </b-form-checkbox>
+            </template>
+          </b-table>
+          <p class="error" v-if="errorMessage">{{errorMessage}}</p>
 
+        </div>
+        <router-link class="button-validate" to="StickersCreation" replace>Créer un nouvel autocollant</router-link>
       </div>
-      <router-link class="button-validate" to="StickersCreation" replace>Créer un nouvel autocollant</router-link>
+      <div v-else>
+        <p>Vous devez créer un dossier médical avant de pouvoir générer un autocollant.</p>
+        <router-link class="button-validate" to="MedicalFileCreation" replace>Générer un dossier médical</router-link>
+      </div>
     </b-container>
   </div>
 </template>
@@ -43,14 +49,15 @@
       return {
         stickers: [],
         errorMessage: '',
+        userHaveStickers: false,
         fields: [
           'index',
-          { key: 'theme', label: 'Theme' },
-          { key: 'color', label: 'Couleur' },
-          { key: 'size', label: 'Taille' },
-          { key: 'shape', label: 'Forme' },
-          { key: 'preview', label: 'Aperçu' },
-          { key: 'addtoCart', label: 'Ajouter au panier' },
+          {key: 'theme', label: 'Theme'},
+          {key: 'color', label: 'Couleur'},
+          {key: 'size', label: 'Taille'},
+          {key: 'shape', label: 'Forme'},
+          {key: 'preview', label: 'Aperçu'},
+          {key: 'addtoCart', label: 'Ajouter au panier'},
         ],
       };
     },
@@ -61,9 +68,8 @@
         .collection('userStickers')
         .get()
         .then(querySnapshot => {
-          if (querySnapshot.empty) {
-            console.log('[LOG] ViewMyStickers : no stickers documents found from userStickers collection');
-          } else {
+          if (!querySnapshot.empty) {
+            this.userHaveStickers = true;
             // go through all the results
             querySnapshot.forEach(documentSnapshot => {
               const data = documentSnapshot.data();
@@ -75,8 +81,8 @@
         })
         .catch(error => {
           console.log('[LOG] ViewMyStickers : The recovery of the stickers failed');
-        this.errorMessage = error;
-      });
+          this.errorMessage = error;
+        });
     },
 
     methods: {
@@ -89,13 +95,13 @@
             in_order: !item.in_order,
             quantity: !item.in_order ? 1 : item.quantity,
           })
-          .then(()=>{
+          .then(() => {
             console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
           })
           .catch(error => {
             console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
-          this.errorMessage = error;
-        });
+            this.errorMessage = error;
+          });
       },
     },
   };

@@ -130,11 +130,7 @@
             </b-col>
             <b-col>
               <b-form-input :disabled="disabled" v-model="form.adress.state" :value=this.form.adress.state
-                            class="form-control"
-                            :class="{ 'is-invalid': submitted && $v.form.adress.state.$error }"/>
-              <div v-if="submitted && !$v.form.adress.state.required" class="invalid-feedback">Région / Etat
-                obligatoire
-              </div>
+                            class="form-control"/>
             </b-col>
           </b-row>
           <b-row>
@@ -420,7 +416,6 @@
           complement: { required },
           postal_code: { required },
           city: { required },
-          state: { required },
           country: { required },
         },
       },
