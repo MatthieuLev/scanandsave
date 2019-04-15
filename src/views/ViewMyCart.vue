@@ -21,7 +21,7 @@
                          alt="Stickers picture"></b-img></td>
               <td>{{item.theme}} {{item.color}} {{item.size}}</td>
               <td>In stock</td>
-              <td><input class="form-control" type="number" value="1" /></td>
+              <td class="text-right">{{item.quantity}}</td>
               <td class="text-right">{{item.prix}}€</td>
               <td class="text-right"><b-button class="btn btn-sm btn-danger" v-on:click="deleteItem(item)">
                 <i class="fa fa-trash"></i> </b-button> </td>
@@ -99,6 +99,7 @@
             // go through all the results
             querySnapshot.forEach(documentSnapshot => {
               const data = documentSnapshot.data();
+              data['id'] = documentSnapshot.id;
               console.log(data);
               if (data.size === 'small')
                 data.prix = 5;
@@ -118,6 +119,7 @@
     },
     methods: {
       deleteItem : function(item){
+        const self = this;
         db.collection('stickers')
           .doc(firebase.auth().currentUser.uid)
           .collection('userStickers')
@@ -133,6 +135,11 @@
             console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
             this.errorMessage = error;
           });
+        for( var i = 0; i < this.items.length; i++){
+          if ( this.items[i] === item) {
+            this.items.splice(i, 1);
+          }
+        }
       },
     }
   };
