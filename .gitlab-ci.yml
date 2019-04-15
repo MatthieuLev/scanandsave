@@ -24,7 +24,6 @@ unit tests:
     allow_failure: true
     
 end to end tests:
-  image: timbru31/java-node
   stage: test
   script:
     - npm run test:e2e
