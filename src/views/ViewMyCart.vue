@@ -2,23 +2,67 @@
   <div>
     <Navbar></Navbar>
     <b-container>
-      <b-form class="registration-form">
         <Menu></Menu>
         <h1>Mon Panier</h1>
-        <b-table striped :fields="fields" :items="items"></b-table>
-        <p class="error" v-if="errorMessage">{{errorMessage}}</p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"> </th>
+              <th scope="col">Produit</th>
+              <th scope="col">Disponibilité</th>
+              <th scope="col" class="text-center">Quantité</th>
+              <th scope="col" class="text-right">Prix</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in items">
+              <td><b-img class="stickers" :src="require(`../img/stickers/${item.theme}/${item.color}.png`)" fluid
+                         alt="Stickers picture"></b-img></td>
+              <td>{{item.theme}} {{item.color}} {{item.size}}</td>
+              <td>In stock</td>
+              <td><input class="form-control" type="number" value="1" /></td>
+              <td class="text-right">{{item.prix}}€</td>
+              <td class="text-right"><b-button class="btn btn-sm btn-danger" v-on:click="deleteItem(item)">
+                <i class="fa fa-trash"></i> </b-button> </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Sub-Total</td>
+              <td class="text-right">{{this.total}}€</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Shipping</td>
+              <td class="text-right">3€</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>Total</strong></td>
+              <td class="text-right"><strong>{{this.total+3}}€</strong></td>
+            </tr>
+          </tbody>
+        </table>
 
-        <b-table striped hover :fields="paiement">
-          <template slot="total_hc" slot-scope="data"></template>
-        </b-table>
-
-          <b-row>
-            <b-col>
-              <b-button variant="success">Valider</b-button>
-              <b-button variant="danger">Annuler</b-button>
-            </b-col>
-          </b-row>
-      </b-form>
+        <div class="col mb-2">
+          <div class="row">
+            <div class="col-sm-12  col-md-6">
+              <button class="btn btn-block btn-light">Continue Shopping</button>
+            </div>
+            <div class="col-sm-12 col-md-6 text-right">
+              <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+            </div>
+          </div>
+        </div>
     </b-container>
   </div>
 </template>
@@ -37,20 +81,8 @@
       return {
         errorMessage: '',
         total:0,
-        items: [],
-        fields: [
-          { key: 'color', label: 'Couleur' },
-          { key: 'quantity', label: 'Quantité' },
-          { key: 'shape', label: 'Forme' },
-          { key: 'size', label: 'Size' },
-          { key: 'theme', label: 'Theme' },
-          { key: 'prix', label: 'Prix' },
-          { key: 'prix_total', label: 'Prix Total' },
-        ],
-        paiement:[
-          { key:'total_hc', label:'Total HC' },
-          /*,{ Total: 'Total TTC', Prix: this.total*1.2},
-          { Total: 'Total TTC frais de port', Prix: (this.total*1.2)+3 }*/],
+        items:[],
+        theme:null
       };
     },
     created() {
@@ -75,7 +107,6 @@
               else data.prix = 7;
 
               data.prix_total = data.prix * data.quantity;
-
               self.items.push(data);
               self.total += data.prix_total;
             });
@@ -85,8 +116,31 @@
           this.errorMessage = error;
       });
     },
+    methods: {
+      deleteItem : function(item){
+        db.collection('stickers')
+          .doc(firebase.auth().currentUser.uid)
+          .collection('userStickers')
+          .doc(item.id)
+          .update({
+            in_order: !item.in_order,
+            quantity: !item.in_order ? 1 : item.quantity,
+          })
+          .then(()=>{
+            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
+          })
+          .catch(error => {
+            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
+            this.errorMessage = error;
+          });
+      },
+    }
   };
 </script>
 
 <style scoped>
+  .stickers {
+    width: auto;
+    height: 30px;
+  }
 </style>
