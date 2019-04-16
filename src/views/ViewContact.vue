@@ -3,7 +3,6 @@
     <NavbarMobile></NavbarMobile>
     <b-container>
       <br>
-      <br>
       <b-row>
         <b-col>
           <h2>Contacts</h2>
@@ -62,24 +61,29 @@
       };
     },
     created() {
-      db.collection('medicalFiles')
-        .doc(firebase.auth().currentUser.uid)
-        .get()
-        .then((doc) => {
-          console.log(doc.data());
-          console.log(doc.id, ' => ', doc.data());
-          this.form.contact.first_name = doc.data().contact.first_name;
-          this.form.contact.last_name = doc.data().contact.last_name;
-          this.form.contact.phone_number = doc.data().contact.phone_number;
+      const userId = this.$route.query.userId;
+      if (userId !== undefined) {
+        db.collection('medicalFiles')
+          .doc(userId)
+          .get()
+          .then((doc) => {
+            console.log(doc.data());
+            console.log(doc.id, ' => ', doc.data());
+            this.form.contact.first_name = doc.data().contact.first_name;
+            this.form.contact.last_name = doc.data().contact.last_name;
+            this.form.contact.phone_number = doc.data().contact.phone_number;
 
-          this.form.doctor.first_name = doc.data().doctor.first_name;
-          this.form.doctor.last_name = doc.data().doctor.last_name;
-          this.form.doctor.phone_number = doc.data().doctor.phone_number;
-          this.form.doctor.city = doc.data().doctor.city;
-        })
-        .catch(() => {
-          router.push('ViewContact');
-        });
+            this.form.doctor.first_name = doc.data().doctor.first_name;
+            this.form.doctor.last_name = doc.data().doctor.last_name;
+            this.form.doctor.phone_number = doc.data().doctor.phone_number;
+            this.form.doctor.city = doc.data().doctor.city;
+          })
+          .catch(() => {
+            router.push('ViewContact');
+          });
+      } else {
+        console.log('undefined id')
+      }
     },
   };
 </script>
