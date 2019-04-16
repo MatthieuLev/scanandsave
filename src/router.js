@@ -12,10 +12,12 @@ import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
 import NavbarMobile from './components/NavbarMobile.vue';
 import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
-import ViewMHTA from './views/ViewMHTA.vue';
-import ViewIdentity from './views/ViewIdentity.vue';
-import ViewContact from './views/ViewContact.vue';
-import Qrcode from './components/Qrcode.vue'
+import ViewMHTA from "./views/ViewMHTA";
+import ViewIdentity from "./views/ViewIdentity";
+import ViewContact from "./views/ViewContact";
+import Qrcode from './components/Qrcode.vue';
+import PaymentMethod from "./components/PaymentMethod.vue";
+
 
 Vue.use(Router);
 
@@ -54,6 +56,14 @@ const router = new Router({
       component: NavbarMobile,
     },
 
+    {
+      path: '/PaymentMethod',
+      name: 'PaymentMethod',
+      component: PaymentMethod,
+      meta: {
+        requiresAuth: true,
+      },
+    },
     {
       path: '/StickersCreation',
       name: 'StickersCreation',

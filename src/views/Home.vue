@@ -16,7 +16,7 @@
       >
         <b-carousel-slide>
           <img
-            src="../img/SCANSAVE_1.png"
+            src="../img/scan_save-1.png"
             slot="img"
             alt="image slot"
             class="d-block img-fluid w-100"
@@ -25,7 +25,7 @@
 
         <b-carousel-slide>
           <img
-            src="../img/SCANSAVE_2.png"
+            src="../img/scan_save-2.png"
             slot="img"
             alt="image slot"
             class="d-block img-fluid w-100"
@@ -34,7 +34,7 @@
 
         <b-carousel-slide>
         <img
-          src="../img/SCANSAVE_3.png"
+          src="../img/scan_save-3.png"
           slot="img"
           alt="image slot"
           class="d-block img-fluid w-100"
@@ -42,7 +42,7 @@
         </b-carousel-slide>
         <b-carousel-slide>
           <img
-            src="../img/SCANSAVE_4.png"
+            src="../img/scan_save-4.png"
             slot="img"
             alt="image slot"
             class="d-block img-fluid w-100"
@@ -144,14 +144,6 @@
 
     </div>
     <br><br><br>
-
-<div>
-  <div class="btn-primary">
-  <b-button block variant="primary"><router-link to="ViewMyAccount">Je me lance !</router-link></b-button>
-</div>
-
-    <br><br><br>
-</div>
 
     <footer class="container-fluid text-center">
       <div class="row">
