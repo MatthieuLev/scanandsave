@@ -1,107 +1,224 @@
 <template>
-  <b-container>
-    <div class="home-page">
-      <div class="form">
-        <div v-if="currentPage === 'login'">
-          <Login @changeCurrentPage="currentPage=$event"></Login>
-        </div>
-        <div v-else-if="currentPage === 'registration'">
-          <Registration @changeCurrentPage="currentPage=$event"></Registration>
+  <div>
+    <Navbar></Navbar>
+    <!-- Indicators -->
+    <div>
+      <b-carousel
+        id="carousel-1"
+        v-model="slide"
+        :interval="4000"
+        controls
+        indicators
+        background="#ababab"
+        style="text-shadow: 1px 1px 2px #333;"
+        @sliding-start="onSlideStart"
+        @sliding-end="onSlideEnd"
+      >
+        <b-carousel-slide>
+          <img
+            src="../img/SCANSAVE_1.png"
+            slot="img"
+            alt="image slot"
+            class="d-block img-fluid w-100"
+          >
+        </b-carousel-slide>
+
+        <b-carousel-slide>
+          <img
+            src="../img/SCANSAVE_2.png"
+            slot="img"
+            alt="image slot"
+            class="d-block img-fluid w-100"
+          >
+        </b-carousel-slide>
+
+        <b-carousel-slide>
+        <img
+          src="../img/SCANSAVE_3.png"
+          slot="img"
+          alt="image slot"
+          class="d-block img-fluid w-100"
+        >
+        </b-carousel-slide>
+        <b-carousel-slide>
+          <img
+            src="../img/SCANSAVE_4.png"
+            slot="img"
+            alt="image slot"
+            class="d-block img-fluid w-100"
+          >
+        </b-carousel-slide>
+      </b-carousel>
+      <br>
+      <br>
+      <br>
+    </div>
+
+    <div class="container text-center">
+      <!-- Pour qui ? -->
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="well">
+            <br>
+            <h3>Pour qui ?</h3><br>
+            <ol>
+              <p>Motards</p>
+              <p>Cyclistes</p>
+              <p>Scooters</p>
+              <p>Skateurs</p>
+              <p>Skieurs</p>
+              <p>Ouvriers de chantiers</p>
+            </ol>
           </div>
-        <div v-else>
-          <ForgotPassword @changeCurrentPage="currentPage=$event"></ForgotPassword>
+        </div>
+        <div class="col-sm-6">
+          <img src="../img/scooter.png" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+        <br><br><br>
+      </div>
+
+      <!-- Quelles infos ? -->
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="../img/mountain-biking.jpg" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+
+        <div class="col-sm-6">
+          <div class="well">
+            <br><br><br>
+            <h3>Quelles infos ?</h3><br>
+            <ol>
+              <p>Votre photo, Nom, Prénom, date de naissance.</p>
+              <p>Groupe sanguin, Allergies, Donneur d'organes.</p>
+              <p>N° sécurité sociale, N° permis de conduire.</p>
+              <p>Premier et deuxième contact avec leurs téléphones.</p>
+              <p>Le changement de vos données est gratuit à vie.</p>
+            </ol>
+          </div>
+        </div>
+        <br><br><br>
+      </div>
+
+      <!-- Comment ça marche ? -->
+
+      <div class="row">
+
+
+        <div class="col-sm-6">
+          <div class="well">
+            <br><br><br>
+            <h3>Comment ça marche ?</h3><br>
+            <ol>
+              <p>Je remplis mes données personnelles afin de configuer mon stickers.</p>
+              <p>Je choisi un visuel parmi une large game de stickers.</p>
+              <p>Je reçois mon stickers 24h plus tard !</p>
+            </ol>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <img src="../img/casque.png" class="img-responsive" style="width:100%" alt="Image">
         </div>
       </div>
+
+      <!-- Sécurité et confidentialité ? -->
+
+      <div class="row">
+        <div class="col-sm-6">
+          <img src="../img/biker.jpg" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+            <br><br><br>
+            <h3>Sécurité et confidentialité</h3><br>
+            <ol>
+              <p>La lecture des données se fait en scannant le QR code .</p>
+              <p>Vos données vitales sont stockées dans les serveurs Scan&Save sécurisés.</p>
+              <p>Aucune onde n'est émise.</p>
+              <p>Ni pile, ni batterie.</p>
+            </ol>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </b-container>
+    <br><br><br>
+
+<div>
+  <div class="btn-primary">
+  <b-button block variant="primary"><router-link to="ViewMyAccount">Je me lance !</router-link></b-button>
+</div>
+
+    <br><br><br>
+</div>
+
+    <footer class="container-fluid text-center">
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="../img/skateboard.jpg" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+
+        <div class="col-sm-4">
+          <img src="../img/utah.jpg" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+
+        <div class="col-sm-4">
+          <img src="../img/ski.png" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+
+      </div>
+      <p>Scan and Save ! Frissons et sensations fortes en toute sécurité !</p>
+    </footer>
+  </div>
+
 </template>
 
 <script>
-import Registration from './Registration.vue';
-import Login from './Login.vue';
-import ForgotPassword from "./ForgotPassword";
+  import Navbar from '../components/Navbar.vue';
 
-export default {
-  name: 'Home',
-  data() {
-    return {
-      currentPage: 'login',
-    };
-  },
-  components: {
-    ForgotPassword,
-    Registration,
-    Login,
-  },
-  methods: {
-    changeCurrentPage: function(currentPage){
-      this.currentPage = currentPage;
+  export default {
+    name: 'Welcome',
+    components: {
+      Navbar,
     },
-  },
-};
+    methods: {
+      onSlideStart(slide) {
+        this.sliding = true
+      },
+      onSlideEnd(slide) {
+        this.sliding = false
+      }
+    }
+  };
 </script>
 
-<style lang="scss">
-  $color-primary: #dc3545;
-  $color-dark: #a3001e;
-  $color-light: #ff6b70;
+<style scoped>
 
-  .home-page {
-    padding: 8% 0 0;
-    margin: auto;
+  h3 {
+    color: #90081d;
+  }
+  .footer container-fluid text-center {
+    background-color: #f2f2f2;
+    padding: 25px;
   }
 
-  .form {
-    position: relative;
-    z-index: 1;
-    background: $color-primary;
-    max-width: 360px;
-    margin: 0 auto 100px;
-    padding: 45px;
-    text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  .carousel .item {
+    height: 400px
   }
+.col-sm-4 img {
+  width: 203px;
+  height: 270px;
+}
+.btn btn-secondary{
+  margin-left: auto;
+  margin-right: auto;
+  width: 80px;
+}
 
-  .form input {
-    font-family: "Roboto", sans-serif;
-    outline: 0;
-    background: #f2f2f2;
-    width: 100%;
-    border: 0;
-    margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-
-  .form button {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    background: white;
-    width: 100%;
-    border: 0;
-    padding: 15px;
-    color: $color-dark;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  .form button:hover, .form button:active, .form button:focus {
+  .btn-primary {
     color: #fff;
-    background-color: #545b62;
-    border-color: #4e555b;
-  }
-
-  .form .message {
-    margin: 15px 0 0;
-    color: #ffffffb3;
-    font-size: 12px;
-  }
-
-  .form .message a:not([href]):not([tabindex]) {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
+    background-color: #B9121B;
+    border-color: #B9121B;
   }
 </style>
