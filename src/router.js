@@ -13,7 +13,8 @@ import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
 import ViewMHTA from "./views/ViewMHTA";
 import ViewIdentity from "./views/ViewIdentity";
 import ViewContact from "./views/ViewContact";
-import Qrcode from './components/Qrcode.vue'
+import Qrcode from './components/Qrcode.vue';
+import PaymentMethod from "./components/PaymentMethod.vue";
 
 Vue.use(Router);
 
@@ -41,6 +42,14 @@ const router = new Router({
       path: '/Navbar',
       name: 'Navbar',
       component: Navbar,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/PaymentMethod',
+      name: 'PaymentMethod',
+      component: PaymentMethod,
       meta: {
         requiresAuth: true,
       },
