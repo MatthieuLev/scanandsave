@@ -1,32 +1,35 @@
 <template>
   <div>
+    <NavbarMobile></NavbarMobile>
+    <b-container>
+      <br>
+      <br>
     <b-row>
       <b-col>
         <h2>Fiche d'identité</h2>
       </b-col>
-      <b-col class="col-lg-1">
-        <button type="button" class="btn btn-dark">+</button>
-      </b-col>
     </b-row>
+      <br>
     <b-row>
       <b-col>
         <b-row>
-          <p class="label">Nom : </p><p>{{this.form.last_name}}</p>
+          <p class="label">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p><p>{{this.form.last_name}}</p>
         </b-row>
         <b-row>
-          <p class="label">Prenom : </p><p>{{this.form.first_name}}</p>
+          <p class="label">&nbsp;&nbsp;Prenom :&nbsp;&nbsp;</p><p>{{this.form.first_name}}</p>
         </b-row>
         <b-row>
-          <p class="label">Age : </p><p>{{this.form.birthday}}</p>
+          <p class="label">&nbsp;&nbsp;Age :&nbsp;&nbsp;</p><p>{{this.form.birthday}}</p>
         </b-row>
         <b-row>
-          <p class="label">Sexe : </p><p>{{this.sexe}}</p>
+          <p class="label">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p><p>{{this.sexe}}</p>
         </b-row>
       </b-col>
       <b-col>
         <p>Ici la photo</p>
       </b-col>
     </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -34,9 +37,13 @@
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
+  import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
-    name: 'ViewGeneralInformation',
+    name: 'ViewIdentity',
+    components: {
+      NavbarMobile,
+    },
     data() {
       return {
         errorMessage: '',

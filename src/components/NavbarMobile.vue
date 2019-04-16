@@ -6,23 +6,16 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="Home"><i class="fas fa-home"></i>Accueil</router-link>
+            <router-link to="ViewGeneralInformation">Informations générales</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="MedicalFileResume"><i class="fas fa-notes-medical"></i>Mon formulaire médical</router-link>
+            <router-link to="ViewIdentity">Identité</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="ViewMyStickers"><i class="fas fa-sticky-note"></i>Mes autocollants</router-link>
+            <router-link to="ViewMHTA">Informations médicales</router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="ViewMyCart"><i class="fas fa-shopping-cart"></i></i>Voir mon panier</router-link>
-          </b-nav-item>
-        </b-navbar-nav>
-
-        <!-- Right aligned nav items -->
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item class="signOutButtonContainer">
-            <a class="signOutButton" @click="signOut"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+            <router-link to="ViewContact">Contacts</router-link>
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -36,7 +29,7 @@
   import router from '../router';
 
   export default {
-    name: 'Navbar',
+    name: 'NavbarMobile',
     computed: {
       currentUser() {
         return this.$store.state.currentUser;
@@ -77,7 +70,7 @@
     cursor: pointer;
   }
   .navbar {
-    background-color: #90081d;
+    background-color: #dc3545;
   }
 
   .navbar-light .navbar-nav .nav-link {
@@ -94,8 +87,5 @@
     color: white !important;
     text-decoration: none;
     font-weight: bold;
-  }
-  .fas{
-    margin-right: 5px;
   }
 </style>

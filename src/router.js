@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
+import Auth from './views/Auth.vue';
 import Home from './views/Home.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
@@ -9,12 +10,14 @@ import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
+import NavbarMobile from './components/NavbarMobile.vue';
 import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
 import ViewMHTA from "./views/ViewMHTA";
 import ViewIdentity from "./views/ViewIdentity";
 import ViewContact from "./views/ViewContact";
 import Qrcode from './components/Qrcode.vue';
 import PaymentMethod from "./components/PaymentMethod.vue";
+
 
 Vue.use(Router);
 
@@ -24,8 +27,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: 'Auth',
+      component: Auth,
       meta: {
         redirectAuth: true,
       },
@@ -46,6 +49,13 @@ const router = new Router({
         requiresAuth: true,
       },
     },
+
+    {
+      path: '/NavbarMobile',
+      name: 'NavbarMobile',
+      component: NavbarMobile,
+    },
+
     {
       path: '/PaymentMethod',
       name: 'PaymentMethod',
@@ -90,6 +100,17 @@ const router = new Router({
       path: '/MedicalFileResume',
       name: 'MedicalFileResume',
       component: MedicalFileResume,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/ViewGeneralInformation',
@@ -126,7 +147,7 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth && !currentUser) {
     next('/');
   } else if (redirectAuth && currentUser) {
-    next('/MedicalFileResume');
+    next('/Home');
   } else {
     next();
   }
