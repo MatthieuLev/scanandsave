@@ -579,7 +579,7 @@
 
   .custom-card {
     color: white;
-    background-color: #dc3545;
+    background-color: #90081d;
     border-radius: 4px;
     padding: 2em;
     margin: 1em 0;
@@ -615,5 +615,16 @@
   .userPhoto {
     width: auto;
     height: 50px;
+  }
+
+  .form-control:disabled, .form-control[readonly] {
+    background-color: #c5c8cb;
+    border-color: black;
+    opacity: 1;
+  }
+  .custom-file-label {
+    background-color: #c5c8cb;
+    border-color: black;
+    opacity: 1;
   }
 </style>
