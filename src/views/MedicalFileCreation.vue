@@ -288,10 +288,8 @@
           </b-row>
 
         </div>
-        <div>
-          <b-button class="button-validate" type="submit">Valider</b-button>
-          <p class="error" v-if="errorMessage">{{errorMessage}}</p>
-        </div>
+        <b-button class="button-validate" type="submit">Valider</b-button>
+        <p class="error" v-if="errorMessage">{{errorMessage}}</p>
       </b-form>
     </b-container>
   </div>
@@ -445,7 +443,7 @@
                 resolve();
               })
                 .catch(err => {
-                  console.log(err);
+                  self.errorMessage = err;
                   reject();
                 })
             })
