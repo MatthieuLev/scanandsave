@@ -1,9 +1,14 @@
 <template>
   <div>
     <Navbar></Navbar>
-    <b-container>
+    <div class="wrapper">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <b-container class="container">
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
-
         <h1>Mon dossier médical</h1>
 
         <div class="custom-card">
@@ -292,6 +297,7 @@
         <p class="error" v-if="errorMessage">{{errorMessage}}</p>
       </b-form>
     </b-container>
+      </div>
   </div>
 </template>
 
@@ -458,55 +464,16 @@
 </script>
 
 <style scoped>
-  .customRadio {
-    display: inline;
-    margin: 0 5px;
+  .wrapper {
+    position: relative;
+    background: url("../img/skateboard.jpg");
+    background-size: cover;
   }
 
-  h1 {
-    margin: 1em 0;
-    color: grey;
-  }
-
-  h2 {
-    margin-bottom: 1em;
-  }
-
-  h3 {
-    color: #ffa7a7;
-    margin: 1em 0;
-  }
-
-  .custom-card {
-    color: white;
-    background-color: #dc3545;
+  .medicalFileCreation-form {
+    padding: 60px 46px 55px;
+    background: white;
     border-radius: 4px;
-    padding: 2em;
-    margin: 1em 0;
-  }
-
-  .button-validate {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    outline: 0;
-    width: 50%;
-    background-color: #dc3545;
-    border: 0;
-    padding: 15px;
-    color: white;
-    margin-top: 1em;
-    margin-bottom: 4em;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  .button-validate:hover {
-    color: #fff;
-    background-color: #545b62;
-    border-color: #4e555b;
-  }
-
-  .invalid-feedback {
-    color: #fff
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 </style>

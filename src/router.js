@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
+import Auth from './views/Auth.vue';
 import Home from './views/Home.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import StickersCreation from './views/StickersCreation.vue';
@@ -23,8 +24,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      component: Home,
+      name: 'Auth',
+      component: Auth,
       meta: {
         redirectAuth: true,
       },
@@ -81,6 +82,17 @@ const router = new Router({
       path: '/MedicalFileResume',
       name: 'MedicalFileResume',
       component: MedicalFileResume,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home,
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
       path: '/ViewGeneralInformation',
@@ -117,7 +129,7 @@ router.beforeEach((to, from, next) => {
   if (requiresAuth && !currentUser) {
     next('/');
   } else if (redirectAuth && currentUser) {
-    next('/MedicalFileResume');
+    next('/Home');
   } else {
     next();
   }

@@ -5,7 +5,7 @@
 ### 1) Installation de Google Chrome
 https://www.google.com/chrome/
 
-Optionnel : l'extension chrome de vue.js
+Optionnel : l'extension chrome de vue.js.
 
 https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd
 
@@ -92,7 +92,7 @@ Lance les tests de bout en bout de la librairie Nightwatch.js
 npm run test:e2e
 ```
 
-Lance les tests unitaires de la librairie Jest
+Lance les tests unitaires de la librairie Jest.
 ```
 npm run test:unit
 ```
