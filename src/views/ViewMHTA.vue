@@ -64,7 +64,6 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
@@ -96,8 +95,6 @@
           .doc(userId)
           .get()
           .then((doc) => {
-            console.log(doc.data());
-            console.log(doc.id, ' => ', doc.data());
             this.form.blood_type = doc.data().blood_type;
             this.form.organ_donor = doc.data().organ_donor;
             if (doc.data().organ_donor) {
@@ -111,10 +108,10 @@
             this.form.treatment = doc.data().treatment;
           })
           .catch(() => {
-            router.push('ViewMHTA');
+            router.push('MFNotFound');
           });
       } else {
-        console.log('undefined id')
+        router.push('MFNotFound');
       }
     },
   };

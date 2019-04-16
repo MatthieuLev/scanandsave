@@ -30,7 +30,6 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
@@ -67,8 +66,6 @@
           .doc(userId)
           .get()
           .then((doc) => {
-            console.log(doc.data());
-            console.log(doc.id, ' => ', doc.data());
             this.form.contact.first_name = doc.data().contact.first_name;
             this.form.contact.last_name = doc.data().contact.last_name;
             this.form.contact.phone_number = doc.data().contact.phone_number;
@@ -79,10 +76,10 @@
             this.form.doctor.city = doc.data().doctor.city;
           })
           .catch(() => {
-            router.push('ViewContact');
+            router.push('MFNotFound');
           });
       } else {
-        console.log('undefined id')
+        router.push('MFNotFound');
       }
     },
   };

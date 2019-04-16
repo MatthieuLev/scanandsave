@@ -1,22 +1,22 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import store from './store';
+
 import Auth from './views/Auth.vue';
 import Home from './views/Home.vue';
 import MedicalFileCreation from './views/MedicalFileCreation.vue';
-import StickersCreation from './views/StickersCreation.vue';
-import ViewMyStickers from './views/ViewMyStickers.vue';
-import ViewMyCart from './views/ViewMyCart.vue';
-import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
-import Navbar from './components/Navbar.vue';
-import NavbarMobile from './components/NavbarMobile.vue';
-import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
-import ViewMHTA from "./views/ViewMHTA";
-import ViewIdentity from "./views/ViewIdentity";
+import MFNotFound from './views/MFNotFound.vue';
+import StickersCreation from './views/StickersCreation.vue';
 import ViewContact from "./views/ViewContact";
+import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
+import ViewIdentity from "./views/ViewIdentity";
+import ViewMHTA from "./views/ViewMHTA";
+import ViewMyCart from './views/ViewMyCart.vue';
+import ViewMyPaymentMethod from "./views/ViewMyPaymentMethod.vue";
+import ViewMyStickers from './views/ViewMyStickers.vue';
+
 import Qrcode from './components/Qrcode.vue';
-import PaymentMethod from "./components/PaymentMethod.vue";
 
 
 Vue.use(Router);
@@ -37,29 +37,6 @@ const router = new Router({
       path: '/MedicalFileCreation',
       name: 'MedicalFileCreation',
       component: MedicalFileCreation,
-      meta: {
-        requiresAuth: true,
-      },
-    },
-    {
-      path: '/Navbar',
-      name: 'Navbar',
-      component: Navbar,
-      meta: {
-        requiresAuth: true,
-      },
-    },
-
-    {
-      path: '/NavbarMobile',
-      name: 'NavbarMobile',
-      component: NavbarMobile,
-    },
-
-    {
-      path: '/PaymentMethod',
-      name: 'PaymentMethod',
-      component: PaymentMethod,
       meta: {
         requiresAuth: true,
       },
@@ -136,6 +113,11 @@ const router = new Router({
       path: '/Qrcode',
       name: 'Qrcode',
       component: Qrcode,
+    },
+    {
+      path: '/MFNotFound',
+      name: 'MFNotFound',
+      component: MFNotFound,
     },
   ],
 });

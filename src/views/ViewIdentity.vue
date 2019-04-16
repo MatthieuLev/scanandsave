@@ -69,6 +69,7 @@
                           {{this.sexe}}
                         </div>
                       </div>
+
                       <hr />
                     </div>
                   </div>
@@ -186,8 +187,6 @@
           .doc(userId)
           .get()
           .then((doc) => {
-            console.log(doc.data());
-            console.log(doc.id, ' => ', doc.data());
             this.form.civility = doc.data().civility;
             if (this.form.civility === "Monsieur") {
               this.sexe = "Masculin";
@@ -212,10 +211,10 @@
             this.form.adress.country = doc.data().adress.country;
           })
           .catch(() => {
-            console.log('firebase error')
+            router.push('MFNotFound');
           });
       } else {
-        console.log('undefined id')
+        router.push('MFNotFound');
       }
     },
   };

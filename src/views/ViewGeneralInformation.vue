@@ -84,7 +84,6 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
@@ -144,8 +143,6 @@
           .doc(userId)
           .get()
           .then((doc) => {
-            console.log(doc.data());
-            console.log(doc.id, ' => ', doc.data());
             this.form.civility = doc.data().civility;
             if (this.form.civility==="Monsieur"){
               this.sexe = "Masculin";
@@ -191,10 +188,10 @@
             this.form.doctor.city = doc.data().doctor.city;
           })
           .catch(() => {
-            router.push('ViewGeneralInformation');
+            router.push('MFNotFound');;
           });
       } else {
-        console.log('undefined id')
+        router.push('MFNotFound');
       }
     },
   };

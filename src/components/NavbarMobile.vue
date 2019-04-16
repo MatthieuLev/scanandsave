@@ -6,16 +6,22 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="ViewGeneralInformation">Informations générales</router-link>
+            <router-link :to="`/ViewGeneralInformation?userId=${this.$route.query.userId}`">
+              Informations générales
+            </router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="ViewIdentity">Identité</router-link>
+            <router-link :to="`/ViewIdentity?userId=${this.$route.query.userId}`">Identité
+            </router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="ViewMHTA">Informations médicales</router-link>
+            <router-link :to="`/ViewMHTA?userId=${this.$route.query.userId}`">Informations
+              médicales
+            </router-link>
           </b-nav-item>
           <b-nav-item>
-            <router-link to="ViewContact">Contacts</router-link>
+            <router-link :to="`/ViewContact?userId=${this.$route.query.userId}`">Contacts
+            </router-link>
           </b-nav-item>
         </b-navbar-nav>
       </b-collapse>
@@ -57,7 +63,7 @@
     font-weight: bold;
   }
 
-  .lang>a{
+  .lang > a {
     color: white !important;
     text-decoration: none;
     font-weight: bold;
@@ -65,10 +71,12 @@
 
   .router-link-exact-active {
     color: #dadada;
-   }
-  .nav-link .signOutButton{
+  }
+
+  .nav-link .signOutButton {
     cursor: pointer;
   }
+
   .navbar {
     background-color: #dc3545;
   }
@@ -78,12 +86,13 @@
     cursor: initial;
   }
 
-  .signOutButtonContainer>a>a:hover{
+  .signOutButtonContainer > a > a:hover {
     color: #dadada !important;
     text-decoration: none;
     font-weight: bold;
   }
-  .signOutButtonContainer>a:hover{
+
+  .signOutButtonContainer > a:hover {
     color: white !important;
     text-decoration: none;
     font-weight: bold;
