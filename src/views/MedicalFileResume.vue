@@ -1,5 +1,5 @@
 <template>
-  <div class="bg">
+  <div>
     <Navbar></Navbar>
     <b-container>
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
@@ -611,8 +611,5 @@
   .userPhoto {
     width: auto;
     height: 50px;
-  }
-  .bg{
-    background-color:#b71c1c;
   }
 </style>

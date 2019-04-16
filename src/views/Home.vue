@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg">
     <Navbar></Navbar>
     <!-- Indicators -->
     <div>
@@ -228,6 +228,10 @@
 
   a{
     color: #f6fff7 !important;
+  }
+
+  .bg{
+    background-color: white;
   }
 
 </style>

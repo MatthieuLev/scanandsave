@@ -29,7 +29,9 @@
       </div>
       <div v-else>
         <p>Vous devez créer un dossier médical avant de pouvoir générer un autocollant.</p>
-        <router-link class="button-validate" to="MedicalFileCreation" replace>Générer un dossier médical</router-link>
+
+        <router-link class="button-validate btn-warning" to="MedicalFileCreation" replace>Générer un dossier médical
+        </router-link>
       </div>
     </b-container>
   </div>
@@ -74,13 +76,11 @@
             querySnapshot.forEach(documentSnapshot => {
               const data = documentSnapshot.data();
               data['id'] = documentSnapshot.id;
-              console.log('[LOG] ViewMyStickers : Received the stickers : ' + data['id']);
               self.stickers.push(data);
             });
           }
         })
         .catch(error => {
-          console.log('[LOG] ViewMyStickers : The recovery of the stickers failed');
           this.errorMessage = error;
         });
     },
@@ -95,11 +95,7 @@
             in_order: !item.in_order,
             quantity: !item.in_order ? 1 : item.quantity,
           })
-          .then(() => {
-            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
-          })
           .catch(error => {
-            console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
             this.errorMessage = error;
           });
       },
@@ -110,12 +106,12 @@
 <style scoped>
   h1 {
     margin: 1em 0;
-    color: grey;
+    color: #ffffff;
   }
 
   .custom-card {
-    color: white;
-    background-color: #90081d;
+    color: #b71c1c;
+    background-color: #ffffff;
     border-radius: 4px;
     margin: 1em 0;
   }
@@ -137,12 +133,6 @@
 
   .button-validate:hover {
     color: #fff;
-    background-color: #545b62;
-    border-color: #4e555b;
-  }
-
-  .table {
-    color: white;
   }
 
   a:hover {
