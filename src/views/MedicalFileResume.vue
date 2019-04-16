@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg">
     <Navbar></Navbar>
     <b-container>
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
@@ -263,9 +263,6 @@
                               placeholder="Prénom du contact"></b-form-input>
               </b-form-group>
             </div>
-          </b-row>
-
-          <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Téléphone : ">
                 <b-form-input :disabled="disabled" v-model="form.contact.phone_number" type="tel"
@@ -429,6 +426,7 @@
               blood_type: this.form.blood_type,
               social_security_number: this.form.social_security_number,
               license_number: this.form.license_number,
+              photo: this.form.photo,
               adress: {
                 number: this.form.adress.number,
                 street: this.form.adress.street,
@@ -458,7 +456,7 @@
           });
         }).catch((error => {
           console.log(error);
-          self.errorMessage = error;
+          this.errorMessage = error;
         }))
       },
       modify() {
@@ -565,7 +563,7 @@
 
   h1 {
     margin: 1em 0;
-    color: grey;
+    color: #ffffff;
   }
 
   h2 {
@@ -573,13 +571,13 @@
   }
 
   h3 {
-    color: #ffa7a7;
+    color: #7f0000;
     margin: 1em 0;
   }
 
   .custom-card {
-    color: white;
-    background-color: #90081d;
+    color: #b71c1c;
+    background-color: #ffffff;
     border-radius: 4px;
     padding: 2em;
     margin: 1em 0;
@@ -598,10 +596,8 @@
     cursor: pointer;
   }
 
-  .button-validate:hover {
+  .button-validate:hover, .button-delete:hover {
     color: #fff;
-    background-color: #545b62;
-    border-color: #4e555b;
   }
 
   .button-delete {
@@ -616,15 +612,7 @@
     width: auto;
     height: 50px;
   }
-
-  .form-control:disabled, .form-control[readonly] {
-    background-color: #c5c8cb;
-    border-color: black;
-    opacity: 1;
-  }
-  .custom-file-label {
-    background-color: #c5c8cb;
-    border-color: black;
-    opacity: 1;
+  .bg{
+    background-color:#b71c1c;
   }
 </style>

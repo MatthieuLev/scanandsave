@@ -387,44 +387,43 @@
           console.log(this.$v);
           return;
         }
-        const self = this;
         this.uploadPhoto().then(() => {
           db.collection('medicalFiles')
             .doc(firebase.auth().currentUser.uid)
             .set({
-              civility: self.form.civility,
-              first_name: self.form.first_name,
-              last_name: self.form.last_name,
-              birthday: self.form.birthday,
-              phone_number: self.form.phone_number,
-              organ_donor: self.form.organ_donor,
-              blood_type: self.form.blood_type,
-              social_security_number: self.form.social_security_number,
-              license_number: self.form.license_number,
-              photo: self.form.photo,
-              adress: {
-                number: self.form.adress.number,
-                street: self.form.adress.street,
-                complement: self.form.adress.complement,
-                postal_code: self.form.adress.postal_code,
-                city: self.form.adress.city,
-                state: self.form.adress.state,
-                country: self.form.adress.country,
+              civility: this.form.civility,
+              first_name: this.form.first_name,
+              last_name: this.form.last_name,
+              birthday: this.form.birthday,
+              phone_number: this.form.phone_number,
+              organ_donor: this.form.organ_donor,
+              blood_type: this.form.blood_type,
+              social_security_number: this.form.social_security_number,
+              license_number: this.form.license_number,
+              photo: this.form.photo,
+                adress: {
+                number: this.form.adress.number,
+                street: this.form.adress.street,
+                complement: this.form.adress.complement,
+                postal_code: this.form.adress.postal_code,
+                city: this.form.adress.city,
+                state: this.form.adress.state,
+                country: this.form.adress.country,
               },
-              diseases: self.form.diseases,
-              hospitalization: self.form.hospitalization,
-              allergy: self.form.allergy,
-              treatment: self.form.treatment,
+              diseases: this.form.diseases,
+              hospitalization: this.form.hospitalization,
+              allergy: this.form.allergy,
+              treatment: this.form.treatment,
               contact: {
-                last_name: self.form.contact.last_name,
-                first_name: self.form.contact.first_name,
-                phone_number: self.form.contact.phone_number,
+                last_name: this.form.contact.last_name,
+                first_name: this.form.contact.first_name,
+                phone_number: this.form.contact.phone_number,
               },
               doctor: {
-                last_name: self.form.doctor.last_name,
-                first_name: self.form.doctor.first_name,
-                phone_number: self.form.doctor.phone_number,
-                city: self.form.doctor.city,
+                last_name: this.form.doctor.last_name,
+                first_name: this.form.doctor.first_name,
+                phone_number: this.form.doctor.phone_number,
+                city: this.form.doctor.city,
               },
             })
             .then(() => {
@@ -432,11 +431,11 @@
             })
             .catch((error) => {
               console.log(error);
-              self.errorMessage = error;
+              this.errorMessage = error;
             });
         }).catch((error => {
           console.log(error);
-          self.errorMessage = error;
+          this.errorMessage = error;
         }))
       },
       uploadPhoto() {

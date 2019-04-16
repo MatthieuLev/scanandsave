@@ -76,14 +76,12 @@
           </b-form-group>
         </b-col>
       </b-row>
-
       <b-row>
         <b-col class="buttonPosition">
           <b-button variant="success">Valider</b-button>
           <b-button variant="danger">Annuler</b-button>
         </b-col>
       </b-row>
-
     </b-container>
 
     <br><br><br><br>
@@ -110,11 +108,13 @@
 
 <script>
   import Navbar from '../components/Navbar.vue';
+  import PaymentMethod from '../components/PaymentMethod.vue';
 
   export default {
     name: 'ViewMyPaymentMethod',
     components: {
       Navbar,
+      PaymentMethod
     },
 
     data() {
