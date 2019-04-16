@@ -80,7 +80,7 @@
         </b-row>
       </div>
       <div>
-        <b-button>Appeler les secours</b-button>
+        <b-button href="tel:112">Appeler les secours</b-button>
       </div>
     </b-container>
 </template>
