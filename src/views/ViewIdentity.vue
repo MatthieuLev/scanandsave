@@ -1,35 +1,87 @@
 <template>
   <div>
     <NavbarMobile></NavbarMobile>
-    <b-container>
+    <div class="container">
       <br>
-      <br>
-    <b-row>
-      <b-col>
-        <h2>Fiche d'identité</h2>
-      </b-col>
-    </b-row>
-      <br>
-    <b-row>
-      <b-col>
-        <b-row>
-          <p class="label">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p><p>{{this.form.last_name}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">&nbsp;&nbsp;Prenom :&nbsp;&nbsp;</p><p>{{this.form.first_name}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">&nbsp;&nbsp;Age :&nbsp;&nbsp;</p><p>{{this.form.birthday}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p><p>{{this.sexe}}</p>
-        </b-row>
-      </b-col>
-      <b-col>
-        <p>Ici la photo</p>
-      </b-col>
-    </b-row>
-    </b-container>
+      <b-row>
+        <b-col>
+          <h2>Fiche d'identité</h2>
+        </b-col>
+      </b-row>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+
+            <div class="card-body">
+              <div class="card-title mb-4">
+                <div class="d-flex justify-content-start">
+                  <div class="image-container">
+                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                  </div>
+                  <div class="userData ml-3">
+                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> {{this.form.last_name}}{{this.form.last_name}}</a></h2>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="tab-content ml-1" id="myTabContent">
+                    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                        <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          {{this.form.last_name}}
+                        </div>
+                        </div>
+                      <hr />
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          {{this.form.first_name}}
+                        </div>
+                      </div>
+                      <hr />
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Date de naissance :&nbsp;&nbsp;</p>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          {{this.form.birthday}}
+                        </div>
+                      </div>
+                      <hr />
+
+
+                      <div class="row">
+                        <div class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p>
+                        </div>
+                        <div class="col-md-8 col-6">
+                          {{this.sexe}}
+                        </div>
+                      </div>
+                      <hr />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,7 +92,7 @@
   import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
-    name: 'ViewIdentity',
+    name: 'ViewGeneralInformation',
     components: {
       NavbarMobile,
     },

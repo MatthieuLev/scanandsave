@@ -3,7 +3,6 @@
     <NavbarMobile></NavbarMobile>
     <b-container>
       <br>
-      <br>
       <b-row>
         <b-col>
           <h2>Contacts</h2>

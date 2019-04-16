@@ -3,7 +3,6 @@
     <NavbarMobile></NavbarMobile>
     <b-container>
       <br>
-      <br>
       <div>
         <b-row>
           <b-col>
