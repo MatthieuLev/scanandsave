@@ -16,7 +16,7 @@
               <div class="card-title mb-4">
                 <div class="d-flex justify-content-start">
                   <div class="image-container">
-                    <img src="http://placehold.it/150x150" id="imgProfile" style="width: 150px; height: 150px" class="img-thumbnail" />
+                    <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
                   </div>
                   <div class="userData ml-3">
                     <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> {{this.form.last_name}}{{this.form.last_name}}</a></h2>
@@ -74,6 +74,48 @@
                   </div>
                 </div>
               </div>
+              <div>
+                <b-row>
+                  <b-col>
+                    <h2>Coordonnées</h2>
+                  </b-col>
+                </b-row>
+                <br>
+                <b-row>
+                  <b-col>
+                    <p>{{this.form.adress.complement}}, {{this.form.adress.number}} {{this.form.adress.street}}</p>
+                    <p>{{this.form.adress.postal_code}} {{this.form.adress.city}}</p>
+                    <p>{{this.form.adress.state}} {{this.form.adress.country}}</p>
+                    <p>{{this.form.phone_number}}</p>
+                  </b-col>
+                </b-row>
+              </div>
+              <div>
+                <b-row>
+                  <b-col>
+                    <h2>Sécurité sociale</h2>
+                  </b-col>
+                </b-row>
+                <br>
+                <b-row>
+                  <b-col>
+                    <p>{{this.form.social_security_number}}</p>
+                  </b-col>
+                </b-row>
+              </div>
+              <div>
+                <b-row>
+                  <b-col>
+                    <h2>Permis</h2>
+                  </b-col>
+                </b-row>
+                <br>
+                <b-row>
+                  <b-col>
+                    <p>{{this.form.license_number}}</p>
+                  </b-col>
+                </b-row>
+              </div>
 
 
             </div>
@@ -86,13 +128,11 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
   import db from '../firebase.js';
-  import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
-    name: 'ViewGeneralInformation',
+    name: 'ViewIdentity',
     components: {
       NavbarMobile,
     },

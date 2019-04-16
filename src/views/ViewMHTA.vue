@@ -1,47 +1,65 @@
 <template>
   <div>
     <NavbarMobile></NavbarMobile>
-  <b-container>
-    <br>
-    <b-row>
-      <b-col>
-        <h2>Informations médicales</h2>
-      </b-col>
-    </b-row>
-    <br>
-    <div>
-      <h4>Maladie</h4>
-      <b-row>
-          <p>{{this.form.diseases}}</p>
-      </b-row>
-    </div>
-    <div>
-      <h4>Hospitalisation</h4>
-      <b-row>
-        <p>{{this.form.hospitalization}}</p>
-      </b-row>
-    </div>
-    <div>
-      <h4>Traitements</h4>
-      <b-row>
-        <p>{{this.form.treatment}}</p>
-      </b-row>
-    </div>
-    <div>
-      <h4>Allergies</h4>
-      <b-row>
-        <p>{{this.form.allergy}}</p>
-      </b-row>
-    </div>
-      <b-row>
-        <p class="label">&nbsp;&nbsp;Donneur d'organe :&nbsp;&nbsp;</p><p>{{this.form.organ_donor}}</p>
-      </b-row>
-    <div>
-      <b-row>
-        <p class="label">&nbsp;&nbsp;Groupe sanguin :&nbsp;&nbsp;</p><p>{{this.form.blood_type}}</p>
-      </b-row>
-    </div>
-  </b-container>
+    <b-container>
+      <div>
+        <b-row>
+          <b-col>
+            <h2>Informations médicales</h2>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <h4>Maladie</h4>
+          </b-col>
+        </b-row>
+        <br>
+        <b-row>
+          <b-col>
+            <p>{{this.form.diseases}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <h4>Hospitalisation</h4>
+          </b-col>
+        </b-row>
+        <br>
+        <b-row>
+          <b-col>
+            <p>{{this.form.hospitalization}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <h4>Traitement</h4>
+          </b-col>
+        </b-row>
+        <br>
+        <b-row>
+          <b-col>
+            <p>{{this.form.treatment}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <h4>Allergie</h4>
+          </b-col>
+        </b-row>
+        <br>
+        <b-row>
+          <b-col>
+            <p>{{this.form.allergy}}</p>
+          </b-col>
+        </b-row>
+        <b-row>
+          <p class="label">Donneur d'organe : </p><p>{{this.form.organ_donor}}</p>
+        </b-row>
+        <b-row>
+          <p class="label">Groupe sanguin : </p><p>{{this.form.blood_type}}</p>
+        </b-row>
+      </div>
+    </b-container>
   </div>
 </template>
 
@@ -72,27 +90,32 @@
       };
     },
     created() {
-      db.collection('medicalFiles')
-        .doc(firebase.auth().currentUser.uid)
-        .get()
-        .then((doc) => {
-          console.log(doc.data());
-          console.log(doc.id, ' => ', doc.data());
-          this.form.blood_type = doc.data().blood_type;
-          this.form.organ_donor = doc.data().organ_donor;
-          if (doc.data().organ_donor) {
-            this.form.organ_donor = 'Oui';
-          } else {
-            this.form.organ_donor = 'Non';
-          }
-          this.form.diseases = doc.data().diseases;
-          this.form.hospitalization = doc.data().hospitalization;
-          this.form.allergy = doc.data().allergy;
-          this.form.treatment = doc.data().treatment;
-        })
-        .catch(() => {
-          router.push('ViewMHTA');
-        });
+      const userId = this.$route.query.userId;
+      if (userId !== undefined) {
+        db.collection('medicalFiles')
+          .doc(userId)
+          .get()
+          .then((doc) => {
+            console.log(doc.data());
+            console.log(doc.id, ' => ', doc.data());
+            this.form.blood_type = doc.data().blood_type;
+            this.form.organ_donor = doc.data().organ_donor;
+            if (doc.data().organ_donor) {
+              this.form.organ_donor = 'Oui';
+            } else {
+              this.form.organ_donor = 'Non';
+            }
+            this.form.diseases = doc.data().diseases;
+            this.form.hospitalization = doc.data().hospitalization;
+            this.form.allergy = doc.data().allergy;
+            this.form.treatment = doc.data().treatment;
+          })
+          .catch(() => {
+            router.push('ViewMHTA');
+          });
+      } else {
+        console.log('undefined id')
+      }
     },
   };
 </script>
