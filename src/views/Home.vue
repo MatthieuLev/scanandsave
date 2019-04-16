@@ -146,11 +146,8 @@
     <br><br><br>
 
 <div>
-  <div class="btn-primary">
-  <b-button block variant="primary"><router-link to="ViewMyAccount">Je me lance !</router-link></b-button>
-</div>
-
-    <br><br><br>
+  <b-button class = "b1"><router-link to="ViewMyAccount">Je me lance !</router-link></b-button>
+  <br><br><br>
 </div>
 
     <footer class="container-fluid text-center">
@@ -168,6 +165,7 @@
         </div>
 
       </div>
+      <br>
       <p>Scan and Save ! Frissons et sensations fortes en toute sécurité !</p>
     </footer>
   </div>
@@ -216,9 +214,20 @@
   width: 80px;
 }
 
-  .btn-primary {
-    color: #fff;
-    background-color: #B9121B;
-    border-color: #B9121B;
+
+  .b1 {
+    background-color: #B9121B !important;
+    border-color: transparent;
+    padding-right: 20px;
+    padding-left: 20px;
   }
+
+  .b1:hover {
+    background-color: #BD8D46 !important;
+  }
+
+  a{
+    color: #f6fff7 !important;
+  }
+
 </style>

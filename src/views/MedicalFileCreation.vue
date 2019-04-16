@@ -297,6 +297,10 @@
         <p class="error" v-if="errorMessage">{{errorMessage}}</p>
       </b-form>
     </b-container>
+      <br>
+      <br>
+      <br>
+      <br>
       </div>
   </div>
 </template>
@@ -475,4 +479,21 @@
     border-radius: 4px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
+
+  .button-validate  {
+    background-color: #B9121B !important;
+    border-color: transparent;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .button-validate:hover {
+    background-color: #BD8D46 !important;
+  }
+
+  a{
+    color: #f6fff7 !important;
+  }
+
+
 </style>
