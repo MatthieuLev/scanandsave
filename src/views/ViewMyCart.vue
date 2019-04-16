@@ -84,6 +84,25 @@
         </div>
       </div>
     </b-container>
+
+    <br><br><br><br>
+
+    <footer class="container-fluid text-center">
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="../img/skateboard.jpg" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+
+        <div class="col-sm-4">
+          <img src="../img/utah.jpg" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+
+        <div class="col-sm-4">
+          <img src="../img/ski.png" class="img-responsive" style="width:100%" alt="Image">
+        </div>
+      </div>
+    </footer>
+
   </div>
 </template>
 
