@@ -1,5 +1,7 @@
 <template>
   <div>
+    <NavbarMobile></NavbarMobile>
+    <b-container>
     <b-row>
       <b-col>
         <h2>Fiche d'identité</h2>
@@ -27,6 +29,7 @@
         <p>Ici la photo</p>
       </b-col>
     </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -34,9 +37,13 @@
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
+  import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
-    name: 'ViewGeneralInformation',
+    name: 'ViewIdentity',
+    components: {
+      NavbarMobile,
+    },
     data() {
       return {
         errorMessage: '',

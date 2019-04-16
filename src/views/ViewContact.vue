@@ -1,5 +1,7 @@
 <template>
+  <div>
   <b-container>
+    <NavbarMobile></NavbarMobile>
     <div>
       <b-row>
         <h2>Proche à contacter</h2>
@@ -16,17 +18,21 @@
       <b-row>{{this.form.doctor.city}}</b-row>
     </div>
   </b-container>
-
-
+  </div>
 </template>
 
 <script>
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
+  import NavbarMobile from '../components/NavbarMobile.vue';
+
 
   export default {
     name: 'ViewContact',
+    components: {
+      NavbarMobile,
+    },
     data() {
       return {
         errorMessage: '',

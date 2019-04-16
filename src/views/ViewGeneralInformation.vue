@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <NavbarMobile></NavbarMobile>
     <b-container>
       <div>
         <b-row>
@@ -82,16 +84,21 @@
       <div>
         <b-button>Appeler les secours</b-button>
       </div>
-    </b-container>
+        </b-container>
+      </div>
 </template>
 
 <script>
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
+  import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
     name: 'ViewGeneralInformation',
+    components: {
+      NavbarMobile,
+    },
     data() {
       return {
         errorMessage: '',
