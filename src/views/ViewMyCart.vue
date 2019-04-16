@@ -4,6 +4,7 @@
     <b-container>
       <Menu></Menu>
       <h1>Mon Panier</h1>
+      <br/>
       <table class="table table-striped">
         <thead>
         <tr>
@@ -72,17 +73,17 @@
         </tr>
         </tbody>
       </table>
-
-      <div class="col mb-2">
-        <div class="row">
-          <div class="col-sm-12  col-md-6">
-            <button class="btn btn-block btn-light">Continue Shopping</button>
-          </div>
-          <div class="col-sm-12 col-md-6 text-right">
-            <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
-          </div>
-        </div>
-      </div>
+      <PaymentMethod v-if="validated"></PaymentMethod>
+      <br/>
+      <br/>
+      <b-row>
+        <b-col>
+          <b-button class="btn btn-lg btn-block btn-danger text-uppercase" v-if="validated" v-on:click="leftPayment()">Annuler le paiement</b-button>
+        </b-col>
+        <b-col>
+          <b-button class="btn btn-lg btn-block btn-success text-uppercase" v-on:click="goPayment()">Valider</b-button>
+        </b-col>
+      </b-row>
     </b-container>
   </div>
 </template>
@@ -90,15 +91,18 @@
 <script>
   import firebase from 'firebase';
   import Navbar from '../components/Navbar.vue';
+  import PaymentMethod from "../components/PaymentMethod.vue"
   import db from '../firebase.js';
 
   export default {
     name: 'Mon_Panier',
     components: {
       Navbar,
+      PaymentMethod
     },
     data() {
       return {
+        validated:false,
         errorMessage: '',
         total: 0,
         items: [],
@@ -162,7 +166,7 @@
         }
       },
       addProduct: function (item, i) {
-        if((item.quantity >=1 && i<0) || (item.quantity>=0 && i>0)){
+        if ((item.quantity >= 1 && i < 0) || (item.quantity >= 0 && i > 0)) {
           db.collection('stickers')
             .doc(firebase.auth().currentUser.uid)
             .collection('userStickers')
@@ -177,7 +181,7 @@
               console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
               this.errorMessage = error;
             });
-          for( var j = 0; j < this.items.length; j++) {
+          for (var j = 0; j < this.items.length; j++) {
             if (this.items[j] === item) {
               this.items[j].quantity = this.items[j].quantity + i;
               this.total = this.total + (i * this.items[j].prix);
@@ -185,6 +189,12 @@
           }
 
         }
+      },
+      goPayment(){
+        this.validated=true;
+      },
+      leftPayment(){
+        this.validated=false;
       }
     },
   };

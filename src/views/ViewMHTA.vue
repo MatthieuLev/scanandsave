@@ -1,59 +1,63 @@
 <template>
+  <div>
+    <NavbarMobile></NavbarMobile>
   <b-container>
+    <br>
+    <br>
+    <b-row>
+      <b-col>
+        <h2>Informations médicales</h2>
+      </b-col>
+    </b-row>
+    <br>
     <div>
-      <h2>Maladie</h2>
+      <h4>Maladie</h4>
       <b-row>
           <p>{{this.form.diseases}}</p>
       </b-row>
     </div>
     <div>
-      <h2>Hospitalisation</h2>
+      <h4>Hospitalisation</h4>
       <b-row>
         <p>{{this.form.hospitalization}}</p>
       </b-row>
     </div>
     <div>
-      <h2>Traitements</h2>
+      <h4>Traitements</h4>
       <b-row>
         <p>{{this.form.treatment}}</p>
       </b-row>
     </div>
     <div>
-      <h2>Allergies</h2>
+      <h4>Allergies</h4>
       <b-row>
         <p>{{this.form.allergy}}</p>
       </b-row>
     </div>
-    <div>
       <b-row>
-        <b-col>
-          <h2>Donneur d'organe</h2>
-        </b-col>
-        <b-col>
-          <p>{{this.form.organ_donor}}</p>
-        </b-col>
+        <p class="label">&nbsp;&nbsp;Donneur d'organe :&nbsp;&nbsp;</p><p>{{this.form.organ_donor}}</p>
       </b-row>
-    </div>
     <div>
       <b-row>
-        <b-col>
-          <h2>Groupe sanguin</h2>
-        </b-col>
-        <b-col>
-          <p>{{this.form.blood_type}}</p>
-        </b-col>
+        <p class="label">&nbsp;&nbsp;Groupe sanguin :&nbsp;&nbsp;</p><p>{{this.form.blood_type}}</p>
       </b-row>
     </div>
   </b-container>
+  </div>
 </template>
 
 <script>
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
+  import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
     name: 'ViewMHTA',
+    components: {
+      NavbarMobile,
+    },
+
     data() {
       return {
         errorMessage: '',

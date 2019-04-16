@@ -1,32 +1,47 @@
 <template>
-  <b-container>
-    <div>
+  <div>
+    <NavbarMobile></NavbarMobile>
+    <b-container>
+      <br>
+      <br>
       <b-row>
-        <h2>Proche à contacter</h2>
+        <b-col>
+          <h2>Contacts</h2>
+        </b-col>
       </b-row>
+      <br>
+      <b-row>
+        <b-col>
+          <h4>Proche à contacter</h4>
+        </b-col>
+      </b-row>
+      <br>
       <b-row>{{this.form.contact.first_name}} {{this.form.contact.last_name}}</b-row>
       <b-row>{{this.form.contact.phone_number}}</b-row>
-    </div>
-    <div>
       <b-row>
-        <h2>Médecin traitant</h2>
+        <b-col>
+          <h4>Médecin traitant</h4>
+        </b-col>
       </b-row>
       <b-row>{{this.form.doctor.first_name}} {{this.form.doctor.last_name}}</b-row>
       <b-row>{{this.form.doctor.phone_number}}</b-row>
       <b-row>{{this.form.doctor.city}}</b-row>
-    </div>
   </b-container>
-
-
+  </div>
 </template>
 
 <script>
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
+  import NavbarMobile from '../components/NavbarMobile.vue';
+
 
   export default {
     name: 'ViewContact',
+    components: {
+      NavbarMobile,
+    },
     data() {
       return {
         errorMessage: '',

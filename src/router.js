@@ -10,11 +10,14 @@ import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyPaymentMethod from './views/ViewMyPaymentMethod.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
 import Navbar from './components/Navbar.vue';
+import NavbarMobile from './components/NavbarMobile.vue';
 import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
 import ViewMHTA from "./views/ViewMHTA";
 import ViewIdentity from "./views/ViewIdentity";
 import ViewContact from "./views/ViewContact";
-import Qrcode from './components/Qrcode.vue'
+import Qrcode from './components/Qrcode.vue';
+import PaymentMethod from "./components/PaymentMethod.vue";
+
 
 Vue.use(Router);
 
@@ -42,6 +45,21 @@ const router = new Router({
       path: '/Navbar',
       name: 'Navbar',
       component: Navbar,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+
+    {
+      path: '/NavbarMobile',
+      name: 'NavbarMobile',
+      component: NavbarMobile,
+    },
+
+    {
+      path: '/PaymentMethod',
+      name: 'PaymentMethod',
+      component: PaymentMethod,
       meta: {
         requiresAuth: true,
       },

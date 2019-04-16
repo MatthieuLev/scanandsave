@@ -1,27 +1,28 @@
 <template>
+  <div>
+    <NavbarMobile></NavbarMobile>
     <b-container>
+      <br>
+      <br>
       <div>
         <b-row>
           <b-col>
             <h2>Fiche d'identité</h2>
           </b-col>
-          <b-col class="col-lg-1">
-            <button type="button" class="btn btn-dark">+</button>
-          </b-col>
         </b-row>
         <b-row>
           <b-col>
             <b-row>
-             <p class="label">Nom : </p><p>{{this.form.last_name}}</p>
+             <p class="label">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p><p>{{this.form.last_name}}</p>
             </b-row>
             <b-row>
-              <p class="label">Prenom : </p><p>{{this.form.first_name}}</p>
+              <p class="label">&nbsp;&nbsp;Prenom :&nbsp;&nbsp;</p><p>{{this.form.first_name}}</p>
             </b-row>
             <b-row>
-              <p class="label">Age : </p><p>{{this.form.birthday}}</p>
+              <p class="label">&nbsp;&nbsp;Age :&nbsp;&nbsp;</p><p>{{this.form.birthday}}</p>
             </b-row>
             <b-row>
-              <p class="label">Sexe : </p><p>{{this.sexe}}</p>
+              <p class="label">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p><p>{{this.sexe}}</p>
             </b-row>
           </b-col>
           <b-col>
@@ -34,27 +35,24 @@
           <b-col>
             <h2>Informations médicales</h2>
           </b-col>
-          <b-col class="col-lg-1">
-            <button type="button" class="btn btn-dark">+</button>
-          </b-col>
         </b-row>
         <b-row>
-          <p class="label">Groupe sanguin : </p><p> {{this.form.blood_type}}</p>
+          <p class="label">&nbsp;&nbsp;Groupe sanguin :&nbsp;&nbsp;</p><p> {{this.form.blood_type}}</p>
         </b-row>
         <b-row>
-          <p class="label">Donneur d'organe : </p><p> {{this.form.organ_donor}}</p>
+          <p class="label">&nbsp;&nbsp;Donneur d'organe :&nbsp;&nbsp;</p><p> {{this.form.organ_donor}}</p>
         </b-row>
         <b-row>
-          <p class="label">Maladie : </p><p> {{this.form.diseases}}</p>
+          <p class="label">&nbsp;&nbsp;Maladie :&nbsp;&nbsp;</p><p> {{this.form.diseases}}</p>
         </b-row>
         <b-row>
-          <p class="label">Hospitalisation : </p><p> {{this.form.hospitalization}} </p>
+          <p class="label">&nbsp;&nbsp;Hospitalisation :&nbsp;&nbsp;</p><p> {{this.form.hospitalization}} </p>
         </b-row>
         <b-row>
-          <p class="label">Traitement : </p><p> {{this.form.treatment}} </p>
+          <p class="label">&nbsp;&nbsp;Traitement :&nbsp;&nbsp;</p><p> {{this.form.treatment}} </p>
         </b-row>
         <b-row>
-          <p class="label">Allergie : </p><p> {{this.form.allergy}}</p>
+          <p class="label">&nbsp;&nbsp;Allergie :&nbsp;&nbsp;</p><p> {{this.form.allergy}}</p>
         </b-row>
       </div>
       <div>
@@ -62,36 +60,40 @@
           <b-col>
             <h2>Contacts</h2>
           </b-col>
-          <b-col class="col-lg-1">
-            <button type="button" class="btn btn-dark">+</button>
-          </b-col>
         </b-row>
         <b-row>
-          <p class="label">Proche : </p><p> {{this.form.contact.first_name}} {{this.form.contact.last_name}} </p>
+          <p class="label">&nbsp;&nbsp;Proche :&nbsp;&nbsp;</p><p> {{this.form.contact.first_name}} {{this.form.contact.last_name}} </p>
         </b-row>
         <b-row>
-          <p class="label">Coordonnées : </p><p> {{this.form.contact.phone_number}}</p>
+          <p class="label">&nbsp;&nbsp;Coordonnées :&nbsp;&nbsp;</p><p> {{this.form.contact.phone_number}}</p>
         </b-row>
         <b-row>
-          <p class="label">Medecin : </p><p> {{this.form.doctor.first_name}} {{this.form.doctor.last_name}}</p>
+          <p class="label">&nbsp;&nbsp;Medecin :&nbsp;&nbsp;</p><p> {{this.form.doctor.first_name}} {{this.form.doctor.last_name}}</p>
         </b-row>
         <b-row>
-          <p class="label">Coordonnées : </p><p> {{this.form.doctor.phone_number}} - {{this.form.doctor.city}}</p>
+          <p class="label">&nbsp;&nbsp;Coordonnées :&nbsp;&nbsp;</p><p> {{this.form.doctor.phone_number}} - {{this.form.doctor.city}}</p>
         </b-row>
       </div>
       <div>
         <b-button href="tel:112">Appeler les secours</b-button>
       </div>
-    </b-container>
+      <br>
+      <br>
+        </b-container>
+      </div>
 </template>
 
 <script>
   import firebase from 'firebase';
   import db from '../firebase.js';
   import router from '../router';
+  import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
     name: 'ViewGeneralInformation',
+    components: {
+      NavbarMobile,
+    },
     data() {
       return {
         errorMessage: '',
