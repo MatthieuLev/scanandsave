@@ -1,65 +1,84 @@
 <template>
   <div>
     <NavbarMobile></NavbarMobile>
-    <b-container>
-      <div>
-        <b-row>
-          <b-col>
-            <h2>Informations médicales</h2>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <h4>Maladie</h4>
-          </b-col>
-        </b-row>
-        <br>
-        <b-row>
-          <b-col>
-            <p>{{this.form.diseases}}</p>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <h4>Hospitalisation</h4>
-          </b-col>
-        </b-row>
-        <br>
-        <b-row>
-          <b-col>
-            <p>{{this.form.hospitalization}}</p>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <h4>Traitement</h4>
-          </b-col>
-        </b-row>
-        <br>
-        <b-row>
-          <b-col>
-            <p>{{this.form.treatment}}</p>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <h4>Allergie</h4>
-          </b-col>
-        </b-row>
-        <br>
-        <b-row>
-          <b-col>
-            <p>{{this.form.allergy}}</p>
-          </b-col>
-        </b-row>
-        <b-row>
-          <p class="label">Donneur d'organe : </p><p>{{this.form.organ_donor}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">Groupe sanguin : </p><p>{{this.form.blood_type}}</p>
-        </b-row>
+    <div class="container">
+      <br>
+      <b-row>
+        <b-col>
+          <h1>Informations médicales</h1>
+        </b-col>
+      </b-row>
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <h5 class="label" style="font-weight:bold;">Maladie</h5>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{this.form.diseases}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <h5 class="label" style="font-weight:bold;">Hospitalisa - tion</h5>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{this.form.hospitalization}}
+                </div>
+              </div>
+              <hr />
+
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <h5 class="label" style="font-weight:bold;">Traitement</h5>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{this.form.treatment}}
+                </div>
+              </div>
+              <hr />
+
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <h5 class="label" style="font-weight:bold;">Allergie</h5>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{this.form.allergy}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <h5 class="label" style="font-weight:bold;">Donneur d'organe :</h5>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{this.form.organ_donor}}
+                </div>
+              </div>
+              <hr />
+
+              <div class="row">
+                <div class="col-sm-3 col-md-2 col-5">
+                  <h5 class="label" style="font-weight:bold;">Groupe sanguin :</h5>
+                </div>
+                <div class="col-md-8 col-6">
+                  {{this.form.blood_type}}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
-    </b-container>
+    </div>
   </div>
 </template>
 
@@ -118,5 +137,8 @@
 </script>
 
 <style scoped>
+  h1 {
+    color: #FFFFFF;
+  }
 
 </style>
