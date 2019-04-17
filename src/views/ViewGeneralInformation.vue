@@ -12,15 +12,20 @@
         <b-col>
           <div class="card">
             <div class="card-body">
+              <div class="userData ml-3">
+                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> {{this.form.first_name}} {{this.form.last_name}}</a></h2>
+              </div>
               <div class="card-title mb-4">
                 <div class="d-flex justify-content-start">
-                  <div class="image-container">
-                    <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
-                  </div>
-                  <div class="userData ml-3">
-                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> {{this.form.first_name}} {{this.form.last_name}}</a></h2>
-                  </div>
                 </div>
+                <b-col class="align-content-center col-lg-2">
+                  <b-form-group>
+                    <img height="70%"
+                         width="70%"
+                         max-width="100%"
+                         max-height="100%" :src="this.form.photo" alt="Pas de photo" class="userPhoto">
+                  </b-form-group>
+                </b-col>
               </div>
               <b-row>
                 <b-col>

@@ -8,8 +8,8 @@
           <h2>Fiche d'identité</h2>
         </b-col>
       </b-row>
-      <div class="row">
-        <div class="col-12">
+      <b-row>
+        <b-col class="col-12">
           <div class="card">
             <div class="userData ml-3">
               <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold; align:center"><a href="javascript:void(0);"> {{this.form.first_name}}&nbsp;{{this.form.last_name}}</a></h2>
@@ -17,61 +17,66 @@
               <div class="card-title mb-4">
                 <div class="d-flex justify-content-start">
                 </div>
-                <div class="image-container">
-                  <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
-                </div>
+                <b-col class="align-content-center col-lg-2">
+                  <b-form-group>
+                    <img height="70%"
+                         width="70%"
+                         max-width="100%"
+                         max-height="100%" :src="this.form.photo" alt="Pas de photo" class="userPhoto">
+                  </b-form-group>
+                </b-col>
               </div>
 
-              <div class="row">
-                <div class="col-12">
+              <b-row>
+                <b-col class="col-12">
                   <div class="tab-content ml-1" id="myTabContent">
                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
 
 
-                      <div class="row">
-                        <div class="col-sm-3 col-md-3 col-5">
+                      <b-row class="row">
+                        <b-col class="col-sm-3 col-md-3 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
-                        </div>
-                        <div class="col-md-5 col-6">
+                        </b-col>
+                        <b-col class="col-md-5 col-6">
                           {{this.form.last_name}}
-                        </div>
-                      </div>
+                        </b-col>
+                      </b-row>
                       <hr />
 
-                      <div class="row">
-                        <div class="col-sm-3 col-md-3 col-5">
+                      <b-row class="row">
+                        <b-col class="col-sm-3 col-md-3 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
-                        </div>
-                        <div class="col-md-5 col-5">
+                        </b-col>
+                        <b-col class="col-md-5 col-5">
                           {{this.form.first_name}}
-                        </div>
-                      </div>
+                        </b-col>
+                      </b-row>
                       <hr />
 
-                      <div class="row">
-                        <div class="col-sm-3 col-md-3 col-5">
+                      <b-row class="row">
+                        <b-col class="col-sm-3 col-md-3 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Date de naissance :&nbsp;&nbsp;</p>
-                        </div>
-                        <div class="col-md-5 col-5">
+                        </b-col>
+                        <b-col class="col-md-5 col-5">
                           {{this.form.birthday}}
-                        </div>
-                      </div>
+                        </b-col>
+                      </b-row>
                       <hr />
 
 
-                      <div class="row">
-                        <div class="col-sm-3 col-md-3 col-5">
+                      <b-row class="row">
+                        <b-col class="col-sm-3 col-md-3 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p>
-                        </div>
-                        <div class="col-md-5 col-6">
+                        </b-col>
+                        <b-col class="col-md-5 col-6">
                           {{this.sexe}}
-                        </div>
-                      </div>
+                        </b-col>
+                      </b-row>
                     </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </b-col>
+              </b-row>
+          </div>
           <br>
               <div class="card">
                 <b-row>
@@ -97,14 +102,14 @@
                   </b-col>
                 </b-row>
                 <br>
-                <div class="row">
-                  <div class="col-sm-7 col-md-7 col-7">
+                <b-row class="row">
+                  <b-col class="col-sm-7 col-md-7 col-7">
                     <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de sécurité sociale :&nbsp;&nbsp;</p>
-                  </div>
-                  <div class="col-md-4 col-4">
+                  </b-col>
+                  <b-col class="col-md-4 col-4">
                     {{this.form.social_security_number}}
-                  </div>
-                </div>
+                  </b-col>
+                </b-row>
               </div>
               <br>
               <div class="card">
@@ -114,18 +119,18 @@
                   </b-col>
                 </b-row>
                 <br>
-                <div class="row">
-                  <div class="col-sm-7 col-md-7 col-7">
+                <b-row class="row">
+                  <b-col class="col-sm-7 col-md-7 col-7">
                     <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de permis :&nbsp;&nbsp;</p>
-                  </div>
-                  <div class="col-md-4 col-4">
+                  </b-col>
+                  <b-col class="col-md-4 col-4">
                     {{this.form.license_number}}
-                  </div>
-                </div>
+                  </b-col>
+                </b-row>
               </div>
           <br>
-        </div>
-      </div>
+        </b-col>
+      </b-row>
     </div>
   </div>
 </template>

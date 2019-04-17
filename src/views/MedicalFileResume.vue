@@ -397,7 +397,6 @@
             numeric,
           },
           street: {required},
-          complement: {required},
           postal_code: {required},
           city: {required},
           country: {required},
