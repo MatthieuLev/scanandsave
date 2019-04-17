@@ -377,7 +377,7 @@
           },
         },
         submitted: false,
-        image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg'],
+        photoFile: null,
       };
     },
 
@@ -397,7 +397,6 @@
             numeric,
           },
           street: {required},
-          complement: {required},
           postal_code: {required},
           city: {required},
           country: {required},
@@ -491,6 +490,9 @@
       uploadPhoto() {
         const self = this;
         return new Promise((resolve, reject) => {
+          if (this.photoFile === null){
+            resolve();
+          }
           firebase.storage().ref('photos/' + firebase.auth().currentUser.uid).put(self.photoFile)
             .then(response => {
               response.ref.getDownloadURL().then((downloadURL) => {

@@ -6,24 +6,27 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="Home"><i class="fas fa-home"></i>Accueil</router-link>
+            <router-link to="/"><i class="fas fa-home"></i>Accueil</router-link>
           </b-nav-item>
-          <b-nav-item>
-            <router-link to="MedicalFileResume"><i class="fas fa-notes-medical"></i>Mon formulaire médical</router-link>
+          <b-nav-item v-if="currentUser !== null">
+            <router-link to="MedicalFileResume"><i class="fas fa-notes-medical"></i>Mon dossier médical</router-link>
           </b-nav-item>
-          <b-nav-item>
+          <b-nav-item v-if="currentUser !== null">
             <router-link to="ViewMyStickers"><i class="fas fa-sticky-note"></i>Mes autocollants</router-link>
           </b-nav-item>
-          <b-nav-item>
+          <b-nav-item v-if="currentUser !== null">
             <router-link to="ViewMyCart"><i class="fas fa-shopping-cart"></i></i>Voir mon panier</router-link>
           </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item class="signOutButtonContainer">
-            <a class="signOutButton" @click="signOut"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+          <b-nav-item class="signButtonContainer" v-if="currentUser !== null">
+            <a class="signoutButton" @click="signOut"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
           </b-nav-item>
+          <b-navbar-nav class="signButtonContainer" v-else>
+            <a class="signButton" @click="signIn"><i class="fas fa-sign-in-alt"></i>Connexion</a>
+          </b-navbar-nav>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -31,7 +34,6 @@
 </template>
 
 <script>
-  //
   import database from '../firebase';
   import router from '../router';
 
@@ -46,6 +48,9 @@
       async signOut() {
         await database.signOut();
         router.push('/');
+      },
+      signIn() {
+        router.push('/Auth');
       },
     },
   };
@@ -73,7 +78,7 @@
   .router-link-exact-active {
     color: #dadada;
    }
-  .nav-link .signOutButton{
+  .nav-link .signButton{
     cursor: pointer;
   }
   .navbar {
@@ -81,16 +86,28 @@
   }
 
   .navbar-light .navbar-nav .nav-link {
-    color: white;
-    cursor: initial;
+    color: white!important;
+    cursor: initial!important;
   }
 
-  .signOutButtonContainer>a>a:hover{
+  .signButtonContainer>a:hover{
     color: #dadada !important;
     text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
   }
-  .signOutButtonContainer>a:hover{
+  .signButtonContainer{
+    color: white !important;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .signButtonContainer>a>a:hover{
+    color: #dadada !important;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .signButtonContainer>a{
     color: white !important;
     text-decoration: none;
     font-weight: bold;
