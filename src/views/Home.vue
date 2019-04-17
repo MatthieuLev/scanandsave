@@ -53,7 +53,8 @@
       <br>
       <br>
     </div>
-    <div id="haut-de-page">
+    <div>
+      <h1 id="haut">  </h1>
     <div class="container text-center">
       <!-- Pour qui ? -->
       <div class="row">
@@ -143,13 +144,13 @@
       </div>
 
     </div>
+      <div><a id="cRetour" class="cInvisible" href="#haut"></a></div>
     </div>
 
 
     <br><br><br>
 
 <div>
-  <b-button class = "b1" style="margin-right: 5px;"><a href="#haut-de-page" style="color: white;">Remonter en haut de page</a></b-button>
   <b-button class = "b1"><router-link to="Auth">Je me lance !</router-link></b-button>
   <br><br><br>
 </div>
@@ -171,6 +172,8 @@
       </div>
       <br>
       <p>Scan and Save ! Frissons et sensations fortes en toute sécurité !</p>
+
+
     </footer>
   </div>
 
@@ -193,6 +196,12 @@
       }
     }
   };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    window.onscroll = function(ev) {
+      document.getElementById("cRetour").className = (window.pageYOffset > 100) ? "cVisible" : "cInvisible";
+    };
+  });
 </script>
 
 <style scoped>
@@ -236,6 +245,37 @@
 
   .bg{
     background-color: white;
+  }
+  a#cRetour{
+    border-radius:3px;
+    padding:10px;
+    font-size:15px;
+    text-align:center;
+    color:#fff;
+    background:rgba(0, 0, 0, 0.25);
+    position:fixed;
+    right:20px;
+    opacity:1;
+    z-index:99999;
+    transition:all ease-in 0.2s;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    text-decoration: none;
+  }
+  a#cRetour:before{ content: "\25b2"; }
+  a#cRetour:hover{
+    background:rgba(0, 0, 0, 1);
+    transition:all ease-in 0.2s;
+  }
+  a#cRetour.cInvisible{
+    bottom:-35px;
+    opacity:0;
+    transition:all ease-in 0.5s;
+  }
+
+  a#cRetour.cVisible{
+    bottom:20px;
+    opacity:1;
   }
 
 </style>
