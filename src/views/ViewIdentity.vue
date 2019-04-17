@@ -11,16 +11,15 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
+
             <div class="card-body">
               <div class="card-title mb-4">
-                <div class="d-flex justify-content-start">
+                  <div class="userData ml-3">
+                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold; align:center"><a href="javascript:void(0);"> {{this.form.first_name}}&nbsp;{{this.form.last_name}}</a></h2>
+                  </div>
                   <div class="image-container">
                     <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
                   </div>
-                  <div class="userData ml-3">
-                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> {{this.form.last_name}}{{this.form.last_name}}</a></h2>
-                  </div>
-                </div>
               </div>
 
               <div class="row">
@@ -30,42 +29,45 @@
 
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
-                        <p class="label" style="font-weight:bold;">Nom :</p>
+                        <div class="col-sm-3 col-md-3 col-5">
+                        <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
                         </div>
-                        <div class="col-md-8 col-6">
+                        <div class="col-md-5 col-6">
                           {{this.form.last_name}}
                         </div>
                         </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-3 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
                         </div>
-                        <div class="col-md-8 col-6">
+                        <div class="col-md-5 col-5">
                           {{this.form.first_name}}
                         </div>
                       </div>
                       <hr />
 
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-3 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Date de naissance :&nbsp;&nbsp;</p>
                         </div>
-                        <div class="col-md-8 col-6">
+                        <div class="col-md-5 col-5">
                           {{this.form.birthday}}
                         </div>
                       </div>
                       <hr />
+
+
                       <div class="row">
-                        <div class="col-sm-3 col-md-2 col-5">
+                        <div class="col-sm-3 col-md-3 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p>
                         </div>
-                        <div class="col-md-8 col-6">
+                        <div class="col-md-5 col-6">
                           {{this.sexe}}
                         </div>
                       </div>
+
                       <hr />
                     </div>
                   </div>
@@ -191,6 +193,7 @@
             } else {
               this.sexe = "Autre";
             }
+            this.form.photo = doc.data().photo;
             this.form.first_name = doc.data().first_name;
             this.form.last_name = doc.data().last_name;
             this.form.birthday = doc.data().birthday;
