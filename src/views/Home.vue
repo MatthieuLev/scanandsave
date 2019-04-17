@@ -1,5 +1,5 @@
 <template>
-  <div class="bg">
+  <div class="bg" id="top">
     <Navbar></Navbar>
     <!-- Indicators -->
     <div>
@@ -54,7 +54,6 @@
       <br>
     </div>
     <div>
-      <h1 id="haut">  </h1>
     <div class="container text-center">
       <!-- Pour qui ? -->
       <div class="row">
@@ -144,7 +143,7 @@
       </div>
 
     </div>
-      <div><a id="cRetour" class="cInvisible" href="#haut"></a></div>
+      <div><a id="cRetour" class="cInvisible" href="#top"></a></div>
     </div>
 
 
