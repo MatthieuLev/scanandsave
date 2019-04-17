@@ -70,7 +70,7 @@
             <td></td>
             <td></td>
             <td><strong>Total</strong></td>
-            <td class="text-right"><strong>{{this.total+3}}€</strong></td>
+            <td class="text-right"><strong>{{this.total==0?0:this.total+3}}€</strong></td>
           </tr>
           </tbody>
         </table>
