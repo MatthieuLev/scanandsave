@@ -377,7 +377,6 @@
           },
         },
         submitted: false,
-        image: ['https://static1.purebreak.com/articles/0/14/19/70/@/582025-mamadou-segpa-le-youtubeur-condamne-a-diapo-2.jpg'],
       };
     },
 
