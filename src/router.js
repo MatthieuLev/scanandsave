@@ -13,7 +13,6 @@ import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
 import ViewIdentity from "./views/ViewIdentity";
 import ViewMHTA from "./views/ViewMHTA";
 import ViewMyCart from './views/ViewMyCart.vue';
-import ViewMyPaymentMethod from "./views/ViewMyPaymentMethod.vue";
 import ViewMyStickers from './views/ViewMyStickers.vue';
 
 import Qrcode from './components/Qrcode.vue';
@@ -61,14 +60,6 @@ const router = new Router({
       path: '/ViewMyCart',
       name: 'ViewMyCart',
       component: ViewMyCart,
-      meta: {
-        requiresAuth: true,
-      },
-    },
-    {
-      path: '/ViewMyPaymentMethod',
-      name: 'ViewMyPaymentMethod',
-      component: ViewMyPaymentMethod,
       meta: {
         requiresAuth: true,
       },

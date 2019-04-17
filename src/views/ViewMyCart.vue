@@ -5,6 +5,7 @@
       <Menu></Menu>
       <h1>Mon Panier</h1>
       <div class="custom-card">
+        <div class="table-responsive">
         <table class="table table-striped">
           <thead>
           <tr>
@@ -52,7 +53,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>Sub-Total</td>
+            <td>Total du panier</td>
             <td class="text-right">{{this.total}}€</td>
           </tr>
           <tr>
@@ -60,7 +61,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>Shipping</td>
+            <td>Frais de port</td>
             <td class="text-right">3€</td>
           </tr>
           <tr>
@@ -73,13 +74,14 @@
           </tr>
           </tbody>
         </table>
+        </div>
       </div>
       <PaymentMethod v-if="validated"></PaymentMethod>
       <br/>
       <br/>
       <b-row>
         <b-col>
-          <b-button class="btn btn-lg btn-block btn-danger text-uppercase" v-if="validated" v-on:click="leftPayment()">
+          <b-button class="button-validate btn-danger text-uppercase" v-if="validated" v-on:click="leftPayment()">
             Annuler le paiement
           </b-button>
         </b-col>
@@ -214,12 +216,12 @@
     text-transform: uppercase;
     outline: 0;
     width: 50%;
-    border: 0;
     padding: 15px;
     color: white;
     margin-top: 1em;
     font-size: 14px;
     cursor: pointer;
+    margin-bottom: 4em;
   }
 
   .button-validate:hover, .button-delete:hover {
@@ -240,5 +242,25 @@
     background-color: #ffffff;
     border-radius: 4px;
     margin: 1em 0;
+  }
+
+  @media (max-width: 991.98px) {
+    .btn{
+      font-size: 10px;
+    }
+    .btn-danger{
+      width: auto;
+    }
+    .custom-card{
+      font-size: 10px;
+    }
+    .table th, .table td {
+      padding: 0.50rem;
+    }
+    .stickers{
+      height: auto;
+      width: 40px;
+      max-width: initial;
+    }
   }
 </style>

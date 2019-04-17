@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="paymentMethod">
     <h1>Mode de Paiement</h1>
     <br/>
     <b-row>
@@ -66,5 +66,12 @@
 </script>
 
 <style scoped>
-
+  .paymentMethod{
+    color:white;
+  }
+  .fab{
+    color: #4d0000;
+    font-size: 3em;
+    margin: 0 10px;
+  }
 </style>
