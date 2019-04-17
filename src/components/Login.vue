@@ -42,7 +42,7 @@
         this.errorMessage = '';
         let result = await database.signIn(this.form.email, this.form.password);
         if (!result.message) {
-          this.$router.push('Home');
+          this.$router.push('/');
         } else {
           switch (result.code) {
             case 'auth/wrong-password':

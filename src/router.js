@@ -115,9 +115,9 @@ router.beforeEach((to, from, next) => {
   const redirectAuth = to.matched.some(record => record.meta.redirectAuth);
   const currentUser = store.state.currentUser;
   if (requiresAuth && !currentUser) {
-    next('/');
+    next('Auth');
   } else if (redirectAuth && currentUser) {
-    next('/Home');
+    next('/');
   } else {
     next();
   }
