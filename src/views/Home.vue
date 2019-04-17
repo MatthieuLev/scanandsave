@@ -150,7 +150,7 @@
 
 <div>
   <b-button class = "b1" style="margin-right: 5px;"><a href="#haut-de-page" style="color: white;">Remonter en haut de page</a></b-button>
-  <b-button class = "b1"><router-link to="ViewMyAccount">Je me lance !</router-link></b-button>
+  <b-button class = "b1"><router-link to="Auth">Je me lance !</router-link></b-button>
   <br><br><br>
 </div>
 
