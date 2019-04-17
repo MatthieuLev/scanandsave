@@ -3,82 +3,213 @@
     <NavbarMobile></NavbarMobile>
     <b-container>
       <br>
+      <b-row>
+        <b-col>
+          <h2>Fiche d'identité</h2>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title mb-4">
+                <div class="d-flex justify-content-start">
+                  <div class="image-container">
+                    <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
+                  </div>
+                  <div class="userData ml-3">
+                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> {{this.form.first_name}} {{this.form.last_name}}</a></h2>
+                  </div>
+                </div>
+              </div>
+              <b-row>
+                <b-col>
+                  <div class="tab-content ml-1" id="myTabContent">
+                    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Nom</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.last_name}}
+                        </b-col>
+                      </b-row>
+                      <hr />
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Prénom</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.first_name}}
+                        </b-col>
+                      </b-row>
+                      <hr />
+                      <b-row >
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Date de naissance</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.birthday}}
+                        </b-col>
+                      </b-row>
+                      <hr/>
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Sexe</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.sexe}}
+                        </b-col>
+                      </b-row>
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container>
       <br>
-      <div>
-        <b-row>
-          <b-col>
-            <h2>Fiche d'identité</h2>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <b-row>
-              <p class="label">Nom : </p><p>{{this.form.last_name}}</p>
-            </b-row>
-            <b-row>
-              <p class="label">Prenom : </p><p>{{this.form.first_name}}</p>
-            </b-row>
-            <b-row>
-              <p class="label">Age : </p><p>{{this.form.birthday}}</p>
-            </b-row>
-            <b-row>
-              <p class="label">Sexe : </p><p>{{this.sexe}}</p>
-            </b-row>
-          </b-col>
-          <b-col>
-            <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
-          </b-col>
-        </b-row>
-      </div>
-      <div>
-        <b-row>
-          <b-col>
-            <h2>Informations médicales</h2>
-          </b-col>
-        </b-row>
-        <b-row>
-          <p class="label">Groupe sanguin : </p><p> {{this.form.blood_type}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">Donneur d'organe : </p><p> {{this.form.organ_donor}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">Maladie : </p><p> {{this.form.diseases}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">Hospitalisation : </p><p> {{this.form.hospitalization}} </p>
-        </b-row>
-        <b-row>
-          <p class="label">Traitement : </p><p> {{this.form.treatment}} </p>
-        </b-row>
-        <b-row>
-          <p class="label">Allergie : </p><p> {{this.form.allergy}}</p>
-        </b-row>
-      </div>
-      <div>
-        <b-row>
-          <b-col>
-            <h2>Contacts</h2>
-          </b-col>
-        </b-row>
-        <b-row>
-          <p class="label">Proche :</p><p> {{this.form.contact.first_name}} {{this.form.contact.last_name}} </p>
-        </b-row>
-        <b-row>
-          <p class="label">Coordonnées :</p><p> {{this.form.contact.phone_number}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">Medecin :</p><p> {{this.form.doctor.first_name}} {{this.form.doctor.last_name}}</p>
-        </b-row>
-        <b-row>
-          <p class="label">Coordonnées : </p><p> {{this.form.doctor.phone_number}} - {{this.form.doctor.city}}</p>
-        </b-row>
-      </div>
+      <b-row>
+        <b-col>
+          <h2>Informations médicales</h2>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <div class="card">
+            <div class="card-body">
+              <b-row>
+                <b-col>
+                  <div class="tab-content ml-1" id="myTabContent2">
+                    <div class="tab-pane fade show active" id="general2" role="tabpanel" aria-labelledby="general-tab">
+                      <b-row >
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Maladie</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.diseases}}
+                        </b-col>
+                      </b-row>
+                      <hr/>
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Hospitalisation</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.hospitalization}}
+                        </b-col>
+                      </b-row>
+                      <hr/>
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Traitement</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.treatment}}
+                        </b-col>
+                      </b-row>
+                      <hr/>
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Allergie</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.allergy}}
+                        </b-col>
+                      </b-row>
+                      <hr/>
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Groupe sanguin</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.blood_type}}
+                        </b-col>
+                      </b-row>
+                      <hr />
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Donneur d'organe</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.organ_donor}}
+                        </b-col>
+                      </b-row>
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container>
+      <br>
+      <b-row>
+        <b-col>
+          <h2>Contacts</h2>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <div class="card">
+            <div class="card-body">
+              <b-row>
+                <b-col>
+                  <div class="tab-content ml-1" id="myTabContent3">
+                    <div class="tab-pane fade show active" id="general3" role="tabpanel" aria-labelledby="general-tab">
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Proche à contacter</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.contact.first_name}} {{this.form.contact.last_name}}
+                        </b-col>
+                      </b-row>
+                      <hr />
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Coordonnées du proche</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.contact.phone_number}}
+                        </b-col>
+                      </b-row>
+                      <hr />
+                      <b-row >
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Médecin traitant</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.doctor.first_name}} {{this.form.doctor.last_name}}
+                        </b-col>
+                      </b-row>
+                      <hr/>
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Coordonnées médecin</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.doctor.phone_number}} {{this.form.doctor.city}}
+                        </b-col>
+                      </b-row>
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+          </div>
+        </b-col>
+      </b-row>
+      <br/>
       <div>
         <b-button href="tel:112">Appeler les secours</b-button>
       </div>
-      <br>
-      <br>
+      <br/>
     </b-container>
   </div>
 </template>
@@ -200,6 +331,7 @@
 <style scoped>
   h2 {
     margin-bottom: 1em;
+    color: #ffffff;
   }
   .label {
     font-weight: bold;

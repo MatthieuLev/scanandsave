@@ -6,7 +6,7 @@
       <div v-if="userHaveStickers">
         <div class="custom-card">
 
-          <b-table striped :fields="fields" :items="stickers">
+          <b-table responsive striped :fields="fields" :items="stickers">
             <template slot="index" slot-scope="data">
               {{ data.index + 1 }}
             </template>
@@ -25,12 +25,17 @@
           <p class="error" v-if="errorMessage">{{errorMessage}}</p>
 
         </div>
-        <router-link class="button-validate" to="StickersCreation" replace>Créer un nouvel autocollant</router-link>
+        <b-row class="btn-container">
+          <b-col>
+            <router-link class="button-validate" to="StickersCreation" replace>Créer un nouvel autocollant</router-link>
+          </b-col>
+        </b-row>
+
       </div>
       <div v-else>
         <p>Vous devez créer un dossier médical avant de pouvoir générer un autocollant.</p>
 
-        <router-link class="button-validate btn-warning" to="MedicalFileCreation" replace>Générer un dossier médical
+        <router-link class="button-validate btn" to="MedicalFileCreation" replace>Générer un dossier médical
         </router-link>
       </div>
     </b-container>
@@ -121,18 +126,24 @@
     text-transform: uppercase;
     outline: 0;
     width: 50%;
-    background-color: #90081d;
-    border: 0;
     padding: 15px;
     color: white;
-    margin-top: 1em;
-    margin-bottom: 4em;
     font-size: 14px;
     cursor: pointer;
+    margin-bottom: 4em;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    border-radius: 0.25rem;
+  }
+
+  .btn-container{
+    margin-top: 1em;
   }
 
   .button-validate:hover {
     color: #fff;
+    background-color: #d39e00;
+    border-color: #c69500;
   }
 
   a:hover {
@@ -147,5 +158,21 @@
   .error {
     color: #5e0000;
     font-size: 12px;
+  }
+  @media (max-width: 991.98px) {
+    .button-validate{
+      font-size: 10px;
+    }
+    .custom-card{
+      font-size: 10px;
+    }
+    .table th, .table td {
+      padding: 0.50rem;
+    }
+    .stickers{
+      height: auto;
+      width: 40px;
+      max-width: initial;
+    }
   }
 </style>
