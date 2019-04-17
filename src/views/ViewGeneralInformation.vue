@@ -28,7 +28,7 @@
                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Nom :</p>
+                          <p class="label" style="font-weight:bold;">Nom</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.last_name}}
@@ -37,7 +37,7 @@
                       <hr />
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
+                          <p class="label" style="font-weight:bold;">Prénom</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.first_name}}
@@ -46,7 +46,7 @@
                       <hr />
                       <b-row >
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Date de naissance :&nbsp;&nbsp;</p>
+                          <p class="label" style="font-weight:bold;">Date de naissance</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.birthday}}
@@ -55,7 +55,7 @@
                       <hr/>
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p>
+                          <p class="label" style="font-weight:bold;">Sexe</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.sexe}}
@@ -85,27 +85,9 @@
                 <b-col>
                   <div class="tab-content ml-1" id="myTabContent2">
                     <div class="tab-pane fade show active" id="general2" role="tabpanel" aria-labelledby="general-tab">
-                      <b-row>
-                        <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Groupe sanguin :</p>
-                        </b-col>
-                        <b-col class="col-md-8 col-6">
-                          {{this.form.blood_type}}
-                        </b-col>
-                      </b-row>
-                      <hr />
-                      <b-row>
-                        <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Donneur d'organe :</p>
-                        </b-col>
-                        <b-col class="col-md-8 col-6">
-                          {{this.form.organ_donor}}
-                        </b-col>
-                      </b-row>
-                      <hr />
                       <b-row >
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Maladie :&nbsp;&nbsp;</p>
+                          <p class="label" style="font-weight:bold;">Maladie</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.diseases}}
@@ -114,28 +96,46 @@
                       <hr/>
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Hospitalisation :</p>
+                          <p class="label" style="font-weight:bold;">Hospitalisation</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
-                          {{this.hospitalization}}
+                          {{this.form.hospitalization}}
                         </b-col>
                       </b-row>
                       <hr/>
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Traitement :</p>
+                          <p class="label" style="font-weight:bold;">Traitement</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
-                          {{this.treatment}}
+                          {{this.form.treatment}}
                         </b-col>
                       </b-row>
                       <hr/>
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Allergie :</p>
+                          <p class="label" style="font-weight:bold;">Allergie</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
-                          {{this.allergy}}
+                          {{this.form.allergy}}
+                        </b-col>
+                      </b-row>
+                      <hr/>
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Groupe sanguin</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.blood_type}}
+                        </b-col>
+                      </b-row>
+                      <hr />
+                      <b-row>
+                        <b-col class="col-sm-3 col-md-2 col-5">
+                          <p class="label" style="font-weight:bold;">Donneur d'organe</p>
+                        </b-col>
+                        <b-col class="col-md-8 col-6">
+                          {{this.form.organ_donor}}
                         </b-col>
                       </b-row>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="tab-pane fade show active" id="general3" role="tabpanel" aria-labelledby="general-tab">
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Proche à contacter :</p>
+                          <p class="label" style="font-weight:bold;">Proche à contacter</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.contact.first_name}} {{this.form.contact.last_name}}
@@ -173,7 +173,7 @@
                       <hr />
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Coordonnées du proche :</p>
+                          <p class="label" style="font-weight:bold;">Coordonnées du proche</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.contact.phone_number}}
@@ -182,7 +182,7 @@
                       <hr />
                       <b-row >
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Médecin traitant : </p>
+                          <p class="label" style="font-weight:bold;">Médecin traitant</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.doctor.first_name}} {{this.form.doctor.last_name}}
@@ -191,7 +191,7 @@
                       <hr/>
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Coordonnées médecin : </p>
+                          <p class="label" style="font-weight:bold;">Coordonnées médecin</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.doctor.phone_number}} {{this.form.doctor.city}}
