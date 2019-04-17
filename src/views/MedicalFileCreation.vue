@@ -1,12 +1,6 @@
 <template>
   <div>
     <Navbar></Navbar>
-    <div class="wrapper">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
     <b-container class="container">
       <b-form @submit.prevent="saveMedicalFile" class="medicalFileCreation-form">
         <h1>Mon dossier médical</h1>
@@ -293,16 +287,11 @@
           </b-row>
 
         </div>
-        <b-button class="button-validate" type="submit">Valider</b-button>
+        <b-button class="button-validate btn-warning" type="submit">Valider</b-button>
         <p class="error" v-if="errorMessage">{{errorMessage}}</p>
       </b-form>
     </b-container>
-      <br>
-      <br>
-      <br>
-      <br>
       </div>
-  </div>
 </template>
 
 <script>
@@ -467,33 +456,61 @@
 </script>
 
 <style scoped>
-  .wrapper {
-    position: relative;
-    background: url("../img/skateboard.jpg");
-    background-size: cover;
+  .customRadio {
+    display: inline;
+    margin: 0 5px;
   }
 
-  .medicalFileCreation-form {
-    padding: 60px 46px 55px;
-    background: white;
+  h1 {
+    margin: 1em 0;
+    color: #ffffff;
+  }
+
+  h2 {
+    margin-bottom: 1em;
+  }
+
+  h3 {
+    color: #7f0000;
+    margin: 1em 0;
+  }
+
+  .custom-card {
+    color: #b71c1c;
+    background-color: #ffffff;
     border-radius: 4px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    padding: 2em;
+    margin: 1em 0;
   }
 
-  .button-validate  {
-    background-color: #B9121B !important;
-    border-color: transparent;
-    padding-right: 20px;
-    padding-left: 20px;
+  .button-validate {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    width: 50%;
+    border: 0;
+    padding: 15px;
+    color: white;
+    margin-top: 1em;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 4em;
   }
 
-  .button-validate:hover {
-    background-color: #BD8D46 !important;
+  .button-validate:hover, .button-delete:hover {
+    color: #fff;
   }
 
-  a{
-    color: #f6fff7 !important;
+  .button-delete {
+    margin-bottom: 4em;
   }
 
+  .invalid-feedback {
+    color: #fff
+  }
 
+  .userPhoto {
+    width: auto;
+    height: 50px;
+  }
 </style>
