@@ -11,15 +11,15 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-
-            <div class="card-body">
+            <div class="userData ml-3">
+              <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold; align:center"><a href="javascript:void(0);"> {{this.form.first_name}}&nbsp;{{this.form.last_name}}</a></h2>
+            </div>
               <div class="card-title mb-4">
-                  <div class="userData ml-3">
-                    <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold; align:center"><a href="javascript:void(0);"> {{this.form.first_name}}&nbsp;{{this.form.last_name}}</a></h2>
-                  </div>
-                  <div class="image-container">
-                    <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
-                  </div>
+                <div class="d-flex justify-content-start">
+                </div>
+                <div class="image-container">
+                  <img :src="this.form.photo" alt="Pas de photo" class="userPhoto">
+                </div>
               </div>
 
               <div class="row">
@@ -30,12 +30,12 @@
 
                       <div class="row">
                         <div class="col-sm-3 col-md-3 col-5">
-                        <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
                         </div>
                         <div class="col-md-5 col-6">
                           {{this.form.last_name}}
                         </div>
-                        </div>
+                      </div>
                       <hr />
 
                       <div class="row">
@@ -67,16 +67,16 @@
                           {{this.sexe}}
                         </div>
                       </div>
-
-                      <hr />
+                    </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div>
+          <br>
+              <div class="card">
                 <b-row>
                   <b-col>
-                    <h2>Coordonnées</h2>
+                    <h4>Coordonnées</h4>
                   </b-col>
                 </b-row>
                 <br>
@@ -89,37 +89,41 @@
                   </b-col>
                 </b-row>
               </div>
-              <div>
-                <b-row>
+              <br>
+              <div class="card">
+              <b-row>
                   <b-col>
-                    <h2>Sécurité sociale</h2>
+                    <h4>Sécurité sociale</h4>
                   </b-col>
                 </b-row>
                 <br>
-                <b-row>
-                  <b-col>
-                    <p>{{this.form.social_security_number}}</p>
-                  </b-col>
-                </b-row>
+                <div class="row">
+                  <div class="col-sm-7 col-md-7 col-7">
+                    <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de sécurité sociale :&nbsp;&nbsp;</p>
+                  </div>
+                  <div class="col-md-4 col-4">
+                    {{this.form.social_security_number}}
+                  </div>
+                </div>
               </div>
-              <div>
+              <br>
+              <div class="card">
                 <b-row>
                   <b-col>
-                    <h2>Permis</h2>
+                    <h4>Permis</h4>
                   </b-col>
                 </b-row>
                 <br>
-                <b-row>
-                  <b-col>
-                    <p>{{this.form.license_number}}</p>
-                  </b-col>
-                </b-row>
+                <div class="row">
+                  <div class="col-sm-7 col-md-7 col-7">
+                    <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de permis :&nbsp;&nbsp;</p>
+                  </div>
+                  <div class="col-md-4 col-4">
+                    {{this.form.license_number}}
+                  </div>
+                </div>
               </div>
-
-
-            </div>
-
-          </div>
+          <br>
         </div>
       </div>
     </div>
@@ -220,5 +224,7 @@
 </script>
 
 <style scoped>
-
+  h2{
+    color:white;
+  }
 </style>
