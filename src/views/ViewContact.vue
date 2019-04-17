@@ -9,22 +9,83 @@
         </b-col>
       </b-row>
       <br>
-      <b-row>
-        <b-col>
-          <h4>Proche à contacter</h4>
-        </b-col>
-      </b-row>
+      <div class="card">
+        <div class="card-body">
+          <b-row>
+            <b-col>
+              <h3>Proche à contacter</h3>
+            </b-col>
+          </b-row>
+          <br>
+          <b-row>
+            <b-col class="col-6">
+              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+            </b-col>
+            <b-col class="col-6">
+              <b-row>{{this.form.contact.last_name}}</b-row>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-6">
+              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
+            </b-col>
+            <b-col class="col-6">
+              <b-row>{{this.form.contact.first_name}}</b-row>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-6">
+              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de téléphone :&nbsp;&nbsp;</p>
+            </b-col>
+            <b-col class="col-6">
+              <b-row>{{this.form.contact.phone_number}}</b-row>
+            </b-col>
+          </b-row>
+        </div>
+      </div>
       <br>
-      <b-row>{{this.form.contact.first_name}} {{this.form.contact.last_name}}</b-row>
-      <b-row>{{this.form.contact.phone_number}}</b-row>
-      <b-row>
-        <b-col>
-          <h4>Médecin traitant</h4>
-        </b-col>
-      </b-row>
-      <b-row>{{this.form.doctor.first_name}} {{this.form.doctor.last_name}}</b-row>
-      <b-row>{{this.form.doctor.phone_number}}</b-row>
-      <b-row>{{this.form.doctor.city}}</b-row>
+      <div class="card">
+        <div class="card-body">
+          <b-row>
+            <b-col>
+              <h3>Médecin traitant</h3>
+            </b-col>
+          </b-row>
+          <br>
+          <b-row>
+            <b-col class="col-6">
+              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+            </b-col>
+            <b-col class="col-6">
+              <b-row>{{this.form.doctor.last_name}}</b-row>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-6">
+              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
+            </b-col>
+            <b-col class="col-6">
+              <b-row>{{this.form.doctor.first_name}}</b-row>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-sm-6 col-6">
+              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Téléphone :&nbsp;&nbsp;</p>
+            </b-col>
+            <b-col class="col-6">
+              <b-row>{{this.form.doctor.phone_number}}</b-row>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col class="col-6">
+              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Ville :&nbsp;&nbsp;</p>
+            </b-col>
+            <b-col class="col-6">
+              <b-row>{{this.form.doctor.city}}</b-row>
+            </b-col>
+          </b-row>
+        </div>
+      </div>
   </b-container>
   </div>
 </template>
@@ -87,4 +148,7 @@
 
 <style scoped>
 
+  h2{
+    color: white;
+  }
 </style>
