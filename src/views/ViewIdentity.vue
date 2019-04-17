@@ -11,7 +11,6 @@
       <div class="row">
         <div class="col-12">
           <div class="card">
-
             <div class="card-body">
               <div class="card-title mb-4">
                 <div class="d-flex justify-content-start">
@@ -32,7 +31,7 @@
 
                       <div class="row">
                         <div class="col-sm-3 col-md-2 col-5">
-                        <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+                        <p class="label" style="font-weight:bold;">Nom :</p>
                         </div>
                         <div class="col-md-8 col-6">
                           {{this.form.last_name}}
@@ -59,8 +58,6 @@
                         </div>
                       </div>
                       <hr />
-
-
                       <div class="row">
                         <div class="col-sm-3 col-md-2 col-5">
                           <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p>
@@ -69,7 +66,6 @@
                           {{this.sexe}}
                         </div>
                       </div>
-
                       <hr />
                     </div>
                   </div>
