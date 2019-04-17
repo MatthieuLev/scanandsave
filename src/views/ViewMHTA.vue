@@ -14,7 +14,7 @@
             <div class="card-body">
 
               <div class="row">
-                <div class="col-sm-3 col-md-2 col-5">
+                <div class="col-sm-3 col-md-4 col-5">
                   <h5 class="label" style="font-weight:bold;">Maladie</h5>
                 </div>
                 <div class="col-md-8 col-6">
@@ -24,8 +24,8 @@
               <hr />
 
               <div class="row">
-                <div class="col-sm-3 col-md-2 col-5">
-                  <h5 class="label" style="font-weight:bold;">Hospitalisa - tion</h5>
+                <div class="col-sm-3 col-md-4 col-5">
+                  <h5 class="label" style="font-weight:bold;">Hospitalisation</h5>
                 </div>
                 <div class="col-md-8 col-6">
                   {{this.form.hospitalization}}
@@ -35,7 +35,7 @@
 
 
               <div class="row">
-                <div class="col-sm-3 col-md-2 col-5">
+                <div class="col-sm-3 col-md-4 col-5">
                   <h5 class="label" style="font-weight:bold;">Traitement</h5>
                 </div>
                 <div class="col-md-8 col-6">
@@ -46,18 +46,28 @@
 
 
               <div class="row">
-                <div class="col-sm-3 col-md-2 col-5">
+                <div class="col-sm-3 col-md-4 col-5">
                   <h5 class="label" style="font-weight:bold;">Allergie</h5>
                 </div>
                 <div class="col-md-8 col-6">
                   {{this.form.allergy}}
                 </div>
               </div>
-              <hr />
+            </div>
+          </div>
+        </div>
+      </div>
 
-              <div class="row">
-                <div class="col-sm-3 col-md-2 col-5">
-                  <h5 class="label" style="font-weight:bold;">Donneur d'organe :</h5>
+      <br>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+
+      <div class="row">
+                <div class="col-sm-2 col-md-4 col-5">
+                  <h5 class="label" style="font-weight:bold;">Donneur d'organe</h5>
                 </div>
                 <div class="col-md-8 col-6">
                   {{this.form.organ_donor}}
@@ -66,8 +76,8 @@
               <hr />
 
               <div class="row">
-                <div class="col-sm-3 col-md-2 col-5">
-                  <h5 class="label" style="font-weight:bold;">Groupe sanguin :</h5>
+                <div class="col-sm-3 col-md-4 col-5">
+                  <h5 class="label" style="font-weight:bold;">Groupe sanguin</h5>
                 </div>
                 <div class="col-md-8 col-6">
                   {{this.form.blood_type}}
