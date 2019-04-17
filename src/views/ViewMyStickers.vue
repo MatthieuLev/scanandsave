@@ -12,12 +12,16 @@
             </template>
 
             <template slot="preview" slot-scope="data">
-              <b-img class="stickers" :src="require(`../img/stickers/${data.item.theme}/${data.item.color}.png`)" fluid
+              <b-img class="stickers"
+                     :src="require(`../img/stickers/${data.item.theme}/${data.item.color}.png`)"
+                     fluid
                      alt="Stickers picture"></b-img>
             </template>
 
             <template slot="addtoCart" slot-scope="data">
-              <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order"
+              <b-form-checkbox :id="'checkbox'+data.index+1"
+                               name="checkbox"
+                               v-model="data.item.in_order"
                                @change="checkAddToCart($event, data.item)">
               </b-form-checkbox>
             </template>
@@ -27,7 +31,8 @@
         </div>
         <b-row class="btn-container">
           <b-col>
-            <router-link class="button-validate" to="StickersCreation" replace>Créer un nouvel autocollant</router-link>
+            <router-link class="button-validate" to="StickersCreation" replace>
+              Créer un nouvel autocollant</router-link>
           </b-col>
         </b-row>
 
@@ -35,7 +40,8 @@
       <div v-else>
         <p>Vous devez créer un dossier médical avant de pouvoir générer un autocollant.</p>
 
-        <router-link class="button-validate btn" to="MedicalFileCreation" replace>Générer un dossier médical
+        <router-link class="button-validate btn" to="MedicalFileCreation" replace>
+          Générer un dossier médical
         </router-link>
       </div>
     </b-container>
@@ -43,9 +49,9 @@
 </template>
 
 <script>
-  import Navbar from '../components/Navbar.vue';
   import firebase from 'firebase';
-  import db from '../firebase.js';
+  import Navbar from '../components/Navbar.vue';
+  import db from '../firebase';
 
   export default {
     name: 'ViewMyStickers',
@@ -59,12 +65,12 @@
         userHaveAccount: false,
         fields: [
           'index',
-          {key: 'theme', label: 'Theme'},
-          {key: 'color', label: 'Couleur'},
-          {key: 'size', label: 'Taille'},
-          {key: 'shape', label: 'Forme'},
-          {key: 'preview', label: 'Aperçu'},
-          {key: 'addtoCart', label: 'Ajouter au panier'},
+          { key: 'theme', label: 'Theme' },
+          { key: 'color', label: 'Couleur' },
+          { key: 'size', label: 'Taille' },
+          { key: 'shape', label: 'Forme' },
+          { key: 'preview', label: 'Aperçu' },
+          { key: 'addtoCart', label: 'Ajouter au panier' },
         ],
       };
     },
@@ -72,31 +78,31 @@
       db.collection('medicalFiles')
         .doc(firebase.auth().currentUser.uid)
         .get()
-        .then((doc) => {
+        .then(() => {
           this.userHaveAccount = true;
           this.check();
         });
     },
 
     methods: {
-      check(){
+      check() {
         const self = this;
         db.collection('stickers')
           .doc(firebase.auth().currentUser.uid)
           .collection('userStickers')
           .get()
-          .then(querySnapshot => {
+          .then((querySnapshot) => {
             if (!querySnapshot.empty) {
               this.userHaveStickers = true;
               // go through all the results
-              querySnapshot.forEach(documentSnapshot => {
+              querySnapshot.forEach((documentSnapshot) => {
                 const data = documentSnapshot.data();
-                data['id'] = documentSnapshot.id;
+                data.id = documentSnapshot.id;
                 self.stickers.push(data);
               });
             }
           })
-          .catch(error => {
+          .catch((error) => {
             this.errorMessage = error;
           });
       },
@@ -109,7 +115,7 @@
             in_order: !item.in_order,
             quantity: !item.in_order ? 1 : item.quantity,
           })
-          .catch(error => {
+          .catch((error) => {
             this.errorMessage = error;
           });
       },

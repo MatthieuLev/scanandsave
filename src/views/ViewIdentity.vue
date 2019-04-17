@@ -12,7 +12,11 @@
         <b-col class="col-12">
           <div class="card">
             <div class="userData ml-3">
-              <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold; align:center"><a href="javascript:void(0);"> {{this.form.first_name}}&nbsp;{{this.form.last_name}}</a></h2>
+              <h2 class="d-block">
+                <a href="javascript:void(0);">
+                  {{this.form.first_name}}&nbsp;{{this.form.last_name}}
+                </a>
+              </h2>
             </div>
               <div class="card-title mb-4">
                 <div class="d-flex justify-content-start">
@@ -22,7 +26,10 @@
                     <img height="70%"
                          width="70%"
                          max-width="100%"
-                         max-height="100%" :src="this.form.photo" alt="Pas de photo" class="userPhoto">
+                         max-height="100%"
+                         :src="this.form.photo"
+                         alt="Pas de photo"
+                         class="userPhoto">
                   </b-form-group>
                 </b-col>
               </div>
@@ -30,12 +37,15 @@
               <b-row>
                 <b-col class="col-12">
                   <div class="tab-content ml-1" id="myTabContent">
-                    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                    <div class="tab-pane fade show active"
+                         id="general"
+                         role="tabpanel"
+                         aria-labelledby="general-tab">
 
 
                       <b-row class="row">
                         <b-col class="col-sm-3 col-md-3 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+                          <p class="label">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
                         </b-col>
                         <b-col class="col-md-5 col-6">
                           {{this.form.last_name}}
@@ -45,7 +55,7 @@
 
                       <b-row class="row">
                         <b-col class="col-sm-3 col-md-3 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
+                          <p class="label">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
                         </b-col>
                         <b-col class="col-md-5 col-5">
                           {{this.form.first_name}}
@@ -55,8 +65,8 @@
 
                       <b-row class="row">
                         <b-col class="col-sm-3 col-md-3 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Date de naissance :&nbsp;&nbsp;</p>
-                        </b-col>
+                          <p class="label">&nbsp;&nbsp;Date de naissance :&nbsp;&nbsp;</p>
+                </b-col>
                         <b-col class="col-md-5 col-5">
                           {{this.form.birthday}}
                         </b-col>
@@ -66,7 +76,7 @@
 
                       <b-row class="row">
                         <b-col class="col-sm-3 col-md-3 col-5">
-                          <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p>
+                          <p class="label">&nbsp;&nbsp;Sexe :&nbsp;&nbsp;</p>
                         </b-col>
                         <b-col class="col-md-5 col-6">
                           {{this.sexe}}
@@ -87,7 +97,10 @@
                 <br>
                 <b-row>
                   <b-col>
-                    <p>{{this.form.adress.complement}}, {{this.form.adress.number}} {{this.form.adress.street}}</p>
+                    <p>{{this.form.adress.complement}},
+                      {{this.form.adress.number}}
+                      {{this.form.adress.street}}
+                    </p>
                     <p>{{this.form.adress.postal_code}} {{this.form.adress.city}}</p>
                     <p>{{this.form.adress.state}} {{this.form.adress.country}}</p>
                     <p>{{this.form.phone_number}}</p>
@@ -104,7 +117,7 @@
                 <br>
                 <b-row class="row">
                   <b-col class="col-sm-7 col-md-7 col-7">
-                    <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de sécurité sociale :&nbsp;&nbsp;</p>
+                    <p class="label">&nbsp;&nbsp;Numéro de sécurité sociale :&nbsp;&nbsp;</p>
                   </b-col>
                   <b-col class="col-md-4 col-4">
                     {{this.form.social_security_number}}
@@ -121,7 +134,7 @@
                 <br>
                 <b-row class="row">
                   <b-col class="col-sm-7 col-md-7 col-7">
-                    <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de permis :&nbsp;&nbsp;</p>
+                    <p class="label">&nbsp;&nbsp;Numéro de permis :&nbsp;&nbsp;</p>
                   </b-col>
                   <b-col class="col-md-4 col-4">
                     {{this.form.license_number}}
@@ -136,7 +149,8 @@
 </template>
 
 <script>
-  import db from '../firebase.js';
+  import db from '../firebase';
+  import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
 
   export default {
@@ -147,7 +161,7 @@
     data() {
       return {
         errorMessage: '',
-        sexe : 'Autre',
+        sexe: 'Autre',
         form: {
           civility: 'Madame',
           first_name: null,
@@ -195,12 +209,12 @@
           .get()
           .then((doc) => {
             this.form.civility = doc.data().civility;
-            if (this.form.civility === "Monsieur") {
-              this.sexe = "Masculin";
-            } else if (this.form.civility === "Madame") {
-              this.sexe = "Féminin";
+            if (this.form.civility === 'Monsieur') {
+              this.sexe = 'Masculin';
+            } else if (this.form.civility === 'Madame') {
+              this.sexe = 'Féminin';
             } else {
-              this.sexe = "Autre";
+              this.sexe = 'Autre';
             }
             this.form.photo = doc.data().photo;
             this.form.first_name = doc.data().first_name;
@@ -231,5 +245,13 @@
 <style scoped>
   h2{
     color:white;
+  }
+  .label{
+    font-weight: bold;
+  }
+  .d-block{
+    font-size: 1.5rem;
+    font-weight: bold;
+    align:center
   }
 </style>

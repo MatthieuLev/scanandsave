@@ -7,8 +7,8 @@
 
 <script>
   export default {
-    name: "MFNotFound"
-  }
+    name: 'MFNotFound',
+  };
 </script>
 
 <style scoped>

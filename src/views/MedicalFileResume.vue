@@ -29,17 +29,25 @@
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Nom : ">
                 <b-form-input :disabled="disabled"
-                              v-model="form.last_name" name="last_name" placeholder="Nom" class="form-control"
+                              v-model="form.last_name"
+                              name="last_name"
+                              placeholder="Nom"
+                              class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.last_name.$error }"/>
-                <div v-if="submitted && !$v.form.last_name.required" class="invalid-feedback">Nom obligatoire</div>
+                <div v-if="submitted && !$v.form.last_name.required"
+                     class="invalid-feedback">Nom obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Prénom : ">
                 <b-form-input :disabled="disabled"
-                              v-model="form.first_name" name="first_name" placeholder="Prenom" class="form-control"
+                              v-model="form.first_name"
+                              name="first_name"
+                              placeholder="Prenom"
+                              class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
-                <div v-if="submitted && !$v.form.first_name.required" class="invalid-feedback">Prénom obligatoire</div>
+                <div v-if="submitted && !$v.form.first_name.required"
+                     class="invalid-feedback">Prénom obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
@@ -48,11 +56,14 @@
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Date de naissance : ">
                 <b-form-input :disabled="disabled"
-                              v-model="form.birthday" type="date" name="birthday" placeholder="Date de naissance"
+                              v-model="form.birthday"
+                              type="date"
+                              name="birthday"
+                              placeholder="Date de naissance"
                               class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.birthday.$error }"/>
-                <div v-if="submitted && !$v.form.birthday.required" class="invalid-feedback">Date de naissance
-                  obligatoire
+                <div v-if="submitted && !$v.form.birthday.required"
+                     class="invalid-feedback">Date de naissance obligatoire
                 </div>
               </b-form-group>
             </div>
@@ -66,11 +77,15 @@
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Téléphone : ">
-                <b-form-input :disabled="disabled" v-model="form.phone_number" type="number" name="phone_number"
-                              placeholder="Numéro de téléphone" class="form-control"
+                <b-form-input :disabled="disabled"
+                              v-model="form.phone_number"
+                              type="number"
+                              name="phone_number"
+                              placeholder="Numéro de téléphone"
+                              class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.phone_number.$error }"/>
-                <div v-if="submitted && !$v.form.phone_number.required" class="invalid-feedback">Numéro de téléphone
-                  obligatoire
+                <div v-if="submitted && !$v.form.phone_number.required"
+                     class="invalid-feedback">Numéro de téléphone obligatoire
                 </div>
               </b-form-group>
             </div>
@@ -83,11 +98,15 @@
           <b-row>
             <div class="col-md-3 col-xs-12">
               <b-form-group label="Numéro : ">
-                <b-form-input :disabled="disabled" v-model="form.adress.number" type="number" name="adress.number"
-                              placeholder="Numéro de voie" class="form-control"
+                <b-form-input :disabled="disabled"
+                              v-model="form.adress.number"
+                              type="number"
+                              name="adress.number"
+                              placeholder="Numéro de voie"
+                              class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.adress.number.$error }"/>
-                <div v-if="submitted && !$v.form.adress.number.required" class="invalid-feedback">Numéro de voie
-                  obligatoire
+                <div v-if="submitted && !$v.form.adress.number.required"
+                     class="invalid-feedback">Numéro de voie obligatoire
                 </div>
               </b-form-group>
             </div>
@@ -97,14 +116,16 @@
                               placeholder="Nom de voie"
                               class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.adress.street.$error }"/>
-                <div v-if="submitted && !$v.form.adress.street.required" class="invalid-feedback">Nom de voie
-                  obligatoire
+                <div v-if="submitted && !$v.form.adress.street.required"
+                     class="invalid-feedback">Nom de voie obligatoire
                 </div>
               </b-form-group>
             </div>
             <div class="col-md-3 col-xs-12">
               <b-form-group label="Complément d'adresse : ">
-                <b-form-input :disabled="disabled" v-model="form.adress.complement" name="adress.complement"
+                <b-form-input :disabled="disabled"
+                              v-model="form.adress.complement"
+                              name="adress.complement"
                               placeholder="Complément d'adresse"></b-form-input>
               </b-form-group>
             </div>
@@ -115,18 +136,23 @@
                 <b-form-input :disabled="disabled" v-model="form.adress.postal_code" type="number"
                               name="adress.postal_code"
                               placeholder="Code Postal" class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.postal_code.$error }"/>
-                <div v-if="submitted && !$v.form.adress.postal_code.required" class="invalid-feedback">Code Postal
-                  obligatoire
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.adress.postal_code.$error }"/>
+                <div v-if="submitted && !$v.form.adress.postal_code.required"
+                     class="invalid-feedback">Code Postal obligatoire
                 </div>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Ville : ">
-                <b-form-input :disabled="disabled" v-model="form.adress.city" name="adress.city" placeholder="Ville"
+                <b-form-input :disabled="disabled"
+                              v-model="form.adress.city"
+                              name="adress.city"
+                              placeholder="Ville"
                               class="form-control"
                               :class="{ 'is-invalid': submitted && $v.form.adress.city.$error }"/>
-                <div v-if="submitted && !$v.form.adress.city.required" class="invalid-feedback">Ville obligatoire</div>
+                <div v-if="submitted && !$v.form.adress.city.required"
+                     class="invalid-feedback">Ville obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
@@ -140,11 +166,14 @@
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Pays : ">
-                <b-form-input :disabled="disabled" v-model="form.adress.country" name="adress.country"
+                <b-form-input :disabled="disabled" v-model="form.adress.country"
+                              name="adress.country"
                               placeholder="Pays"
                               class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.country.$error }"/>
-                <div v-if="submitted && !$v.form.adress.country.required" class="invalid-feedback">Pays obligatoire
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.adress.country.$error }"/>
+                <div v-if="submitted && !$v.form.adress.country.required"
+                     class="invalid-feedback">Pays obligatoire
                 </div>
               </b-form-group>
             </div>
@@ -158,7 +187,8 @@
             <b-row>
               <div class="col-md-12 col-xs-12">
                 <b-form-group
-                  label="Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) ">
+                  label="Avez-vous des problèmes médicaux ?
+                    (Problèmes cardiaques, diabète, épilepsie, asthme, etc) ">
                   <b-form-input :disabled="disabled" v-model="form.diseases"></b-form-input>
                 </b-form-group>
               </div>
@@ -168,7 +198,9 @@
           <b-form-group>
             <b-row>
               <div class="col-md-12 col-xs-12">
-                <b-form-group label="Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi ?">
+                <b-form-group
+                  label="Avez-vous des subit des hospitalisations ?
+                    Si oui, quand et pourquoi ?">
                   <b-form-input :disabled="disabled" v-model="form.hospitalization"></b-form-input>
                 </b-form-group>
               </div>
@@ -178,7 +210,9 @@
           <b-form-group>
             <b-row>
               <div class="col-md-12 col-xs-12">
-                <b-form-group label="Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?">
+                <b-form-group
+                  label="Avez-vous un traitement ?
+                  Si oui, quelle fréquence et pourquoi ?">
                   <b-form-input :disabled="disabled" v-model="form.treatment"></b-form-input>
                 </b-form-group>
               </div>
@@ -188,7 +222,9 @@
           <b-form-group>
             <b-row>
               <div class="col-md-12 col-xs-12">
-                <b-form-group label="Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité">
+                <b-form-group
+                  label="Avez-vous des des allergies ?
+                  Pensez à mentionner la cause et la sévérité">
                   <b-form-input :disabled="disabled" v-model="form.allergy"></b-form-input>
                 </b-form-group>
               </div>
@@ -198,10 +234,16 @@
           <b-row>
             <div class="col-md-8 col-xs-12">
               <b-form-group label="Donneur d'organes ?">
-                <b-form-radio :disabled="disabled" class="customRadio" v-model="form.organ_donor" name="some_radios"
+                <b-form-radio :disabled="disabled"
+                              class="customRadio"
+                              v-model="form.organ_donor"
+                              name="some_radios"
                               value="oui">Oui
                 </b-form-radio>
-                <b-form-radio :disabled="disabled" class="customRadio" v-model="form.organ_donor" name="some_radios"
+                <b-form-radio :disabled="disabled"
+                              class="customRadio"
+                              v-model="form.organ_donor"
+                              name="some_radios"
                               value="non">Non
                 </b-form-radio>
               </b-form-group>
@@ -233,8 +275,11 @@
           <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Numéro de sécurité sociale">
-                <b-form-input :disabled="disabled" v-model="form.social_security_number" type="number"
-                              placeholder="Numéro de sécurité sociale"></b-form-input>
+                <b-form-input :disabled="disabled"
+                              v-model="form.social_security_number"
+                              type="number"
+                              placeholder="Numéro de sécurité sociale">
+                </b-form-input>
               </b-form-group>
             </div>
             <div class="col-lg-4 col-xs-12">
@@ -276,12 +321,16 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Nom : ">
-                <b-form-input :disabled="disabled" v-model="form.doctor.last_name" placeholder="Nom du médecin"/>
+                <b-form-input :disabled="disabled"
+                              v-model="form.doctor.last_name"
+                              placeholder="Nom du médecin"/>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Prenom : ">
-                <b-form-input :disabled="disabled" v-model="form.doctor.first_name" placeholder="Prenom du médecin"/>
+                <b-form-input :disabled="disabled"
+                              v-model="form.doctor.first_name"
+                              placeholder="Prenom du médecin"/>
               </b-form-group>
             </div>
           </b-row>
@@ -305,14 +354,16 @@
 
         <b-row class="row h-100">
           <div class="col-sm-12 my-auto">
-            <b-button class="button-validate btn-warning" v-on:click="modify()">{{this.buttonName}}</b-button>
+            <b-button class="button-validate btn-warning"
+                      v-on:click="modify()">{{this.buttonName}}
+            </b-button>
           </div>
         </b-row>
 
         <b-row class="row h-100">
           <div class="col-sm-12 my-auto">
-            <b-button class="button-validate button-delete btn-danger" v-on:click="deleteMF()">Supprimer mon dossier
-              médical
+            <b-button class="button-validate button-delete btn-danger"
+                      v-on:click="deleteMF()">Supprimer mon dossier médical
             </b-button>
           </div>
         </b-row>
@@ -324,9 +375,9 @@
 </template>
 
 <script>
-  import {required, numeric} from 'vuelidate/lib/validators';
+  import { required, numeric } from 'vuelidate/lib/validators';
   import firebase from 'firebase';
-  import db from '../firebase.js';
+  import db from '../firebase';
   import router from '../router';
   import Navbar from '../components/Navbar.vue';
 
@@ -383,10 +434,10 @@
 
     validations: {
       form: {
-        civility: {required},
-        first_name: {required},
-        last_name: {required},
-        birthday: {required},
+        civility: { required },
+        first_name: { required },
+        last_name: { required },
+        birthday: { required },
         phone_number: {
           required,
           numeric,
@@ -396,10 +447,10 @@
             required,
             numeric,
           },
-          street: {required},
-          postal_code: {required},
-          city: {required},
-          country: {required},
+          street: { required },
+          postal_code: { required },
+          city: { required },
+          country: { required },
         },
       },
     },
@@ -450,13 +501,13 @@
                 phone_number: this.form.doctor.phone_number,
                 city: this.form.doctor.city,
               },
-            }).catch(error => {
+            }).catch((error) => {
             this.errorMessage = error;
           });
-        }).catch((error => {
+        }).catch((error) => {
           console.log(error);
           this.errorMessage = error;
-        }))
+        });
       },
       modify() {
         if (!this.disabled) {
@@ -469,8 +520,8 @@
         }
       },
       deleteMF() {
-        firebase.storage().ref('photos/' + firebase.auth().currentUser.uid).delete()
-          .catch(error => {
+        firebase.storage().ref(`photos/${firebase.auth().currentUser.uid}`).delete()
+          .catch((error) => {
             this.errorMessage = error;
           });
         db.collection('medicalFiles')
@@ -479,32 +530,32 @@
           .then(() => {
             router.push('MedicalFileCreation');
           })
-          .catch(error => {
+          .catch((error) => {
             this.errorMessage = error;
-          })
+          });
       },
       detectFiles(e) {
-        let fileList = e.target.files || e.dataTransfer.files;
+        const fileList = e.target.files || e.dataTransfer.files;
         this.photoFile = fileList[0];
       },
       uploadPhoto() {
         const self = this;
         return new Promise((resolve, reject) => {
-          if (this.photoFile === null){
+          if (this.photoFile === null) {
             resolve();
           }
-          firebase.storage().ref('photos/' + firebase.auth().currentUser.uid).put(self.photoFile)
-            .then(response => {
+          firebase.storage().ref(`photos/${firebase.auth().currentUser.uid}`).put(self.photoFile)
+            .then((response) => {
               response.ref.getDownloadURL().then((downloadURL) => {
                 self.form.photo = downloadURL;
                 resolve();
               })
-                .catch(err => {
+                .catch((err) => {
                   self.errorMessage = err;
                   reject();
-                })
-            })
-        })
+                });
+            });
+        });
       },
     },
     created() {

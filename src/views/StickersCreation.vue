@@ -1,4 +1,4 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
   <div>
     <Navbar></Navbar>
     <b-container>
@@ -56,7 +56,9 @@
 
           <b-row>
             <b-col>
-              <b-img class="stickers" :src="require(`../img/stickers/${this.theme}/${this.color}.png`)" fluid
+              <b-img class="stickers"
+                     :src="require(`../img/stickers/${this.theme}/${this.color}.png`)"
+                     fluid
                      alt="Stickers picture"></b-img>
             </b-col>
           </b-row>
@@ -94,11 +96,11 @@
 </template>
 
 <script>
-  import db from '../firebase.js';
   import firebase from 'firebase';
+  import db from '../firebase';
   import router from '../router';
   import Navbar from '../components/Navbar.vue';
-  import ViewMyStickers from "./ViewMyStickers";
+  import ViewMyStickers from './ViewMyStickers.vue';
 
   export default {
     name: 'StickersCreation',
@@ -108,10 +110,10 @@
     data() {
       return {
         errorMessage: '',
-        theme: "motoFemme",
-        shape: "square",
-        color: "black",
-        size: "small",
+        theme: 'motoFemme',
+        shape: 'square',
+        color: 'black',
+        size: 'small',
       };
     },
     methods: {
@@ -130,7 +132,7 @@
           .then(() => {
             router.push(ViewMyStickers);
           })
-          .catch(error => {
+          .catch((error) => {
             this.errorMessage = error;
           });
       },

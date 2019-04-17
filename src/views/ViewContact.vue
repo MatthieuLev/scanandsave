@@ -19,7 +19,7 @@
           <br>
           <b-row>
             <b-col class="col-6">
-              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+              <p class="label">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
             </b-col>
             <b-col class="col-6">
               <b-row>{{this.form.contact.last_name}}</b-row>
@@ -27,7 +27,7 @@
           </b-row>
           <b-row>
             <b-col class="col-6">
-              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
+              <p class="label">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
             </b-col>
             <b-col class="col-6">
               <b-row>{{this.form.contact.first_name}}</b-row>
@@ -35,7 +35,7 @@
           </b-row>
           <b-row>
             <b-col class="col-6">
-              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Numéro de téléphone :&nbsp;&nbsp;</p>
+              <p class="label">&nbsp;&nbsp;Numéro de téléphone :&nbsp;&nbsp;</p>
             </b-col>
             <b-col class="col-6">
               <b-row>{{this.form.contact.phone_number}}</b-row>
@@ -54,7 +54,7 @@
           <br>
           <b-row>
             <b-col class="col-6">
-              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
+              <p class="label">&nbsp;&nbsp;Nom :&nbsp;&nbsp;</p>
             </b-col>
             <b-col class="col-6">
               <b-row>{{this.form.doctor.last_name}}</b-row>
@@ -62,7 +62,7 @@
           </b-row>
           <b-row>
             <b-col class="col-6">
-              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
+              <p class="label">&nbsp;&nbsp;Prénom :&nbsp;&nbsp;</p>
             </b-col>
             <b-col class="col-6">
               <b-row>{{this.form.doctor.first_name}}</b-row>
@@ -70,7 +70,7 @@
           </b-row>
           <b-row>
             <b-col class="col-sm-6 col-6">
-              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Téléphone :&nbsp;&nbsp;</p>
+              <p class="label">&nbsp;&nbsp;Téléphone :&nbsp;&nbsp;</p>
             </b-col>
             <b-col class="col-6">
               <b-row>{{this.form.doctor.phone_number}}</b-row>
@@ -78,7 +78,7 @@
           </b-row>
           <b-row>
             <b-col class="col-6">
-              <p class="label" style="font-weight:bold;">&nbsp;&nbsp;Ville :&nbsp;&nbsp;</p>
+              <p class="label">&nbsp;&nbsp;Ville :&nbsp;&nbsp;</p>
             </b-col>
             <b-col class="col-6">
               <b-row>{{this.form.doctor.city}}</b-row>
@@ -91,7 +91,7 @@
 </template>
 
 <script>
-  import db from '../firebase.js';
+  import db from '../firebase';
   import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
 
@@ -104,7 +104,7 @@
     data() {
       return {
         errorMessage: '',
-        sexe : 'Autre',
+        sexe: 'Autre',
         form: {
           contact: {
             last_name: null,
@@ -147,8 +147,10 @@
 </script>
 
 <style scoped>
-
   h2{
     color: white;
+  }
+  .label {
+    font-weight: bold;
   }
 </style>

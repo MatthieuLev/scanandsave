@@ -93,7 +93,7 @@
 </template>
 
 <script>
-  import db from '../firebase.js';
+  import db from '../firebase';
   import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
 

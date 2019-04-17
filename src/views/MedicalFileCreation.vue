@@ -23,17 +23,27 @@
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Nom : *">
                 <b-form-input
-                  v-model="form.last_name" name="last_name" placeholder="Nom" class="form-control"
-                  :class="{ 'is-invalid': submitted && $v.form.last_name.$error }"/>
-                <div v-if="submitted && !$v.form.last_name.required" class="invalid-feedback">Nom obligatoire</div>
+                  v-model="form.last_name"
+                  name="last_name"
+                  placeholder="Nom"
+                  class="form-control"
+                  :class="{ 'is-invalid': submitted
+                  && $v.form.last_name.$error }"/>
+                <div v-if="submitted && !$v.form.last_name.required"
+                     class="invalid-feedback">Nom obligatoire</div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Prénom : *">
                 <b-form-input
-                  v-model="form.first_name" name="first_name" placeholder="Prenom" class="form-control"
-                  :class="{ 'is-invalid': submitted && $v.form.first_name.$error }"/>
-                <div v-if="submitted && !$v.form.first_name.required" class="invalid-feedback">Prénom obligatoire</div>
+                  v-model="form.first_name"
+                  name="first_name"
+                  placeholder="Prenom"
+                  class="form-control"
+                  :class="{ 'is-invalid': submitted
+                  && $v.form.first_name.$error }"/>
+                <div v-if="submitted && !$v.form.first_name.required"
+                     class="invalid-feedback">Prénom obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
@@ -42,28 +52,38 @@
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Date de naissance : *">
                 <b-form-input
-                  v-model="form.birthday" type="date" name="birthday" placeholder="Date de naissance"
+                  v-model="form.birthday"
+                  type="date"
+                  name="birthday"
+                  placeholder="Date de naissance"
                   class="form-control"
-                  :class="{ 'is-invalid': submitted && $v.form.birthday.$error }"/>
-                <div v-if="submitted && !$v.form.birthday.required" class="invalid-feedback">Date de naissance
-                  obligatoire
+                  :class="{ 'is-invalid': submitted
+                  && $v.form.birthday.$error }"/>
+                <div v-if="submitted && !$v.form.birthday.required"
+                     class="invalid-feedback">Date de naissance obligatoire
                 </div>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group
                 label="Photo d'identité : *">
-                <b-form-file @change="detectFiles($event)" name="photo" placeholder="Photo d'identité"
+                <b-form-file @change="detectFiles($event)"
+                             name="photo"
+                             placeholder="Photo d'identité"
                              class="form-control"/>
               </b-form-group>
             </div>
             <div class="col-md-4 col-xs-12">
               <b-form-group label="Téléphone : *">
-                <b-form-input v-model="form.phone_number" type="number" name="phone_number"
-                              placeholder="Numéro de téléphone" class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.phone_number.$error }"/>
-                <div v-if="submitted && !$v.form.phone_number.required" class="invalid-feedback">Numéro de téléphone
-                  obligatoire
+                <b-form-input v-model="form.phone_number"
+                              type="number"
+                              name="phone_number"
+                              placeholder="Numéro de téléphone"
+                              class="form-control"
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.phone_number.$error }"/>
+                <div v-if="submitted && !$v.form.phone_number.required"
+                     class="invalid-feedback">Numéro de téléphone obligatoire
                 </div>
               </b-form-group>
             </div>
@@ -76,21 +96,28 @@
           <b-row>
             <div class="col-md-3 col-xs-12">
               <b-form-group label="Numéro : *">
-                <b-form-input v-model="form.adress.number" type="number" name="adress.number"
-                              placeholder="Numéro de voie" class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.number.$error }"/>
-                <div v-if="submitted && !$v.form.adress.number.required" class="invalid-feedback">Numéro de voie
-                  obligatoire
+                <b-form-input v-model="form.adress.number"
+                              type="number"
+                              name="adress.number"
+                              placeholder="Numéro de voie"
+                              class="form-control"
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.adress.number.$error }"/>
+                <div v-if="submitted && !$v.form.adress.number.required"
+                     class="invalid-feedback">Numéro de voie obligatoire
                 </div>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Nom de voie : *">
-                <b-form-input v-model="form.adress.street" name="adress.street" placeholder="Nom de voie"
+                <b-form-input v-model="form.adress.street"
+                              name="adress.street"
+                              placeholder="Nom de voie"
                               class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.street.$error }"/>
-                <div v-if="submitted && !$v.form.adress.street.required" class="invalid-feedback">Nom de voie
-                  obligatoire
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.adress.street.$error }"/>
+                <div v-if="submitted && !$v.form.adress.street.required"
+                     class="invalid-feedback">Nom de voie obligatoire
                 </div>
               </b-form-group>
             </div>
@@ -104,35 +131,50 @@
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Code Postal : *">
-                <b-form-input v-model="form.adress.postal_code" type="number" name="adress.postal_code"
-                              placeholder="Code Postal" class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.postal_code.$error }"/>
-                <div v-if="submitted && !$v.form.adress.postal_code.required" class="invalid-feedback">Code Postal
-                  obligatoire
+                <b-form-input v-model="form.adress.postal_code"
+                              type="number"
+                              name="adress.postal_code"
+                              placeholder="Code Postal"
+                              class="form-control"
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.adress.postal_code.$error }"/>
+                <div v-if="submitted && !$v.form.adress.postal_code.required"
+                     class="invalid-feedback">Code Postal obligatoire
                 </div>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Ville : *">
-                <b-form-input v-model="form.adress.city" name="adress.city" placeholder="Ville" class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.city.$error }"/>
-                <div v-if="submitted && !$v.form.adress.city.required" class="invalid-feedback">Ville obligatoire</div>
+                <b-form-input v-model="form.adress.city"
+                              name="adress.city"
+                              placeholder="Ville"
+                              class="form-control"
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.adress.city.$error }"/>
+                <div v-if="submitted && !$v.form.adress.city.required"
+                     class="invalid-feedback">Ville obligatoire</div>
               </b-form-group>
             </div>
           </b-row>
           <b-row>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Région/Etat : ">
-                <b-form-input v-model="form.adress.state" name="adress.state" placeholder="Région / Etat"
+                <b-form-input v-model="form.adress.state"
+                              name="adress.state"
+                              placeholder="Région / Etat"
                               class="form-control"/>
               </b-form-group>
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Pays : *">
-                <b-form-input v-model="form.adress.country" name="adress.country" placeholder="Pays"
+                <b-form-input v-model="form.adress.country"
+                              name="adress.country"
+                              placeholder="Pays"
                               class="form-control"
-                              :class="{ 'is-invalid': submitted && $v.form.adress.country.$error }"/>
-                <div v-if="submitted && !$v.form.adress.country.required" class="invalid-feedback">Pays obligatoire
+                              :class="{ 'is-invalid': submitted
+                              && $v.form.adress.country.$error }"/>
+                <div v-if="submitted && !$v.form.adress.country.required"
+                     class="invalid-feedback">Pays obligatoire
                 </div>
               </b-form-group>
             </div>
@@ -146,7 +188,8 @@
             <b-row>
               <div class="col-md-12 col-xs-12">
                 <b-form-group
-                  label="Avez-vous des problèmes médicaux ? (Problèmes cardiaques, diabète, épilepsie, asthme, etc) ">
+                  label="Avez-vous des problèmes médicaux ?
+                  (Problèmes cardiaques, diabète, épilepsie, asthme, etc) ">
                   <b-form-input v-model="form.diseases"></b-form-input>
                 </b-form-group>
               </div>
@@ -156,7 +199,8 @@
           <b-form-group>
             <b-row>
               <div class="col-md-12 col-xs-12">
-                <b-form-group label="Avez-vous des subit des hospitalisations ? Si oui, quand et pourquoi ?">
+                <b-form-group label="Avez-vous des subit des hospitalisations ?
+                Si oui, quand et pourquoi ?">
                   <b-form-input v-model="form.hospitalization"></b-form-input>
                 </b-form-group>
               </div>
@@ -166,7 +210,8 @@
           <b-form-group>
             <b-row>
               <div class="col-md-12 col-xs-12">
-                <b-form-group label="Avez-vous un traitement ? Si oui, quelle fréquence et pourquoi ?">
+                <b-form-group label="Avez-vous un traitement ?
+                Si oui, quelle fréquence et pourquoi ?">
                   <b-form-input v-model="form.treatment"></b-form-input>
                 </b-form-group>
               </div>
@@ -176,7 +221,8 @@
           <b-form-group>
             <b-row>
               <div class="col-md-12 col-xs-12">
-                <b-form-group label="Avez-vous des des allergies ? Pensez à mentionner la cause et la sévérité">
+                <b-form-group label="Avez-vous des des allergies ?
+                Pensez à mentionner la cause et la sévérité">
                   <b-form-input v-model="form.allergy"></b-form-input>
                 </b-form-group>
               </div>
@@ -186,9 +232,15 @@
           <b-row>
             <div class="col-md-8 col-xs-12">
               <b-form-group label="Donneur d'organes ?">
-                <b-form-radio class="customRadio" v-model="form.organ_donor" name="some_radios" value="oui">Oui
+                <b-form-radio class="customRadio"
+                              v-model="form.organ_donor"
+                              name="some_radios"
+                              value="oui">Oui
                 </b-form-radio>
-                <b-form-radio class="customRadio" v-model="form.organ_donor" name="some_radios" value="non">Non
+                <b-form-radio class="customRadio"
+                              v-model="form.organ_donor"
+                              name="some_radios"
+                              value="non">Non
                 </b-form-radio>
               </b-form-group>
 
@@ -225,7 +277,10 @@
             </div>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Numéro de permis de conduire">
-                <b-form-input v-model="form.license_number" type="number" placeholder="Numéro de permis"></b-form-input>
+                <b-form-input v-model="form.license_number"
+                              type="number"
+                              placeholder="Numéro de permis">
+                </b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -238,12 +293,16 @@
           <b-row>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Nom : ">
-                <b-form-input v-model="form.contact.last_name" placeholder="Nom du contact"></b-form-input>
+                <b-form-input v-model="form.contact.last_name"
+                              placeholder="Nom du contact">
+                </b-form-input>
               </b-form-group>
             </div>
             <div class="col-lg-4 col-xs-12">
               <b-form-group label="Prénom : ">
-                <b-form-input v-model="form.contact.first_name" placeholder="Prénom du contact"></b-form-input>
+                <b-form-input v-model="form.contact.first_name"
+                              placeholder="Prénom du contact">
+                </b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -281,7 +340,9 @@
             </div>
             <div class="col-md-6 col-xs-12">
               <b-form-group label="Ville : ">
-                <b-form-input v-model="form.doctor.city" placeholder="Ville du médecin"></b-form-input>
+                <b-form-input v-model="form.doctor.city"
+                              placeholder="Ville du médecin">
+                </b-form-input>
               </b-form-group>
             </div>
           </b-row>
@@ -295,9 +356,9 @@
 </template>
 
 <script>
-  import {required, numeric} from 'vuelidate/lib/validators';
+  import { required, numeric } from 'vuelidate/lib/validators';
   import firebase from 'firebase';
-  import db from '../firebase.js';
+  import db from '../firebase';
   import router from '../router';
   import Navbar from '../components/Navbar.vue';
   import MedicalFileResume from './MedicalFileResume.vue';
@@ -351,10 +412,10 @@
     },
     validations: {
       form: {
-        civility: {required},
-        first_name: {required},
-        last_name: {required},
-        birthday: {required},
+        civility: { required },
+        first_name: { required },
+        last_name: { required },
+        birthday: { required },
         phone_number: {
           required,
           numeric,
@@ -364,10 +425,10 @@
             required,
             numeric,
           },
-          street: {required},
-          postal_code: {required},
-          city: {required},
-          country: {required},
+          street: { required },
+          postal_code: { required },
+          city: { required },
+          country: { required },
         },
       },
     },
@@ -426,29 +487,29 @@
               console.log(error);
               this.errorMessage = error;
             });
-        }).catch((error => {
+        }).catch((error) => {
           console.log(error);
           this.errorMessage = error;
-        }))
+        });
       },
       uploadPhoto() {
         const self = this;
         return new Promise((resolve, reject) => {
-          firebase.storage().ref('photos/' + firebase.auth().currentUser.uid).put(self.photoFile)
-            .then(response => {
+          firebase.storage().ref(`photos/${firebase.auth().currentUser.uid}`).put(self.photoFile)
+            .then((response) => {
               response.ref.getDownloadURL().then((downloadURL) => {
                 self.form.photo = downloadURL;
                 resolve();
               })
-                .catch(err => {
+                .catch((err) => {
                   self.errorMessage = err;
                   reject();
-                })
-            })
-        })
+                });
+            });
+        });
       },
       detectFiles(e) {
-        let fileList = e.target.files || e.dataTransfer.files;
+        const fileList = e.target.files || e.dataTransfer.files;
         this.photoFile = fileList[0];
       },
     },

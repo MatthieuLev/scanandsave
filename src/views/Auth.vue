@@ -19,7 +19,7 @@
 <script>
 import Registration from '../components/Registration.vue';
 import Login from '../components/Login.vue';
-import ForgotPassword from "../components/ForgotPassword";
+import ForgotPassword from '../components/ForgotPassword.vue';
 
 export default {
   name: 'Home',
@@ -34,7 +34,7 @@ export default {
     Login,
   },
   methods: {
-    changeCurrentPage: function(currentPage){
+    changeCurrentPage: (currentPage) => {
       this.currentPage = currentPage;
     },
   },

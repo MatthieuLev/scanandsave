@@ -6,23 +6,38 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item>
-            <router-link to="/"><i class="fas fa-home"></i>Accueil</router-link>
+            <router-link to="/">
+              <i class="fas fa-home"></i>
+              Accueil
+            </router-link>
           </b-nav-item>
           <b-nav-item v-if="currentUser !== null">
-            <router-link to="MedicalFileResume"><i class="fas fa-notes-medical"></i>Mon dossier médical</router-link>
+            <router-link to="MedicalFileResume">
+              <i class="fas fa-notes-medical"></i>
+              Mon dossier médical
+            </router-link>
           </b-nav-item>
           <b-nav-item v-if="currentUser !== null">
-            <router-link to="ViewMyStickers"><i class="fas fa-sticky-note"></i>Mes autocollants</router-link>
+            <router-link to="ViewMyStickers">
+              <i class="fas fa-sticky-note"></i>
+              Mes autocollants
+            </router-link>
           </b-nav-item>
           <b-nav-item v-if="currentUser !== null">
-            <router-link to="ViewMyCart"><i class="fas fa-shopping-cart"></i></i>Voir mon panier</router-link>
+            <router-link to="ViewMyCart">
+              <i class="fas fa-shopping-cart"></i>
+              Voir mon panier
+            </router-link>
           </b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
           <b-nav-item class="signButtonContainer" v-if="currentUser !== null">
-            <a class="signoutButton" @click="signOut"><i class="fas fa-sign-out-alt"></i>Déconnexion</a>
+            <a class="signoutButton" @click="signOut">
+              <i class="fas fa-sign-out-alt"></i>
+              Déconnexion
+            </a>
           </b-nav-item>
           <b-navbar-nav class="signButtonContainer" v-else>
             <a class="signButton" @click="signIn"><i class="fas fa-sign-in-alt"></i>Connexion</a>

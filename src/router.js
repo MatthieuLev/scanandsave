@@ -8,10 +8,10 @@ import MedicalFileCreation from './views/MedicalFileCreation.vue';
 import MedicalFileResume from './views/MedicalFileResume.vue';
 import MFNotFound from './views/MFNotFound.vue';
 import StickersCreation from './views/StickersCreation.vue';
-import ViewContact from "./views/ViewContact";
+import ViewContact from './views/ViewContact.vue';
 import ViewGeneralInformation from './views/ViewGeneralInformation.vue';
-import ViewIdentity from "./views/ViewIdentity";
-import ViewMHTA from "./views/ViewMHTA";
+import ViewIdentity from './views/ViewIdentity.vue';
+import ViewMHTA from './views/ViewMHTA.vue';
 import ViewMyCart from './views/ViewMyCart.vue';
 import ViewMyStickers from './views/ViewMyStickers.vue';
 

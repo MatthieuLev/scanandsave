@@ -20,7 +20,9 @@
           <tbody>
           <tr v-for="item in items">
             <td>
-              <b-img class="stickers" :src="require(`../img/stickers/${item.theme}/${item.color}.png`)" fluid
+              <b-img class="stickers"
+                     :src="require(`../img/stickers/${item.theme}/${item.color}.png`)"
+                     fluid
                      alt="Stickers picture"></b-img>
             </td>
             <td>{{item.theme}} {{item.color}} {{item.size}}</td>
@@ -30,13 +32,19 @@
               <div id="input_div">
                 <b-row>
                   <b-col>
-                    <b-button class=table-btn value="-" id="moins" v-on:click="addProduct(item, -1)"> -</b-button>
+                    <b-button class=table-btn
+                              value="-"
+                              id="moins"
+                              v-on:click="addProduct(item, -1)"> -</b-button>
                   </b-col>
                   <b-col>
                     <p class="text-center">{{item.quantity}}</p>
                   </b-col>
                   <b-col>
-                    <b-button class=table-btn value="+" id="plus" v-on:click="addProduct(item , 1)">+</b-button>
+                    <b-button class=table-btn
+                              value="+"
+                              id="plus"
+                              v-on:click="addProduct(item , 1)">+</b-button>
                   </b-col>
                 </b-row>
               </div>
@@ -44,7 +52,8 @@
             </td>
             <td class="text-right">{{item.prix}}€</td>
             <td class="text-right">
-              <b-button class="table-btn" v-on:click="deleteItem(item)">
+              <b-button class="table-btn"
+                        v-on:click="deleteItem(item)">
                 <i class="fa fa-trash"></i></b-button>
             </td>
           </tr>
@@ -81,12 +90,15 @@
       <br/>
       <b-row>
         <b-col>
-          <b-button class="button-validate btn-danger text-uppercase" v-if="validated" v-on:click="leftPayment()">
+          <b-button class="button-validate btn-danger text-uppercase"
+                    v-if="validated"
+                    v-on:click="leftPayment()">
             Annuler le paiement
           </b-button>
         </b-col>
         <b-col>
-          <b-button class="button-validate btn-warning text-uppercase" v-on:click="goPayment()">Valider</b-button>
+          <b-button class="button-validate btn-warning text-uppercase"
+                    v-on:click="goPayment()">Valider</b-button>
         </b-col>
       </b-row>
     </b-container>
@@ -96,14 +108,14 @@
 <script>
   import firebase from 'firebase';
   import Navbar from '../components/Navbar.vue';
-  import PaymentMethod from "../components/PaymentMethod.vue"
-  import db from '../firebase.js';
+  import PaymentMethod from '../components/PaymentMethod.vue';
+  import db from '../firebase';
 
   export default {
     name: 'Mon_Panier',
     components: {
       Navbar,
-      PaymentMethod
+      PaymentMethod,
     },
     data() {
       return {
@@ -111,7 +123,7 @@
         errorMessage: '',
         total: 0,
         items: [],
-        theme: null
+        theme: null,
       };
     },
     created() {
@@ -121,20 +133,22 @@
         .collection('userStickers')
         .where('in_order', '==', true)
         .get()
-        .then(querySnapshot => {
+        .then((querySnapshot) => {
           if (querySnapshot.empty) {
             console.log('no stickers documents ordered found from userStickers collection');
           } else {
             // go through all the results
-            querySnapshot.forEach(documentSnapshot => {
+            querySnapshot.forEach((documentSnapshot) => {
               const data = documentSnapshot.data();
-              data['id'] = documentSnapshot.id;
+              data.id = documentSnapshot.id;
               console.log(data);
-              if (data.size === 'small')
+              if (data.size === 'small') {
                 data.prix = 5;
-              else if (data.size === 'medium')
+              } else if (data.size === 'medium') {
                 data.prix = 6;
-              else data.prix = 7;
+              } else {
+                data.prix = 7;
+              }
 
               data.prix_total = data.prix * data.quantity;
               self.items.push(data);
@@ -142,12 +156,12 @@
             });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.errorMessage = error;
         });
     },
     methods: {
-      deleteItem: function (item) {
+      deleteItem: (item) => {
         this.total = this.total - (item.quantity * item.prix);
         db.collection('stickers')
           .doc(firebase.auth().currentUser.uid)
@@ -160,39 +174,38 @@
           .then(() => {
             console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
           })
-          .catch(error => {
+          .catch((error) => {
             console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
             this.errorMessage = error;
           });
-        for (var i = 0; i < this.items.length; i++) {
+        for (let i = 0; i < this.items.length; i += 1) {
           if (this.items[i] === item) {
             this.items.splice(i, 1);
           }
         }
       },
-      addProduct: function (item, i) {
+      addProduct: (item, i) => {
         if ((item.quantity >= 1 && i < 0) || (item.quantity >= 0 && i > 0)) {
           db.collection('stickers')
             .doc(firebase.auth().currentUser.uid)
             .collection('userStickers')
             .doc(item.id)
             .update({
-              quantity: item.quantity + i
+              quantity: item.quantity + i,
             })
             .then(() => {
               console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart was successful');
             })
-            .catch(error => {
+            .catch((error) => {
               console.log('[LOG] ViewMyStickers : The update of the badge in the shopping cart failed');
               this.errorMessage = error;
             });
-          for (var j = 0; j < this.items.length; j++) {
+          for (let j = 0; j < this.items.length; j += 1) {
             if (this.items[j] === item) {
               this.items[j].quantity = this.items[j].quantity + i;
               this.total = this.total + (i * this.items[j].prix);
             }
           }
-
         }
       },
       goPayment() {
@@ -200,7 +213,7 @@
       },
       leftPayment() {
         this.validated = false;
-      }
+      },
     },
   };
 </script>

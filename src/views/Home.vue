@@ -80,7 +80,10 @@
       <!-- Quelles infos ? -->
       <div class="row">
         <div class="col-sm-6">
-          <img src="../img/mountain-biking.jpg" class="img-responsive" style="width:100%" alt="Image">
+          <img src="../img/mountain-biking.jpg"
+               class="img-responsive"
+               style="width:100%"
+               alt="Image">
         </div>
 
         <div class="col-sm-6">
@@ -186,20 +189,14 @@
       Navbar,
     },
     methods: {
-      onSlideStart(slide) {
-        this.sliding = true
+      onSlideStart() {
+        this.sliding = true;
       },
-      onSlideEnd(slide) {
-        this.sliding = false
-      }
-    }
+      onSlideEnd() {
+        this.sliding = false;
+      },
+    },
   };
-
-  document.addEventListener('DOMContentLoaded', function() {
-    window.onscroll = function(ev) {
-      document.getElementById("cRetour").className = (window.pageYOffset > 100) ? "cVisible" : "cInvisible";
-    };
-  });
 </script>
 
 <style scoped>
@@ -207,7 +204,7 @@
   h3 {
     color: #90081d;
   }
-  .footer container-fluid text-center {
+  .footer .container-fluid .text-center {
     background-color: #f2f2f2;
     padding: 25px;
   }
@@ -219,7 +216,7 @@
   width: 203px;
   height: 270px;
 }
-.btn btn-secondary{
+.btn .btn-secondary{
   margin-left: auto;
   margin-right: auto;
   width: 80px;

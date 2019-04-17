@@ -13,7 +13,11 @@
           <div class="card">
             <div class="card-body">
               <div class="userData ml-3">
-                <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold"><a href="javascript:void(0);"> {{this.form.first_name}} {{this.form.last_name}}</a></h2>
+                <h2 class="d-block">
+                  <a href="javascript:void(0);">
+                    {{this.form.first_name}} {{this.form.last_name}}
+                  </a>
+                </h2>
               </div>
               <div class="card-title mb-4">
                 <div class="d-flex justify-content-start">
@@ -23,17 +27,23 @@
                     <img height="70%"
                          width="70%"
                          max-width="100%"
-                         max-height="100%" :src="this.form.photo" alt="Pas de photo" class="userPhoto">
+                         max-height="100%"
+                         :src="this.form.photo"
+                         alt="Pas de photo"
+                         class="userPhoto">
                   </b-form-group>
                 </b-col>
               </div>
               <b-row>
                 <b-col>
                   <div class="tab-content ml-1" id="myTabContent">
-                    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                    <div class="tab-pane fade show active"
+                         id="general"
+                         role="tabpanel"
+                         aria-labelledby="general-tab">
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Nom</p>
+                          <p class="label">Nom</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.last_name}}
@@ -42,7 +52,7 @@
                       <hr />
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Prénom</p>
+                          <p class="label">Prénom</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.first_name}}
@@ -51,7 +61,7 @@
                       <hr />
                       <b-row >
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Date de naissance</p>
+                          <p class="label">Date de naissance</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.form.birthday}}
@@ -60,7 +70,7 @@
                       <hr/>
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
-                          <p class="label" style="font-weight:bold;">Sexe</p>
+                          <p class="label">Sexe</p>
                         </b-col>
                         <b-col class="col-md-8 col-6">
                           {{this.sexe}}
@@ -89,7 +99,10 @@
               <b-row>
                 <b-col>
                   <div class="tab-content ml-1" id="myTabContent2">
-                    <div class="tab-pane fade show active" id="general2" role="tabpanel" aria-labelledby="general-tab">
+                    <div class="tab-pane fade show active"
+                         id="general2"
+                         role="tabpanel"
+                         aria-labelledby="general-tab">
                       <b-row >
                         <b-col class="col-sm-3 col-md-2 col-5">
                           <p class="label" style="font-weight:bold;">Maladie</p>
@@ -166,7 +179,10 @@
               <b-row>
                 <b-col>
                   <div class="tab-content ml-1" id="myTabContent3">
-                    <div class="tab-pane fade show active" id="general3" role="tabpanel" aria-labelledby="general-tab">
+                    <div class="tab-pane fade show active"
+                         id="general3"
+                         role="tabpanel"
+                         aria-labelledby="general-tab">
                       <b-row>
                         <b-col class="col-sm-3 col-md-2 col-5">
                           <p class="label" style="font-weight:bold;">Proche à contacter</p>
@@ -220,7 +236,7 @@
 </template>
 
 <script>
-  import db from '../firebase.js';
+  import db from '../firebase';
   import router from '../router';
   import NavbarMobile from '../components/NavbarMobile.vue';
 
@@ -232,7 +248,7 @@
     data() {
       return {
         errorMessage: '',
-        sexe : 'Autre',
+        sexe: 'Autre',
         form: {
           civility: 'Madame',
           first_name: null,
@@ -280,13 +296,13 @@
           .get()
           .then((doc) => {
             this.form.civility = doc.data().civility;
-            if (this.form.civility==="Monsieur"){
-              this.sexe = "Masculin";
+            if (this.form.civility === 'Monsieur') {
+              this.sexe = 'Masculin';
+            } else if (this.form.civility === 'Madame') {
+              this.sexe = 'Féminin';
+            } else {
+              this.sexe = 'Autre';
             }
-            else if (this.form.civility ==="Madame"){
-              this.sexe = "Féminin";
-            }
-            else {this.sexe = "Autre";}
             this.form.first_name = doc.data().first_name;
             this.form.last_name = doc.data().last_name;
             this.form.birthday = doc.data().birthday;
@@ -324,7 +340,7 @@
             this.form.doctor.city = doc.data().doctor.city;
           })
           .catch(() => {
-            router.push('MFNotFound');;
+            router.push('MFNotFound');
           });
       } else {
         router.push('MFNotFound');

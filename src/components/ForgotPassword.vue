@@ -3,7 +3,11 @@
     <b-form-input id="input-forgotPassword-email" v-model="form.email"
                   type="email" required placeholder="Adresse mail"></b-form-input>
     <p class="error" v-if="errorEmail">{{errorEmail}}</p>
-    <p class="message login"><a v-on:click="$emit('changeCurrentPage','login')">Vous avez retrouvé la mémoire ?</a></p>
+    <p class="message login">
+      <a v-on:click="$emit('changeCurrentPage','login')">
+        Vous avez retrouvé la mémoire ?
+      </a>
+    </p>
 
     <button @click="forgotPassword">Recevoir un nouveau mot de passe par e-mail</button>
 

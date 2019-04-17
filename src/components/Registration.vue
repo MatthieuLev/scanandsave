@@ -14,7 +14,9 @@
     <p class="error" v-if="errorMessage">{{errorMessage}}</p>
     <p class="success" v-if="successMessage">{{successMessage}}</p>
 
-    <p class="message">Déjà enregistré ? <a v-on:click="$emit('changeCurrentPage','login')">Se connecter</a></p>
+    <p class="message">Déjà enregistré ?
+      <a v-on:click="$emit('changeCurrentPage','login')">Se connecter</a>
+    </p>
 
   </b-form>
 </template>
@@ -47,7 +49,7 @@
         this.errorConfirmPassword = '';
         this.errorMessage = '';
         if (this.form.password === this.form.confirmPassword) {
-          let result = await database.signUp(this.form.email, this.form.password);
+          const result = await database.signUp(this.form.email, this.form.password);
 
           if (!result.message) {
             this.successMessage = 'Votre compte est créé, vous pouvez vous connecter';
