@@ -377,6 +377,7 @@
           },
         },
         submitted: false,
+        photoFile: null,
       };
     },
 
@@ -489,6 +490,9 @@
       uploadPhoto() {
         const self = this;
         return new Promise((resolve, reject) => {
+          if (this.photoFile === null){
+            resolve();
+          }
           firebase.storage().ref('photos/' + firebase.auth().currentUser.uid).put(self.photoFile)
             .then(response => {
               response.ref.getDownloadURL().then((downloadURL) => {

@@ -3,7 +3,7 @@
     <Navbar></Navbar>
     <b-container>
       <h1>Mes autocollants</h1>
-      <div v-if="userHaveStickers">
+      <div v-if="userHaveAccount">
         <div class="custom-card">
 
           <b-table responsive striped :fields="fields" :items="stickers">
@@ -18,7 +18,7 @@
 
             <template slot="addtoCart" slot-scope="data">
               <b-form-checkbox :id="'checkbox'+data.index+1" name="checkbox" v-model="data.item.in_order"
-                               @change="check($event, data.item)">
+                               @change="checkAddToCart($event, data.item)">
               </b-form-checkbox>
             </template>
           </b-table>
@@ -56,7 +56,7 @@
       return {
         stickers: [],
         errorMessage: '',
-        userHaveStickers: false,
+        userHaveAccount: false,
         fields: [
           'index',
           {key: 'theme', label: 'Theme'},
@@ -69,29 +69,38 @@
       };
     },
     created() {
-      const self = this;
-      db.collection('stickers')
+      db.collection('medicalFiles')
         .doc(firebase.auth().currentUser.uid)
-        .collection('userStickers')
         .get()
-        .then(querySnapshot => {
-          if (!querySnapshot.empty) {
-            this.userHaveStickers = true;
-            // go through all the results
-            querySnapshot.forEach(documentSnapshot => {
-              const data = documentSnapshot.data();
-              data['id'] = documentSnapshot.id;
-              self.stickers.push(data);
-            });
-          }
-        })
-        .catch(error => {
-          this.errorMessage = error;
+        .then((doc) => {
+          this.userHaveAccount = true;
+          this.check();
         });
     },
 
     methods: {
-      check(e, item) {
+      check(){
+        const self = this;
+        db.collection('stickers')
+          .doc(firebase.auth().currentUser.uid)
+          .collection('userStickers')
+          .get()
+          .then(querySnapshot => {
+            if (!querySnapshot.empty) {
+              this.userHaveStickers = true;
+              // go through all the results
+              querySnapshot.forEach(documentSnapshot => {
+                const data = documentSnapshot.data();
+                data['id'] = documentSnapshot.id;
+                self.stickers.push(data);
+              });
+            }
+          })
+          .catch(error => {
+            this.errorMessage = error;
+          });
+      },
+      checkAddToCart(e, item) {
         db.collection('stickers')
           .doc(firebase.auth().currentUser.uid)
           .collection('userStickers')
