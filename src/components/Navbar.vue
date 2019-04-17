@@ -9,7 +9,7 @@
             <router-link to="/"><i class="fas fa-home"></i>Accueil</router-link>
           </b-nav-item>
           <b-nav-item v-if="currentUser !== null">
-            <router-link to="MedicalFileResume"><i class="fas fa-notes-medical"></i>Mon formulaire médical</router-link>
+            <router-link to="MedicalFileResume"><i class="fas fa-notes-medical"></i>Mon dossier médical</router-link>
           </b-nav-item>
           <b-nav-item v-if="currentUser !== null">
             <router-link to="ViewMyStickers"><i class="fas fa-sticky-note"></i>Mes autocollants</router-link>
