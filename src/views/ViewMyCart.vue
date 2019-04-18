@@ -161,7 +161,7 @@
         });
     },
     methods: {
-      deleteItem: (item) => {
+      deleteItem: function(item){
         this.total = this.total - (item.quantity * item.prix);
         db.collection('stickers')
           .doc(firebase.auth().currentUser.uid)
@@ -184,7 +184,7 @@
           }
         }
       },
-      addProduct: (item, i) => {
+      addProduct: function(item, i){
         if ((item.quantity >= 1 && i < 0) || (item.quantity >= 0 && i > 0)) {
           db.collection('stickers')
             .doc(firebase.auth().currentUser.uid)
