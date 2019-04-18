@@ -558,20 +558,11 @@
     margin-bottom: 4em;
   }
 
-  .button-validate:hover, .button-delete:hover {
+  .button-validate:hover{
     color: #fff;
-  }
-
-  .button-delete {
-    margin-bottom: 4em;
   }
 
   .invalid-feedback {
     color: #fff
-  }
-
-  .userPhoto {
-    width: auto;
-    height: 50px;
   }
 </style>

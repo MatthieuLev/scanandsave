@@ -79,7 +79,7 @@
             <td></td>
             <td></td>
             <td><strong>Total</strong></td>
-            <td class="text-right"><strong>{{this.total==0?0:this.total+3}}€</strong></td>
+            <td class="text-right"><strong>{{this.total===0?0:this.total+3}}€</strong></td>
           </tr>
           </tbody>
         </table>
@@ -97,7 +97,7 @@
           </b-button>
         </b-col>
         <b-col>
-          <b-button class="button-validate btn-warning text-uppercase"
+          <b-button class="button-validate btn btn-warning text-uppercase"
                     v-on:click="goPayment()">Valider</b-button>
         </b-col>
       </b-row>
@@ -237,7 +237,7 @@
     margin-bottom: 4em;
   }
 
-  .button-validate:hover, .button-delete:hover {
+  .button-validate:hover {
     color: #fff;
   }
 
@@ -257,7 +257,7 @@
     margin: 1em 0;
   }
 
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     .btn{
       font-size: 10px;
     }

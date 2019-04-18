@@ -93,7 +93,6 @@
           .get()
           .then((querySnapshot) => {
             if (!querySnapshot.empty) {
-              this.userHaveStickers = true;
               // go through all the results
               querySnapshot.forEach((documentSnapshot) => {
                 const data = documentSnapshot.data();
@@ -174,7 +173,7 @@
     color: #5e0000;
     font-size: 12px;
   }
-  @media (max-width: 991.98px) {
+  @media (max-width: 992px) {
     .button-validate{
       font-size: 10px;
     }
