@@ -18,7 +18,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="item in items">
+          <tr v-for="item in items" :key="item.id">
             <td>
               <b-img class="stickers"
                      :src="require(`../img/stickers/${item.theme}/${item.color}.png`)"
