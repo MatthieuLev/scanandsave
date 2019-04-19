@@ -200,7 +200,6 @@
 </script>
 
 <style scoped>
-
   h3 {
     color: #90081d;
   }
@@ -212,16 +211,16 @@
   .carousel .item {
     height: 400px
   }
-.col-sm-4 img {
-  width: 203px;
-  height: 270px;
-}
-.btn .btn-secondary{
-  margin-left: auto;
-  margin-right: auto;
-  width: 80px;
-}
 
+  .col-sm-4 img {
+    width: 203px;
+    height: 270px;
+  }
+  .btn .btn-secondary{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+  }
 
   .b1 {
     background-color: #B9121B !important;
@@ -240,5 +239,9 @@
 
   .bg{
     background-color: white;
+  }
+
+  a:hover{
+    text-decoration: none;
   }
 </style>

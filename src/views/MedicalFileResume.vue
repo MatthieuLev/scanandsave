@@ -456,13 +456,6 @@
     },
     methods: {
       saveModificationMedicalFile() {
-        this.submitted = true;
-        // stop here if form is invalid
-        this.$v.$touch();
-        console.log(this.$v);
-        if (this.$v.$invalid) {
-          return;
-        }
         this.uploadPhoto().then(() => {
           db.collection('medicalFiles')
             .doc(firebase.auth().currentUser.uid)
@@ -510,13 +503,19 @@
         });
       },
       modify() {
-        if (!this.disabled) {
-          this.saveModificationMedicalFile();
-          this.buttonName = 'Modifier les informations';
-          this.disabled = !this.disabled;
-        } else {
-          this.buttonName = 'Valider les changements';
-          this.disabled = !this.disabled;
+        this.submitted = true;
+        // stop here if form is invalid
+        this.$v.$touch();
+        console.log(this.$v);
+        if (!this.$v.$invalid) {
+          if (!this.disabled) {
+            this.saveModificationMedicalFile();
+            this.buttonName = 'Modifier les informations';
+            this.disabled = !this.disabled;
+          } else {
+            this.buttonName = 'Valider les changements';
+            this.disabled = !this.disabled;
+          }
         }
       },
       deleteMF() {

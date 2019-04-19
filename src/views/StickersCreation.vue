@@ -2,7 +2,6 @@
   <div>
     <Navbar></Navbar>
     <b-container>
-      <br>
       <h1>Créer son autocollant</h1>
       <b-form @submit.prevent="saveStickers" class="create_stickers">
         <div class="card">
@@ -151,6 +150,9 @@
 
   .button-validate:hover {
     color: #fff;
+  }
+  .card{
+    margin-bottom: 4em;
   }
 
 </style>
