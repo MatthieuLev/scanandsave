@@ -67,7 +67,7 @@
               <p>Scooters</p>
               <p>Skateurs</p>
               <p>Skieurs</p>
-              <p>Ouvriers de chantiers</p>
+              <p>Ouvriers de chantier</p>
             </ol>
           </div>
         </div>
@@ -91,10 +91,11 @@
             <br><br><br>
             <h3>Quelles infos ?</h3><br>
             <ol>
-              <p>Votre photo, Nom, Prénom, date de naissance.</p>
-              <p>Groupe sanguin, Allergies, Donneur d'organes.</p>
+              <p>Votre photo, Nom, Prénom, Date de naissance.</p>
+              <p>MHTA: Maladies, Hospitalisations, Traitements, Allergies </p>
+              <p>Groupe sanguin, Donneur d'organes.</p>
               <p>N° sécurité sociale, N° permis de conduire.</p>
-              <p>Premier et deuxième contact avec leurs téléphones.</p>
+              <p>Personne à contacter en cas d'urgence et coordonnées du médecin traitant.</p>
               <p>Le changement de vos données est gratuit à vie.</p>
             </ol>
           </div>
@@ -112,9 +113,9 @@
             <br><br><br>
             <h3>Comment ça marche ?</h3><br>
             <ol>
-              <p>Je remplis mes données personnelles afin de configuer mon stickers.</p>
-              <p>Je choisi un visuel parmi une large game de stickers.</p>
-              <p>Je reçois mon stickers 24h plus tard !</p>
+              <p>Je remplis mes données personnelles afin de configuer mon sticker.</p>
+              <p>Je choisis un visuel parmi une large gamme de stickers.</p>
+              <p>Je reçois mon sticker 24h plus tard !</p>
             </ol>
           </div>
         </div>
@@ -135,7 +136,7 @@
             <br><br><br>
             <h3>Sécurité et confidentialité</h3><br>
             <ol>
-              <p>La lecture des données se fait en scannant le QR code .</p>
+              <p>La lecture des données se fait en scannant le QR code.</p>
               <p>Vos données vitales sont stockées dans les serveurs Scan&Save sécurisés.</p>
               <p>Aucune onde n'est émise.</p>
               <p>Ni pile, ni batterie.</p>
@@ -200,6 +201,9 @@
 </script>
 
 <style scoped>
+  p{
+    font-size: 18px
+  }
   h3 {
     color: #90081d;
   }
