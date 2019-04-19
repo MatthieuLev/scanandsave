@@ -13,7 +13,7 @@
             <th scope="col">Produit</th>
             <th scope="col">Disponibilité</th>
             <th scope="col" class="text-center">Quantité</th>
-            <th scope="col" class="text-right">Prix</th>
+            <th scope="col" class="text-right">Prix unitaire</th>
             <th></th>
           </tr>
           </thead>
