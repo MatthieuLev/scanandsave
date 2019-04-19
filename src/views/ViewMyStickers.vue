@@ -5,6 +5,47 @@
       <h1>Mes autocollants</h1>
       <div v-if="userHaveAccount">
         <div class="custom-card">
+          <!--<table class="table table-striped">
+            <thead>
+            <tr>
+              <th scope="col">Index</th>
+              <th scope="col">Theme</th>
+              <th scope="col">Couleur</th>
+              <th scope="col">Taille</th>
+              <th scope="col">Forme</th>
+              <th scope="col">Apperçu</th>
+              <th scope="col">Ajouter au panier</th>
+              <th scope="col" class="align-content-center">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="sticker in stickers">
+              <td>{{ data.index + 1 }}</td>
+              <td>{{sticker.theme}}</td>
+              <td>{{sticker.color}}</td>
+              <td>{{sticker.size}}</td>
+              <td>{{sticker.shape}}</td>
+              <td>
+                <b-img class="stickers"
+                       :src="require(`../img/stickers/${sticker.theme}/${sticker.color}.png`)"
+                       fluid
+                       alt="Stickers picture"></b-img>
+              </td>
+              <td>
+                <b-form-checkbox> :id="'checkbox'+data.index+1"
+                                 name="checkbox"
+                                 v-model="data.item.in_order"
+                                 @change="checkAddToCart(data.item)"
+                </b-form-checkbox>
+              </td>
+              <td class="text-right">
+                <b-button class="table-btn"
+                          v-on:click="deleteItem(item)">
+                  <i class="fa fa-trash"></i></b-button>
+              </td>
+            </tr>
+            </tbody>
+          </table>-->
 
           <b-table responsive striped :fields="fields" :items="stickers">
             <template slot="index" slot-scope="data">
@@ -25,6 +66,12 @@
                                @change="checkAddToCart($event, data.item)">
               </b-form-checkbox>
             </template>
+
+            <template slot="deleteSticker" slot-scope="data">
+              <b-button class="table-btn" :id="'delete'+data.index+1"
+                        v-on:click="deleteSticker(data.item)">
+                <i class="fa fa-trash"></i></b-button>
+            </template>
           </b-table>
           <p class="error" v-if="errorMessage">{{errorMessage}}</p>
 
@@ -35,7 +82,6 @@
               Créer un nouvel autocollant</router-link>
           </b-col>
         </b-row>
-
       </div>
       <div v-else>
         <p>Vous devez créer un dossier médical avant de pouvoir générer un autocollant.</p>
@@ -63,6 +109,7 @@
         stickers: [],
         errorMessage: '',
         userHaveAccount: false,
+        index:0,
         fields: [
           'index',
           { key: 'theme', label: 'Theme' },
@@ -71,6 +118,7 @@
           { key: 'shape', label: 'Forme' },
           { key: 'preview', label: 'Aperçu' },
           { key: 'addtoCart', label: 'Ajouter au panier' },
+          { key: 'deleteSticker', label: 'Supprimer' }
         ],
       };
     },
@@ -118,6 +166,21 @@
             this.errorMessage = error;
           });
       },
+      deleteSticker(item) {
+        db.collection('stickers')
+          .doc(firebase.auth().currentUser.uid)
+          .collection('userStickers')
+          .doc(item.id)
+          .delete()
+          .catch((error => {
+            this.errorMessage = error;
+          }));
+        for (let i = 0; i < this.stickers.length; i += 1) {
+          if (this.stickers[i] === item) {
+            this.stickers.splice(i, 1);
+          }
+        }
+      }
     },
   };
 </script>
